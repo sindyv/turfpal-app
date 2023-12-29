@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Wrapper = styled.div`
     display: flex;
@@ -6,8 +6,11 @@ export const Wrapper = styled.div`
 `
 
 export const Content = styled.div`
-    width: 100%;
+    width: 90vw;
+    padding: 30px;
     display: flex;
-    justify-content: center;
-    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: start;
+    gap: 30px 30px;
 `

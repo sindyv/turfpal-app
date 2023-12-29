@@ -1,5 +1,4 @@
-import { createGlobalStyle } from "styled-components";
-
+import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
     :root {
@@ -15,16 +14,18 @@ export const GlobalStyle = createGlobalStyle`
         --turfpalColor: #1b4d41;
         --turfpalTextColor: #dffb85;
         --turfpalHover: #355b56;
+        --turfpalActiveBtn: #96e6cd;
     }
 
     * {
         box-sizing: border-box;
-        font-family: 'Abel', sans-serif;
+        font-family: 'Open Sans', 'Abel',sans-serif;
         }
     body {
         margin: 0;
         padding: 0;
         background-color: var(--lightGrey);
+
 
         h1 {
             font-size: 2rem;

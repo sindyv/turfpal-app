@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const Wrapper = styled.div`
     background-color: var(--turfpalColor);
-    color: var(--white);
 `
 
 export const Content = styled.div`
@@ -12,8 +11,12 @@ export const Content = styled.div`
     color: var(--turfpalTextColor);
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding-left: 20px;
-    
+
+    .header__clock {
+        margin: 0 20px 0 0;
+    }
 `
 
 export const LogoImg = styled.img`
@@ -30,5 +33,3 @@ export const Hamburger = styled.span`
     display: flex;
     align-items: center;
 `
-    
-    

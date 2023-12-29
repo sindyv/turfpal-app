@@ -5,10 +5,11 @@ export const Line = styled.div`
     justify-content: space-between;
 
     width: 300px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    border-bottom: ${(props) =>
+        props.$endline ? "none" : "1px solid rgba(0, 0, 0, 0.25)"};
     padding: 15px 10px;
 
-    &:last-child {
+    bo &:last-child {
         border-bottom: none;
         padding-bottom: 0px;
     }

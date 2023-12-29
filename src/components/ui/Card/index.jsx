@@ -1,13 +1,8 @@
-import React from "react";
+import React from "react"
+import { Wrapper } from "./Card.styles"
 
-import { Wrapper } from "./Card.styles";
-
-const Card = (props) => {
-    return(
-    <Wrapper>
-        {props.children}
-    </Wrapper>
-    )
+const Card = ({ children }) => {
+    return <Wrapper>{children}</Wrapper>
 }
 
 export default Card

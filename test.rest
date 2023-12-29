@@ -1,1 +1,14 @@
-GET http://192.168.1.116:1880/test
+GET http://localhost:3000/values
+
+###
+
+get http://localhost:3000/rigData
+
+
+###
+post http://localhost:3000/commands
+Content-Type: application/json
+
+{
+    "message" : "Hello!"
+}
