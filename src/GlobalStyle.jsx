@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
     :root {
         --maxWidth: 1280px;
         --white: #fff;
+        --borderColor: #cccccc;
         --lightGrey: #f3f3f3;
         --medGrey: #353535;
         --darkGrey: #1c1c1c;
@@ -11,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         --fontBig: 1.5rem;
         --fontmed: 1.2rem;
         --fontSmall: 1rem;
+        --fontSuperSmall: 0.8rem;
         --turfpalColor: #1b4d41;
         --turfpalTextColor: #dffb85;
         --turfpalHover: #355b56;

@@ -4,6 +4,14 @@ GET http://localhost:3000/values
 
 get http://localhost:3000/rigData
 
+###
+
+get http://localhost:3000/statuses
+
+###
+
+get http://localhost:3000/alarms
+
 
 ###
 post http://localhost:3000/commands

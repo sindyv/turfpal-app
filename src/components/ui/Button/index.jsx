@@ -4,6 +4,7 @@ import { Btn } from "./Button.styles"
 
 const Button = ({ children, selected, enabled, danger, handleClick }) => (
     <Btn
+        disabled={!enabled}
         $selected={selected}
         $enabled={enabled}
         $danger={danger}

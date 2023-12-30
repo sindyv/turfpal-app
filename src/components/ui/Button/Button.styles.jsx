@@ -12,4 +12,5 @@ export const Btn = styled.button`
     font-weight: 400;
     margin: 1px 0;
     opacity: ${(props) => (props.$enabled ? "1" : "0.7")};
+    cursor: pointer;
 `

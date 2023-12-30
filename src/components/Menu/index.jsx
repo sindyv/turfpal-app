@@ -20,7 +20,7 @@ const Menu = () => {
             <MenuItem link={"/"}>
                 <SpeedIcon />
             </MenuItem>
-            <MenuItem link={"calendar"}>
+            <MenuItem link={"schedule"}>
                 <CalendarMonthIcon />
             </MenuItem>
             <MenuItem>
@@ -35,7 +35,7 @@ const Menu = () => {
             <MenuItem link={"routerData"}>
                 <WifiIcon />
             </MenuItem>
-            <MenuItem>
+            <MenuItem link={"status"}>
                 <ReportProblemIcon />
             </MenuItem>
             <MenuItem>

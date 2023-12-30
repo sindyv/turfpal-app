@@ -17,12 +17,20 @@ const Heating = () => {
         refetchInterval: 5000,
     })
 
+    const queryStatuses = useQuery({
+        queryKey: ["statuses"],
+        queryFn: API.fetchStatusesPromise,
+        refetchInterval: 5000,
+    })
+
     const commandMutation = useMutation({
         mutationFn: API.sendCommandPromise,
         onSuccess: () => queryClient.invalidateQueries(["values"]),
     })
 
     if (queryValues.isLoading) return <h1>Loading...</h1>
+    if (queryStatuses.isLoading) return <h1>Loading...</h1>
+
     if (queryValues.isError) return <h1>Error fetching data</h1>
 
     return (
@@ -40,16 +48,50 @@ const Heating = () => {
                 <Unit>°C</Unit>
                 <Button
                     enabled={true}
-                    selected={true}
+                    selected={queryStatuses.data.mode === "auto"}
                     handleClick={() =>
                         commandMutation.mutate({ commands: { mode: "auto" } })
                     }
                 >
                     Auto
                 </Button>
-                <Button enabled={true}>Manual</Button>
-                <Button>On</Button>
-                <Button>Off</Button>
+                <Button
+                    enabled={true}
+                    selected={queryStatuses.data.mode === "manual"}
+                    handleClick={() =>
+                        commandMutation.mutate({ commands: { mode: "manual" } })
+                    }
+                >
+                    Manual
+                </Button>
+                <Button
+                    enabled={queryStatuses.data.mode === "manual"}
+                    handleClick={() =>
+                        commandMutation.mutate({
+                            commands: {
+                                heat_zone1: true,
+                                heat_zone2: true,
+                                heat_zone3: true,
+                            },
+                        })
+                    }
+                >
+                    On
+                </Button>
+                <Button
+                    enabled={queryStatuses.data.mode === "manual"}
+                    handleClick={() =>
+                        commandMutation.mutate({
+                            commands: {
+                                heat_zone1: false,
+                                heat_zone2: false,
+                                heat_zone3: false,
+                            },
+                        })
+                    }
+                >
+                    Off
+                </Button>
             </Wrapper>
         </Card>
     )
