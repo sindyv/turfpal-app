@@ -26,4 +26,8 @@ export default {
     fetchAlarmsPromise: async () => {
         return await (await fetch("http://localhost:3000/alarms")).json()
     },
+
+    fetchSchedulePromise: async () => {
+        return await (await fetch("http://192.168.1.116:1880/schedule")).json()
+    },
 }

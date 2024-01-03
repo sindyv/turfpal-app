@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { LocalizationProvider } from "@mui/x-date-pickers"
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 
 // styles
 import { GlobalStyle } from "./GlobalStyle"
@@ -14,10 +16,12 @@ function App() {
     return (
         <div className='App'>
             <GlobalStyle />
-            <QueryClientProvider client={queryClient}>
-                <Header />
-                <Section></Section>
-            </QueryClientProvider>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <QueryClientProvider client={queryClient}>
+                    <Header />
+                    <Section></Section>
+                </QueryClientProvider>
+            </LocalizationProvider>
         </div>
     )
 }

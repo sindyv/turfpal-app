@@ -38,7 +38,7 @@ const Menu = () => {
             <MenuItem link={"status"}>
                 <ReportProblemIcon />
             </MenuItem>
-            <MenuItem>
+            <MenuItem link={"settings"}>
                 <SettingsIcon />
             </MenuItem>
         </Wrapper>

@@ -11,7 +11,8 @@ import ErrorPage from "../ErrorPage"
 import RouterData from "../routerData"
 import Heating from "../Heating"
 import Status from "../Status"
-import Schedule from "../Schedule"
+import Schedule from "../Schedule/ScheduleMain"
+import Settings from "../Settings"
 
 const Section = (props) => {
     return (
@@ -28,6 +29,7 @@ const Section = (props) => {
                         <Route path='routerData' element={<RouterData />} />
                         <Route path='heating' element={<Heating />} />
                         <Route path='status' element={<Status />} />
+                        <Route path='settings' element={<Settings />} />
                         <Route path='/*' element={<ErrorPage />} />
                     </Routes>
                 </Content>
