@@ -35,7 +35,7 @@ export const GlobalStyle = createGlobalStyle`
 
     * {
         box-sizing: border-box;
-        font-family: 'Euclid', 'Open Sans', 'Abel',sans-serif; */
+        font-family: 'Euclid', 'Open Sans', 'Abel',sans-serif; 
 
     }
     body {
