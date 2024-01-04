@@ -10,7 +10,7 @@ import {
 } from "./Dashboard.styles"
 
 //Components
-import Button from "../../UI/Button"
+import Btn from "../../UI/Btn"
 import ControlTile from "../../UI/ControlTile"
 
 // Images
@@ -27,12 +27,12 @@ function Dashboard() {
         <Wrapper>
             <Header>Dashboard</Header>
             <ButtonsArea>
-                <Button>
+                <Btn>
                     <AutorenewOutlinedIcon /> Auto
-                </Button>
-                <Button svgSize={12}>
+                </Btn>
+                <Btn svgSize={12}>
                     <BackHandOutlinedIcon /> Manual
-                </Button>
+                </Btn>
             </ButtonsArea>
             <TileArea>
                 <ControlTile

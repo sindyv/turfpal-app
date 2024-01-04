@@ -1,8 +1,8 @@
 import React from "react"
 
-import { Wrapper, TextArea } from "./Button.styles"
+import { Wrapper, TextArea } from "./Btn.styles"
 
-function Button({ children, disabled, svgSize }) {
+function Btn({ children, disabled, svgSize }) {
     return (
         <Wrapper $disabled={disabled} $svgSize={svgSize}>
             <TextArea>{children}</TextArea>
@@ -10,4 +10,4 @@ function Button({ children, disabled, svgSize }) {
     )
 }
 
-export default Button
+export default Btn
