@@ -8,7 +8,8 @@ import { GlobalStyle } from "./GlobalStyle"
 
 //Components
 import Header from "./components/Header"
-import Section from "./components/Section"
+import Menu from "./components/Menu"
+import MainContent from "./components/MainContent"
 
 const queryClient = new QueryClient()
 
@@ -19,7 +20,9 @@ function App() {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <QueryClientProvider client={queryClient}>
                     <Header />
-                    <Section></Section>
+                    <MainContent>
+                        <Menu />
+                    </MainContent>
                 </QueryClientProvider>
             </LocalizationProvider>
         </div>

@@ -1,6 +1,16 @@
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
+      
+    @font-face {
+            font-family: "Euclid";
+            src: url("./src/fonts/EUCLIDSQUARE-REGULAR.TTF");
+        }
+
+    @font-face {
+        font-family: "EuclidBold";
+        src: url("./src/fonts/EUCLIDSQUARE-BOLD.TTF");
+    }
     :root {
         --maxWidth: 1280px;
         --white: #fff;
@@ -8,25 +18,31 @@ export const GlobalStyle = createGlobalStyle`
         --lightGrey: #f3f3f3;
         --medGrey: #353535;
         --darkGrey: #1c1c1c;
-        --fontSuperBig: 2.5rem;
+        --fontSuperBig: 2.2rem;
         --fontBig: 1.5rem;
         --fontmed: 1.2rem;
         --fontSmall: 1rem;
         --fontSuperSmall: 0.8rem;
-        --turfpalColor: #1b4d41;
+        --fontTiny: 0.6rem;
+        --fontSuperTiny: 0.4rem;
+        --turfpalColor: #004e41;
         --turfpalTextColor: #dffb85;
         --turfpalHover: #355b56;
         --turfpalActiveBtn: #96e6cd;
+        --turfpalFont : 'Euclid';
+        --turfpalFontBold : 'EuclidBold'
     }
 
     * {
         box-sizing: border-box;
-        font-family: 'Open Sans', 'Abel',sans-serif;
-        }
+        font-family: 'Euclid', 'Open Sans', 'Abel',sans-serif; */
+
+    }
     body {
         margin: 0;
         padding: 0;
-        background-color: var(--lightGrey);
+        background-color: var(--white);
+
 
 
         h1 {
