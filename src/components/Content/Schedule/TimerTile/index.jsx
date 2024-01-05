@@ -7,7 +7,7 @@ import {
     ValueArea,
     DataArea,
     Units,
-} from "./ControlTile.styles"
+} from "./TimeTile.styles"
 
 import { Switch } from "@mui/material"
 
@@ -21,7 +21,7 @@ const defaultValueObject = {
     additionalDataUnits: ["", ""],
 }
 
-function ControlTile({ enabled, icon = HelpOutlineOutlinedIcon, data, title }) {
+function TimerTile({ enabled, icon = HelpOutlineOutlinedIcon, data, title }) {
     const Icon = icon
     const theme = createTheme({
         palette: {
@@ -31,35 +31,20 @@ function ControlTile({ enabled, icon = HelpOutlineOutlinedIcon, data, title }) {
             },
         },
     })
-    data = { ...defaultValueObject, ...data }
 
     return (
         <Wrapper $enabled={enabled}>
             <Header>
-                <HeaderTextArea>
-                    <Icon />
-                    {title}
-                </HeaderTextArea>
+                <HeaderTextArea>{title}</HeaderTextArea>
                 <ThemeProvider theme={theme}>
                     <Switch size='small' color='custom' />
                 </ThemeProvider>
             </Header>
             <ValueArea>
-                {data.value}
-                {data.valueUnit}
+                <Icon />
             </ValueArea>
-            <DataArea>
-                <span>
-                    {data.additionalData[0]}
-                    <Units>{data.additionalDataUnits[0]}</Units>
-                </span>
-                <span>
-                    {data.additionalData[1]}
-                    <Units>{data.additionalDataUnits[1]}</Units>
-                </span>
-            </DataArea>
         </Wrapper>
     )
 }
 
-export default ControlTile
+export default TimerTile

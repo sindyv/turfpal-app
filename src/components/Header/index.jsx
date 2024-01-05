@@ -2,7 +2,7 @@ import React from "react"
 import { useQuery } from "@tanstack/react-query"
 
 // Styles
-import { Wrapper, Icons } from "./Header.styles"
+import { Wrapper, Icons, LinkItem } from "./Header.styles"
 
 // Images
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined"
@@ -24,8 +24,12 @@ const Header = () => {
         <Wrapper>
             10003 - TLS LED 70{" "}
             <Icons>
-                <InfoOutlinedIcon />
-                <PermIdentityOutlinedIcon />
+                <LinkItem to={"information"}>
+                    <InfoOutlinedIcon />
+                </LinkItem>
+                <LinkItem to={"information"}>
+                    <PermIdentityOutlinedIcon />
+                </LinkItem>
             </Icons>
         </Wrapper>
     )

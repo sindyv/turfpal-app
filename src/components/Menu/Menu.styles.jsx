@@ -1,5 +1,5 @@
 import styled from "styled-components"
-
+import { Link } from "react-router-dom"
 export const Wrapper = styled.div`
     position: absolute;
     bottom: 0;
@@ -22,4 +22,8 @@ export const Icons = styled.div`
         height: 30px;
         font-weight: 100;
     }
+`
+
+export const LinkItem = styled(Link)`
+    color: var(--white);
 `

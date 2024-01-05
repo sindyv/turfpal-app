@@ -1,5 +1,5 @@
 import styled from "styled-components"
-
+import { Link } from "react-router-dom"
 // Icons
 
 export const Wrapper = styled.div`
@@ -17,4 +17,8 @@ export const Icons = styled.div`
         height: 24px;
         width: 24px;
     }
+`
+
+export const LinkItem = styled(Link)`
+    color: var(--turfpalColor);
 `

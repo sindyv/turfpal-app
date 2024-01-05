@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         src: url("./src/fonts/EUCLIDSQUARE-BOLD.TTF");
     }
     :root {
+        --mainContentPadding: 24px;
         --maxWidth: 1280px;
         --white: #fff;
         --borderColor: #cccccc;
@@ -20,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
         --darkGrey: #1c1c1c;
         --fontSuperBig: 2.2rem;
         --fontBig: 1.5rem;
-        --fontmed: 1.2rem;
+        --fontMed: 1.2rem;
         --fontSmall: 1rem;
         --fontSuperSmall: 0.8rem;
         --fontTiny: 0.6rem;
