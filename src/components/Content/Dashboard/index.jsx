@@ -1,4 +1,5 @@
 import React from "react"
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query"
 
 // Styles
 import {
@@ -7,6 +8,7 @@ import {
     ButtonsArea,
     TileArea,
     HeatTile,
+    LinkItem,
 } from "./Dashboard.styles"
 
 //Components
@@ -22,80 +24,185 @@ import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined"
 import Icon from "@mdi/react"
 import { mdiAwningOutline } from "@mdi/js"
 
+// API
+import API from "../../../API"
+
 function Dashboard() {
+    const camera = false
+
+    const queryClient = useQueryClient()
+
+    const query = useQuery({
+        queryKey: ["allValues"],
+        queryFn: API.fetchAllValues,
+        refetchInterval: 5000,
+    })
+
+    const commandMutation = useMutation({
+        mutationFn: API.sendCommand,
+        onSuccess: () => queryClient.invalidateQueries(["allValues"]),
+    })
+
+    if (query.isLoading) return <h1>Loading...</h1>
+    if (query.isError) return <h1>Error fetching data!</h1>
+
+    const handleClickedButton = (controlledItem, state) => {
+        switch (controlledItem) {
+            case "Lighting":
+                commandMutation.mutate({
+                    commands: { zone1_par: state, zone2_par: state },
+                })
+                break
+            case "Heating":
+                commandMutation.mutate({
+                    commands: {
+                        zone1_temp: state,
+                        zone2_temp: state,
+                        zone3_temp: state,
+                    },
+                })
+                break
+            case "Irrigation":
+                commandMutation.mutate({
+                    commands: { irrigation_solenoid: state },
+                })
+                break
+            case "CO2":
+                commandMutation.mutate({
+                    commands: { co2_solenoid: state },
+                })
+                break
+            case "Cover":
+                commandMutation.mutate({
+                    commands: { cover: state },
+                })
+                break
+
+            default:
+                console.log("Invalid")
+                break
+        }
+    }
+
+    const handleSetModeAuto = () => {
+        commandMutation.mutate({
+            commands: { auto: true, manual: false },
+        })
+    }
+
+    const handleSetModeManual = () => {
+        commandMutation.mutate({
+            commands: { auto: false, manual: true },
+        })
+    }
+
     return (
         <Wrapper>
             <Header>Dashboard</Header>
             <ButtonsArea>
-                <Btn>
+                <Btn
+                    selected={query.data.statuses.mode === "auto"}
+                    onClick={handleSetModeAuto}
+                >
                     <AutorenewOutlinedIcon /> Auto
                 </Btn>
-                <Btn svgSize={12}>
+                <Btn
+                    svgSize={12}
+                    selected={query.data.statuses.mode === "manual"}
+                    onClick={handleSetModeManual}
+                >
                     <BackHandOutlinedIcon /> Manual
                 </Btn>
             </ButtonsArea>
             <TileArea>
+                <LinkItem to={"heating"}>
+                    <ControlTile
+                        changeState={handleClickedButton}
+                        enabled={
+                            query.data.values.led_zone1_dim > 0 ||
+                            query.data.values.led_zone2_dim > 0
+                        }
+                        icon={LightbulbOutlinedIcon}
+                        title={"Lighting"}
+                        data={{
+                            value: query.data.values.led_zone1_dim,
+                            valueUnit: "%",
+                            additionalData: [
+                                query.data.values.energyMeters[0].power,
+                                query.data.values.led_zone1_rh,
+                            ],
+                            additionalDataUnits: ["kW", "h"],
+                        }}
+                    />
+                </LinkItem>
+                <LinkItem to={"heating"}>
+                    <ControlTile
+                        changeState={handleClickedButton}
+                        enabled={
+                            query.data.statuses.hps_zone1 ||
+                            query.data.statuses.hps_zone2
+                        }
+                        icon={HeatTile}
+                        title={"Heating"}
+                        data={{
+                            value: query.data.values.temperature,
+                            valueUnit: "°C",
+                            additionalData: [
+                                query.data.values.energyMeters[1].power,
+                                query.data.values.heat_rh,
+                            ],
+                            additionalDataUnits: ["kW", "h"],
+                        }}
+                    />
+                </LinkItem>
                 <ControlTile
-                    enabled={true}
-                    icon={LightbulbOutlinedIcon}
-                    title={"Lighting"}
-                    data={{
-                        value: 100,
-                        valueUnit: "%",
-                        additionalData: [7.2, 120],
-                        additionalDataUnits: ["kW", "h"],
-                    }}
-                />
-                <ControlTile
-                    enabled={false}
-                    icon={HeatTile}
-                    title={"Heating"}
-                    data={{
-                        value: 16,
-                        valueUnit: "°C",
-                        additionalData: [7.4, 45],
-                        additionalDataUnits: ["kW", "h"],
-                    }}
-                />
-                <ControlTile
-                    enabled={false}
+                    changeState={handleClickedButton}
+                    enabled={query.data.statuses.irrigation_solenoid}
                     icon={WaterDropOutlinedIcon}
                     title={"Irrigation"}
                     data={{
                         value: 20,
                         valueUnit: "%",
                         additionalData: [12, 400],
-                        additionalDataUnits: ["°C", "h"],
+                        additionalDataUnits: ["°C", "ltr"],
                     }}
                 />
                 <ControlTile
-                    enabled={false}
+                    changeState={handleClickedButton}
+                    controlledItem={"CO2"}
+                    enabled={query.data.statuses.co2_solenoid}
                     icon={CloudOutlinedIcon}
                     title={"CO2"}
                     data={{
-                        value: 380,
+                        value: query.data.values.co2,
                         valueUnit: "ppm",
-                        additionalData: [80, 6],
+                        additionalData: [
+                            query.data.values.co2_consumption,
+                            query.data.values.co2_rh,
+                        ],
                         additionalDataUnits: ["kg", "h"],
                     }}
                 />
                 <ControlTile
-                    enabled={false}
+                    changeState={handleClickedButton}
+                    enabled={query.data.statuses.cover}
                     icon={CloudOutlinedIcon}
                     title={"Cover"}
                     data={{
-                        value: 100,
-                        valueUnit: "%",
-                        additionalData: ["Retracted", ""],
+                        value: query.data.statuses.cover ? "Open" : "Retracted",
+                        valueUnit: "",
+                        additionalData: ["", ""],
                         additionalDataUnits: ["", ""],
                     }}
                 />
-                <ControlTile
-                    enabled={false}
-                    icon={LightbulbOutlinedIcon}
-                    title={"Camera"}
-                    data={{ value: "No camera", valueUnit: "" }}
-                />
+                {camera ? (
+                    <ControlTile
+                        enabled={false}
+                        icon={LightbulbOutlinedIcon}
+                        title={"Camera"}
+                        data={{ value: "No camera", valueUnit: "" }}
+                    />
+                ) : null}
             </TileArea>
         </Wrapper>
     )

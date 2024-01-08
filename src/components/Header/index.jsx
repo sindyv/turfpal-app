@@ -14,7 +14,7 @@ import API from "../../API"
 const Header = () => {
     const valuesQuery = useQuery({
         queryKey: ["values"],
-        queryFn: API.fetchValuesPromise,
+        queryFn: API.fetchRigdata,
     })
 
     if (valuesQuery.isLoading) return <h1>Loading...</h1>
@@ -22,7 +22,7 @@ const Header = () => {
 
     return (
         <Wrapper>
-            10003 - TLS LED 70{" "}
+            {valuesQuery.data.serial_number} - {valuesQuery.data.type}
             <Icons>
                 <LinkItem to={"information"}>
                     <InfoOutlinedIcon />

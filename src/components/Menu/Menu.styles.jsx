@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 export const Wrapper = styled.div`
-    position: absolute;
+    /* position: absolute; */
+    position: fixed;
     bottom: 0;
     width: 100%;
     background-color: var(--turfpalColor);
@@ -26,4 +27,23 @@ export const Icons = styled.div`
 
 export const LinkItem = styled(Link)`
     color: var(--white);
+`
+
+export const IconWrapper = styled.div`
+    position: relative;
+`
+
+export const NumberCircle = styled.div`
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    background-color: #fcd3d2;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    font-size: var(--fontTiny);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
 `

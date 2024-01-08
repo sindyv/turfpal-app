@@ -9,7 +9,15 @@ export const Wrapper = styled.div`
 
 export const Header = styled.div`
     font-family: var(--turfpalFontBold);
+    font-size: var(--fontMed);
     margin: 0 0 24px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    svg {
+        width: 24px;
+    }
 `
 
 export const ButtonsArea = styled.div`
@@ -32,4 +40,20 @@ export const HeatTile = styled(WavesOutlinedIcon)`
 export const LinkItem = styled(Link)`
     text-decoration: none;
     color: black;
+`
+export const CardDescription = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--turfpalFontBold);
+
+    svg {
+        color: var(--turfpalColor);
+    }
+`
+
+export const LinkWrappers = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 `

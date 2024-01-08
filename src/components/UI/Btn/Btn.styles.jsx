@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 export const Wrapper = styled.div`
-    background: var(--turfpalColor);
+    background: ${(props) =>
+        props.$selected ? "var(--turfpalActiveBtn)" : "var(--turfpalColor)"};
     color: var(--white);
     display: flex;
     align-items: center;

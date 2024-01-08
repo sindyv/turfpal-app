@@ -20,7 +20,6 @@ export const Wrapper = styled.div`
     flex-direction: row;
     background: var(--primaryColor);
     /* background: rgb(245, 245, 245); */
-    transition: width 2s;
     animation: animateCard 500ms;
     @keyframes animateCard {
         from {

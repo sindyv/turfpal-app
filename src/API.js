@@ -1,5 +1,5 @@
 export default {
-    sendCommandPromise: async (command) => {
+    sendCommand: async (command) => {
         return await (
             await fetch("http://localhost:3000/commands", {
                 method: "POST",
@@ -11,23 +11,27 @@ export default {
         ).json()
     },
 
-    fetchValuesPromise: async () => {
+    fetchValues: async () => {
         return await (await fetch("http://localhost:3000/values")).json()
     },
 
-    fetchRigdataPromise: async () => {
+    fetchRigdata: async () => {
         return await (await fetch("http://localhost:3000/rigData")).json()
     },
 
-    fetchStatusesPromise: async () => {
+    fetchStatuses: async () => {
         return await (await fetch("http://localhost:3000/statuses")).json()
     },
 
-    fetchAlarmsPromise: async () => {
+    fetchAlarms: async () => {
         return await (await fetch("http://localhost:3000/alarms")).json()
     },
 
-    fetchSchedulePromise: async () => {
+    fetchSchedule: async () => {
         return await (await fetch("http://192.168.1.116:1880/schedule")).json()
+    },
+
+    fetchAllValues: async () => {
+        return await (await fetch("http://localhost:3000/all")).json()
     },
 }

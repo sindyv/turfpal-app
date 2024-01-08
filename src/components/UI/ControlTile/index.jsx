@@ -21,7 +21,13 @@ const defaultValueObject = {
     additionalDataUnits: ["", ""],
 }
 
-function ControlTile({ enabled, icon = HelpOutlineOutlinedIcon, data, title }) {
+function ControlTile({
+    enabled,
+    icon = HelpOutlineOutlinedIcon,
+    data,
+    title,
+    changeState,
+}) {
     const Icon = icon
     const theme = createTheme({
         palette: {
@@ -33,6 +39,10 @@ function ControlTile({ enabled, icon = HelpOutlineOutlinedIcon, data, title }) {
     })
     data = { ...defaultValueObject, ...data }
 
+    const handleClick = (state) => {
+        changeState(title, state)
+    }
+
     return (
         <Wrapper $enabled={enabled}>
             <Header>
@@ -41,7 +51,12 @@ function ControlTile({ enabled, icon = HelpOutlineOutlinedIcon, data, title }) {
                     {title}
                 </HeaderTextArea>
                 <ThemeProvider theme={theme}>
-                    <Switch size='small' color='custom' />
+                    <Switch
+                        size='small'
+                        color='custom'
+                        checked={enabled}
+                        onChange={(event) => handleClick(event.target.checked)}
+                    />
                 </ThemeProvider>
             </Header>
             <ValueArea>

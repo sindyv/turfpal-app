@@ -4,16 +4,16 @@ export const GlobalStyle = createGlobalStyle`
       
     @font-face {
             font-family: "Euclid";
-            src: url("./src/fonts/EUCLIDSQUARE-REGULAR.TTF");
+            src: url("/src/fonts/EUCLIDSQUARE-REGULAR.TTF");
         }
 
     @font-face {
         font-family: "EuclidBold";
-        src: url("./src/fonts/EUCLIDSQUARE-BOLD.TTF");
+        src: url("/src/fonts/EUCLIDSQUARE-BOLD.TTF");
     }
     :root {
         --mainContentPadding: 24px;
-        --maxWidth: 1280px;
+        --maxWidth: 412px;
         --white: #fff;
         --borderColor: #cccccc;
         --lightGrey: #f3f3f3;
@@ -37,6 +37,7 @@ export const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
         font-family: 'Euclid', 'Open Sans', 'Abel',sans-serif; 
+        
 
     }
     body {
@@ -44,6 +45,10 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         background-color: var(--white);
 
+
+        .main-div {
+            max-width: 412px;
+        }
 
 
         h1 {

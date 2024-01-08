@@ -10,7 +10,9 @@ import {
 } from "./Connectivity.styles"
 
 import Card from "../../../UI/Card"
-import ConnectivityDataField from "./ConnectivityDataField"
+import InformationHeader from "../UI/InformationHeader"
+
+import InformationDataField from "../../../UI/DataField"
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 import RouterOutlinedIcon from "@mui/icons-material/RouterOutlined"
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
@@ -20,12 +22,11 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined"
 function Connectivity() {
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={"../information"}>
-                    <ArrowBackIosNewOutlinedIcon />
-                </LinkItem>{" "}
-                Information{">"} Connectivity
-            </Header>
+            <InformationHeader
+                title={"Connectivity"}
+                linkTo={"../information"}
+            />
+
             <Content>
                 <Card>
                     <CardDescription>
@@ -35,31 +36,28 @@ function Connectivity() {
                         <SettingsOutlinedIcon />
                     </CardDescription>
                     <CardContent>
-                        <ConnectivityDataField
-                            header={"Name"}
-                            data={"RUTX11"}
-                        />
-                        <ConnectivityDataField
+                        <InformationDataField header={"Name"} data={"RUTX11"} />
+                        <InformationDataField
                             header={"Serial No."}
                             data={"6000560318"}
                         />
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"WAN IP"}
                             data={"10.72.52.1536"}
                         />
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"Date and time"}
                             data={"2024-01-03T13:35:20+0100"}
                         />
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"Firmware"}
                             data={"RUTX_R_00.07.05.3"}
                         />
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"MAC Address"}
                             data={"RUTX_R_00.07.05.3"}
                         />
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"IMEI"}
                             data={"861330054714398"}
                         />
@@ -73,23 +71,23 @@ function Connectivity() {
                         <SettingsOutlinedIcon />
                     </CardDescription>
                     <CardContent>
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"Operator"}
                             data={"Telia N"}
                         />
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"Network type"}
                             data={"LTE"}
                         />
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"Network registration type"}
                             data={"Roaming"}
                         />
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"Sginal strength"}
                             data={"-58dBm"}
                         />
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"IMSI"}
                             data={"238208702911043"}
                         />
@@ -103,15 +101,15 @@ function Connectivity() {
                         <SettingsOutlinedIcon />
                     </CardDescription>
                     <CardContent>
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"SSID"}
                             data={"Turfnet"}
                         />
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"LAN IP"}
                             data={"192.168.1.123"}
                         />
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"Signal Strength"}
                             data={"Excellent"}
                         />
@@ -125,19 +123,16 @@ function Connectivity() {
                         <SettingsOutlinedIcon />
                     </CardDescription>
                     <CardContent>
-                        <ConnectivityDataField
-                            header={"Satelites"}
-                            data={"9"}
-                        />
-                        <ConnectivityDataField
+                        <InformationDataField header={"Satelites"} data={"9"} />
+                        <InformationDataField
                             header={"Latitude"}
                             data={"58.8976173400878"}
                         />
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"Longitude"}
                             data={"5.69833707809448"}
                         />
-                        <ConnectivityDataField
+                        <InformationDataField
                             header={"Accuracy"}
                             data={"0.1 HDOP"}
                         />

@@ -5,7 +5,13 @@ import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined"
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined"
 import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined"
 import ElectricBoltOutlinedIcon from "@mui/icons-material/ElectricBoltOutlined"
-import { Wrapper, Icons, LinkItem } from "./Menu.styles"
+import {
+    Wrapper,
+    Icons,
+    LinkItem,
+    IconWrapper,
+    NumberCircle,
+} from "./Menu.styles"
 const Menu = () => {
     return (
         <Wrapper>
@@ -17,7 +23,10 @@ const Menu = () => {
                     <CalendarMonthOutlinedIcon />
                 </LinkItem>
                 <LinkItem to={"alarms"}>
-                    <ReportProblemOutlinedIcon />
+                    <IconWrapper>
+                        <ReportProblemOutlinedIcon />
+                        <NumberCircle>2</NumberCircle>
+                    </IconWrapper>
                 </LinkItem>
                 <LinkItem to={"energy"}>
                     <ElectricBoltOutlinedIcon />

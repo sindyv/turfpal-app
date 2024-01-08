@@ -1,10 +1,9 @@
 import styled from "styled-components"
 
 export const Wrapper = styled.div`
-    flex-grow: 1;
     padding: 12px;
     min-height: 120px;
-    width: 45%;
+    width: 100%;
     max-width: 200px;
     background: ${(props) =>
         props.$enabled ? "var(--turfpalColor)" : "var(--lightGrey)"};
