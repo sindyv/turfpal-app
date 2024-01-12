@@ -27,8 +27,6 @@ import Card from "../../../../UI/Card"
 import API from "../../../../../API"
 
 function Heating() {
-    const camera = false
-
     const queryClient = useQueryClient()
 
     const query = useQuery({
@@ -70,7 +68,10 @@ function Heating() {
     return (
         <Wrapper>
             <Header>
-                <ArrowBackIosNewOutlinedIcon /> Heating
+                <LinkItem to={"/"}>
+                    <ArrowBackIosNewOutlinedIcon />{" "}
+                </LinkItem>
+                Heating
             </Header>
             <ButtonsArea>
                 <Btn
@@ -107,7 +108,7 @@ function Heating() {
                     }}
                 />
                 <LinkWrappers>
-                    <LinkItem to={"log"}>
+                    <LinkItem to={"/log"} state={{ log: "Heating" }}>
                         <Card>
                             <CardDescription>
                                 <InfoOutlinedIcon />

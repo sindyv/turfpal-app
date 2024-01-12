@@ -44,7 +44,7 @@ export const MainValue = styled.div`
 export const CardContent = styled.div`
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     /* grid-template-columns: 1fr 1fr 1fr; */
     justify-content: space-between;
     font-size: var(--fontSuperSmall);

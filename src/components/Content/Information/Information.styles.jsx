@@ -1,6 +1,11 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
+export const LinkItem = styled(Link)`
+    text-decoration: none;
+    color: black;
+`
+
 export const Wrapper = styled.div`
     padding: var(--mainContentPadding);
     width: 100%;
@@ -17,6 +22,10 @@ export const Header = styled.div`
 
     svg {
         width: 24px;
+    }
+    a {
+        display: flex;
+        align-items: center;
     }
 `
 
@@ -42,8 +51,4 @@ export const CardDescription = styled.div`
     svg {
         color: var(--turfpalColor);
     }
-`
-export const LinkItem = styled(Link)`
-    text-decoration: none;
-    color: black;
 `

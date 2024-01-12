@@ -5,8 +5,7 @@ import {
     Header,
     HeaderTextArea,
     ValueArea,
-    DataArea,
-    Units,
+    LinkItem,
 } from "./TimeTile.styles"
 
 import { Switch } from "@mui/material"
@@ -21,7 +20,13 @@ const defaultValueObject = {
     additionalDataUnits: ["", ""],
 }
 
-function TimerTile({ enabled, icon = HelpOutlineOutlinedIcon, data, title }) {
+function TimerTile({
+    enabled,
+    icon = HelpOutlineOutlinedIcon,
+    data,
+    title,
+    linkTo,
+}) {
     const Icon = icon
     const theme = createTheme({
         palette: {
@@ -33,17 +38,19 @@ function TimerTile({ enabled, icon = HelpOutlineOutlinedIcon, data, title }) {
     })
 
     return (
-        <Wrapper $enabled={enabled}>
-            <Header>
-                <HeaderTextArea>{title}</HeaderTextArea>
-                <ThemeProvider theme={theme}>
-                    <Switch size='small' color='custom' />
-                </ThemeProvider>
-            </Header>
-            <ValueArea>
-                <Icon />
-            </ValueArea>
-        </Wrapper>
+        <LinkItem to={linkTo}>
+            <Wrapper $enabled={enabled}>
+                <Header>
+                    <HeaderTextArea>{title}</HeaderTextArea>
+                    <ThemeProvider theme={theme}>
+                        <Switch size='small' color='custom' />
+                    </ThemeProvider>
+                </Header>
+                <ValueArea>
+                    <Icon />
+                </ValueArea>
+            </Wrapper>
+        </LinkItem>
     )
 }
 

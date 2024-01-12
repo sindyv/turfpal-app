@@ -1,10 +1,11 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 export const Wrapper = styled.div`
-    flex-grow: 1;
     padding: 12px;
     min-height: 120px;
-    width: 45%;
+    min-width: 150px;
+    width: 100%;
     max-width: 200px;
     background: ${(props) =>
         props.$enabled ? "var(--turfpalColor)" : "var(--lightGrey)"};
@@ -38,14 +39,7 @@ export const ValueArea = styled.div`
         width: 40px;
     }
 `
-
-export const DataArea = styled.div`
-    display: flex;
-    justify-content: space-around;
-    font-size: var(--fontSmall);
-    margin: 16px 0 0 0;
-`
-
-export const Units = styled.span`
-    font-size: var(--fontTiny);
+export const LinkItem = styled(Link)`
+    text-decoration: none;
+    color: black;
 `

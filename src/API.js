@@ -1,7 +1,9 @@
+const url = `http://${import.meta.env.VITE_EXTERNAL_URL}/`
+
 export default {
     sendCommand: async (command) => {
         return await (
-            await fetch("http://localhost:3000/commands", {
+            await fetch(url + "commands", {
                 method: "POST",
                 body: JSON.stringify(command),
                 headers: {
@@ -12,26 +14,27 @@ export default {
     },
 
     fetchValues: async () => {
-        return await (await fetch("http://localhost:3000/values")).json()
+        console.log(url + "values")
+        return await (await fetch(url + "values")).json()
     },
 
     fetchRigdata: async () => {
-        return await (await fetch("http://localhost:3000/rigData")).json()
+        return await (await fetch(url + "rigData")).json()
     },
 
     fetchStatuses: async () => {
-        return await (await fetch("http://localhost:3000/statuses")).json()
+        return await (await fetch(url + "statuses")).json()
     },
 
     fetchAlarms: async () => {
-        return await (await fetch("http://localhost:3000/alarms")).json()
+        return await (await fetch(url + "alarms")).json()
     },
 
     fetchSchedule: async () => {
-        return await (await fetch("http://192.168.1.116:1880/schedule")).json()
+        return await (await fetch(url + "schedule")).json()
     },
 
     fetchAllValues: async () => {
-        return await (await fetch("http://localhost:3000/all")).json()
+        return await (await fetch(url + "all")).json()
     },
 }

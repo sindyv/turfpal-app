@@ -3,7 +3,8 @@ import { Link } from "react-router-dom"
 // Icons
 
 export const Wrapper = styled.div`
-    padding: 10px;
+    margin: 10px 0 0 0;
+    padding: 10px 20px 10px 10px;
     display: flex;
     justify-content: space-between;
     font-family: "EuclidBold";

@@ -2,7 +2,7 @@ import React from "react"
 
 import { Wrapper, TextArea } from "./Btn.styles"
 
-function Btn({ children, disabled, svgSize, selected, onClick }) {
+function Btn({ children, disabled, svgSize = 18, selected, onClick }) {
     const handleClick = () => {
         onClick()
     }
@@ -10,11 +10,10 @@ function Btn({ children, disabled, svgSize, selected, onClick }) {
     return (
         <Wrapper
             $disabled={disabled}
-            $svgSize={svgSize}
             $selected={selected}
             onClick={handleClick}
         >
-            <TextArea>{children}</TextArea>
+            <TextArea $svgSize={svgSize}>{children}</TextArea>
         </Wrapper>
     )
 }

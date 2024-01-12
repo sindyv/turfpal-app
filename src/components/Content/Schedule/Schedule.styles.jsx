@@ -1,15 +1,35 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 export const Wrapper = styled.div`
     padding: var(--mainContentPadding);
+    max-width: var(--maxWidth);
+    width: 100%;
 `
 export const Header = styled.div`
     font-family: var(--turfpalFontBold);
+    font-size: var(--fontMed);
     margin: 0 0 24px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    svg {
+        width: 24px;
+    }
+    a {
+        display: flex;
+        align-items: center;
+    }
 `
 export const TileArea = styled.div`
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 24px;
     justify-content: center;
+`
+export const LinkItem = styled(Link)`
+    text-decoration: none;
+    color: black;
 `

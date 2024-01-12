@@ -1,28 +1,33 @@
 import React from "react"
 import dayjs from "dayjs"
-import { Dot, Wrapper, Line, DayHeader } from "./LogEntry.styles"
+import { Wrapper } from "./LogEntry.styles"
+import { v4 as uuidv4 } from "uuid"
 
+import LogEntryLine from "./LogEntryLine"
+import LogEntryHeader from "./LogEntryHeader"
+
+// default data for development. Remove when finished
 const defaultData = [
     {
-        timestamp: 1704718026000,
+        timestamp: 1704526725000,
         value: false,
         command: "Manual off",
         source: "Mobile app",
     },
     {
-        timestamp: 1704541626000,
+        timestamp: 1704631125000,
         value: false,
         command: "Manual off",
         source: "Mobile app",
     },
     {
-        timestamp: 1704628026000,
+        timestamp: 1704544725000,
         value: true,
         command: "Manual on",
         source: "Mobile app",
     },
     {
-        timestamp: 1704717525000,
+        timestamp: 1704782830000,
         value: true,
         command: "Manual on",
         source: "Mobile app",
@@ -42,6 +47,8 @@ function LogEntry({ data = defaultData }) {
 
     const organizedData = []
 
+    // Create a two dimensional array where first index is day, second index is
+    // entry.
     newData.forEach((entry, index) => {
         if (index === 0) {
             organizedData.push([entry])
@@ -54,28 +61,18 @@ function LogEntry({ data = defaultData }) {
         }
     })
 
-    console.log(organizedData)
-
     return (
         <Wrapper>
-            <DayHeader>
-                <span>03.01.2024</span>
-                <span>Wednesday</span>
-            </DayHeader>
-            <Line>
-                <Dot />
-                <span>Turned on</span>
-                <span>09:00:00</span>
-                <span>Manual on</span>
-                <span>Mobile app</span>
-            </Line>
-            <Line>
-                <Dot />
-                <span>Turned on</span>
-                <span>09:00:00</span>
-                <span>Manual on</span>
-                <span>Mobile app</span>
-            </Line>
+            {organizedData.map((day) => {
+                return (
+                    <div key={uuidv4()}>
+                        <LogEntryHeader day={day} />
+                        {day.map((entry) => {
+                            return <LogEntryLine key={uuidv4()} entry={entry} />
+                        })}
+                    </div>
+                )
+            })}
         </Wrapper>
     )
 }

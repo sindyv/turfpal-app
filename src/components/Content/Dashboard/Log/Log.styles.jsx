@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 export const Wrapper = styled.div`
     padding: var(--mainContentPadding);
@@ -18,3 +19,8 @@ export const Header = styled.div`
     }
 `
 export const Content = styled.div``
+
+export const LinkItem = styled(Link)`
+    text-decoration: none;
+    color: black;
+`

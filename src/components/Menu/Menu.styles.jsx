@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 
 export const Icons = styled.div`
     padding: 10px 0 0 0;
-    height: 5rem;
+    height: 60px;
     width: 80%;
     display: flex;
     justify-content: space-around;

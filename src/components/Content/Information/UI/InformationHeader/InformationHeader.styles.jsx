@@ -12,6 +12,10 @@ export const Header = styled.div`
     svg {
         width: 24px;
     }
+    a {
+        display: flex;
+        align-items: center;
+    }
 `
 export const LinkItem = styled(Link)`
     text-decoration: none;

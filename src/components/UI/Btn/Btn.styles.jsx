@@ -14,14 +14,16 @@ export const Wrapper = styled.div`
 `
 
 export const TextArea = styled.div`
-    width: 30%;
+    width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
 
     font-size: var(--fontSuperSmall);
 
     svg {
-        height: 18px;
-        width: 18px;
+        height: ${(props) => `${props.$svgSize}`}px;
+        width: ${(props) => `${props.$svgSize}`}px;
     }
 `
