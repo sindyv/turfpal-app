@@ -92,12 +92,6 @@ function LightingSettings() {
 
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={"/lighting"}>
-                    <ArrowBackIosNewOutlinedIcon />
-                </LinkItem>
-                {"Lighting > Settings"}
-            </Header>
             <Content>
                 <h3>Horti</h3>
                 <CenteredDiv>

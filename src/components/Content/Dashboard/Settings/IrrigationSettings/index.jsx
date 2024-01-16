@@ -72,12 +72,6 @@ function IrrigationSettings() {
 
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={"/irrigation"}>
-                    <ArrowBackIosNewOutlinedIcon />
-                </LinkItem>
-                {"Irrigation > Settings"}
-            </Header>
             <Content>
                 <h3>Target</h3>
                 <CenteredDiv>

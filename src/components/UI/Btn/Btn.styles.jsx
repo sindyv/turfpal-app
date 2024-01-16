@@ -2,8 +2,13 @@ import styled from "styled-components"
 
 export const Wrapper = styled.div`
     background: ${(props) =>
-        props.$selected ? "var(--turfpalActiveBtn)" : "var(--turfpalColor)"};
-    color: var(--white);
+        props.$selected
+            ? props.$backgroundColorSelected
+            : props.$backgroundColorDeselected};
+    color: ${(props) =>
+        props.$selected
+            ? props.$textColorSelected
+            : props.$textColorDeselected};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,6 +19,8 @@ export const Wrapper = styled.div`
 `
 
 export const TextArea = styled.div`
+    font-family: ${(props) => props.$customFont};
+    /* font-family: var(--turfpalFontBold); */
     width: 100%;
     display: flex;
     justify-content: center;

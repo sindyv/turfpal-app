@@ -21,7 +21,6 @@ function Energy() {
 
     return (
         <Wrapper>
-            <Header>Energy Consumption</Header>
             <TileArea>
                 {query.data.energyMeters.map((meter, index) => {
                     return (

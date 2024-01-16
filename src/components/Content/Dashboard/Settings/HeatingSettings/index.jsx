@@ -74,12 +74,6 @@ function HeatingSettings() {
 
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={"/heating"}>
-                    <ArrowBackIosNewOutlinedIcon />
-                </LinkItem>
-                {"Heating > Settings"}
-            </Header>
             <Content>
                 <h3>Tempeature range</h3>
                 <p>

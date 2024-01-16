@@ -16,19 +16,19 @@ const Menu = () => {
     return (
         <Wrapper>
             <Icons>
-                <LinkItem to={"/"}>
+                <LinkItem to={"/"} state={{ headerText: "Dashboard" }}>
                     <DashboardOutlinedIcon />
                 </LinkItem>
-                <LinkItem to={"schedule"}>
+                <LinkItem to={"schedule"} state={{ headerText: "Scheduler" }}>
                     <CalendarMonthOutlinedIcon />
                 </LinkItem>
-                <LinkItem to={"alarms"}>
+                <LinkItem to={"alarms"} state={{ headerText: "Alarms" }}>
                     <IconWrapper>
                         <ReportProblemOutlinedIcon />
                         <NumberCircle>2</NumberCircle>
                     </IconWrapper>
                 </LinkItem>
-                <LinkItem to={"energy"}>
+                <LinkItem to={"energy"} state={{ headerText: "Energy" }}>
                     <ElectricBoltOutlinedIcon />
                 </LinkItem>
             </Icons>

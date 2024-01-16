@@ -75,12 +75,6 @@ function CO2Settings() {
 
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={"/co2"}>
-                    <ArrowBackIosNewOutlinedIcon />
-                </LinkItem>
-                {"CO2 > Settings"}
-            </Header>
             <Content>
                 <h3>Target</h3>
                 <CenteredDiv>
@@ -104,6 +98,7 @@ function CO2Settings() {
                         width={"80%"}
                         min={1}
                         max={5}
+                        step={1}
                         color={"grey"}
                         controlledItem={"duration"}
                         marks={CONSTANTS.constants.sliders.co2Duration}
@@ -117,6 +112,7 @@ function CO2Settings() {
                         width={"80%"}
                         color={"grey"}
                         min={2}
+                        step={1}
                         max={10}
                         controlledItem={"interval"}
                         marks={CONSTANTS.constants.sliders.co2Interval}

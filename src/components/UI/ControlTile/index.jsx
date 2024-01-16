@@ -65,11 +65,11 @@ function ControlTile({
             </ValueArea>
             <DataArea>
                 <span>
-                    {data.additionalData[0]}
+                    {Math.round(data.additionalData[0] * 10) / 10}
                     <Units>{data.additionalDataUnits[0]}</Units>
                 </span>
                 <span>
-                    {data.additionalData[1]}
+                    {Math.round(data.additionalData[1] * 10) / 10}
                     <Units>{data.additionalDataUnits[1]}</Units>
                 </span>
             </DataArea>

@@ -21,16 +21,13 @@ import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined"
 import WaterDropOutlinedIcon from "@mui/icons-material/WaterDropOutlined"
 import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined"
-import Icon from "@mdi/react"
-import { mdiAwningOutline } from "@mdi/js"
 
 // API
 import API from "../../../API"
 import MenuSpacer from "../../UI/MenuSpacer"
 
-function Dashboard() {
+function Dashboard({}) {
     const camera = false
-    console.log(import.meta.env.VITE_EXTERNAL_URL)
     const queryClient = useQueryClient()
 
     const query = useQuery({
@@ -99,7 +96,6 @@ function Dashboard() {
 
     return (
         <Wrapper>
-            <Header>Dashboard</Header>
             <ButtonsArea>
                 <Btn
                     svgSize={24}
@@ -117,7 +113,7 @@ function Dashboard() {
                 </Btn>
             </ButtonsArea>
             <TileArea>
-                <LinkItem to={"lighting"}>
+                <LinkItem to={"lighting"} state={{ headerText: "Lighting" }}>
                     <ControlTile
                         changeState={handleClickedButton}
                         enabled={
@@ -137,7 +133,7 @@ function Dashboard() {
                         }}
                     />
                 </LinkItem>
-                <LinkItem to={"heating"}>
+                <LinkItem to={"heating"} state={{ headerText: "Heating" }}>
                     <ControlTile
                         changeState={handleClickedButton}
                         enabled={
@@ -150,61 +146,71 @@ function Dashboard() {
                             value: query.data.values.temperature,
                             valueUnit: "°C",
                             additionalData: [
-                                query.data.values.energyMeters[1].power,
+                                query.data.values.energyMeters[1]
+                                    .total_effective_power,
                                 query.data.values.heat_rh,
                             ],
                             additionalDataUnits: ["kW", "h"],
                         }}
                     />
                 </LinkItem>
-                <LinkItem to={"irrigation"}>
-                    <ControlTile
-                        changeState={handleClickedButton}
-                        enabled={query.data.statuses.irrigation_solenoid}
-                        icon={WaterDropOutlinedIcon}
-                        title={"Irrigation"}
-                        data={{
-                            value: 20,
-                            valueUnit: "%",
-                            additionalData: [12, 400],
-                            additionalDataUnits: ["°C", "ltr"],
-                        }}
-                    />
-                </LinkItem>
-                <LinkItem to={"co2"}>
-                    <ControlTile
-                        changeState={handleClickedButton}
-                        controlledItem={"CO2"}
-                        enabled={query.data.statuses.co2_solenoid}
-                        icon={CloudOutlinedIcon}
-                        title={"CO2"}
-                        data={{
-                            value: query.data.values.co2,
-                            valueUnit: "ppm",
-                            additionalData: [
-                                query.data.values.co2_consumption,
-                                query.data.values.co2_rh,
-                            ],
-                            additionalDataUnits: ["kg", "h"],
-                        }}
-                    />
-                </LinkItem>
-                <LinkItem to={"cover"}>
-                    <ControlTile
-                        changeState={handleClickedButton}
-                        enabled={query.data.statuses.cover}
-                        icon={CloudOutlinedIcon}
-                        title={"Cover"}
-                        data={{
-                            value: query.data.statuses.cover
-                                ? "Open"
-                                : "Closed",
-                            valueUnit: "",
-                            additionalData: ["", ""],
-                            additionalDataUnits: ["", ""],
-                        }}
-                    />
-                </LinkItem>
+                {query.data?.statuses?.irrigation_solenoid ?? false ? (
+                    <LinkItem
+                        to={"irrigation"}
+                        state={{ headerText: "Irrigation" }}
+                    >
+                        <ControlTile
+                            changeState={handleClickedButton}
+                            enabled={query.data.statuses.irrigation_solenoid}
+                            icon={WaterDropOutlinedIcon}
+                            title={"Irrigation"}
+                            data={{
+                                value: 20,
+                                valueUnit: "%",
+                                additionalData: [12, 400],
+                                additionalDataUnits: ["°C", "ltr"],
+                            }}
+                        />
+                    </LinkItem>
+                ) : null}
+                {query.data?.statuses?.co2_solenoid ?? false ? (
+                    <LinkItem to={"co2"} state={{ headerText: "CO2" }}>
+                        <ControlTile
+                            changeState={handleClickedButton}
+                            controlledItem={"CO2"}
+                            enabled={query.data.statuses.co2_solenoid}
+                            icon={CloudOutlinedIcon}
+                            title={"CO2"}
+                            data={{
+                                value: query.data.values.co2,
+                                valueUnit: "ppm",
+                                additionalData: [
+                                    query.data.values.co2_consumption,
+                                    query.data.values.co2_rh,
+                                ],
+                                additionalDataUnits: ["kg", "h"],
+                            }}
+                        />
+                    </LinkItem>
+                ) : null}
+                {query.data?.statuses?.cover ?? false ? (
+                    <LinkItem to={"cover"} state={{ headerText: "Cover" }}>
+                        <ControlTile
+                            changeState={handleClickedButton}
+                            enabled={query.data.statuses.cover}
+                            icon={CloudOutlinedIcon}
+                            title={"Cover"}
+                            data={{
+                                value: query.data.statuses.cover
+                                    ? "Open"
+                                    : "Closed",
+                                valueUnit: "",
+                                additionalData: ["", ""],
+                                additionalDataUnits: ["", ""],
+                            }}
+                        />
+                    </LinkItem>
+                ) : null}
                 {camera ? (
                     <ControlTile
                         enabled={false}

@@ -67,12 +67,6 @@ function Irrigation() {
 
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={"/"}>
-                    <ArrowBackIosNewOutlinedIcon />{" "}
-                </LinkItem>
-                Irrigation
-            </Header>
             <ButtonsArea>
                 <Btn
                     selected={query.data.statuses.mode_irrigation === "auto"}
@@ -106,7 +100,13 @@ function Irrigation() {
                 />
             </TileArea>
             <LinkWrappers>
-                <LinkItem to={"/log"} state={{ log: "Irrigation" }}>
+                <LinkItem
+                    to={"/log"}
+                    state={{
+                        log: "Irrigation",
+                        headerText: "Irrigation > Settings",
+                    }}
+                >
                     <Card>
                         <CardDescription>
                             <InfoOutlinedIcon />
@@ -115,7 +115,10 @@ function Irrigation() {
                     </Card>
                 </LinkItem>
 
-                <LinkItem to={"settings"}>
+                <LinkItem
+                    to={"settings"}
+                    state={{ headerText: "Irrigation > Settings" }}
+                >
                     <Card>
                         <CardDescription>
                             <SettingsOutlinedIcon />

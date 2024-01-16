@@ -55,12 +55,6 @@ function Cover() {
 
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={"/"}>
-                    <ArrowBackIosNewOutlinedIcon />{" "}
-                </LinkItem>
-                Cover
-            </Header>
             <ButtonsArea>
                 <Btn selected={query.data.statuses.mode_cover === "auto"}>
                     <AutorenewOutlinedIcon /> Auto
@@ -90,7 +84,10 @@ function Cover() {
                 />
             </TileArea>
             <LinkWrappers>
-                <LinkItem to={"/log"} state={{ log: "Cover" }}>
+                <LinkItem
+                    to={"/log"}
+                    state={{ log: "Cover", headerText: "Log > Cover" }}
+                >
                     <Card>
                         <CardDescription>
                             <InfoOutlinedIcon />

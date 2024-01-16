@@ -14,12 +14,10 @@ get http://localhost:3000/alarms
 
 
 ###
-post http://localhost:3000/commands
+post http://192.168.1.116:1880/commands
 Content-Type: application/json
 
-{
-    "message" : "Hello!"
-}
+{"commands":{"schedule":{"cmd_schedule_function":"add","cmd_schedule_start_time":1705399121357,"cmd_schedule_end_time":1705485521357,"cmd_schedule_recurrence":0,"cmd_schedule_value":0, "cmd_schedule_index" : 0}}}
 
 
 ###

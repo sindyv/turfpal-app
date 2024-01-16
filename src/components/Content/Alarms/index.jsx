@@ -20,7 +20,6 @@ function Alarms() {
 
     return (
         <Wrapper>
-            <Header>Alarms</Header>
             {typeof query.data.surge_protection !== "undefined" && (
                 <StatusCard
                     state={"warning"}

@@ -35,6 +35,7 @@ export default {
     },
 
     fetchAllValues: async () => {
+        console.log("Fetching all values")
         return await (await fetch(url + "all")).json()
     },
 }

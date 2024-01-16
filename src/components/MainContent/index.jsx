@@ -23,6 +23,7 @@ import Log from "../Content/Dashboard/Log"
 import IrrigationSettings from "../Content/Dashboard/Settings/IrrigationSettings"
 import CO2Settings from "../Content/Dashboard/Settings/CO2Settings"
 import ScheduleEntries from "../Content/Schedule/ScheduleEntries"
+import ScheduleAddEntry from "../Content/Schedule/AddEntry"
 
 const MainContent = (props) => {
     return (
@@ -50,6 +51,10 @@ const MainContent = (props) => {
                 <Route path='connectivity' element={<Connectivity />} />
                 <Route path='schedule' element={<Schedule />} />
                 <Route path='schedule/entries' element={<ScheduleEntries />} />
+                <Route
+                    path='schedule/entries/add'
+                    element={<ScheduleAddEntry />}
+                />
                 <Route path='alarms' element={<Alarms />} />
                 <Route path='energy' element={<Energy />} />
                 <Route path='/*' element={<ErrorPage />} />

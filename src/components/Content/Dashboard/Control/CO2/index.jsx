@@ -56,7 +56,7 @@ function CO2() {
     }
 
     const handleToggle = (controlledItem, state) => {
-        if (controlledItem === "co2") {
+        if (controlledItem === "CO2") {
             commandMutation.mutate({
                 commands: {
                     co2_solenoid: state,
@@ -67,12 +67,6 @@ function CO2() {
 
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={"/"}>
-                    <ArrowBackIosNewOutlinedIcon />{" "}
-                </LinkItem>
-                CO2
-            </Header>
             <ButtonsArea>
                 <Btn
                     selected={query.data.statuses.mode_co2 === "auto"}
@@ -106,7 +100,10 @@ function CO2() {
                 />
             </TileArea>
             <LinkWrappers>
-                <LinkItem to={"/log"} state={{ log: "CO2" }}>
+                <LinkItem
+                    to={"/log"}
+                    state={{ log: "CO2", headerText: "CO2 > Log" }}
+                >
                     <Card>
                         <CardDescription>
                             <InfoOutlinedIcon />
@@ -115,7 +112,10 @@ function CO2() {
                     </Card>
                 </LinkItem>
 
-                <LinkItem to={"settings"}>
+                <LinkItem
+                    to={"settings"}
+                    state={{ headerText: "CO2 > Settings" }}
+                >
                     <Card>
                         <CardDescription>
                             <SettingsOutlinedIcon />

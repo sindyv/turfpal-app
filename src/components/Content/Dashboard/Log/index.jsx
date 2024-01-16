@@ -29,12 +29,6 @@ function Log() {
 
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={"/" + log}>
-                    <ArrowBackIosNewOutlinedIcon />
-                </LinkItem>
-                {log === "" ? "To Dashboard" : log}
-            </Header>
             <Content>
                 {log === "" ? (
                     <p>No logdata provided</p>

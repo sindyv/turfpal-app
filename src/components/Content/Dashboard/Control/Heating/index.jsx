@@ -67,22 +67,16 @@ function Heating() {
 
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={"/"}>
-                    <ArrowBackIosNewOutlinedIcon />{" "}
-                </LinkItem>
-                Heating
-            </Header>
             <ButtonsArea>
                 <Btn
-                    selected={query.data.statuses.mode === "auto"}
+                    selected={query.data.statuses.mode_heating === "auto"}
                     onClick={handleSetModeAuto}
                 >
                     <AutorenewOutlinedIcon /> Auto
                 </Btn>
                 <Btn
                     svgSize={12}
-                    selected={query.data.statuses.mode === "manual"}
+                    selected={query.data.statuses.mode_heating === "manual"}
                     onClick={handleSetModeManual}
                 >
                     <BackHandOutlinedIcon /> Manual
@@ -108,7 +102,10 @@ function Heating() {
                     }}
                 />
                 <LinkWrappers>
-                    <LinkItem to={"/log"} state={{ log: "Heating" }}>
+                    <LinkItem
+                        to={"/log"}
+                        state={{ log: "Heating", headerText: "Heating > Log" }}
+                    >
                         <Card>
                             <CardDescription>
                                 <InfoOutlinedIcon />
@@ -117,7 +114,10 @@ function Heating() {
                         </Card>
                     </LinkItem>
 
-                    <LinkItem to={"settings"}>
+                    <LinkItem
+                        to={"settings"}
+                        state={{ headerText: "Heating > Settings" }}
+                    >
                         <Card>
                             <CardDescription>
                                 <SettingsOutlinedIcon />

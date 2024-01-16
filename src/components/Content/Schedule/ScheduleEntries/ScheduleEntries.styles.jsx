@@ -7,19 +7,37 @@ export const Wrapper = styled.div`
     width: 100%;
 `
 export const Header = styled.div`
-    font-family: var(--turfpalFontBold);
-    font-size: var(--fontMed);
     margin: 0 0 24px 0;
     display: flex;
-    align-items: center;
-    gap: 20px;
-    a {
+    flex-direction: row;
+    justify-content: space-between;
+
+    span {
+        font-family: var(--turfpalFontBold);
+        font-size: var(--fontMed);
         display: flex;
         align-items: center;
-    }
+        gap: 20px;
 
-    svg {
-        width: 24px;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &:last-child {
+            a {
+                color: var(--turfpalColor);
+                svg {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
+
+        svg {
+            width: 24px;
+        }
     }
 `
 export const Content = styled.div`
@@ -31,4 +49,28 @@ export const Content = styled.div`
 export const LinkItem = styled(Link)`
     text-decoration: none;
     color: black;
+`
+
+export const ModalContent = styled.div`
+    padding: 12px;
+
+    button {
+        border: 0px;
+        color: var(--turfpalColor);
+    }
+
+    h3 {
+        font-size: var(--fontSmall);
+    }
+
+    p {
+        font-size: var(--fontTiny);
+        border-bottom: 1px solid var(--borderColor);
+        padding: 0 0 8px 0;
+    }
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
 `

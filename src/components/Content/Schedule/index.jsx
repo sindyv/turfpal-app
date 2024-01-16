@@ -12,12 +12,6 @@ import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutl
 function Schedule() {
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={"/"}>
-                    <ArrowBackIosNewOutlinedIcon />
-                </LinkItem>
-                Scheduler
-            </Header>
             <TileArea>
                 <TimerTile
                     enabled={true}

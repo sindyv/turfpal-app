@@ -38,7 +38,10 @@ function Lighting() {
 
     const commandMutation = useMutation({
         mutationFn: API.sendCommand,
-        onSuccess: () => queryClient.invalidateQueries(["allValues"]),
+        onSuccess: () => {
+            // console.log("Received response, getting new data in 1500ms")
+            setTimeout(() => queryClient.invalidateQueries(["allValues"]), 1500)
+        },
     })
 
     if (query.isLoading) return <h1>Loading...</h1>
@@ -60,36 +63,34 @@ function Lighting() {
         if (controlledItem === "Horti") {
             commandMutation.mutate({
                 commands: {
-                    led_zone1: state,
+                    led_zone1_on: state,
+                    led_zone1_off: !state,
                 },
             })
         } else if (controlledItem === "Blue") {
             commandMutation.mutate({
                 commands: {
-                    led_zone2: state,
+                    led_zone2_on: state,
+                    led_zone2_off: !state,
                 },
             })
         }
     }
+    if (query.isLoading) return <h1>Loading...</h1>
+    if (query.isError) return <h1>Error fetching data!</h1>
 
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={"/"}>
-                    <ArrowBackIosNewOutlinedIcon />{" "}
-                </LinkItem>
-                Lighting
-            </Header>
             <ButtonsArea>
                 <Btn
-                    selected={query.data.statuses.mode === "auto"}
+                    selected={query.data.statuses.mode_lighting === "auto"}
                     onClick={handleSetModeAuto}
                 >
                     <AutorenewOutlinedIcon /> Auto
                 </Btn>
                 <Btn
                     svgSize={12}
-                    selected={query.data.statuses.mode === "manual"}
+                    selected={query.data.statuses.mode_lighting === "manual"}
                     onClick={handleSetModeManual}
                 >
                     <BackHandOutlinedIcon /> Manual
@@ -129,7 +130,10 @@ function Lighting() {
                 />
             </TileArea>
             <LinkWrappers>
-                <LinkItem to={"/log"} state={{ log: "Lighting" }}>
+                <LinkItem
+                    to={"/log"}
+                    state={{ log: "Lighting", headerText: "Lighting > Log" }}
+                >
                     <Card>
                         <CardDescription>
                             <InfoOutlinedIcon />
@@ -138,7 +142,10 @@ function Lighting() {
                     </Card>
                 </LinkItem>
 
-                <LinkItem to={"settings"}>
+                <LinkItem
+                    to={"settings"}
+                    state={{ headerText: "Lighting > Settings" }}
+                >
                     <Card>
                         <CardDescription>
                             <SettingsOutlinedIcon />
