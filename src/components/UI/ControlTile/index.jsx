@@ -7,6 +7,7 @@ import {
     ValueArea,
     DataArea,
     Units,
+    LinkItem,
 } from "./ControlTile.styles"
 
 import { Switch } from "@mui/material"
@@ -27,6 +28,7 @@ function ControlTile({
     data,
     title,
     changeState,
+    linkParams,
 }) {
     const Icon = icon
     const theme = createTheme({
@@ -42,7 +44,6 @@ function ControlTile({
     const handleClick = (state) => {
         changeState(title, state)
     }
-
     return (
         <Wrapper $enabled={enabled}>
             <Header>
@@ -59,10 +60,23 @@ function ControlTile({
                     />
                 </ThemeProvider>
             </Header>
-            <ValueArea>
-                {data.value}
-                {data.valueUnit}
-            </ValueArea>
+            {linkParams?.to ?? false ? (
+                <LinkItem
+                    to={linkParams.to}
+                    state={linkParams.state}
+                    $enabled={enabled}
+                >
+                    <ValueArea>
+                        {data.value}
+                        {data.valueUnit}
+                    </ValueArea>
+                </LinkItem>
+            ) : (
+                <ValueArea>
+                    {data.value}
+                    {data.valueUnit}
+                </ValueArea>
+            )}
             <DataArea>
                 <span>
                     {Math.round(data.additionalData[0] * 10) / 10}

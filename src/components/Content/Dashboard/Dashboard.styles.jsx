@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
-import WavesOutlinedIcon from "@mui/icons-material/WavesOutlined"
 export const Wrapper = styled.div`
     padding: var(--mainContentPadding);
     max-width: var(--maxWidth);
@@ -20,15 +19,6 @@ export const ButtonsArea = styled.div`
     margin: 0 0 24px 0;
 `
 
-export const TileArea = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 24px;
-`
-
-export const HeatTile = styled(WavesOutlinedIcon)`
-    rotate: 90deg;
-`
 export const LinkItem = styled(Link)`
     text-decoration: none;
     color: black;

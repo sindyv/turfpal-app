@@ -1,10 +1,9 @@
 import React from "react"
-import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query"
+import { useQueryClient, useMutation } from "@tanstack/react-query"
 
 // Styles
 import {
     Wrapper,
-    Header,
     ButtonsArea,
     TileArea,
     HeatTile,
@@ -16,7 +15,6 @@ import {
 //Components
 import Btn from "../../../../UI/Btn"
 import ControlTile from "../../../../UI/ControlTile"
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
@@ -26,22 +24,13 @@ import Card from "../../../../UI/Card"
 // API
 import API from "../../../../../API"
 
-function Heating() {
+function Heating({ allValues }) {
     const queryClient = useQueryClient()
-
-    const query = useQuery({
-        queryKey: ["allValues"],
-        queryFn: API.fetchAllValues,
-        refetchInterval: 5000,
-    })
 
     const commandMutation = useMutation({
         mutationFn: API.sendCommand,
         onSuccess: () => queryClient.invalidateQueries(["allValues"]),
     })
-
-    if (query.isLoading) return <h1>Loading...</h1>
-    if (query.isError) return <h1>Error fetching data!</h1>
 
     const handleSetModeAuto = () => {
         commandMutation.mutate({
@@ -69,14 +58,14 @@ function Heating() {
         <Wrapper>
             <ButtonsArea>
                 <Btn
-                    selected={query.data.statuses.mode_heating === "auto"}
+                    selected={allValues.statuses.mode_heating === "auto"}
                     onClick={handleSetModeAuto}
                 >
                     <AutorenewOutlinedIcon /> Auto
                 </Btn>
                 <Btn
                     svgSize={12}
-                    selected={query.data.statuses.mode_heating === "manual"}
+                    selected={allValues.statuses.mode_heating === "manual"}
                     onClick={handleSetModeManual}
                 >
                     <BackHandOutlinedIcon /> Manual
@@ -86,17 +75,17 @@ function Heating() {
                 <ControlTile
                     changeState={handleToggleHeat}
                     enabled={
-                        query.data.statuses.hps_zone1 ||
-                        query.data.statuses.hps_zone2
+                        allValues.statuses.hps_zone1 ||
+                        allValues.statuses.hps_zone2
                     }
                     icon={HeatTile}
                     title={"Heating"}
                     data={{
-                        value: query.data.values.temperature,
+                        value: allValues.values.temperature,
                         valueUnit: "°C",
                         additionalData: [
-                            query.data.values.energyMeters[1].power,
-                            query.data.values.heat_rh,
+                            allValues.values.energyMeters[1].power,
+                            allValues.values.heat_rh,
                         ],
                         additionalDataUnits: ["kW", "h"],
                     }}
@@ -104,7 +93,11 @@ function Heating() {
                 <LinkWrappers>
                     <LinkItem
                         to={"/log"}
-                        state={{ log: "Heating", headerText: "Heating > Log" }}
+                        state={{
+                            log: "Heating",
+                            headerText: "Heating > Log",
+                            logData: allValues?.logData?.heating ?? null,
+                        }}
                     >
                         <Card>
                             <CardDescription>

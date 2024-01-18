@@ -14,7 +14,7 @@ function LogEntryLine({ entry }) {
             />
             <span>{entry.value ? "Turned on" : "Turned off"}</span>
             <span>{dayjsObject.format("HH:mm:ss")}</span>
-            <span>{entry.command}</span>
+            <span>{entry.state}</span>
             <span>{entry.source}</span>
         </Line>
     )

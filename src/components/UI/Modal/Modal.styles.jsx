@@ -21,4 +21,13 @@ export const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: animateCardz 500ms;
+    @keyframes animateCardz {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 `

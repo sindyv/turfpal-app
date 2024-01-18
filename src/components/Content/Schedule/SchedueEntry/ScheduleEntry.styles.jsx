@@ -9,6 +9,16 @@ export const Wrapper = styled.div`
     color: ${(props) =>
         props.$active ? "var(--white)" : "var(--turfpalColor)"};
     width: 100%;
+
+    animation: animateCardz 500ms;
+    @keyframes animateCardz {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 `
 export const Header = styled.div`
     font-family: var(--turfpalFontBold);

@@ -1,10 +1,9 @@
 import React from "react"
-import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query"
+import { useQueryClient, useMutation } from "@tanstack/react-query"
 
 // Styles
 import {
     Wrapper,
-    Header,
     ButtonsArea,
     TileArea,
     LinkItem,
@@ -15,7 +14,6 @@ import {
 //Components
 import Btn from "../../../../UI/Btn"
 import ControlTile from "../../../../UI/ControlTile"
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
@@ -26,22 +24,13 @@ import Card from "../../../../UI/Card"
 // API
 import API from "../../../../../API"
 
-function Irrigation() {
+function Irrigation({ allValues }) {
     const queryClient = useQueryClient()
-
-    const query = useQuery({
-        queryKey: ["allValues"],
-        queryFn: API.fetchAllValues,
-        refetchInterval: 5000,
-    })
 
     const commandMutation = useMutation({
         mutationFn: API.sendCommand,
         onSuccess: () => queryClient.invalidateQueries(["allValues"]),
     })
-
-    if (query.isLoading) return <h1>Loading...</h1>
-    if (query.isError) return <h1>Error fetching data!</h1>
 
     const handleSetModeAuto = () => {
         commandMutation.mutate({
@@ -69,14 +58,14 @@ function Irrigation() {
         <Wrapper>
             <ButtonsArea>
                 <Btn
-                    selected={query.data.statuses.mode_irrigation === "auto"}
+                    selected={allValues.statuses.mode_irrigation === "auto"}
                     onClick={handleSetModeAuto}
                 >
                     <AutorenewOutlinedIcon /> Auto
                 </Btn>
                 <Btn
                     svgSize={12}
-                    selected={query.data.statuses.mode_irrigation === "manual"}
+                    selected={allValues.statuses.mode_irrigation === "manual"}
                     onClick={handleSetModeManual}
                 >
                     <BackHandOutlinedIcon /> Manual
@@ -85,15 +74,15 @@ function Irrigation() {
             <TileArea>
                 <ControlTile
                     changeState={handleToggle}
-                    enabled={query.data.statuses.irrigation_solenoid}
+                    enabled={allValues.statuses.irrigation_solenoid}
                     icon={WaterDropOutlinedIcon}
                     title={"Irrigation"}
                     data={{
-                        value: query.data.values["soil-moisture"],
+                        value: allValues.values["soil-moisture"],
                         valueUnit: "%",
                         additionalData: [
-                            query.data.values["soil-temperature"],
-                            query.data.values.water_consumption,
+                            allValues.values["soil-temperature"],
+                            allValues.values.water_consumption,
                         ],
                         additionalDataUnits: ["°C", "ltr"],
                     }}

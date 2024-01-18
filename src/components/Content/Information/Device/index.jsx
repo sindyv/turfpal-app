@@ -1,19 +1,12 @@
 import React from "react"
 
-import {
-    Wrapper,
-    Header,
-    Content,
-    CardContent,
-    CardDescription,
-    LinkItem,
-} from "./Device.styles"
+import { Wrapper, Content, CardContent, CardDescription } from "./Device.styles"
 
 import Card from "../../../UI/Card"
 import InformationHeader from "../UI/InformationHeader"
 import InformationDataField from "../../../UI/DataField"
 import SmartToyOutlinedIcon from "@mui/icons-material/SmartToyOutlined"
-function Device() {
+function Device({ allValues }) {
     return (
         <Wrapper>
             <InformationHeader title={"Device"} linkTo={"../information"} />
@@ -28,23 +21,23 @@ function Device() {
                     <CardContent>
                         <InformationDataField
                             header={"Model"}
-                            data={"TLS LED 70"}
+                            data={allValues.rig_data.type}
                         />
                         <InformationDataField
                             header={"Serial No."}
-                            data={"1003"}
+                            data={allValues.rig_data.deviceid}
                         />
                         <InformationDataField
                             header={"Firmware"}
-                            data={"3.0.0"}
+                            data={allValues.rig_data.software_version}
                         />
                         <InformationDataField
                             header={"Manufactorer"}
-                            data={"Turf Lighting Solutions"}
+                            data={allValues.rig_data.manufactorer}
                         />
                         <InformationDataField
                             header={"Manufacture date"}
-                            data={"2024-01-04"}
+                            data={allValues.rig_data.manufactor_date}
                         />
                     </CardContent>
                 </Card>

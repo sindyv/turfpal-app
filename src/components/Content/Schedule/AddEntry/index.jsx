@@ -17,6 +17,7 @@ import Btn from "../../../UI/Btn"
 
 const startTime = dayjs().valueOf()
 const stopTime = dayjs().add(1, "day").valueOf()
+
 const defaultData = {
     cmd_schedule_start_time: startTime,
     cmd_schedule_end_time: stopTime,
@@ -27,29 +28,37 @@ const defaultData = {
 
 function ScheduleAddEntry() {
     let location = useLocation()
-
-    const queryClient = useQueryClient()
-
     let object = {}
     let command = "add"
     let addBtnText = "Add new entry"
 
-    if (location?.state?.schedule_index ?? null) {
-        object = location.state
+    const queryClient = useQueryClient()
+
+    if (
+        location?.state?.schedule_index === 0 ||
+        (location?.state?.schedule_index ?? false)
+    ) {
+        object = {
+            cmd_schedule_start_time: location.state.schedule_start_time,
+            cmd_schedule_end_time: location.state.schedule_end_time,
+            cmd_schedule_recurrence: location.state.schedule_recurrence,
+            cmd_schedule_value: location.state.schedule_value,
+            cmd_schedule_index: location.state.schedule_index,
+        }
+        location.state
         command = "update"
         addBtnText = "Update entry"
     } else {
         object = defaultData
     }
-
+    const [scheduleObject, setScheduleObject] = useState(object)
+    console.log(scheduleObject)
     const commandMutation = useMutation({
         mutationFn: API.sendCommand,
         onSuccess: (data) => {
-            queryClient.setQueryData(["schedule"], data)
+            queryClient.setQueryData(["allValues"], data)
         },
     })
-
-    const [scheduleObject, setScheduleObject] = useState(object)
 
     const onSelect = (value) => {
         setScheduleObject((prev) => {

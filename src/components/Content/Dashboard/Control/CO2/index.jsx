@@ -4,7 +4,6 @@ import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query"
 // Styles
 import {
     Wrapper,
-    Header,
     ButtonsArea,
     TileArea,
     LinkItem,
@@ -15,7 +14,6 @@ import {
 //Components
 import Btn from "../../../../UI/Btn"
 import ControlTile from "../../../../UI/ControlTile"
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
@@ -26,22 +24,13 @@ import Card from "../../../../UI/Card"
 // API
 import API from "../../../../../API"
 
-function CO2() {
+function CO2({ allValues }) {
     const queryClient = useQueryClient()
-
-    const query = useQuery({
-        queryKey: ["allValues"],
-        queryFn: API.fetchAllValues,
-        refetchInterval: 5000,
-    })
 
     const commandMutation = useMutation({
         mutationFn: API.sendCommand,
         onSuccess: () => queryClient.invalidateQueries(["allValues"]),
     })
-
-    if (query.isLoading) return <h1>Loading...</h1>
-    if (query.isError) return <h1>Error fetching data!</h1>
 
     const handleSetModeAuto = () => {
         commandMutation.mutate({
@@ -69,14 +58,14 @@ function CO2() {
         <Wrapper>
             <ButtonsArea>
                 <Btn
-                    selected={query.data.statuses.mode_co2 === "auto"}
+                    selected={allValues.statuses.mode_co2 === "auto"}
                     onClick={handleSetModeAuto}
                 >
                     <AutorenewOutlinedIcon /> Auto
                 </Btn>
                 <Btn
                     svgSize={12}
-                    selected={query.data.statuses.mode_co2 === "manual"}
+                    selected={allValues.statuses.mode_co2 === "manual"}
                     onClick={handleSetModeManual}
                 >
                     <BackHandOutlinedIcon /> Manual
@@ -85,15 +74,15 @@ function CO2() {
             <TileArea>
                 <ControlTile
                     changeState={handleToggle}
-                    enabled={query.data.statuses.co2_solenoid}
+                    enabled={allValues.statuses.co2_solenoid}
                     icon={CloudOutlinedIcon}
                     title={"CO2"}
                     data={{
-                        value: query.data.values["co2"],
+                        value: allValues.values["co2"],
                         valueUnit: "ppm",
                         additionalData: [
-                            query.data.values["co2_consumption"],
-                            query.data.values.co2_rh,
+                            allValues.values["co2_consumption"],
+                            allValues.values.co2_rh,
                         ],
                         additionalDataUnits: ["kg", "h"],
                     }}

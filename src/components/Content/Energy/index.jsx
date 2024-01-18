@@ -9,32 +9,31 @@ import EnergyCard from "./EnergyCard"
 
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined"
 
-function Energy() {
-    const query = useQuery({
-        queryKey: ["energy"],
-        queryFn: API.fetchValues,
-        refetchInterval: 5000,
-    })
-
-    if (query.isLoading) return <h1>Loading...</h1>
-    if (query.isError) return <h1>Error fetching data!</h1>
-
-    return (
-        <Wrapper>
-            <TileArea>
-                {query.data.energyMeters.map((meter, index) => {
-                    return (
-                        <EnergyCard
-                            key={index}
-                            icon={LightbulbOutlinedIcon}
-                            data={meter}
-                            title={"Lighting"}
-                        />
-                    )
-                })}
-            </TileArea>
-        </Wrapper>
-    )
+function Energy({ allValues }) {
+    if (Array.isArray(allValues.values.energyMeters)) {
+        return (
+            <Wrapper>
+                <TileArea>
+                    {allValues.values.energyMeters.map((meter, index) => {
+                        return (
+                            <EnergyCard
+                                key={index}
+                                icon={LightbulbOutlinedIcon}
+                                data={meter}
+                                title={"Lighting"}
+                            />
+                        )
+                    })}
+                </TileArea>
+            </Wrapper>
+        )
+    } else {
+        return (
+            <Wrapper>
+                Ooops! There were some errors getting the energy data
+            </Wrapper>
+        )
+    }
 }
 
 export default Energy

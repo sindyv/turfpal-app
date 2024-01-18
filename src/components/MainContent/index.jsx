@@ -25,41 +25,77 @@ import CO2Settings from "../Content/Dashboard/Settings/CO2Settings"
 import ScheduleEntries from "../Content/Schedule/ScheduleEntries"
 import ScheduleAddEntry from "../Content/Schedule/AddEntry"
 
-const MainContent = (props) => {
+const MainContent = ({ children, allValues }) => {
     return (
         <Wrapper>
             <Routes>
-                <Route path='/' element={<Dashboard />} />
-                <Route path='/log' element={<Log />} />
-                <Route path='lighting' element={<Lighting />} />
+                <Route path='/' element={<Dashboard allValues={allValues} />} />
+                <Route path='/log' element={<Log allValues={allValues} />} />
+                <Route
+                    path='lighting'
+                    element={<Lighting allValues={allValues} />}
+                />
                 <Route
                     path='lighting/settings'
-                    element={<LightingSettings />}
+                    element={<LightingSettings allValues={allValues} />}
                 />
-                <Route path='heating' element={<Heating />} />
-                <Route path='heating/settings' element={<HeatingSettings />} />
-                <Route path='irrigation' element={<Irrigation />} />
+                <Route
+                    path='heating'
+                    element={<Heating allValues={allValues} />}
+                />
+                <Route
+                    path='heating/settings'
+                    element={<HeatingSettings allValues={allValues} />}
+                />
+                <Route
+                    path='irrigation'
+                    element={<Irrigation allValues={allValues} />}
+                />
                 <Route
                     path='irrigation/settings'
-                    element={<IrrigationSettings />}
+                    element={<IrrigationSettings allValues={allValues} />}
                 />
-                <Route path='co2' element={<CO2 />} />
-                <Route path='co2/settings' element={<CO2Settings />} />
-                <Route path='cover' element={<Cover />} />
-                <Route path='information' element={<Information />} />
-                <Route path='device' element={<Device />} />
-                <Route path='connectivity' element={<Connectivity />} />
-                <Route path='schedule' element={<Schedule />} />
-                <Route path='schedule/entries' element={<ScheduleEntries />} />
+                <Route path='co2' element={<CO2 allValues={allValues} />} />
+                <Route
+                    path='co2/settings'
+                    element={<CO2Settings allValues={allValues} />}
+                />
+                <Route path='cover' element={<Cover allValues={allValues} />} />
+                <Route
+                    path='information'
+                    element={<Information allValues={allValues} />}
+                />
+                <Route
+                    path='device'
+                    element={<Device allValues={allValues} />}
+                />
+                <Route
+                    path='connectivity'
+                    element={<Connectivity allValues={allValues} />}
+                />
+                <Route
+                    path='schedule'
+                    element={<Schedule allValues={allValues} />}
+                />
+                <Route
+                    path='schedule/entries'
+                    element={<ScheduleEntries allValues={allValues} />}
+                />
                 <Route
                     path='schedule/entries/add'
                     element={<ScheduleAddEntry />}
                 />
-                <Route path='alarms' element={<Alarms />} />
-                <Route path='energy' element={<Energy />} />
+                <Route
+                    path='alarms'
+                    element={<Alarms allValues={allValues} />}
+                />
+                <Route
+                    path='energy'
+                    element={<Energy allValues={allValues} />}
+                />
                 <Route path='/*' element={<ErrorPage />} />
             </Routes>
-            {props.children}
+            {children}
             <MenuSpacer />
         </Wrapper>
     )

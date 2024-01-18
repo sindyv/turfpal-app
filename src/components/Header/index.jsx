@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { useQuery } from "@tanstack/react-query"
 import { useLocation } from "react-router-dom"
 
 // Styles
@@ -23,9 +22,8 @@ import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined"
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 
 // API
-import API from "../../API"
 
-const Header = ({}) => {
+const Header = ({ allValues }) => {
     const [viewMenu, setViewMenu] = useState(false)
     const location = useLocation()
 
@@ -40,17 +38,9 @@ const Header = ({}) => {
         )
     }
 
-    const valuesQuery = useQuery({
-        queryKey: ["values"],
-        queryFn: API.fetchRigdata,
-    })
-
     const handleClick = () => {
         setViewMenu((prev) => !prev)
     }
-
-    if (valuesQuery.isLoading) return <h1>Loading...</h1>
-    if (valuesQuery.isError) return <h1>Error fetching data!</h1>
 
     return (
         <Wrapper>
@@ -59,8 +49,12 @@ const Header = ({}) => {
                 <InfoOutlinedIcon onClick={handleClick} />
                 <Menu $view={viewMenu}>
                     <MenuHeader>
-                        <h3>10003 TLS LED 70</h3>
-                        <p>Admin</p>
+                        <h3>
+                            {allValues.rig_data.deviceid +
+                                " " +
+                                allValues.rig_data.type}
+                        </h3>
+                        <p>{"Admin (change this)"}</p>
                     </MenuHeader>
                     <MenuOptions>
                         <div>

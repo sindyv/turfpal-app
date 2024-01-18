@@ -1,13 +1,11 @@
 import React from "react"
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 import Btn from "../../../../UI/Btn"
 
 import {
     Wrapper,
-    Header,
     Content,
-    LinkItem,
     ButtonArea,
     CenteredDiv,
 } from "./HeatingSettings.styles"
@@ -17,17 +15,11 @@ import API from "../../../../../API"
 import TempRangeSlider from "./TempRangeSlider"
 import TempDelaySlider from "./TempDelaySlider"
 
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 import AccessTimeIcon from "@mui/icons-material/AccessTime"
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
-import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined"
 
-function HeatingSettings() {
-    const query = useQuery({
-        queryKey: ["allValues"],
-        queryFn: API.fetchAllValues,
-        refetchInterval: 5000,
-    })
+function HeatingSettings({ allValues }) {
+    const queryClient = useQueryClient()
 
     const commandMutation = useMutation({
         mutationFn: API.sendCommand,
@@ -68,10 +60,6 @@ function HeatingSettings() {
             },
         })
     }
-
-    if (query.isLoading) return <h1>Loading...</h1>
-    if (query.isError) return <h1>Error fetching data!</h1>
-
     return (
         <Wrapper>
             <Content>
@@ -85,8 +73,8 @@ function HeatingSettings() {
                     <TempRangeSlider
                         onCommitedChange={onCommitedChange}
                         initialValue={[
-                            query.data.setpoints.default_hps_temp_50_on,
-                            query.data.setpoints.default_hps_temp_50_off,
+                            allValues.setpoints.default_hps_temp_50_on,
+                            allValues.setpoints.default_hps_temp_50_off,
                         ]}
                     />
                 </CenteredDiv>
@@ -98,7 +86,7 @@ function HeatingSettings() {
                 <CenteredDiv>
                     <TempDelaySlider
                         onCommitedChange={onCommitedChange}
-                        initialValue={query.data.setpoints.temp_delay}
+                        initialValue={allValues.setpoints.temp_delay}
                     />
                 </CenteredDiv>
                 {/* <Btn svgSize={28}>

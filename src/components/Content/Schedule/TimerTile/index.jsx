@@ -13,6 +13,8 @@ import { Switch } from "@mui/material"
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 
+import API from "../../../../API"
+
 const defaultValueObject = {
     value: "",
     valueUnit: "",
@@ -23,9 +25,9 @@ const defaultValueObject = {
 function TimerTile({
     enabled,
     icon = HelpOutlineOutlinedIcon,
-    data,
     title,
     linkTo,
+    onClick,
 }) {
     const Icon = icon
     const theme = createTheme({
@@ -37,20 +39,29 @@ function TimerTile({
         },
     })
 
+    const handleClick = (event) => {
+        onClick(event.target.checked)
+    }
+
     return (
-        <LinkItem to={linkTo}>
-            <Wrapper $enabled={enabled}>
-                <Header>
-                    <HeaderTextArea>{title}</HeaderTextArea>
-                    <ThemeProvider theme={theme}>
-                        <Switch size='small' color='custom' />
-                    </ThemeProvider>
-                </Header>
+        <Wrapper $enabled={enabled}>
+            <Header>
+                <HeaderTextArea>{title}</HeaderTextArea>
+                <ThemeProvider theme={theme}>
+                    <Switch
+                        checked={enabled}
+                        size='small'
+                        color='custom'
+                        onChange={handleClick}
+                    />
+                </ThemeProvider>
+            </Header>
+            <LinkItem to={linkTo} $enabled={enabled}>
                 <ValueArea>
                     <Icon />
                 </ValueArea>
-            </Wrapper>
-        </LinkItem>
+            </LinkItem>
+        </Wrapper>
     )
 }
 

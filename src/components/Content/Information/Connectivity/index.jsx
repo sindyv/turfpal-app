@@ -2,24 +2,21 @@ import React from "react"
 
 import {
     Wrapper,
-    Header,
     Content,
     CardContent,
     CardDescription,
-    LinkItem,
 } from "./Connectivity.styles"
 
 import Card from "../../../UI/Card"
 import InformationHeader from "../UI/InformationHeader"
 
 import InformationDataField from "../../../UI/DataField"
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 import RouterOutlinedIcon from "@mui/icons-material/RouterOutlined"
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 import CellTowerOutlinedIcon from "@mui/icons-material/CellTowerOutlined"
 import WifiOutlinedIcon from "@mui/icons-material/WifiOutlined"
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined"
-function Connectivity() {
+function Connectivity({ allValues }) {
     return (
         <Wrapper>
             <InformationHeader
@@ -39,27 +36,27 @@ function Connectivity() {
                         <InformationDataField header={"Name"} data={"RUTX11"} />
                         <InformationDataField
                             header={"Serial No."}
-                            data={"6000560318"}
+                            data={allValues.rig_data.router_serial}
                         />
                         <InformationDataField
                             header={"WAN IP"}
-                            data={"10.72.52.1536"}
+                            data={allValues.rig_data.wan_ip}
                         />
                         <InformationDataField
                             header={"Date and time"}
-                            data={"2024-01-03T13:35:20+0100"}
+                            data={"Not Available"}
                         />
                         <InformationDataField
                             header={"Firmware"}
-                            data={"RUTX_R_00.07.05.3"}
+                            data={"Not Available"}
                         />
                         <InformationDataField
                             header={"MAC Address"}
-                            data={"RUTX_R_00.07.05.3"}
+                            data={"Not Available"}
                         />
                         <InformationDataField
                             header={"IMEI"}
-                            data={"861330054714398"}
+                            data={"Not Available"}
                         />
                     </CardContent>
                 </Card>

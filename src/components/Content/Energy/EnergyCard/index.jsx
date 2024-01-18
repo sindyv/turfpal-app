@@ -31,78 +31,110 @@ const defaultData = {
 function EnergyCard({ icon, title, data = defaultData }) {
     const Icon = icon
 
-    return (
-        <Card>
-            <CardDescription>
-                <span>
-                    <Icon />
-                    {title}
-                </span>
-                <EqualizerOutlinedIcon />
-            </CardDescription>
-            <MainValue>
-                <span>
-                    {data.energy > 99999
-                        ? parseFloat(data.energy / 1000).toFixed(2)
-                        : data.energy}
-                </span>
-                <span>{data.energy > 99999 ? "MWh" : "kWh"}</span>
-            </MainValue>
-            <CardContent>
-                <DataField header={"Power"} data={data.power} unit={"kW"} />
-                <DataField
-                    header={"Frequency"}
-                    data={data.frequency}
-                    unit={"Hz"}
-                />
-                <DataField
-                    header={"Voltage L1-N"}
-                    data={data.voltage_L1N}
-                    unit={"V"}
-                />
-                <DataField
-                    header={"Voltage L2-N"}
-                    data={data.voltage_L2N}
-                    unit={"V"}
-                />
-                <DataField
-                    header={"Voltage L3-N"}
-                    data={data.voltage_L3N}
-                    unit={"V"}
-                />
-                <DataField
-                    header={"Voltage L1-L2"}
-                    data={data.voltage_L1L2}
-                    unit={"V"}
-                />
-                <DataField
-                    header={"Voltage L1-L3"}
-                    data={data.voltage_L1L3}
-                    unit={"V"}
-                />
-                <DataField
-                    header={"Voltage L2-L3"}
-                    data={data.voltage_L2L3}
-                    unit={"V"}
-                />
-                <DataField
-                    header={"Current L1"}
-                    data={data.current_L1}
-                    unit={"A"}
-                />
-                <DataField
-                    header={"Current L2"}
-                    data={data.current_L2}
-                    unit={"A"}
-                />
-                <DataField
-                    header={"Current L3"}
-                    data={data.current_L3}
-                    unit={"A"}
-                />
-            </CardContent>
-        </Card>
-    )
+    if (data?.energy) {
+        return (
+            <>
+                <Card>
+                    <CardDescription>
+                        <span>
+                            <Icon />
+                            {title}
+                        </span>
+                        <EqualizerOutlinedIcon />
+                    </CardDescription>
+                    <MainValue>
+                        <span>
+                            {data.energy > 99999
+                                ? parseFloat(data.energy / 1000).toFixed(2)
+                                : data.energy}
+                        </span>
+                        <span>{data.energy > 99999 ? "MWh" : "kWh"}</span>
+                    </MainValue>
+                    <CardContent>
+                        {data?.power ?? null ? (
+                            <DataField
+                                header={"Power"}
+                                data={data.power}
+                                unit={"kW"}
+                            />
+                        ) : null}
+                        {data?.frequency ?? null ? (
+                            <DataField
+                                header={"Frequency"}
+                                data={data.frequency}
+                                unit={"Hz"}
+                            />
+                        ) : null}
+                        {data?.voltage_l1 ?? null ? (
+                            <DataField
+                                header={"Voltage L1-N"}
+                                data={data.voltage_l1}
+                                unit={"V"}
+                            />
+                        ) : null}
+                        {data?.voltage_l2 ?? null ? (
+                            <DataField
+                                header={"Voltage L2-N"}
+                                data={data.voltage_l2}
+                                unit={"V"}
+                            />
+                        ) : null}
+                        {data?.voltage_l3 ?? null ? (
+                            <DataField
+                                header={"Voltage L3-N"}
+                                data={data.voltage_l3}
+                                unit={"V"}
+                            />
+                        ) : null}
+                        {data?.voltage_l1_l2 ?? null ? (
+                            <DataField
+                                header={"Voltage L1-L2"}
+                                data={data.voltage_l1_l2}
+                                unit={"V"}
+                            />
+                        ) : null}
+                        {data?.voltage_l1_l2 ?? null ? (
+                            <DataField
+                                header={"Voltage L1-L3"}
+                                data={data.voltage_l1_l2}
+                                unit={"V"}
+                            />
+                        ) : null}
+                        {data?.voltage_l2_l3 ?? null ? (
+                            <DataField
+                                header={"Voltage L2-L3"}
+                                data={data.voltage_l2_l3}
+                                unit={"V"}
+                            />
+                        ) : null}
+                        {data?.current_L1 ?? null ? (
+                            <DataField
+                                header={"Current L1"}
+                                data={data.current_L1}
+                                unit={"A"}
+                            />
+                        ) : null}
+                        {data?.current_L2 ?? null ? (
+                            <DataField
+                                header={"Current L2"}
+                                data={data.current_L2}
+                                unit={"A"}
+                            />
+                        ) : null}
+                        {data?.current_L3 ?? null ? (
+                            <DataField
+                                header={"Current L3"}
+                                data={data.current_L3}
+                                unit={"A"}
+                            />
+                        ) : null}
+                    </CardContent>
+                </Card>
+            </>
+        )
+    } else {
+        return null
+    }
 }
 
 export default EnergyCard

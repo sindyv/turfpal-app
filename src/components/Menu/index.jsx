@@ -5,6 +5,8 @@ import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined"
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined"
 import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined"
 import ElectricBoltOutlinedIcon from "@mui/icons-material/ElectricBoltOutlined"
+
+// Styled components
 import {
     Wrapper,
     Icons,
@@ -12,7 +14,19 @@ import {
     IconWrapper,
     NumberCircle,
 } from "./Menu.styles"
-const Menu = () => {
+const Menu = ({ allValues }) => {
+    // sum active alarms
+    // create array containing alll keys inn alarms-object
+    let alarms = Object.keys(allValues.alarms)
+    let sumAlarms = 0
+
+    // iterate through object checking if any values are true. If so, add 1 to sumAlarms
+    alarms.forEach((alarm) => {
+        if (allValues.alarms[alarm]) {
+            sumAlarms += 1
+        }
+    })
+
     return (
         <Wrapper>
             <Icons>
@@ -25,7 +39,9 @@ const Menu = () => {
                 <LinkItem to={"alarms"} state={{ headerText: "Alarms" }}>
                     <IconWrapper>
                         <ReportProblemOutlinedIcon />
-                        <NumberCircle>2</NumberCircle>
+                        {sumAlarms ? (
+                            <NumberCircle>{sumAlarms}</NumberCircle>
+                        ) : null}
                     </IconWrapper>
                 </LinkItem>
                 <LinkItem to={"energy"} state={{ headerText: "Energy" }}>

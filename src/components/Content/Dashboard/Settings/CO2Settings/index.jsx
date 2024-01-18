@@ -1,31 +1,19 @@
 import React from "react"
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 import Btn from "../../../../UI/Btn"
 import CONSTANTS from "../../../../../CONSTANTS.json"
-import {
-    Wrapper,
-    Header,
-    Content,
-    LinkItem,
-    ButtonArea,
-    CenteredDiv,
-} from "./CO2Settings.styles"
+import { Wrapper, Content, ButtonArea, CenteredDiv } from "./CO2Settings.styles"
 
 import API from "../../../../../API"
 
 import CustomSlider from "../../../../UI/CustomSlider"
 
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 import AccessTimeIcon from "@mui/icons-material/AccessTime"
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
 
-function CO2Settings() {
-    const query = useQuery({
-        queryKey: ["allValues"],
-        queryFn: API.fetchAllValues,
-        refetchInterval: 5000,
-    })
+function CO2Settings({ allValues }) {
+    const queryClient = useQueryClient()
 
     const commandMutation = useMutation({
         mutationFn: API.sendCommand,
@@ -70,9 +58,6 @@ function CO2Settings() {
         }
     }
 
-    if (query.isLoading) return <h1>Loading...</h1>
-    if (query.isError) return <h1>Error fetching data!</h1>
-
     return (
         <Wrapper>
             <Content>
@@ -80,7 +65,7 @@ function CO2Settings() {
                 <CenteredDiv>
                     <CustomSlider
                         onCommitedChange={onCommitedChange}
-                        initialValue={query.data.setpoints.co2_target}
+                        initialValue={allValues.setpoints.co2_target}
                         width={"80%"}
                         color={"grey"}
                         min={400}
@@ -94,7 +79,7 @@ function CO2Settings() {
                 <CenteredDiv>
                     <CustomSlider
                         onCommitedChange={onCommitedChange}
-                        initialValue={query.data.setpoints.co2_duration}
+                        initialValue={allValues.setpoints.co2_duration}
                         width={"80%"}
                         min={1}
                         max={5}
@@ -108,7 +93,7 @@ function CO2Settings() {
                 <CenteredDiv>
                     <CustomSlider
                         onCommitedChange={onCommitedChange}
-                        initialValue={query.data.setpoints.co2_interval}
+                        initialValue={allValues.setpoints.co2_interval}
                         width={"80%"}
                         color={"grey"}
                         min={2}

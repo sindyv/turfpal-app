@@ -1,13 +1,11 @@
 import React from "react"
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 import Btn from "../../../../UI/Btn"
 import CONSTANTS from "../../../../../CONSTANTS.json"
 import {
     Wrapper,
-    Header,
     Content,
-    LinkItem,
     ButtonArea,
     CenteredDiv,
 } from "./IrrigationSettings.styles"
@@ -16,15 +14,10 @@ import API from "../../../../../API"
 
 import CustomSlider from "../../../../UI/CustomSlider"
 
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
 
-function IrrigationSettings() {
-    const query = useQuery({
-        queryKey: ["allValues"],
-        queryFn: API.fetchAllValues,
-        refetchInterval: 5000,
-    })
+function IrrigationSettings({ allValues }) {
+    const queryClient = useQueryClient()
 
     const commandMutation = useMutation({
         mutationFn: API.sendCommand,
@@ -67,9 +60,6 @@ function IrrigationSettings() {
         })
     }
 
-    if (query.isLoading) return <h1>Loading...</h1>
-    if (query.isError) return <h1>Error fetching data!</h1>
-
     return (
         <Wrapper>
             <Content>
@@ -77,7 +67,7 @@ function IrrigationSettings() {
                 <CenteredDiv>
                     <CustomSlider
                         onCommitedChange={onCommitedChange}
-                        initialValue={query.data.setpoints.irrigation_target}
+                        initialValue={allValues.setpoints.irrigation_target}
                         width={"80%"}
                         color={"dodgerblue"}
                         controlledItem={"target"}
@@ -89,7 +79,7 @@ function IrrigationSettings() {
                 <CenteredDiv>
                     <CustomSlider
                         onCommitedChange={onCommitedChange}
-                        initialValue={query.data.setpoints.irrigation_interval}
+                        initialValue={allValues.setpoints.irrigation_interval}
                         width={"80%"}
                         max={5}
                         min={1}
@@ -103,7 +93,7 @@ function IrrigationSettings() {
                 <CenteredDiv>
                     <CustomSlider
                         onCommitedChange={onCommitedChange}
-                        initialValue={query.data.setpoints.irrigation_delay}
+                        initialValue={allValues.setpoints.irrigation_delay}
                         width={"80%"}
                         max={20}
                         color={"dodgerblue"}
@@ -118,7 +108,7 @@ function IrrigationSettings() {
                     <CustomSlider
                         onCommitedChange={onCommitedChange}
                         initialValue={
-                            query.data.setpoints.default_led_light_50_on
+                            allValues.setpoints.default_led_light_50_on
                         }
                         width={"80%"}
                         max={20}

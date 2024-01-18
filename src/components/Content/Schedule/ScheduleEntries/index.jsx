@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 import {
     Wrapper,
@@ -17,22 +17,16 @@ import API from "../../../../API"
 import MenuSpacer from "../../../UI/MenuSpacer"
 import Modal from "../../../UI/Modal"
 
-function ScheduleEntries() {
+function ScheduleEntries({ allValues }) {
     const [viewModal, setViewModal] = useState(false)
     const [activeIndex, setActiveIndex] = useState(null)
 
     const queryClient = useQueryClient()
 
-    const query = useQuery({
-        queryKey: ["schedule"],
-        queryFn: API.fetchSchedule,
-        refetchInterval: 5000,
-    })
-
     const commandMutation = useMutation({
         mutationFn: API.sendCommand,
         onSuccess: () =>
-            queryClient.invalidateQueries({ queryKey: ["schedule"] }),
+            queryClient.invalidateQueries({ queryKey: ["allValues"] }),
     })
 
     const toggleModal = () => {
@@ -55,15 +49,11 @@ function ScheduleEntries() {
 
         setViewModal(false)
     }
-
-    if (query.isLoading) return <h1>Loading...</h1>
-    if (query.isError) return <h1>Error fetching data!</h1>
-
     let errorMessage = ""
     let sortedArray = []
-    if (Array.isArray(query.data.schedules)) {
-        if (query.data.schedules.length > 0) {
-            sortedArray = query.data.schedules
+    if (Array.isArray(allValues.schedules)) {
+        if (allValues.schedules.length > 0) {
+            sortedArray = allValues.schedules
                 .sort((a, b) => a.schedule_start_time - b.schedule_start_time)
                 .reverse()
         } else {

@@ -30,4 +30,21 @@ get http://localhost:3000/schedule
 
 ###
 
-get http://localhost:3000/all
+
+POST http://192.168.1.1/api/login
+Content-Type: application/json
+
+{"username": "admin", "password": "TurfpalDev1024"}
+
+###
+
+GET http://192.168.1.1/api/system/device/info
+Content-Type: application/json
+Authorization: Bearer 44ee32441e016ab5934e43562d138f58
+
+
+###
+
+GET http://192.168.1.1/api/dhcp/leases/ipv4/status
+Content-Type: application/json
+Authorization: Bearer f0b8e9b8cf31ec3d4bc2eaad6cb97eac

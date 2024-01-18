@@ -60,7 +60,6 @@ function LogEntry({ data = defaultData }) {
             organizedData[currentDayIndex].push(entry)
         }
     })
-
     return (
         <Wrapper>
             {organizedData.map((day) => {

@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 export const Wrapper = styled.div`
     padding: 12px;
@@ -10,6 +11,18 @@ export const Wrapper = styled.div`
     color: ${(props) =>
         props.$enabled ? "var(--white)" : "var(--turfpalColor)"};
     border-radius: 8px;
+
+    transition: background-color 500ms, color 500ms;
+
+    animation: animateCardz 500ms;
+    @keyframes animateCardz {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 `
 
 export const Header = styled.div`
@@ -47,4 +60,9 @@ export const DataArea = styled.div`
 
 export const Units = styled.span`
     font-size: var(--fontTiny);
+`
+export const LinkItem = styled(Link)`
+    text-decoration: none;
+    color: ${(props) =>
+        props.$enabled ? "var(--white)" : "var(--turfpalColor)"};
 `

@@ -23,16 +23,7 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
 import SmartToyOutlinedIcon from "@mui/icons-material/SmartToyOutlined"
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 
-function Information() {
-    const query = useQuery({
-        queryKey: ["allValues"],
-        queryFn: API.fetchAllValues,
-        refetchInterval: 5000,
-    })
-
-    if (query.isLoading) return <h1>Loading...</h1>
-    if (query.isError) return <h1>Error fetching data!</h1>
-
+function Information({ allValues }) {
     return (
         <Wrapper>
             <Header>
@@ -48,7 +39,7 @@ function Information() {
                             <CardDescription>
                                 <SmartToyOutlinedIcon /> Device
                             </CardDescription>
-                            3.0.0 ???
+                            {allValues.deviceid}
                         </CardContent>
                     </Card>
                 </LinkItem>
@@ -77,7 +68,7 @@ function Information() {
                             <CardDescription>
                                 <HubOutlinedIcon /> PLC version
                             </CardDescription>
-                            {query.data.rig_data.software_version}
+                            {allValues.rig_data.software_version}
                         </CardContent>
                     </Card>
                 </LinkItem>
@@ -98,15 +89,6 @@ function Information() {
                                 <TranslateOutlinedIcon /> Language
                             </CardDescription>
                             English
-                        </CardContent>
-                    </Card>
-                </LinkItem>
-                <LinkItem to={"connectivity"}>
-                    <Card>
-                        <CardContent>
-                            <CardDescription>
-                                <InfoOutlinedIcon /> Log
-                            </CardDescription>
                         </CardContent>
                     </Card>
                 </LinkItem>

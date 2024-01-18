@@ -1,13 +1,11 @@
 import React from "react"
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
+import { useMutation } from "@tanstack/react-query"
 
 import Btn from "../../../../UI/Btn"
 import CONSTANTS from "../../../../../CONSTANTS.json"
 import {
     Wrapper,
-    Header,
     Content,
-    LinkItem,
     ButtonArea,
     CenteredDiv,
 } from "./LightingSettings.styles"
@@ -16,17 +14,10 @@ import API from "../../../../../API"
 
 import CustomSlider from "../../../../UI/CustomSlider"
 
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 import AccessTimeIcon from "@mui/icons-material/AccessTime"
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
 
-function LightingSettings() {
-    const query = useQuery({
-        queryKey: ["allValues"],
-        queryFn: API.fetchAllValues,
-        refetchInterval: 5000,
-    })
-
+function LightingSettings({ allValues }) {
     const commandMutation = useMutation({
         mutationFn: API.sendCommand,
         onSuccess: () => queryClient.invalidateQueries(["allValues"]),
@@ -87,9 +78,6 @@ function LightingSettings() {
         })
     }
 
-    if (query.isLoading) return <h1>Loading...</h1>
-    if (query.isError) return <h1>Error fetching data!</h1>
-
     return (
         <Wrapper>
             <Content>
@@ -98,7 +86,7 @@ function LightingSettings() {
                     <CustomSlider
                         onCommitedChange={onCommitedChange}
                         initialValue={
-                            query.data.setpoints.default_led_light_50_on
+                            allValues.setpoints.default_led_light_50_on
                         }
                         width={"80%"}
                         color={"gold"}
@@ -112,7 +100,7 @@ function LightingSettings() {
                     <CustomSlider
                         onCommitedChange={onCommitedChange}
                         initialValue={
-                            query.data.setpoints.default_led_light_50_on
+                            allValues.setpoints.default_led_light_50_on
                         }
                         width={"80%"}
                         color={"dodgerblue"}
@@ -126,10 +114,10 @@ function LightingSettings() {
                     <CustomSlider
                         onCommitedChange={onCommitedChange}
                         initialValue={[
-                            query.data.setpoints.default_led_light_50_on,
-                            query.data.setpoints.default_led_dim_50_range2,
-                            query.data.setpoints.default_led_dim_50_range3,
-                            query.data.setpoints.default_led_light_50_off,
+                            allValues.setpoints.default_led_light_50_on,
+                            allValues.setpoints.default_led_dim_50_range2,
+                            allValues.setpoints.default_led_dim_50_range3,
+                            allValues.setpoints.default_led_light_50_off,
                         ]}
                         width={"80%"}
                         color={"dodgerblue"}

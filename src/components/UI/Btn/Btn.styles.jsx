@@ -16,6 +16,18 @@ export const Wrapper = styled.div`
     padding: 12px;
     border-radius: 8px;
     opacity: ${(props) => (props.$disabled ? 0.6 : 1)};
+
+    transition: background-color 0.5s;
+
+    animation: animateCardz 500ms;
+    @keyframes animateCardz {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 `
 
 export const TextArea = styled.div`
@@ -26,6 +38,8 @@ export const TextArea = styled.div`
     justify-content: center;
     align-items: center;
     gap: 12px;
+
+    transition: color 0.5s;
 
     font-size: var(--fontSuperSmall);
 

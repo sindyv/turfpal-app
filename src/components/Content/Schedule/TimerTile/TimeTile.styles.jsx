@@ -6,12 +6,24 @@ export const Wrapper = styled.div`
     min-height: 120px;
     min-width: 150px;
     width: 100%;
-    max-width: 200px;
+    max-width: 160px;
     background: ${(props) =>
         props.$enabled ? "var(--turfpalColor)" : "var(--lightGrey)"};
     color: ${(props) =>
         props.$enabled ? "var(--white)" : "var(--turfpalColor)"};
     border-radius: 8px;
+
+    transition: background-color 0.5s, color 0.5s;
+
+    animation: animateCardz 500ms;
+    @keyframes animateCardz {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 `
 
 export const Header = styled.div`
@@ -41,5 +53,6 @@ export const ValueArea = styled.div`
 `
 export const LinkItem = styled(Link)`
     text-decoration: none;
-    color: black;
+    color: ${(props) =>
+        props.$enabled ? "var(--white)" : "var(--turfpalColor)"};
 `

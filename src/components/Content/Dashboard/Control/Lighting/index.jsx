@@ -1,10 +1,9 @@
 import React from "react"
-import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query"
+import { useQueryClient, useMutation } from "@tanstack/react-query"
 
 // Styles
 import {
     Wrapper,
-    Header,
     ButtonsArea,
     TileArea,
     LinkItem,
@@ -15,7 +14,6 @@ import {
 //Components
 import Btn from "../../../../UI/Btn"
 import ControlTile from "../../../../UI/ControlTile"
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
@@ -27,25 +25,15 @@ import Card from "../../../../UI/Card"
 // API
 import API from "../../../../../API"
 
-function Lighting() {
+function Lighting({ allValues }) {
     const queryClient = useQueryClient()
-
-    const query = useQuery({
-        queryKey: ["allValues"],
-        queryFn: API.fetchAllValues,
-        refetchInterval: 5000,
-    })
 
     const commandMutation = useMutation({
         mutationFn: API.sendCommand,
         onSuccess: () => {
-            // console.log("Received response, getting new data in 1500ms")
             setTimeout(() => queryClient.invalidateQueries(["allValues"]), 1500)
         },
     })
-
-    if (query.isLoading) return <h1>Loading...</h1>
-    if (query.isError) return <h1>Error fetching data!</h1>
 
     const handleSetModeAuto = () => {
         commandMutation.mutate({
@@ -76,21 +64,19 @@ function Lighting() {
             })
         }
     }
-    if (query.isLoading) return <h1>Loading...</h1>
-    if (query.isError) return <h1>Error fetching data!</h1>
 
     return (
         <Wrapper>
             <ButtonsArea>
                 <Btn
-                    selected={query.data.statuses.mode_lighting === "auto"}
+                    selected={allValues.statuses.mode_lighting === "auto"}
                     onClick={handleSetModeAuto}
                 >
                     <AutorenewOutlinedIcon /> Auto
                 </Btn>
                 <Btn
                     svgSize={12}
-                    selected={query.data.statuses.mode_lighting === "manual"}
+                    selected={allValues.statuses.mode_lighting === "manual"}
                     onClick={handleSetModeManual}
                 >
                     <BackHandOutlinedIcon /> Manual
@@ -99,15 +85,15 @@ function Lighting() {
             <TileArea>
                 <ControlTile
                     changeState={handleToggle}
-                    enabled={query.data.values.led_zone1_dim > 0}
+                    enabled={allValues.values.led_zone1_dim > 0}
                     icon={LightbulbOutlinedIcon}
                     title={"Horti"}
                     data={{
-                        value: query.data.values.led_zone1_dim,
+                        value: allValues.values.led_zone1_dim,
                         valueUnit: "%",
                         additionalData: [
-                            query.data.values.energyMeters[0].power,
-                            query.data.values.led_zone1_rh,
+                            allValues.values.energyMeters[0].power,
+                            allValues.values.led_zone1_rh,
                         ],
                         additionalDataUnits: ["kW", "h"],
                     }}
@@ -115,15 +101,15 @@ function Lighting() {
 
                 <ControlTile
                     changeState={handleToggle}
-                    enabled={query.data.values.led_zone2_dim > 0}
+                    enabled={allValues.values.led_zone2_dim > 0}
                     icon={LightbulbOutlinedIcon}
                     title={"Blue"}
                     data={{
-                        value: query.data.values.led_zone2_dim,
+                        value: allValues.values.led_zone2_dim,
                         valueUnit: "%",
                         additionalData: [
-                            query.data.values.energyMeters[0].power,
-                            query.data.values.led_zone2_rh,
+                            allValues.values.energyMeters[0].power,
+                            allValues.values.led_zone2_rh,
                         ],
                         additionalDataUnits: ["kW", "h"],
                     }}
@@ -132,7 +118,11 @@ function Lighting() {
             <LinkWrappers>
                 <LinkItem
                     to={"/log"}
-                    state={{ log: "Lighting", headerText: "Lighting > Log" }}
+                    state={{
+                        log: "Lighting",
+                        headerText: "Lighting > Log",
+                        logData: allValues?.logData?.lighting ?? null,
+                    }}
                 >
                     <Card>
                         <CardDescription>
