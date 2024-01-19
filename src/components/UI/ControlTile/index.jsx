@@ -13,7 +13,6 @@ import {
 import { Switch } from "@mui/material"
 
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined"
-import { createTheme, ThemeProvider } from "@mui/material/styles"
 
 const defaultValueObject = {
     value: "",
@@ -31,14 +30,7 @@ function ControlTile({
     linkParams,
 }) {
     const Icon = icon
-    const theme = createTheme({
-        palette: {
-            custom: {
-                main: "#fff",
-                contrastText: "#242105",
-            },
-        },
-    })
+
     data = { ...defaultValueObject, ...data }
 
     const handleClick = (state) => {
@@ -51,14 +43,12 @@ function ControlTile({
                     <Icon />
                     {title}
                 </HeaderTextArea>
-                <ThemeProvider theme={theme}>
-                    <Switch
-                        size='small'
-                        color='custom'
-                        checked={enabled}
-                        onChange={(event) => handleClick(event.target.checked)}
-                    />
-                </ThemeProvider>
+                <Switch
+                    size='small'
+                    color='custom'
+                    checked={enabled}
+                    onChange={(event) => handleClick(event.target.checked)}
+                />
             </Header>
             {linkParams?.to ?? false ? (
                 <LinkItem

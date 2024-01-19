@@ -39,6 +39,17 @@ function Dashboard({ allValues }) {
         })
     }
 
+    const handleToggleSchedule = (state) => {
+        let command = { commands: {} }
+        if (state) {
+            command.commands.calendaron = true
+        } else {
+            command.commands.calendaroff = true
+        }
+
+        commandMutation.mutate(command)
+    }
+
     return (
         <Wrapper>
             <ButtonsArea>
@@ -57,7 +68,10 @@ function Dashboard({ allValues }) {
                     <BackHandOutlinedIcon /> Manual
                 </Btn>
             </ButtonsArea>
-            <Session />
+            <Session
+                handleToggleSchedule={handleToggleSchedule}
+                allValues={allValues}
+            />
             <ControlTiles
                 commandMutation={commandMutation}
                 allValues={allValues}
