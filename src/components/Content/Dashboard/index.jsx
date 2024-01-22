@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useQueryClient, useMutation } from "@tanstack/react-query"
 // Styles
 import { Wrapper, ButtonsArea } from "./Dashboard.styles"
@@ -16,6 +16,69 @@ import API from "../../../API"
 import Session from "./Session"
 
 function Dashboard({ allValues }) {
+    const [states, setStates] = useState({
+        newCommand: false,
+        setpoints: "default",
+        calendar: allValues.statuses.calendar,
+    })
+
+    const handleAuto = () => {
+        setStates((prev) => {
+            return { ...prev, auto: true, manual: false, newCommand: true }
+        })
+    }
+
+    const handleManual = () => {
+        setStates((prev) => {
+            return { ...prev, auto: false, manual: true, newCommand: false }
+        })
+    }
+
+    const handleStartStop = () => {
+        // if session is already active, set mode to 'Manual' to stop session.
+        if (allValues?.statuses?.session) {
+            commandMutation.mutate({
+                commands: {
+                    auto: false,
+                    manual: true,
+                    led_zone_1_off: true,
+                    led__zone_2_off: true,
+                    heat_zone1: false,
+                    heat_zone2: false,
+                    heat_zone3: false,
+                },
+            })
+            return
+        }
+
+        let command = {
+            auto: states.auto,
+            manual: states.manual,
+            default: states.setpoints === "default",
+            user_defined1: states.setpoints === "user_defined1",
+            user_defined2: states.setpoints === "user_defined2",
+            user_defined3: states.setpoints === "user_defined3",
+            calendaron: states.calendar,
+            calendaroff: !states.calendar,
+        }
+
+        commandMutation.mutate({
+            commands: { ...command },
+        })
+    }
+
+    const onToggleSchedule = (state) => {
+        setStates((prev) => {
+            return { ...prev, calendar: state }
+        })
+    }
+
+    const onSelectSetpoints = (setpoints) => {
+        setStates((prev) => {
+            return { ...prev, setpoints }
+        })
+    }
+
     // Query handeling
     const queryClient = useQueryClient()
 
@@ -26,52 +89,31 @@ function Dashboard({ allValues }) {
         },
     })
 
-    // Button handeling
-    const handleSetModeAuto = () => {
-        commandMutation.mutate({
-            commands: { auto: true, manual: false },
-        })
-    }
+    let state = allValues.statuses.mode === "auto"
 
-    const handleSetModeManual = () => {
-        commandMutation.mutate({
-            commands: { auto: false, manual: true },
-        })
-    }
-
-    const handleToggleSchedule = (state) => {
-        let command = { commands: {} }
-        if (state) {
-            command.commands.calendaron = true
-        } else {
-            command.commands.calendaroff = true
-        }
-
-        commandMutation.mutate(command)
+    if (states.newCommand) {
+        state = states.auto
     }
 
     return (
         <Wrapper>
             <ButtonsArea>
-                <Btn
-                    svgSize={24}
-                    selected={allValues.statuses.mode === "auto"}
-                    onClick={handleSetModeAuto}
-                >
+                <Btn svgSize={24} selected={state} onClick={handleAuto}>
                     <AutorenewOutlinedIcon /> Auto
                 </Btn>
-                <Btn
-                    svgSize={24}
-                    selected={allValues.statuses.mode === "manual"}
-                    onClick={handleSetModeManual}
-                >
+                <Btn svgSize={24} selected={!state} onClick={handleManual}>
                     <BackHandOutlinedIcon /> Manual
                 </Btn>
             </ButtonsArea>
-            <Session
-                handleToggleSchedule={handleToggleSchedule}
-                allValues={allValues}
-            />
+            {state ? (
+                <Session
+                    onStartStop={handleStartStop}
+                    onToggleSchedule={onToggleSchedule}
+                    onSelectSetpoints={onSelectSetpoints}
+                    allValues={allValues}
+                    tempStates={states}
+                />
+            ) : null}
             <ControlTiles
                 commandMutation={commandMutation}
                 allValues={allValues}

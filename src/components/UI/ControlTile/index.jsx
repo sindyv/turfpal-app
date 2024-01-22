@@ -28,6 +28,7 @@ function ControlTile({
     title,
     changeState,
     linkParams,
+    disabled,
 }) {
     const Icon = icon
 
@@ -43,12 +44,15 @@ function ControlTile({
                     <Icon />
                     {title}
                 </HeaderTextArea>
-                <Switch
-                    size='small'
-                    color='custom'
-                    checked={enabled}
-                    onChange={(event) => handleClick(event.target.checked)}
-                />
+                {disabled ? null : (
+                    <Switch
+                        disabled={disabled}
+                        size='small'
+                        color='custom'
+                        checked={enabled}
+                        onChange={(event) => handleClick(event.target.checked)}
+                    />
+                )}
             </Header>
             {linkParams?.to ?? false ? (
                 <LinkItem

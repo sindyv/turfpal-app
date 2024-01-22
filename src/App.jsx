@@ -7,7 +7,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles"
 
 // styles
 import { GlobalStyle } from "./GlobalStyle"
-
+import "../src/fonts/fonts.css"
 //Components
 import Header from "./components/Header"
 import Menu from "./components/Menu"

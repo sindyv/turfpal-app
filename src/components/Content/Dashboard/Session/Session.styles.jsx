@@ -6,10 +6,29 @@ export const Container = styled.div`
     background-color: var(--turfpalColor);
     padding: 12px;
     color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     svg {
         width: 18px;
         height: 18px;
     }
+
+    animation: animateCardz 500ms;
+    @keyframes animateCardz {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+`
+
+export const SmallHeader = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 6px;
 `
 
 export const BoldHeader = styled.div`

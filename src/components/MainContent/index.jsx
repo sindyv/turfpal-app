@@ -24,11 +24,16 @@ import IrrigationSettings from "../Content/Dashboard/Settings/IrrigationSettings
 import CO2Settings from "../Content/Dashboard/Settings/CO2Settings"
 import ScheduleEntries from "../Content/Schedule/ScheduleEntries"
 import ScheduleAddEntry from "../Content/Schedule/AddEntry"
+import Login from "../Content/Login"
 
 const MainContent = ({ children, allValues }) => {
     return (
         <Wrapper>
             <Routes>
+                <Route
+                    path='/Login'
+                    element={<Login allValues={allValues} />}
+                />
                 <Route path='/' element={<Dashboard allValues={allValues} />} />
                 <Route path='/log' element={<Log allValues={allValues} />} />
                 <Route

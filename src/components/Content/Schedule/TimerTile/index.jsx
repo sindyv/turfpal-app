@@ -28,6 +28,7 @@ function TimerTile({
     title,
     linkTo,
     onClick,
+    disabled,
 }) {
     const Icon = icon
     const theme = createTheme({
@@ -49,6 +50,7 @@ function TimerTile({
                 <HeaderTextArea>{title}</HeaderTextArea>
                 <ThemeProvider theme={theme}>
                     <Switch
+                        disabled={disabled}
                         checked={enabled}
                         size='small'
                         color='custom'

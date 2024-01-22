@@ -3,20 +3,21 @@ import { Link } from "react-router-dom"
 
 export const Wrapper = styled.div`
     padding: var(--mainContentPadding);
+    min-width: 380px;
     max-width: var(--maxWidth);
-`
-
-export const Header = styled.div`
-    font-family: var(--turfpalFontBold);
-    margin: 0 0 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 `
 
 export const ButtonsArea = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 12px;
-    margin: 0 0 24px 0;
+    background-color: var(--turfpalColor);
+    padding: 6px;
+    border-radius: 8px;
 `
 
 export const LinkItem = styled(Link)`

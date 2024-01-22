@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "Euclid";
+    src: url("/src/fonts/EUCLIDSQUARE-REGULAR.TTF");
+}
+
+@font-face {
+    font-family: "EuclidBold";
+    src: url("/src/fonts/EUCLIDSQUARE-BOLD.TTF");
+}

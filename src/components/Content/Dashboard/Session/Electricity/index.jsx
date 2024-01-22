@@ -5,6 +5,13 @@ import { Container, Unit } from "./Electricity.styles"
 function Electricity({ allValues }) {
     const object =
         allValues?.logData?.session[allValues.logData.session.length - 1]
+    if (
+        isNaN(Math.round(object?.calculatedEnergy)) ||
+        isNaN(Math.round(object?.calculatedCostOfEnergy))
+    ) {
+        return
+    }
+
     return (
         <Container>
             <span>

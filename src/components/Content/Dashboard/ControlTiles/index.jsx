@@ -56,6 +56,7 @@ function ControlTiles({ commandMutation, allValues }) {
     return (
         <TileArea>
             <ControlTile
+                disabled={allValues?.statuses?.mode === "auto"}
                 linkParams={{
                     to: "lighting",
                     state: { headerText: "Lighting" },
@@ -78,6 +79,7 @@ function ControlTiles({ commandMutation, allValues }) {
                 }}
             />
             <ControlTile
+                disabled={allValues?.statuses?.mode === "auto"}
                 linkParams={{
                     to: "heating",
                     state: { headerText: "Heating" },

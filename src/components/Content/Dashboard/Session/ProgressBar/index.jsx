@@ -1,10 +1,22 @@
 import React from "react"
 
-import { Bar, Container } from "./ProgressBar.styles"
+import { Bar, BarContainer, Container } from "./ProgressBar.styles"
+import dayjs from "dayjs"
 
 function ProgressBar({ allValues }) {
+    function calculateProgress(entry) {
+        if (Object.keys(entry).length > 0) {
+            const totalTime =
+                entry.schedule_end_time - entry.schedule_start_time
+            const eplapsedTime = Date.now() - entry.schedule_start_time
+            const progress = (eplapsedTime / totalTime) * 100
+
+            return progress
+        }
+    }
+
     // check if there is an active schedule session
-    const checkForActiveEntries = () => {
+    function checkForActiveEntries() {
         let entryActive = {}
         if (Array.isArray(allValues.schedules)) {
             const timestamp = Date.now()
@@ -21,24 +33,19 @@ function ProgressBar({ allValues }) {
         return entryActive
     }
 
-    const calculateProgress = (entry) => {
-        if (Object.keys(activeEntry).length > 0) {
-            const totalTime =
-                activeEntry.schedule_end_time - activeEntry.schedule_start_time
-            const eplapsedTime = Date.now() - activeEntry.schedule_start_time
-            const progress = (eplapsedTime / totalTime) * 100
-
-            return progress
-        }
-    }
-
     const activeEntry = checkForActiveEntries()
+
     const progress = calculateProgress(activeEntry)
 
     return (
         <Container>
             {Object.keys(activeEntry).length > 0 ? (
-                <Bar $progress={progress}>{Math.round(progress)}%</Bar>
+                <>
+                    <BarContainer>
+                        <Bar $progress={progress}>{Math.round(progress)}%</Bar>
+                    </BarContainer>
+                    {dayjs(activeEntry.schedule_end_time).format("HH:mm")}
+                </>
             ) : null}
         </Container>
     )

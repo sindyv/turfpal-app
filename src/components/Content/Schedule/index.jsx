@@ -35,6 +35,7 @@ function Schedule({ allValues }) {
         <Wrapper>
             <TileArea>
                 <TimerTile
+                    disabled={allValues.statuses.session}
                     enabled={allValues.statuses.calendar}
                     title={"Calendar"}
                     icon={EditCalendarOutlinedIcon}
@@ -42,6 +43,7 @@ function Schedule({ allValues }) {
                     onClick={handleToggleCalendar}
                 />
                 <TimerTile
+                    disabled={allValues.statuses.session}
                     allValues={allValues}
                     title={"Timer"}
                     icon={AccessTimeOutlinedIcon}

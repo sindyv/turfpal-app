@@ -2,15 +2,7 @@ import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
       
-    @font-face {
-            font-family: "Euclid";
-            src: url("/src/fonts/EUCLIDSQUARE-REGULAR.TTF");
-        }
 
-    @font-face {
-        font-family: "EuclidBold";
-        src: url("/src/fonts/EUCLIDSQUARE-BOLD.TTF");
-    }
     :root {
         --mainContentPadding: 24px;
         --maxWidth: 412px;
