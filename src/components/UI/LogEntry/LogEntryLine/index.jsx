@@ -6,7 +6,7 @@ import dayjs from "dayjs"
 function LogEntryLine({ entry }) {
     const dayjsObject = dayjs(entry.timestamp)
     return (
-        <Line key={crypto.randomUUID()}>
+        <Line>
             <Dot
                 $color={
                     entry.value ? "var(--turfpalColor)" : "var(--borderColor)"

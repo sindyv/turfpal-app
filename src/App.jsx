@@ -55,7 +55,7 @@ function App() {
                     <Router>
                         <Header allValues={allValues} />
                         <MainContent allValues={allValues}>
-                            <Menu allValues={allValues} />
+                            {/* <Menu allValues={allValues} /> */}
                         </MainContent>
                     </Router>
                 </ThemeProvider>

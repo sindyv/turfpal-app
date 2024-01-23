@@ -25,6 +25,7 @@ import CO2Settings from "../Content/Dashboard/Settings/CO2Settings"
 import ScheduleEntries from "../Content/Schedule/ScheduleEntries"
 import ScheduleAddEntry from "../Content/Schedule/AddEntry"
 import Login from "../Content/Login"
+import Menu from "../Menu"
 
 const MainContent = ({ children, allValues }) => {
     return (
@@ -100,8 +101,8 @@ const MainContent = ({ children, allValues }) => {
                 />
                 <Route path='/*' element={<ErrorPage />} />
             </Routes>
-            {children}
             <MenuSpacer />
+            <Menu allValues={allValues} />
         </Wrapper>
     )
 }
