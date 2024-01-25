@@ -8,6 +8,7 @@ function Btn({
     svgSize = 18,
     selected,
     onClick,
+    type,
     backgroundColorSelected = "var(--turfpalActiveBtn)",
     backgroundColorDeselected = "var(--turfpalColor)",
     textColorSelected = "var(--turfpalColor)",
@@ -26,6 +27,7 @@ function Btn({
             $textColorDeselected={textColorDeselected}
             $backgroundColorSelected={backgroundColorSelected}
             $backgroundColorDeselected={backgroundColorDeselected}
+            type={type}
             onClick={handleClick}
         >
             <TextArea $svgSize={svgSize} $customFont={customFont}>

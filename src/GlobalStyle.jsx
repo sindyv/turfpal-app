@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
         --white: #fff;
         --borderColor: #cccccc;
         --lightGrey: #f3f3f3;
-        --medGrey: #353535;
+        --medGrey: #7f7f7f;
         --darkGrey: #1c1c1c;
         --fontSuperBig: 2.2rem;
         --fontBig: 1.5rem;
@@ -58,5 +58,9 @@ export const GlobalStyle = createGlobalStyle`
             font-size: 1rem;
             color: var(--turfpalColor);
         }
+    }
+
+    .App {
+        height: 100vh;
     }
 `

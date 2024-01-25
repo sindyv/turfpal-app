@@ -5,7 +5,6 @@ import { useQueryClient, useMutation } from "@tanstack/react-query"
 import {
     Wrapper,
     ButtonsArea,
-    TileArea,
     LinkItem,
     CardDescription,
     LinkWrappers,
@@ -13,13 +12,12 @@ import {
 
 //Components
 import Btn from "../../../../UI/Btn"
-import ControlTile from "../../../../UI/ControlTile"
+import ControlButtons from "./ControlButtons"
+import ControlTiles from "./ControlTiles"
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
-
-import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined"
 
 import Card from "../../../../UI/Card"
 // API
@@ -47,22 +45,28 @@ function Lighting({ allValues }) {
         })
     }
 
-    const handleToggle = (controlledItem, state) => {
-        if (controlledItem === "Horti") {
-            commandMutation.mutate({
-                commands: {
-                    led_zone1_on: state,
-                    led_zone1_off: !state,
-                },
-            })
-        } else if (controlledItem === "Blue") {
-            commandMutation.mutate({
-                commands: {
-                    led_zone2_on: state,
-                    led_zone2_off: !state,
-                },
-            })
+    const handleControlLighting = (value) => {
+        let command = {
+            commands: { led_zone1_off: true, led_zone2_off: true, dim: false },
+            setpoints: {
+                led_zone1_dim_man: 0,
+                led_zone2_dim_man: 0,
+            },
         }
+
+        if (value > 0) {
+            command = {
+                commands: { led_zone1_on: true, led_zone2_on: true, dim: true },
+                setpoints: {
+                    led_zone1_dim_man: value,
+                    led_zone2_dim_man: 100,
+                },
+            }
+        }
+
+        commandMutation.mutate({
+            ...command,
+        })
     }
 
     return (
@@ -71,50 +75,25 @@ function Lighting({ allValues }) {
                 <Btn
                     selected={allValues.statuses.mode_lighting === "auto"}
                     onClick={handleSetModeAuto}
+                    svgSize={20}
                 >
                     <AutorenewOutlinedIcon /> Auto
                 </Btn>
                 <Btn
-                    svgSize={12}
                     selected={allValues.statuses.mode_lighting === "manual"}
                     onClick={handleSetModeManual}
+                    svgSize={20}
                 >
                     <BackHandOutlinedIcon /> Manual
                 </Btn>
             </ButtonsArea>
-            <TileArea>
-                <ControlTile
-                    changeState={handleToggle}
-                    enabled={allValues.values.led_zone1_dim > 0}
-                    icon={LightbulbOutlinedIcon}
-                    title={"Horti"}
-                    data={{
-                        value: allValues.values.led_zone1_dim,
-                        valueUnit: "%",
-                        additionalData: [
-                            allValues.values.energyMeters[0].power,
-                            allValues.values.led_zone1_rh,
-                        ],
-                        additionalDataUnits: ["kW", "h"],
-                    }}
+            {allValues.statuses.mode_lighting === "manual" ? (
+                <ControlButtons
+                    handleControlLighting={handleControlLighting}
+                    allValues={allValues}
                 />
-
-                <ControlTile
-                    changeState={handleToggle}
-                    enabled={allValues.values.led_zone2_dim > 0}
-                    icon={LightbulbOutlinedIcon}
-                    title={"Blue"}
-                    data={{
-                        value: allValues.values.led_zone2_dim,
-                        valueUnit: "%",
-                        additionalData: [
-                            allValues.values.energyMeters[0].power,
-                            allValues.values.led_zone2_rh,
-                        ],
-                        additionalDataUnits: ["kW", "h"],
-                    }}
-                />
-            </TileArea>
+            ) : null}
+            <ControlTiles allValues={allValues} />
             <LinkWrappers>
                 <LinkItem
                     to={"/log"}

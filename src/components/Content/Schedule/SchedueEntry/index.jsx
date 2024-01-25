@@ -65,7 +65,11 @@ function ScheduleEntry({ data = defaultData, toggleModal, onDeleteButton }) {
             <Header>
                 <span>
                     {dayjs(data.schedule_start_time).format("dddd")}
-                    <LinkItem to={"add"} state={data} $active={entryActive}>
+                    <LinkItem
+                        to={"add"}
+                        state={{ ...data, headerText: "Schedule > Edit entry" }}
+                        $active={entryActive}
+                    >
                         <ModeEditOutlineOutlinedIcon />
                     </LinkItem>
                     <DeleteForeverOutlinedIcon

@@ -4,24 +4,10 @@ import { Link } from "react-router-dom"
 export const Wrapper = styled.div`
     padding: var(--mainContentPadding);
     max-width: var(--maxWidth);
-    width: 100%;
-`
-
-export const Header = styled.div`
-    font-family: var(--turfpalFontBold);
-    font-size: var(--fontMed);
-    margin: 0 0 24px 0;
+    min-width: 380px;
     display: flex;
-    align-items: center;
-    gap: 20px;
-
-    svg {
-        width: 24px;
-    }
-    a {
-        display: flex;
-        align-items: center;
-    }
+    flex-direction: column;
+    gap: 12px;
 `
 
 export const ButtonsArea = styled.div`
@@ -33,14 +19,6 @@ export const ButtonsArea = styled.div`
     border: 1px solid var(--turfpalColor);
     border-radius: 8px;
     gap: 12px;
-    margin: 0 0 24px 0;
-`
-
-export const TileArea = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 24px;
-    margin: 0 0 24px 0;
 `
 
 export const LinkItem = styled(Link)`

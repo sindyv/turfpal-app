@@ -6,12 +6,11 @@ import dayjs from "dayjs"
 import StartStop from "./StartStop"
 import Repeat from "./Repeat"
 
-import { Wrapper, Header, Content, LinkItem } from "./ScheduleAddEntry.styles"
+import { Wrapper, Content, LinkItem } from "./ScheduleAddEntry.styles"
 
 import API from "../../../../API"
 
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined"
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 import Mode from "./Mode"
 import Btn from "../../../UI/Btn"
 
@@ -52,7 +51,6 @@ function ScheduleAddEntry() {
         object = defaultData
     }
     const [scheduleObject, setScheduleObject] = useState(object)
-    console.log(scheduleObject)
     const commandMutation = useMutation({
         mutationFn: API.sendCommand,
         onSuccess: (data) => {
@@ -75,12 +73,6 @@ function ScheduleAddEntry() {
     }
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={".."} relative={"path"}>
-                    <ArrowBackIosNewOutlinedIcon />
-                </LinkItem>
-                {addBtnText}
-            </Header>
             <Content>
                 <StartStop
                     scheduleObject={scheduleObject}

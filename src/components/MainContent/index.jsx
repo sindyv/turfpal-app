@@ -26,83 +26,104 @@ import ScheduleEntries from "../Content/Schedule/ScheduleEntries"
 import ScheduleAddEntry from "../Content/Schedule/AddEntry"
 import Login from "../Content/Login"
 import Menu from "../Menu"
+import Timer from "../Content/Schedule/Timer"
 
-const MainContent = ({ children, allValues }) => {
+const MainContent = ({ children, allValues, loggedIn, onLogin, onClick }) => {
     return (
-        <Wrapper>
-            <Routes>
-                <Route
-                    path='/Login'
-                    element={<Login allValues={allValues} />}
-                />
-                <Route path='/' element={<Dashboard allValues={allValues} />} />
-                <Route path='/log' element={<Log allValues={allValues} />} />
-                <Route
-                    path='lighting'
-                    element={<Lighting allValues={allValues} />}
-                />
-                <Route
-                    path='lighting/settings'
-                    element={<LightingSettings allValues={allValues} />}
-                />
-                <Route
-                    path='heating'
-                    element={<Heating allValues={allValues} />}
-                />
-                <Route
-                    path='heating/settings'
-                    element={<HeatingSettings allValues={allValues} />}
-                />
-                <Route
-                    path='irrigation'
-                    element={<Irrigation allValues={allValues} />}
-                />
-                <Route
-                    path='irrigation/settings'
-                    element={<IrrigationSettings allValues={allValues} />}
-                />
-                <Route path='co2' element={<CO2 allValues={allValues} />} />
-                <Route
-                    path='co2/settings'
-                    element={<CO2Settings allValues={allValues} />}
-                />
-                <Route path='cover' element={<Cover allValues={allValues} />} />
-                <Route
-                    path='information'
-                    element={<Information allValues={allValues} />}
-                />
-                <Route
-                    path='device'
-                    element={<Device allValues={allValues} />}
-                />
-                <Route
-                    path='connectivity'
-                    element={<Connectivity allValues={allValues} />}
-                />
-                <Route
-                    path='schedule'
-                    element={<Schedule allValues={allValues} />}
-                />
-                <Route
-                    path='schedule/entries'
-                    element={<ScheduleEntries allValues={allValues} />}
-                />
-                <Route
-                    path='schedule/entries/add'
-                    element={<ScheduleAddEntry />}
-                />
-                <Route
-                    path='alarms'
-                    element={<Alarms allValues={allValues} />}
-                />
-                <Route
-                    path='energy'
-                    element={<Energy allValues={allValues} />}
-                />
-                <Route path='/*' element={<ErrorPage />} />
-            </Routes>
-            <MenuSpacer />
-            <Menu allValues={allValues} />
+        <Wrapper onClick={onClick}>
+            {loggedIn ? (
+                <>
+                    <Routes>
+                        <Route
+                            path='/'
+                            element={<Dashboard allValues={allValues} />}
+                        />
+                        <Route
+                            path='/log'
+                            element={<Log allValues={allValues} />}
+                        />
+                        <Route
+                            path='lighting'
+                            element={<Lighting allValues={allValues} />}
+                        />
+                        <Route
+                            path='lighting/settings'
+                            element={<LightingSettings allValues={allValues} />}
+                        />
+                        <Route
+                            path='heating'
+                            element={<Heating allValues={allValues} />}
+                        />
+                        <Route
+                            path='heating/settings'
+                            element={<HeatingSettings allValues={allValues} />}
+                        />
+                        <Route
+                            path='irrigation'
+                            element={<Irrigation allValues={allValues} />}
+                        />
+                        <Route
+                            path='irrigation/settings'
+                            element={
+                                <IrrigationSettings allValues={allValues} />
+                            }
+                        />
+                        <Route
+                            path='co2'
+                            element={<CO2 allValues={allValues} />}
+                        />
+                        <Route
+                            path='co2/settings'
+                            element={<CO2Settings allValues={allValues} />}
+                        />
+                        <Route
+                            path='cover'
+                            element={<Cover allValues={allValues} />}
+                        />
+                        <Route
+                            path='information'
+                            element={<Information allValues={allValues} />}
+                        />
+                        <Route
+                            path='device'
+                            element={<Device allValues={allValues} />}
+                        />
+                        <Route
+                            path='connectivity'
+                            element={<Connectivity allValues={allValues} />}
+                        />
+                        <Route
+                            path='schedule'
+                            element={<Schedule allValues={allValues} />}
+                        />
+                        <Route
+                            path='schedule/entries'
+                            element={<ScheduleEntries allValues={allValues} />}
+                        />
+                        <Route
+                            path='schedule/entries/add'
+                            element={<ScheduleAddEntry />}
+                        />
+                        <Route
+                            path='alarms'
+                            element={<Alarms allValues={allValues} />}
+                        />
+                        <Route
+                            path='energy'
+                            element={<Energy allValues={allValues} />}
+                        />
+                        <Route
+                            path='schedule/timer'
+                            element={<Timer allValues={allValues} />}
+                        />
+                        <Route path='/*' element={<ErrorPage />} />
+                    </Routes>
+                    <MenuSpacer />
+                    <Menu allValues={allValues} />
+                </>
+            ) : (
+                <Login onLogin={onLogin} />
+            )}
         </Wrapper>
     )
 }

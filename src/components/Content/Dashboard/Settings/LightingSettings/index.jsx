@@ -94,7 +94,7 @@ function LightingSettings({ allValues }) {
                         marks={CONSTANTS.constants.sliders.hortiSlider}
                     />
                 </CenteredDiv>
-                <h3>Blue</h3>
+                {/* <h3>Blue</h3>
 
                 <CenteredDiv>
                     <CustomSlider
@@ -126,7 +126,7 @@ function LightingSettings({ allValues }) {
                         max={2500}
                         step={50}
                     />
-                </CenteredDiv>
+                </CenteredDiv> */}
 
                 <ButtonArea>
                     <Btn

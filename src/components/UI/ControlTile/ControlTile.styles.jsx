@@ -44,11 +44,16 @@ export const HeaderTextArea = styled.div`
 `
 export const ValueArea = styled.div`
     margin: 12px 0 0 0;
-    font-size: var(--fontSuperBig);
-    font-family: var(--turfpalFontBold);
     display: flex;
     justify-content: center;
     align-items: center;
+    span {
+        font-size: var(--fontSuperBig);
+        font-family: var(--turfpalFontBold);
+        &:last-child {
+            font-size: var(--fontMed);
+        }
+    }
 `
 
 export const DataArea = styled.div`
@@ -65,4 +70,10 @@ export const LinkItem = styled(Link)`
     text-decoration: none;
     color: ${(props) =>
         props.$enabled ? "var(--white)" : "var(--turfpalColor)"};
+    padding: 0;
+`
+
+export const MainValueUnit = styled.div`
+    font-size: var(--fontMed);
+    font-family: var(--tufpalFontBold);
 `

@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
+import useFetchUsername from "../../hooks/useFetchUsername"
 
 // Styles
 import {
@@ -10,6 +11,7 @@ import {
     MenuHeader,
     MenuOptions,
     MenuSignOut,
+    HeaderText,
 } from "./Header.styles"
 
 // Images
@@ -23,28 +25,27 @@ import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutl
 
 // API
 
-const Header = ({ allValues }) => {
-    const [viewMenu, setViewMenu] = useState(false)
+const Header = ({ allValues, onMenuClick, viewMenu, onLogout }) => {
     const location = useLocation()
+    const navigate = useNavigate()
 
     let headerText = location?.state?.headerText ?? "Dashboard"
 
     if (headerText !== "Dashboard") {
         headerText = (
-            <LinkItem to={".."} relative={"path"}>
-                <ArrowBackIosNewOutlinedIcon />
+            <>
+                <ArrowBackIosNewOutlinedIcon onClick={() => navigate(-1)} />
                 {headerText}
-            </LinkItem>
+            </>
         )
     }
 
     const handleClick = () => {
-        setViewMenu((prev) => !prev)
+        onMenuClick("toggle")
     }
-
     return (
         <Wrapper>
-            {headerText}
+            <HeaderText>{headerText}</HeaderText>
             <Icons>
                 <InfoOutlinedIcon onClick={handleClick} />
                 <Menu $view={viewMenu}>
@@ -54,18 +55,24 @@ const Header = ({ allValues }) => {
                                 " " +
                                 allValues.rig_data.type}
                         </h3>
-                        <p>{"Admin (change this)"}</p>
+                        <p>{useFetchUsername()}</p>
                     </MenuHeader>
                     <MenuOptions>
-                        <div>
+                        {/* <div>
                             <span>
                                 <ImportExportOutlinedIcon /> Switch Device
                             </span>
-                        </div>
+                        </div> */}
                         <div>
                             <span>
-                                <SettingsOutlinedIcon /> Settings and
-                                information
+                                <LinkItem
+                                    to={"information"}
+                                    onClick={onMenuClick}
+                                    state={{ headerText: "Information" }}
+                                >
+                                    <SettingsOutlinedIcon /> Settings and
+                                    information
+                                </LinkItem>
                             </span>
                         </div>
                         <div>
@@ -74,12 +81,16 @@ const Header = ({ allValues }) => {
                             </span>
                         </div>
                     </MenuOptions>
-                    <MenuSignOut>
+                    <MenuSignOut onClick={onLogout}>
                         <ExitToAppOutlinedIcon /> Sign out
                     </MenuSignOut>
                 </Menu>
 
-                <LinkItem to={"information"}>
+                <LinkItem
+                    to={"information"}
+                    onClick={onMenuClick}
+                    state={{ headerText: "Information" }}
+                >
                     <PermIdentityOutlinedIcon />
                 </LinkItem>
             </Icons>

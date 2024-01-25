@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.button`
+    cursor: pointer;
     background: ${(props) =>
         props.$selected
             ? props.$backgroundColorSelected
@@ -15,6 +16,7 @@ export const Wrapper = styled.div`
     width: 100%;
     padding: 12px;
     border-radius: 8px;
+    border: 0;
     opacity: ${(props) => (props.$disabled ? 0.6 : 1)};
 
     transition: background-color 0.5s;

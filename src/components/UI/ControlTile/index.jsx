@@ -61,14 +61,14 @@ function ControlTile({
                     $enabled={enabled}
                 >
                     <ValueArea>
-                        {data.value}
-                        {data.valueUnit}
+                        <span>{data.value}</span>
+                        <span>{data.valueUnit}</span>
                     </ValueArea>
                 </LinkItem>
             ) : (
                 <ValueArea>
-                    {data.value}
-                    {data.valueUnit}
+                    <span>{data.value}</span>
+                    <span>{data.valueUnit}</span>
                 </ValueArea>
             )}
             <DataArea>

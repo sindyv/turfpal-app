@@ -10,7 +10,6 @@ import { GlobalStyle } from "./GlobalStyle"
 import "../src/fonts/fonts.css"
 //Components
 import Header from "./components/Header"
-import Menu from "./components/Menu"
 import MainContent from "./components/MainContent"
 
 // API
@@ -21,6 +20,10 @@ const theme = createTheme({
     palette: {
         custom: {
             main: "#fff",
+            contrastText: "#242105",
+        },
+        whiteBackground: {
+            main: "#004e41",
             contrastText: "#242105",
         },
     },
@@ -37,6 +40,53 @@ const theme = createTheme({
 // })
 
 function App() {
+    const [viewMenu, setViewMenu] = useState(false)
+    const [loggedIn, setLoggedIn] = useState(false)
+
+    const onLogin = ({ username, password }) => {
+        if (username === "admin" && password === "1234") {
+            localStorage.setItem(
+                "loginInformation",
+                JSON.stringify({
+                    loggedIn: true,
+                    user: username,
+                    timestamp: Date.now(),
+                })
+            )
+            setLoggedIn(true)
+        }
+    }
+
+    const onLogout = () => {
+        localStorage.removeItem("loginInformation")
+        setLoggedIn(false)
+    }
+
+    const checkLogin = () => {
+        const loginData =
+            JSON?.parse(localStorage.getItem("loginInformation")) ?? false
+        if (loginData != null) {
+            if (Date.now() - loginData.timestamp < 7 * 24 * 60 * 60 * 1000) {
+                return loginData.loggedIn
+            }
+        } else {
+            return false
+        }
+    }
+
+    useState(() => {
+        setLoggedIn(checkLogin())
+    }, [])
+
+    const onMenuClick = (action) => {
+        if (action === "toggle") {
+            setViewMenu((prev) => !prev)
+            return
+        }
+
+        setViewMenu(false)
+    }
+
     const query = useQuery({
         queryKey: ["allValues"],
         queryFn: API.fetchAllValues,
@@ -53,8 +103,21 @@ function App() {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <ThemeProvider theme={theme}>
                     <Router>
-                        <Header allValues={allValues} />
-                        <MainContent allValues={allValues}>
+                        {loggedIn ? (
+                            <Header
+                                allValues={allValues}
+                                onMenuClick={onMenuClick}
+                                viewMenu={viewMenu}
+                                onLogout={onLogout}
+                            />
+                        ) : null}
+                        <MainContent
+                            allValues={allValues}
+                            loggedIn={loggedIn}
+                            onLogin={onLogin}
+                            onLogout={onLogout}
+                            onClick={onMenuClick}
+                        >
                             {/* <Menu allValues={allValues} /> */}
                         </MainContent>
                     </Router>

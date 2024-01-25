@@ -40,6 +40,7 @@ function Schedule({ allValues }) {
                     title={"Calendar"}
                     icon={EditCalendarOutlinedIcon}
                     linkTo={"entries"}
+                    linkHeaderText={"Schedule > Entries"}
                     onClick={handleToggleCalendar}
                 />
                 <TimerTile
@@ -47,6 +48,7 @@ function Schedule({ allValues }) {
                     allValues={allValues}
                     title={"Timer"}
                     icon={AccessTimeOutlinedIcon}
+                    linkHeaderText={"Schedule > Timer"}
                     linkTo={"timer"}
                 />
             </TileArea>

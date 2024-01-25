@@ -9,7 +9,6 @@ import {
     ModalContent,
 } from "./ScheduleEntries.styles"
 
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined"
 import ScheduleEntry from "../SchedueEntry"
 
@@ -80,14 +79,10 @@ function ScheduleEntries({ allValues }) {
             )}
             <Header>
                 <span>
-                    <LinkItem to={"/schedule"}>
-                        <ArrowBackIosNewOutlinedIcon />
-                    </LinkItem>
-
-                    {"Schedule > Entries"}
-                </span>
-                <span>
-                    <LinkItem to={"add"}>
+                    <LinkItem
+                        to={"add"}
+                        state={{ headerText: "Schedule > Add entry" }}
+                    >
                         <AddOutlinedIcon />
                     </LinkItem>
                 </span>

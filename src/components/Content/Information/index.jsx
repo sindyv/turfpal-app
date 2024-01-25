@@ -1,18 +1,14 @@
 import React from "react"
-import { useQuery } from "@tanstack/react-query"
 
 import Card from "../../UI/Card"
 
 import {
     Wrapper,
-    Header,
     Content,
     CardContent,
     CardDescription,
     LinkItem,
 } from "./Information.styles"
-
-import API from "../../../API"
 
 import WifiOutlinedIcon from "@mui/icons-material/WifiOutlined"
 import PhoneAndroidOutlinedIcon from "@mui/icons-material/PhoneAndroidOutlined"
@@ -26,12 +22,6 @@ import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutl
 function Information({ allValues }) {
     return (
         <Wrapper>
-            <Header>
-                <LinkItem to={"../"}>
-                    <ArrowBackIosNewOutlinedIcon />
-                </LinkItem>
-                Information
-            </Header>
             <Content>
                 <LinkItem to={"../device"}>
                     <Card>

@@ -24,7 +24,8 @@ function Session({
         onStartStop()
     }
 
-    let activeSetpoints = "Scheduler"
+    let activeSetpoints =
+        allValues.statuses.mode === "manual" ? "Manual" : "Scheduler"
 
     if (!allValues.statuses.calendar) {
         switch (allValues.statuses.setpoints_set) {

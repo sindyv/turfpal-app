@@ -41,11 +41,16 @@ function Dashboard({ allValues }) {
                 commands: {
                     auto: false,
                     manual: true,
-                    led_zone_1_off: true,
-                    led__zone_2_off: true,
+                    led_zone1_on: false,
+                    led_zone2_on: false,
                     heat_zone1: false,
                     heat_zone2: false,
                     heat_zone3: false,
+                    dim: false,
+                },
+                setpoints: {
+                    led_zone1_dim_man: 0,
+                    led_zone2_dim_man: 0,
                 },
             })
             return
@@ -89,7 +94,7 @@ function Dashboard({ allValues }) {
         },
     })
 
-    let state = allValues.statuses.mode === "auto"
+    let state = allValues.statuses.session
 
     if (states.newCommand) {
         state = states.auto

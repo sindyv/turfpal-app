@@ -18,27 +18,27 @@ function ValuesField({ allValues }) {
     return (
         <Container>
             <Value
-                value={allValues.values.light}
+                value={Math.round(allValues.values.light)}
                 unit={"µMol"}
                 Icon={WbSunnyOutlinedIcon}
             />
             <Value
-                value={allValues.values.ambient_temperature}
+                value={Math.round(allValues.values.ambient_temperature)}
                 unit={"°C"}
                 Icon={DeviceThermostatOutlinedIcon}
             />
             <Value
-                value={allValues.values.soil_moisture}
+                value={Math.round(allValues.values.soil_moisture)}
                 unit={"%"}
                 Icon={Humidity}
             />
             <Value
-                value={allValues.values.temperature}
+                value={Math.round(allValues.values.temperature)}
                 unit={"°C"}
                 Icon={SoilTemperature}
             />
             <Value
-                value={allValues.values.led_zone1_dim}
+                value={Math.round(allValues.values.led_zone1_dim)}
                 unit={"%"}
                 Icon={LightbulbOutlinedIcon}
             />

@@ -56,7 +56,7 @@ function ControlTiles({ commandMutation, allValues }) {
     return (
         <TileArea>
             <ControlTile
-                disabled={allValues?.statuses?.mode === "auto"}
+                disabled={true}
                 linkParams={{
                     to: "lighting",
                     state: { headerText: "Lighting" },
@@ -69,8 +69,8 @@ function ControlTiles({ commandMutation, allValues }) {
                 icon={LightbulbOutlinedIcon}
                 title={"Lighting"}
                 data={{
-                    value: allValues.values.led_zone1_dim,
-                    valueUnit: "%",
+                    value: allValues.values.light,
+                    valueUnit: "µMol",
                     additionalData: [
                         allValues.values.energyMeters[0].power,
                         allValues.values.led_zone1_rh,
@@ -79,7 +79,7 @@ function ControlTiles({ commandMutation, allValues }) {
                 }}
             />
             <ControlTile
-                disabled={allValues?.statuses?.mode === "auto"}
+                disabled={true}
                 linkParams={{
                     to: "heating",
                     state: { headerText: "Heating" },

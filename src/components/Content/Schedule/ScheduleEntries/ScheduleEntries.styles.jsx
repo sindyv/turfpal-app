@@ -10,7 +10,7 @@ export const Header = styled.div`
     margin: 0 0 24px 0;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: end;
 
     span {
         font-family: var(--turfpalFontBold);
@@ -23,20 +23,12 @@ export const Header = styled.div`
             display: flex;
             align-items: center;
             justify-content: space-between;
-        }
-
-        &:last-child {
-            a {
-                color: var(--turfpalColor);
-                svg {
-                    width: 30px;
-                    height: 30px;
-                }
-            }
+            color: var(--turfpalColor);
         }
 
         svg {
-            width: 24px;
+            width: 30px;
+            height: 30px;
         }
     }
 `

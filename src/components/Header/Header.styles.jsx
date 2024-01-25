@@ -27,10 +27,20 @@ export const Icons = styled.div`
 `
 
 export const LinkItem = styled(Link)`
-    color: black;
+    color: var(--turpalColor);
     text-decoration: none;
     display: flex;
     align-items: center;
+    font-family: var(--fontTurfpalBold);
+    font-size: var(--fontMed);
+    gap: 12px;
+`
+
+export const HeaderText = styled.div`
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: var(--fontTurfpalBold);
     font-size: var(--fontMed);
     gap: 12px;
@@ -61,7 +71,7 @@ export const Menu = styled.div`
         }
         to {
             opacity: 1;
-            height: 265px;
+            height: 220px;
         }
     }
 `
