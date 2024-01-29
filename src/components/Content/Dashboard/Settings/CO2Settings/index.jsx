@@ -1,60 +1,72 @@
-import React from "react"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import React, { useContext } from "react"
 
-import Btn from "../../../../UI/Btn"
-import CONSTANTS from "../../../../../CONSTANTS.json"
+// Styles
 import { Wrapper, Content, ButtonArea, CenteredDiv } from "./CO2Settings.styles"
 
-import API from "../../../../../API"
-
+// Components
+import Btn from "../../../../UI/Btn"
+import CONSTANTS from "../../../../../CONSTANTS.json"
 import CustomSlider from "../../../../UI/CustomSlider"
-
+// Icons
 import AccessTimeIcon from "@mui/icons-material/AccessTime"
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
 
-function CO2Settings({ allValues }) {
-    const queryClient = useQueryClient()
+// Context
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
 
-    const commandMutation = useMutation({
-        mutationFn: API.sendCommand,
-        onSuccess: () => queryClient.invalidateQueries(["allValues"]),
-    })
+function CO2Settings() {
+    const { data: allValues, onCommand } = useContext(AllValuesContext)
 
     const onCommitedChange = (newValue, target) => {
         if (target === "target") {
-            commandMutation.mutate({
-                command: {
-                    co2_target: newValue,
+            onCommand(
+                {
+                    command: {
+                        co2_target: newValue,
+                    },
                 },
-            })
+                100
+            )
         } else if (target === "duration") {
-            commandMutation.mutate({
-                command: {
-                    co2_duration: newValue,
+            onCommand(
+                {
+                    command: {
+                        co2_duration: newValue,
+                    },
                 },
-            })
+                100
+            )
         } else if (target === "interval") {
-            commandMutation.mutate({
-                command: {
-                    co2_interval: newValue,
+            onCommand(
+                {
+                    command: {
+                        co2_interval: newValue,
+                    },
                 },
-            })
+                100
+            )
         }
     }
 
     const handleBtnPress = (action) => {
         if (action === "resetOperatingHours") {
-            commandMutation.mutate({
-                command: {
-                    co2_resetrh: true,
+            onCommand(
+                {
+                    command: {
+                        co2_resetrh: true,
+                    },
                 },
-            })
+                100
+            )
         } else if (action === "resetConsumption") {
-            commandMutation.mutate({
-                command: {
-                    co2_reset_consumption: true,
+            onCommand(
+                {
+                    command: {
+                        co2_reset_consumption: true,
+                    },
                 },
-            })
+                100
+            )
         }
     }
 

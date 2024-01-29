@@ -1,8 +1,6 @@
-import React from "react"
-import { useMutation } from "@tanstack/react-query"
+import React, { useContext } from "react"
 
-import Btn from "../../../../UI/Btn"
-import CONSTANTS from "../../../../../CONSTANTS.json"
+// Styles
 import {
     Wrapper,
     Content,
@@ -10,72 +8,84 @@ import {
     CenteredDiv,
 } from "./LightingSettings.styles"
 
-import API from "../../../../../API"
-
+// Components
+import Btn from "../../../../UI/Btn"
+import CONSTANTS from "../../../../../CONSTANTS.json"
 import CustomSlider from "../../../../UI/CustomSlider"
 
+// Icons
 import AccessTimeIcon from "@mui/icons-material/AccessTime"
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
 
-function LightingSettings({ allValues }) {
-    const commandMutation = useMutation({
-        mutationFn: API.sendCommand,
-        onSuccess: () => queryClient.invalidateQueries(["allValues"]),
-    })
+// Context
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
+
+function LightingSettings() {
+    const { data: allValues, onCommand } = useContext(AllValuesContext)
 
     const onCommitedChange = (newValue, target) => {
         if (target === "horti") {
-            commandMutation.mutate({
-                setpoints: {
-                    led_zone1_dim: newValue,
+            onCommand(
+                {
+                    setpoints: {
+                        led_zone1_dim: newValue,
+                    },
                 },
-            })
+                100
+            )
         } else if (target === "blue") {
-            commandMutation.mutate({
-                setpoints: {
-                    led_zone2_dim: newValue,
+            onCommand(
+                {
+                    setpoints: {
+                        led_zone2_dim: newValue,
+                    },
                 },
-            })
+                100
+            )
         } else if (target === "par") {
-            commandMutation.mutate({
-                setpoints: {
-                    default_led_light_50_on: newValue[0],
-                    default_led_dim_50_range2: newValue[1],
-                    default_led_dim_50_range3: newValue[2],
-                    default_led_light_50_off: newValue[3],
+            onCommand(
+                {
+                    setpoints: {
+                        default_led_light_50_on: newValue[0],
+                        default_led_dim_50_range2: newValue[1],
+                        default_led_dim_50_range3: newValue[2],
+                        default_led_light_50_off: newValue[3],
+                    },
                 },
-            })
+                100
+            )
         }
     }
 
     const handleBtnPress = (action) => {
         if (action === "resetRhZ1") {
-            commandMutation.mutate({
-                command: {
-                    led_zone1_resetrh: true,
+            onCommand(
+                {
+                    commands: {
+                        led_zone1_resetrh: true,
+                    },
                 },
-            })
+                100
+            )
         } else if (action === "resetRhZ2") {
-            commandMutation.mutate({
-                command: {
-                    led_zone2_resetrh: true,
+            onCommand(
+                {
+                    commands: {
+                        led_zone2_resetrh: true,
+                    },
                 },
-            })
+                100
+            )
         } else if (action === "resetEnergy") {
-            commandMutation.mutate({
-                command: {
-                    led_resetEnergy: true,
+            onCommand(
+                {
+                    commands: {
+                        led_resetEnergy: true,
+                    },
                 },
-            })
+                100
+            )
         }
-    }
-
-    const handleResetEnergyMeter = () => {
-        commandMutation.mutate({
-            command: {
-                heat_resetEnergy: true,
-            },
-        })
     }
 
     return (

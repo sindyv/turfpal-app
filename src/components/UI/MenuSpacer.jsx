@@ -1,7 +1,7 @@
 import React from "react"
 
-function MenuSpacer() {
-    return <div style={{ margin: "30px 0 0 0" }}></div>
+function MenuSpacer({ children }) {
+    return <div style={{ marginTop: 70 }}>{children}</div>
 }
 
 export default MenuSpacer

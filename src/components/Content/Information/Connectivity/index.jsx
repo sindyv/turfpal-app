@@ -1,5 +1,5 @@
-import React from "react"
-
+import React, { useContext } from "react"
+// Styles
 import {
     Wrapper,
     Content,
@@ -7,30 +7,31 @@ import {
     CardDescription,
 } from "./Connectivity.styles"
 
+// Components
 import Card from "../../../UI/Card"
-import InformationHeader from "../UI/InformationHeader"
 
+// Icons
 import InformationDataField from "../../../UI/DataField"
 import RouterOutlinedIcon from "@mui/icons-material/RouterOutlined"
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 import CellTowerOutlinedIcon from "@mui/icons-material/CellTowerOutlined"
 import WifiOutlinedIcon from "@mui/icons-material/WifiOutlined"
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined"
-function Connectivity({ allValues }) {
+
+// Context
+import { AllValuesContext } from "../../../../store/context/allValues-context"
+
+function Connectivity() {
+    const { data: allValues } = useContext(AllValuesContext)
+
     return (
         <Wrapper>
-            <InformationHeader
-                title={"Connectivity"}
-                linkTo={"../information"}
-            />
-
             <Content>
                 <Card>
                     <CardDescription>
                         <span>
                             <RouterOutlinedIcon /> Router
                         </span>
-                        <SettingsOutlinedIcon />
+                        {/* <SettingsOutlinedIcon /> */}
                     </CardDescription>
                     <CardContent>
                         <InformationDataField header={"Name"} data={"RUTX11"} />
@@ -65,7 +66,7 @@ function Connectivity({ allValues }) {
                         <span>
                             <CellTowerOutlinedIcon /> Mobile
                         </span>
-                        <SettingsOutlinedIcon />
+                        {/* <SettingsOutlinedIcon /> */}
                     </CardDescription>
                     <CardContent>
                         <InformationDataField
@@ -95,7 +96,7 @@ function Connectivity({ allValues }) {
                         <span>
                             <WifiOutlinedIcon /> Wireless
                         </span>
-                        <SettingsOutlinedIcon />
+                        {/* <SettingsOutlinedIcon /> */}
                     </CardDescription>
                     <CardContent>
                         <InformationDataField
@@ -117,7 +118,7 @@ function Connectivity({ allValues }) {
                         <span>
                             <LocationOnOutlinedIcon /> GPS
                         </span>
-                        <SettingsOutlinedIcon />
+                        {/* <SettingsOutlinedIcon /> */}
                     </CardDescription>
                     <CardContent>
                         <InformationDataField header={"Satelites"} data={"9"} />

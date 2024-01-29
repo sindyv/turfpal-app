@@ -1,25 +1,33 @@
-import React from "react"
+import React, { useContext } from "react"
+import useConvertModeName from "../../../../hooks/useConvertModeName"
 
+// Styles
 import { Container, BoldHeader, SmallHeader, Content } from "./Session.styles"
+
+// Components
 import { Switch } from "@mui/material"
-
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
-import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
-import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined"
-
 import SetpointsButtons from "./SetpointsButtons"
 import ValuesField from "./ValuesField"
 import Btn from "../../../UI/Btn"
 import Electricity from "./Electricity"
 import ProgressBar from "./ProgressBar"
 
+// Icons
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
+import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined"
+
+// Context
+import { AllValuesContext } from "../../../../store/context/allValues-context"
+
 function Session({
     onToggleSchedule,
-    allValues,
     onStartStop,
     onSelectSetpoints,
     tempStates,
 }) {
+    const { data: allValues } = useContext(AllValuesContext)
+
     const handleStartStop = () => {
         onStartStop()
     }
@@ -28,23 +36,7 @@ function Session({
         allValues.statuses.mode === "manual" ? "Manual" : "Scheduler"
 
     if (!allValues.statuses.calendar) {
-        switch (allValues.statuses.setpoints_set) {
-            case "default":
-                activeSetpoints = "Default"
-                break
-
-            case "user_defined1":
-                activeSetpoints = "Summer"
-                break
-
-            case "user_defined2":
-                activeSetpoints = "Winter"
-                break
-
-            case "user_defined3":
-                activeSetpoints = "Custom"
-                break
-        }
+        activeSetpoints = useConvertModeName(allValues.statuses.setpoints_set)
     }
 
     return (

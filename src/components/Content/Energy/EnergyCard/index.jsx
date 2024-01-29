@@ -40,7 +40,7 @@ function EnergyCard({ icon, title, data = defaultData }) {
                             <Icon />
                             {title}
                         </span>
-                        <EqualizerOutlinedIcon />
+                        {/* <EqualizerOutlinedIcon /> */}
                     </CardDescription>
                     <MainValue>
                         <span>

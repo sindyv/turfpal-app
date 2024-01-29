@@ -6,7 +6,3 @@ export const Wrapper = styled.div`
     flex-direction: column;
     gap: 12px;
 `
-export const Header = styled.div`
-    font-family: var(--turfpalFontBold);
-    margin: 0 0 24px 0;
-`

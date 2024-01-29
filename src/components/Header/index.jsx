@@ -1,4 +1,6 @@
-import React, { useState } from "react"
+import React, { useContext } from "react"
+
+// Hooks
 import { useLocation, useNavigate } from "react-router-dom"
 import useFetchUsername from "../../hooks/useFetchUsername"
 
@@ -15,20 +17,23 @@ import {
 } from "./Header.styles"
 
 // Images
-import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
-import ImportExportOutlinedIcon from "@mui/icons-material/ImportExportOutlined"
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined"
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined"
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
+import { AllValuesContext } from "../../store/context/allValues-context"
 
-// API
+// Context
+import { LoginContext } from "../../store/context/login-context"
+import { MenuContext } from "../../store/context/menu-context"
 
-const Header = ({ allValues, onMenuClick, viewMenu, onLogout }) => {
+const Header = () => {
     const location = useLocation()
     const navigate = useNavigate()
-
+    const { loggedIn, logout } = useContext(LoginContext)
+    const { viewMenu, toggleMenu, hideMenu } = useContext(MenuContext)
+    const { data: allValues } = useContext(AllValuesContext)
     let headerText = location?.state?.headerText ?? "Dashboard"
 
     if (headerText !== "Dashboard") {
@@ -40,14 +45,15 @@ const Header = ({ allValues, onMenuClick, viewMenu, onLogout }) => {
         )
     }
 
-    const handleClick = () => {
-        onMenuClick("toggle")
+    if (!loggedIn) {
+        return
     }
+
     return (
         <Wrapper>
             <HeaderText>{headerText}</HeaderText>
             <Icons>
-                <InfoOutlinedIcon onClick={handleClick} />
+                <InfoOutlinedIcon onClick={() => toggleMenu()} />
                 <Menu $view={viewMenu}>
                     <MenuHeader>
                         <h3>
@@ -67,7 +73,9 @@ const Header = ({ allValues, onMenuClick, viewMenu, onLogout }) => {
                             <span>
                                 <LinkItem
                                     to={"information"}
-                                    onClick={onMenuClick}
+                                    onClick={() => {
+                                        hideMenu()
+                                    }}
                                     state={{ headerText: "Information" }}
                                 >
                                     <SettingsOutlinedIcon /> Settings and
@@ -77,22 +85,30 @@ const Header = ({ allValues, onMenuClick, viewMenu, onLogout }) => {
                         </div>
                         <div>
                             <span>
-                                <HelpOutlineOutlinedIcon /> Help
+                                <LinkItem
+                                    to={"help"}
+                                    onClick={() => {
+                                        hideMenu()
+                                    }}
+                                    state={{ headerText: "Help" }}
+                                >
+                                    <HelpOutlineOutlinedIcon /> Help
+                                </LinkItem>
                             </span>
                         </div>
                     </MenuOptions>
-                    <MenuSignOut onClick={onLogout}>
+                    <MenuSignOut onClick={logout}>
                         <ExitToAppOutlinedIcon /> Sign out
                     </MenuSignOut>
                 </Menu>
-
+                {/* 
                 <LinkItem
                     to={"information"}
                     onClick={onMenuClick}
                     state={{ headerText: "Information" }}
                 >
                     <PermIdentityOutlinedIcon />
-                </LinkItem>
+                </LinkItem> */}
             </Icons>
         </Wrapper>
     )

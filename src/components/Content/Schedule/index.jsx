@@ -1,24 +1,20 @@
-import React from "react"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import React, { useContext } from "react"
 
+// Styles
 import { Wrapper, TileArea } from "./Schedule.styles"
 
-import API from "../../../API"
-
+// Components
 import TimerTile from "./TimerTile"
 
+// Icons
 import EditCalendarOutlinedIcon from "@mui/icons-material/EditCalendarOutlined"
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined"
 
-function Schedule({ allValues }) {
-    const queryClient = useQueryClient()
+// Context
+import { AllValuesContext } from "../../../store/context/allValues-context"
 
-    const commandMutation = useMutation({
-        mutationFn: API.sendCommand,
-        onSuccess: (data) => {
-            queryClient.setQueryData(["allValues"], data)
-        },
-    })
+function Schedule() {
+    const { data: allValues, onCommand } = useContext(AllValuesContext)
 
     const handleToggleCalendar = (value) => {
         let command = { commands: {} }
@@ -28,7 +24,7 @@ function Schedule({ allValues }) {
             command.commands.calendaroff = true
         }
 
-        commandMutation.mutate(command)
+        onCommand(command)
     }
 
     return (
@@ -36,7 +32,7 @@ function Schedule({ allValues }) {
             <TileArea>
                 <TimerTile
                     disabled={allValues.statuses.session}
-                    enabled={allValues.statuses.calendar}
+                    // enabled={allValues.statuses.calendar}
                     title={"Calendar"}
                     icon={EditCalendarOutlinedIcon}
                     linkTo={"entries"}

@@ -1,15 +1,20 @@
-import React from "react"
-import { useQuery } from "@tanstack/react-query"
+import React, { useContext } from "react"
 
-import { Wrapper, Header, TileArea } from "./Energy.styles"
+// Styles
+import { Wrapper, TileArea } from "./Energy.styles"
 
-import API from "../../../API"
-
+// Components
 import EnergyCard from "./EnergyCard"
 
+// Icons
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined"
 
-function Energy({ allValues }) {
+// Context
+import { AllValuesContext } from "../../../store/context/allValues-context"
+
+function Energy() {
+    const { data: allValues } = useContext(AllValuesContext)
+
     if (Array.isArray(allValues.values.energyMeters)) {
         return (
             <Wrapper>
@@ -20,7 +25,9 @@ function Energy({ allValues }) {
                                 key={index}
                                 icon={LightbulbOutlinedIcon}
                                 data={meter}
-                                title={"Lighting"}
+                                title={
+                                    "Energy Consumption meter #" + (index + 1)
+                                }
                             />
                         )
                     })}

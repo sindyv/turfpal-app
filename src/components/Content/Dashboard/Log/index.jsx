@@ -1,4 +1,5 @@
 import React from "react"
+import { useLocation } from "react-router-dom"
 
 // Styles
 import { Wrapper, Content } from "./Log.styles"
@@ -6,10 +7,7 @@ import { Wrapper, Content } from "./Log.styles"
 //Components
 import LogEntry from "../../../UI/LogEntry"
 
-// API
-import { useLocation } from "react-router-dom"
-
-function Log({ allValues }) {
+function Log({}) {
     // extract information from link
     let location = useLocation()
 

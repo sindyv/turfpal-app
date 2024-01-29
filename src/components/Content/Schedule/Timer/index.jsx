@@ -1,14 +1,25 @@
-import { Container } from "./Timer.styles"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useContext, useState } from "react"
+import dayjs from "dayjs"
 
+// Styles
+import { Container, CardContainer, CardContent } from "./Timer.styles"
+
+// Components
 import Switches from "./Switches"
 import TimeSelectors from "./TimeSelectors"
 import Buttons from "./Buttons"
 import Btn from "../../../UI/Btn"
-import { useState } from "react"
-import API from "../../../../API"
+import Card from "../../../UI/Card"
 
-function Timer({ allValues }) {
+// Icons
+import QueryBuilderOutlinedIcon from "@mui/icons-material/QueryBuilderOutlined"
+
+// Context
+import { AllValuesContext } from "../../../../store/context/allValues-context"
+
+function Timer() {
+    const { data: allValues, onCommand } = useContext(AllValuesContext)
+
     const [state, setState] = useState("on")
     const [hour, setHour] = useState(0)
     const [minute, setMinute] = useState(5)
@@ -16,8 +27,6 @@ function Timer({ allValues }) {
     const [heating, setHeating] = useState(false)
     const [irrigation, setIrrigation] = useState(false)
     const [co2, setCo2] = useState(false)
-
-    const queryClient = useQueryClient()
 
     const handleChangeState = (state) => {
         setState(state)
@@ -50,13 +59,6 @@ function Timer({ allValues }) {
         }
     }
 
-    const commandMutation = useMutation({
-        mutationFn: API.sendCommand,
-        onSuccess: () => {
-            queryClient.invalidateQueries(["allValues"])
-        },
-    })
-
     const handleStartStop = (command) => {
         let object = {
             commands: {
@@ -81,19 +83,40 @@ function Timer({ allValues }) {
             object.commands.time_toggle_keepoff = false
         }
 
-        commandMutation.mutate(object)
+        onCommand(object)
     }
 
     return (
         <Container>
-            <Buttons onChangeState={handleChangeState} state={state} />
-            <TimeSelectors
-                onSetHour={handleSetHour}
-                onSetMinute={handleSetMinute}
-                hour={hour}
-                minute={minute}
-            />
-            {state === "on" ? (
+            {!allValues.statuses.timer_active ? (
+                <>
+                    <Buttons onChangeState={handleChangeState} state={state} />
+                    <TimeSelectors
+                        onSetHour={handleSetHour}
+                        onSetMinute={handleSetMinute}
+                        hour={hour}
+                        minute={minute}
+                    />
+                </>
+            ) : (
+                <Card>
+                    <CardContainer>
+                        <div>
+                            <QueryBuilderOutlinedIcon />
+                            Timer active
+                        </div>
+                        <div>
+                            <CardContent>
+                                {`Ending at 
+                                ${dayjs(allValues?.values?.togtime_end).format(
+                                    "HH:mm"
+                                )}`}
+                            </CardContent>
+                        </div>
+                    </CardContainer>
+                </Card>
+            )}
+            {state === "on" && !allValues.statuses.timer_active ? (
                 <Switches
                     onSetState={handleSetState}
                     states={{ lighting, heating, irrigation, co2 }}

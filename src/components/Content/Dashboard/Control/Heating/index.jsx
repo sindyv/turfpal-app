@@ -1,5 +1,4 @@
-import React from "react"
-import { useQueryClient, useMutation } from "@tanstack/react-query"
+import React, { useContext } from "react"
 
 // Styles
 import {
@@ -15,43 +14,49 @@ import {
 //Components
 import Btn from "../../../../UI/Btn"
 import ControlTile from "../../../../UI/ControlTile"
+import Card from "../../../../UI/Card"
+
+// Icons
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 
-import Card from "../../../../UI/Card"
-// API
-import API from "../../../../../API"
+// Context
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
 
-function Heating({ allValues }) {
-    const queryClient = useQueryClient()
-
-    const commandMutation = useMutation({
-        mutationFn: API.sendCommand,
-        onSuccess: () => queryClient.invalidateQueries(["allValues"]),
-    })
+function Heating({}) {
+    const { data: allValues, onCommand } = useContext(AllValuesContext)
 
     const handleSetModeAuto = () => {
-        commandMutation.mutate({
-            commands: { heat_auto: true, heat_manual: false },
-        })
+        onCommand(
+            {
+                commands: { heat_auto: true, heat_manual: false },
+            },
+            100
+        )
     }
 
     const handleSetModeManual = () => {
-        commandMutation.mutate({
-            commands: { heat_auto: false, heat_manual: true },
-        })
+        onCommand(
+            {
+                commands: { heat_auto: false, heat_manual: true },
+            },
+            100
+        )
     }
 
     const handleToggleHeat = (controlledItem, state) => {
-        commandMutation.mutate({
-            commands: {
-                heat_zone1: state,
-                heat_zone2: state,
-                heat_zone3: state,
+        onCommand(
+            {
+                commands: {
+                    heat_zone1: state,
+                    heat_zone2: state,
+                    heat_zone3: state,
+                },
             },
-        })
+            100
+        )
     }
 
     return (

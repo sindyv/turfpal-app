@@ -78,7 +78,7 @@ function ScheduleAddEntry() {
                     scheduleObject={scheduleObject}
                     onSelect={onSelect}
                 />
-                <Repeat onSelect={onSelect} scheduleObject={scheduleObject} />
+                {/* <Repeat onSelect={onSelect} scheduleObject={scheduleObject} /> */}
                 <Mode onSelect={onSelect} scheduleObject={scheduleObject} />
                 <LinkItem to={".."} relative={"path"}>
                     <Btn onClick={handleAddBtn}>

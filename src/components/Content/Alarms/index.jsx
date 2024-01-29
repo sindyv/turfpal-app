@@ -1,11 +1,14 @@
 import React from "react"
 
-import { Wrapper } from "./Schedule.styles"
+import { Wrapper } from "./Alarms.styles"
 
 import StatusCard from "../../UI/StatusCard"
 import MenuSpacer from "../../UI/MenuSpacer"
 
-function Alarms({ allValues }) {
+import { useContext } from "react"
+import { AllValuesContext } from "../../../store/context/allValues-context"
+function Alarms({}) {
+    const { data: allValues } = useContext(AllValuesContext)
     return (
         <Wrapper>
             {typeof allValues?.alarms?.surge_protection !== "undefined" && (

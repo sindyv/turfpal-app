@@ -1,0 +1,98 @@
+[
+    {
+        "name": "UTC (-11) Pacific/Midway",
+        "value": -11
+    },
+    {
+        "name": "UTC -10 Pacific/Honolulu",
+        "value": -10
+    },
+    {
+        "name": "UTC -9 America/Anchorage",
+        "value": -9
+    },
+    {
+        "name": "UTC -8 America/Los Angeles",
+        "value": -8
+    },
+    {
+        "name": "UTC -7 America/Edmonton",
+        "value": -7
+    },
+    {
+        "name": "UTC -6 America/Chicago",
+        "value": -6
+    },
+    {
+        "name": "UTC -5 America/Detroit",
+        "value": -5
+    },
+    {
+        "name": "UTC -4 America/Halifax",
+        "value": -4
+    },
+    {
+        "name": "UTC -3 America/Araguaina",
+        "value": -3
+    },
+    {
+        "name": "UTC -2 America/Nuuk",
+        "value": -2
+    },
+    {
+        "name": "UTC -1 America/Scoresbysund",
+        "value": -1
+    },
+    {
+        "name": "UTC +0 Europe/London",
+        "value": 0
+    },
+    {
+        "name": "UTC +1 Europe/Berlin",
+        "value": 1
+    },
+    {
+        "name": "UTC +2 Africa/Cairo",
+        "value": 2
+    },
+    {
+        "name": "UTC +3 Africa/Nairobi",
+        "value": 3
+    },
+    {
+        "name": "UTC +4 Asia/Dubai",
+        "value": 4
+    },
+    {
+        "name": "UTC +5 Asia/Samarkand",
+        "value": 5
+    },
+    {
+        "name": "UTC +6 Asia/Bishkek",
+        "value": 6
+    },
+    {
+        "name": "UTC +7 Asia/Bangkok",
+        "value": 7
+    },
+    {
+        "name": "UTC +8 Asia/Hong Kong",
+        "value": 8
+    },
+    {
+        "name": "UTC +9 Asia/Seoul",
+        "value": 9
+    },
+    {
+        "name": "UTC +10 Australia/Melbourne",
+        "value": 10
+    },
+    {
+        "name": "UTC +11 Pacific/Guadalcanal",
+        "value": 11
+    },
+    {
+        "name": "UTC +12 Pacific/Fiji",
+        "value": -12
+    }
+]

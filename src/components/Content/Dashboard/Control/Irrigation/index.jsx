@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { useQueryClient, useMutation } from "@tanstack/react-query"
 
 // Styles
@@ -23,8 +23,11 @@ import WaterDropOutlinedIcon from "@mui/icons-material/WaterDropOutlined"
 import Card from "../../../../UI/Card"
 // API
 import API from "../../../../../API"
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
 
-function Irrigation({ allValues }) {
+function Irrigation({}) {
+    const { data: allValues } = useContext(AllValuesContext)
+
     const queryClient = useQueryClient()
 
     const commandMutation = useMutation({

@@ -1,14 +1,16 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 
 import { LogoImg, Container } from "./Login.styles"
 import Logo from "../../../assets/img/Turfpal-logo.png"
+import { LoginContext } from "../../../store/context/login-context"
 
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined"
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import Btn from "../../UI/Btn"
-function Login({ onLogin }) {
+function Login({}) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const LoginCtx = useContext(LoginContext)
 
     const handleLogin = (event) => {
         event.preventDefault()
@@ -17,7 +19,7 @@ function Login({ onLogin }) {
         const formData = new FormData(form)
         const formJson = Object.fromEntries(formData.entries())
 
-        onLogin(formJson)
+        LoginCtx.login(formJson)
     }
     return (
         <Container>
@@ -38,6 +40,7 @@ function Login({ onLogin }) {
                         placeholder='Password'
                         value={password}
                         name='password'
+                        type='password'
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>

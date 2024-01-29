@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 
 // Icons
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined"
@@ -14,7 +14,12 @@ import {
     IconWrapper,
     NumberCircle,
 } from "./Menu.styles"
-const Menu = ({ allValues }) => {
+
+// Context
+import { AllValuesContext } from "../../store/context/allValues-context"
+const Menu = () => {
+    const { data: allValues } = useContext(AllValuesContext)
+
     // sum active alarms
     // create array containing alll keys inn alarms-object
     let alarms = Object.keys(allValues.alarms)

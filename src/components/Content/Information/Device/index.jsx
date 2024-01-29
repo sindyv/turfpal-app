@@ -1,15 +1,21 @@
-import React from "react"
+import React, { useContext } from "react"
 
+// Styles
 import { Wrapper, Content, CardContent, CardDescription } from "./Device.styles"
 
+// Components
 import Card from "../../../UI/Card"
-import InformationHeader from "../UI/InformationHeader"
 import InformationDataField from "../../../UI/DataField"
+import { AllValuesContext } from "../../../../store/context/allValues-context"
+
+//Icons
 import SmartToyOutlinedIcon from "@mui/icons-material/SmartToyOutlined"
-function Device({ allValues }) {
+
+function Device() {
+    const { data: allValues } = useContext(AllValuesContext)
+
     return (
         <Wrapper>
-            <InformationHeader title={"Device"} linkTo={"../information"} />
             <Content>
                 <Card>
                     <CardDescription>
@@ -31,14 +37,14 @@ function Device({ allValues }) {
                             header={"Firmware"}
                             data={allValues.rig_data.software_version}
                         />
-                        <InformationDataField
+                        {/* <InformationDataField
                             header={"Manufactorer"}
                             data={allValues.rig_data.manufactorer}
                         />
                         <InformationDataField
                             header={"Manufacture date"}
                             data={allValues.rig_data.manufactor_date}
-                        />
+                        /> */}
                     </CardContent>
                 </Card>
             </Content>

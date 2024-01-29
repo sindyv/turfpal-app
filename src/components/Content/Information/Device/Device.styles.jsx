@@ -24,6 +24,7 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
+    min-width: 360px;
 `
 export const CardContent = styled.div`
     display: flex;

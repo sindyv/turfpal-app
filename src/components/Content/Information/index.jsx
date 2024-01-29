@@ -14,16 +14,22 @@ import WifiOutlinedIcon from "@mui/icons-material/WifiOutlined"
 import PhoneAndroidOutlinedIcon from "@mui/icons-material/PhoneAndroidOutlined"
 import HubOutlinedIcon from "@mui/icons-material/HubOutlined"
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined"
-import TranslateOutlinedIcon from "@mui/icons-material/TranslateOutlined"
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
 import SmartToyOutlinedIcon from "@mui/icons-material/SmartToyOutlined"
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
+import timeZone from "../../../assets/data/TIMEZONES.json"
 
-function Information({ allValues }) {
+import { useContext } from "react"
+import { AllValuesContext } from "../../../store/context/allValues-context"
+function Information() {
+    const { data: allValues } = useContext(AllValuesContext)
+
+    const selectedTimeZone = timeZone.filter(
+        (zone) => zone.value === allValues.setpoints.timeZone
+    )
+
     return (
         <Wrapper>
             <Content>
-                <LinkItem to={"../device"}>
+                <LinkItem to={"/device"} state={{ headerText: "Device" }}>
                     <Card>
                         <CardContent>
                             <CardDescription>
@@ -33,7 +39,10 @@ function Information({ allValues }) {
                         </CardContent>
                     </Card>
                 </LinkItem>
-                <LinkItem to={"../connectivity"}>
+                <LinkItem
+                    to={"/connectivity"}
+                    state={{ headerText: "Connectivity" }}
+                >
                     <Card>
                         <CardContent>
                             <CardDescription>
@@ -42,37 +51,33 @@ function Information({ allValues }) {
                         </CardContent>
                     </Card>
                 </LinkItem>
-                <LinkItem to={"connectivity"}>
-                    <Card>
-                        <CardContent>
-                            <CardDescription>
-                                <PhoneAndroidOutlinedIcon /> App version
-                            </CardDescription>
-                            {import.meta.env.VITE_APP_VERSION}
-                        </CardContent>
-                    </Card>
-                </LinkItem>
-                <LinkItem to={"connectivity"}>
-                    <Card>
-                        <CardContent>
-                            <CardDescription>
-                                <HubOutlinedIcon /> PLC version
-                            </CardDescription>
-                            {allValues.rig_data.software_version}
-                        </CardContent>
-                    </Card>
-                </LinkItem>
-                <LinkItem to={"connectivity"}>
+                <Card>
+                    <CardContent>
+                        <CardDescription>
+                            <PhoneAndroidOutlinedIcon /> App version
+                        </CardDescription>
+                        {import.meta.env.VITE_APP_VERSION}
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardContent>
+                        <CardDescription>
+                            <HubOutlinedIcon /> PLC version
+                        </CardDescription>
+                        {allValues.rig_data.software_version}
+                    </CardContent>
+                </Card>
+                <LinkItem to={"/timezone"} state={{ headerText: "Time Zone" }}>
                     <Card>
                         <CardContent>
                             <CardDescription>
                                 <AccessTimeOutlinedIcon /> Time Zone
                             </CardDescription>
-                            Europe/Oslo
+                            {selectedTimeZone[0].name}
                         </CardContent>
                     </Card>
                 </LinkItem>
-                <LinkItem to={"connectivity"}>
+                {/* <LinkItem to={"connectivity"}>
                     <Card>
                         <CardContent>
                             <CardDescription>
@@ -81,7 +86,7 @@ function Information({ allValues }) {
                             English
                         </CardContent>
                     </Card>
-                </LinkItem>
+                </LinkItem> */}
             </Content>
         </Wrapper>
     )

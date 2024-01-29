@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { useQueryClient, useMutation } from "@tanstack/react-query"
 // Styles
 import { Wrapper, ButtonsArea } from "./Dashboard.styles"
 
@@ -12,10 +11,11 @@ import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 
 // API
-import API from "../../../API"
 import Session from "./Session"
-
-function Dashboard({ allValues }) {
+import { useContext } from "react"
+import { AllValuesContext } from "../../../store/context/allValues-context"
+function Dashboard({}) {
+    const { data: allValues, onCommand } = useContext(AllValuesContext)
     const [states, setStates] = useState({
         newCommand: false,
         setpoints: "default",
@@ -37,22 +37,25 @@ function Dashboard({ allValues }) {
     const handleStartStop = () => {
         // if session is already active, set mode to 'Manual' to stop session.
         if (allValues?.statuses?.session) {
-            commandMutation.mutate({
-                commands: {
-                    auto: false,
-                    manual: true,
-                    led_zone1_on: false,
-                    led_zone2_on: false,
-                    heat_zone1: false,
-                    heat_zone2: false,
-                    heat_zone3: false,
-                    dim: false,
+            onCommand(
+                {
+                    commands: {
+                        auto: false,
+                        manual: true,
+                        led_zone1_on: false,
+                        led_zone2_on: false,
+                        heat_zone1: false,
+                        heat_zone2: false,
+                        heat_zone3: false,
+                        dim: false,
+                    },
+                    setpoints: {
+                        led_zone1_dim_man: 0,
+                        led_zone2_dim_man: 0,
+                    },
                 },
-                setpoints: {
-                    led_zone1_dim_man: 0,
-                    led_zone2_dim_man: 0,
-                },
-            })
+                100
+            )
             return
         }
 
@@ -67,9 +70,12 @@ function Dashboard({ allValues }) {
             calendaroff: !states.calendar,
         }
 
-        commandMutation.mutate({
-            commands: { ...command },
-        })
+        onCommand(
+            {
+                commands: { ...command },
+            },
+            100
+        )
     }
 
     const onToggleSchedule = (state) => {
@@ -83,16 +89,6 @@ function Dashboard({ allValues }) {
             return { ...prev, setpoints }
         })
     }
-
-    // Query handeling
-    const queryClient = useQueryClient()
-
-    const commandMutation = useMutation({
-        mutationFn: API.sendCommand,
-        onSuccess: () => {
-            setTimeout(() => queryClient.invalidateQueries(["allValues"]), 1500)
-        },
-    })
 
     let state = allValues.statuses.session
 
@@ -119,10 +115,7 @@ function Dashboard({ allValues }) {
                     tempStates={states}
                 />
             ) : null}
-            <ControlTiles
-                commandMutation={commandMutation}
-                allValues={allValues}
-            />
+            <ControlTiles />
         </Wrapper>
     )
 }

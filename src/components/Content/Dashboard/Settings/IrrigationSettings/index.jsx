@@ -1,8 +1,6 @@
-import React from "react"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import React, { useContext } from "react"
 
-import Btn from "../../../../UI/Btn"
-import CONSTANTS from "../../../../../CONSTANTS.json"
+// Styles
 import {
     Wrapper,
     Content,
@@ -10,54 +8,69 @@ import {
     CenteredDiv,
 } from "./IrrigationSettings.styles"
 
-import API from "../../../../../API"
-
+// Components
+import Btn from "../../../../UI/Btn"
+import CONSTANTS from "../../../../../CONSTANTS.json"
 import CustomSlider from "../../../../UI/CustomSlider"
 
+// Icons
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
 
-function IrrigationSettings({ allValues }) {
-    const queryClient = useQueryClient()
+// Context
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
 
-    const commandMutation = useMutation({
-        mutationFn: API.sendCommand,
-        onSuccess: () => queryClient.invalidateQueries(["allValues"]),
-    })
+function IrrigationSettings() {
+    const { data: allValues, onCommand } = useContext(AllValuesContext)
 
     const onCommitedChange = (newValue, target) => {
         if (target === "target") {
-            commandMutation.mutate({
-                setpoints: {
-                    irrigation_target: newValue,
+            onCommand(
+                {
+                    setpoints: {
+                        irrigation_target: newValue,
+                    },
                 },
-            })
+                100
+            )
         } else if (target === "duration") {
-            commandMutation.mutate({
-                setpoints: {
-                    irrigation_duration: newValue,
+            onCommand(
+                {
+                    setpoints: {
+                        irrigation_duration: newValue,
+                    },
                 },
-            })
+                100
+            )
         } else if (target === "interval") {
-            commandMutation.mutate({
-                setpoints: {
-                    irrigation_interval: newValue,
+            onCommand(
+                {
+                    setpoints: {
+                        irrigation_interval: newValue,
+                    },
                 },
-            })
+                100
+            )
         } else if (target === "delay") {
-            commandMutation.mutate({
-                setpoints: {
-                    irrigation_delay: newValue,
+            onCommand(
+                {
+                    setpoints: {
+                        irrigation_delay: newValue,
+                    },
                 },
-            })
+                100
+            )
         }
     }
 
     const handleBtnPress = () => {
-        commandMutation.mutate({
-            command: {
-                irrigation_reset_consumption: true,
+        onCommand(
+            {
+                command: {
+                    irrigation_reset_consumption: true,
+                },
             },
-        })
+            100
+        )
     }
 
     return (

@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const Wrapper = styled.div`
     /* position: relative; */
-    height: 100%;
     min-width: 412px;
     overflow-y: auto;
     width: 100%;

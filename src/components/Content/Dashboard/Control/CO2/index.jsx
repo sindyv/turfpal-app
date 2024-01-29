@@ -1,5 +1,4 @@
-import React from "react"
-import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query"
+import React, { useContext } from "react"
 
 // Styles
 import {
@@ -14,39 +13,36 @@ import {
 //Components
 import Btn from "../../../../UI/Btn"
 import ControlTile from "../../../../UI/ControlTile"
+import Card from "../../../../UI/Card"
+
+// Icons
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined"
 
-import Card from "../../../../UI/Card"
-// API
-import API from "../../../../../API"
+// Context
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
 
-function CO2({ allValues }) {
-    const queryClient = useQueryClient()
-
-    const commandMutation = useMutation({
-        mutationFn: API.sendCommand,
-        onSuccess: () => queryClient.invalidateQueries(["allValues"]),
-    })
+function CO2() {
+    const { data: allValues, onCommand } = useContext(AllValuesContext)
 
     const handleSetModeAuto = () => {
-        commandMutation.mutate({
+        onCommand({
             commands: { co2_auto: true, co2_manual: false },
         })
     }
 
     const handleSetModeManual = () => {
-        commandMutation.mutate({
+        onCommand({
             commands: { co2_auto: false, co2_manual: true },
         })
     }
 
     const handleToggle = (controlledItem, state) => {
         if (controlledItem === "CO2") {
-            commandMutation.mutate({
+            onCommand({
                 commands: {
                     co2_solenoid: state,
                 },

@@ -1,8 +1,6 @@
-import React from "react"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import React, { useContext } from "react"
 
-import Btn from "../../../../UI/Btn"
-
+// Styles
 import {
     Wrapper,
     Content,
@@ -10,60 +8,69 @@ import {
     CenteredDiv,
 } from "./HeatingSettings.styles"
 
-import API from "../../../../../API"
-
+// Components
+import Btn from "../../../../UI/Btn"
 import TempRangeSlider from "./TempRangeSlider"
 import TempDelaySlider from "./TempDelaySlider"
 
+// Icons
 import AccessTimeIcon from "@mui/icons-material/AccessTime"
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
 
-function HeatingSettings({ allValues }) {
-    const queryClient = useQueryClient()
+// Context
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
 
-    const commandMutation = useMutation({
-        mutationFn: API.sendCommand,
-        onSuccess: () => queryClient.invalidateQueries(["allValues"]),
-    })
+function HeatingSettings() {
+    const { data: allValues } = useContext(AllValuesContext)
 
     const onCommitedChange = (newValue, target) => {
         if (target === "range") {
-            commandMutation.mutate({
-                setpoints: {
-                    default_hps_temp_50_on: newValue[0],
-                    default_hps_temp_50_off: newValue[1],
+            onCommand(
+                {
+                    setpoints: {
+                        default_hps_temp_50_on: newValue[0],
+                        default_hps_temp_50_off: newValue[1],
+                    },
                 },
-            })
+                100
+            )
         } else if (target === "delay") {
-            commandMutation.mutate({
-                setpoints: {
-                    temp_delay: newValue,
+            onCommand(
+                {
+                    setpoints: {
+                        temp_delay: newValue,
+                    },
                 },
-            })
+                100
+            )
         }
-
-        console.log(target)
     }
 
     const handleResetOperatingHours = () => {
-        commandMutation.mutate({
-            command: {
-                heat_reserh: true,
+        onCommand(
+            {
+                commands: {
+                    heat_resetrh: true,
+                },
             },
-        })
+            100
+        )
     }
 
     const handleResetEnergyMeter = () => {
-        commandMutation.mutate({
-            command: {
-                heat_resetEnergy: true,
+        onCommand(
+            {
+                commands: {
+                    heat_resetEnergy: true,
+                },
             },
-        })
+            100
+        )
     }
     return (
         <Wrapper>
             <Content>
-                <h3>Tempeature range</h3>
+                {/* <h3>Tempeature range</h3>
                 <p>
                     If the temperature goes below the lower threhold the heating
                     will turn on. It will remain on until it exceeds the higher
@@ -77,7 +84,7 @@ function HeatingSettings({ allValues }) {
                             allValues.setpoints.default_hps_temp_50_off,
                         ]}
                     />
-                </CenteredDiv>
+                </CenteredDiv> */}
                 <h3>Time delay</h3>
                 <p>
                     The time delay the temperature can exceed the temperature

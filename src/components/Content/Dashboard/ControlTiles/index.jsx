@@ -1,19 +1,27 @@
-import React from "react"
+import React, { useContext } from "react"
 
+// Styles
 import { TileArea, HeatTile } from "./ControlTiles.styles"
 
+// Components
+import ControlTile from "../../../UI/ControlTile"
+
+// Icons
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined"
 import WaterDropOutlinedIcon from "@mui/icons-material/WaterDropOutlined"
 import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined"
 
-import ControlTile from "../../../UI/ControlTile"
+// Context
+import { AllValuesContext } from "../../../../store/context/allValues-context"
 
-function ControlTiles({ commandMutation, allValues }) {
+function ControlTiles() {
+    const { data: allValues, onCommand } = useContext(AllValuesContext)
+
     const camera = false
     const handleClickedButton = (controlledItem, state) => {
         switch (controlledItem) {
             case "Lighting":
-                commandMutation.mutate({
+                onCommand({
                     commands: {
                         led_zone1_on: state,
                         led_zone1_off: !state,
@@ -23,29 +31,41 @@ function ControlTiles({ commandMutation, allValues }) {
                 })
                 break
             case "Heating":
-                commandMutation.mutate({
-                    commands: {
-                        heat_zone1: state,
-                        heat_zone2: state,
-                        heat_zone3: state,
+                onCommand(
+                    {
+                        commands: {
+                            heat_zone1: state,
+                            heat_zone2: state,
+                            heat_zone3: state,
+                        },
                     },
-                })
+                    100
+                )
 
                 break
             case "Irrigation":
-                commandMutation.mutate({
-                    commands: { irrigation_solenoid: state },
-                })
+                onCommand(
+                    {
+                        commands: { irrigation_solenoid: state },
+                    },
+                    100
+                )
                 break
             case "CO2":
-                commandMutation.mutate({
-                    commands: { co2_solenoid: state },
-                })
+                onCommand(
+                    {
+                        commands: { co2_solenoid: state },
+                    },
+                    100
+                )
                 break
             case "Cover":
-                commandMutation.mutate({
-                    commands: { cover: state },
-                })
+                onCommand(
+                    {
+                        commands: { cover: state },
+                    },
+                    100
+                )
                 break
 
             default:

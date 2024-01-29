@@ -1,5 +1,4 @@
-import React from "react"
-import { useQueryClient, useMutation } from "@tanstack/react-query"
+import React, { useContext } from "react"
 
 // Styles
 import {
@@ -13,36 +12,37 @@ import {
 //Components
 import Btn from "../../../../UI/Btn"
 import ControlButtons from "./ControlButtons"
+import Card from "../../../../UI/Card"
+
+// Icons
 import ControlTiles from "./ControlTiles"
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 
-import Card from "../../../../UI/Card"
-// API
-import API from "../../../../../API"
+// Context
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
 
-function Lighting({ allValues }) {
-    const queryClient = useQueryClient()
-
-    const commandMutation = useMutation({
-        mutationFn: API.sendCommand,
-        onSuccess: () => {
-            setTimeout(() => queryClient.invalidateQueries(["allValues"]), 1500)
-        },
-    })
+function Lighting({}) {
+    const { data: allValues, onCommand } = useContext(AllValuesContext)
 
     const handleSetModeAuto = () => {
-        commandMutation.mutate({
-            commands: { light_auto: true, light_manual: false },
-        })
+        onCommand(
+            {
+                commands: { light_auto: true, light_manual: false },
+            },
+            100
+        )
     }
 
     const handleSetModeManual = () => {
-        commandMutation.mutate({
-            commands: { light_auto: false, light_manual: true },
-        })
+        onCommand(
+            {
+                commands: { light_auto: false, light_manual: true },
+            },
+            100
+        )
     }
 
     const handleControlLighting = (value) => {
@@ -64,7 +64,7 @@ function Lighting({ allValues }) {
             }
         }
 
-        commandMutation.mutate({
+        onCommand({
             ...command,
         })
     }

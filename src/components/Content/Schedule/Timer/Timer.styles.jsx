@@ -8,3 +8,24 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 12px;
 `
+
+export const CardContainer = styled.div`
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+
+    div {
+        &:first-child {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+    }
+
+    svg {
+        color: var(--turfpalColor);
+    }
+`
+export const CardContent = styled.div`
+    font-size: var(--fontSuperSmall);
+`

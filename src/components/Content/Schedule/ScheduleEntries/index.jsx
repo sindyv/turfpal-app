@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 import {
@@ -15,8 +15,11 @@ import ScheduleEntry from "../SchedueEntry"
 import API from "../../../../API"
 import MenuSpacer from "../../../UI/MenuSpacer"
 import Modal from "../../../UI/Modal"
+import { AllValuesContext } from "../../../../store/context/allValues-context"
 
-function ScheduleEntries({ allValues }) {
+function ScheduleEntries() {
+    const { data: allValues } = useContext(AllValuesContext)
+
     const [viewModal, setViewModal] = useState(false)
     const [activeIndex, setActiveIndex] = useState(null)
 

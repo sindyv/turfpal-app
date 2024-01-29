@@ -4,8 +4,7 @@ import { Link } from "react-router-dom"
 
 export const Wrapper = styled.div`
     position: relative;
-    margin: 10px 0 0 0;
-    padding: 10px 20px 10px 30px;
+    padding: 30px 20px 10px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
