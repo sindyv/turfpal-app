@@ -80,8 +80,9 @@ function Heating({}) {
                 <ControlTile
                     changeState={handleToggleHeat}
                     enabled={
-                        allValues.statuses.hps_zone1 ||
-                        allValues.statuses.hps_zone2
+                        allValues.statuses.heat_zone1 ||
+                        allValues.statuses.heat_zone2 ||
+                        allValues.statuses.heat_zone3
                     }
                     icon={HeatTile}
                     title={"Heating"}
@@ -89,7 +90,9 @@ function Heating({}) {
                         value: allValues.values.temperature,
                         valueUnit: "°C",
                         additionalData: [
-                            allValues.values.energyMeters[1].power,
+                            allValues.values.energyMeters.length > 1
+                                ? allValues.values.energyMeters[1].power
+                                : allValues.values.energyMeters[0].power,
                             allValues.values.heat_rh,
                         ],
                         additionalDataUnits: ["kW", "h"],

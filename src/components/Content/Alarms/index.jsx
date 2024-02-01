@@ -11,7 +11,9 @@ function Alarms({}) {
     const { data: allValues } = useContext(AllValuesContext)
     return (
         <Wrapper>
-            {typeof allValues?.alarms?.surge_protection !== "undefined" && (
+            {(typeof allValues?.alarms?.surge_protection !== "undefined" ||
+                typeof allValues?.alarms?.surge_protection2 !==
+                    "undefined") && (
                 <StatusCard
                     state={"warning"}
                     title={"Surge protector"}
@@ -19,7 +21,10 @@ function Alarms({}) {
                         "The surge protector is faulty. Replace as soon as possible to avoid damage to equitment"
                     }
                     inactiveText={"Surge protection is operational"}
-                    active={allValues.alarms.surge_protection}
+                    active={
+                        allValues.alarms.surge_protection ||
+                        allValues?.alarms?.surge_protection2
+                    }
                 />
             )}
             {typeof allValues.alarms.fuse !== "undefined" && (
@@ -30,7 +35,7 @@ function Alarms({}) {
                         "A fuse has tripped! Please check as soon as possible as the rig will not function correctly"
                     }
                     inactiveText={"All fuses intact"}
-                    active={allValues.alarms.fuse}
+                    active={allValues.alarms.fuse || allValues.alarms.fuse2}
                 />
             )}
             {typeof allValues.alarms.tilt !== "undefined" && (
@@ -105,6 +110,19 @@ function Alarms({}) {
                     }
                     inactiveText={"Sensor working"}
                     active={allValues.alarms.sensor_wind}
+                    activePrimaryColor='#ffedb5'
+                    activeSecondaryColor='#665e48'
+                />
+            )}
+            {typeof allValues.alarms.high_soil_temp !== "undefined" && (
+                <StatusCard
+                    state={"warning"}
+                    title={"Soil temperature"}
+                    activeText={
+                        "The soil temperature has exeeded the limit. The heating has been shut off"
+                    }
+                    inactiveText={"Temperature normal"}
+                    active={allValues.alarms.high_soil_temp}
                     activePrimaryColor='#ffedb5'
                     activeSecondaryColor='#665e48'
                 />

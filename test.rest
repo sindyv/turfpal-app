@@ -38,9 +38,9 @@ Content-Type: application/json
 
 ###
 
-GET http://192.168.1.1/api/system/device/info
+GET http://192.168.1.1/api/firmware/device/status
 Content-Type: application/json
-Authorization: Bearer 44ee32441e016ab5934e43562d138f58
+Authorization: Bearer 5fddeb5546d173017f361193bdb4afea
 
 
 ###

@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
     padding: 12px;
     min-height: 120px;
     width: 100%;
-    max-width: 200px;
+    max-width: 250px;
     background: ${(props) =>
         props.$enabled ? "var(--turfpalColor)" : "var(--lightGrey)"};
     color: ${(props) =>

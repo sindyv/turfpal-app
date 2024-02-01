@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 export const ButtonArea = styled.div`
+    width: 100%;
     padding: 6px;
     background: var(--lightGrey);
     display: flex;

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 // Styles
-import { Wrapper, ButtonsArea } from "./Dashboard.styles"
+import { Wrapper, ButtonsArea, LinkItem } from "./Dashboard.styles"
 
 //Components
 import Btn from "../../UI/Btn"
@@ -9,11 +9,13 @@ import ControlTiles from "./ControlTiles"
 // Images
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 
 // API
 import Session from "./Session"
 import { useContext } from "react"
 import { AllValuesContext } from "../../../store/context/allValues-context"
+
 function Dashboard({}) {
     const { data: allValues, onCommand } = useContext(AllValuesContext)
     const [states, setStates] = useState({
@@ -107,13 +109,28 @@ function Dashboard({}) {
                 </Btn>
             </ButtonsArea>
             {state ? (
-                <Session
-                    onStartStop={handleStartStop}
-                    onToggleSchedule={onToggleSchedule}
-                    onSelectSetpoints={onSelectSetpoints}
-                    allValues={allValues}
-                    tempStates={states}
-                />
+                <>
+                    <Session
+                        onStartStop={handleStartStop}
+                        onToggleSchedule={onToggleSchedule}
+                        onSelectSetpoints={onSelectSetpoints}
+                        allValues={allValues}
+                        tempStates={states}
+                    />
+                    <LinkItem
+                        to={"settings"}
+                        state={{ headerText: "Auto Mode > Settings" }}
+                    >
+                        <Btn
+                            backgroundColorDeselected={"var(--lightGrey)"}
+                            textColorDeselected={"var(--turfpalColor)"}
+                            customFont={"var(--turfpalFontBold)"}
+                            onClick={() => {}}
+                        >
+                            <SettingsOutlinedIcon /> Settings
+                        </Btn>
+                    </LinkItem>
+                </>
             ) : null}
             <ControlTiles />
         </Wrapper>

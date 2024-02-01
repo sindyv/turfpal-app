@@ -4,6 +4,7 @@ import { Wrapper } from "./TimeZone.styles"
 
 // Components
 import Zone from "./Zone"
+import MenuSpacer from "../../../UI/MenuSpacer"
 
 // Data
 import timeZones from "../../../../assets/data/TIMEZONES.json"
@@ -36,6 +37,7 @@ function TimeZone() {
                     allValues={allValues}
                 />
             ))}
+            <MenuSpacer />
         </Wrapper>
     )
 }

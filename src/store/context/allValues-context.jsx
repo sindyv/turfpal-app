@@ -9,35 +9,28 @@ const socket = new WebSocket(
     `ws://${import.meta.env.VITE_EXTERNAL_URL}/ws/nodered`
 )
 
-socket.addEventListener("open", () => {
-    socket.send("Hi server!")
-})
-
-socket.addEventListener("message", (event) => {
-    const data = JSON.parse(event.data)
-    console.log(data.payload)
-})
-
 function AllValuesContextProvider({ children }) {
     const queryClient = useQueryClient()
     let invalidationDelay = 1500
 
     const valuesQuery = useQuery({
         queryKey: ["allValues"],
-        queryFn: API.fetchAllValues,
-        refetchInterval: 5000,
+        queryFn: API.fetchAllValuesWebSocket,
     })
     const commandMutation = useMutation({
-        mutationFn: API.sendCommand,
-        onSuccess: () => {
-            setTimeout(() => queryClient.invalidateQueries(["allValues"]))
-        },
+        mutationFn: API.sendCommandWebSockets,
+        onSuccess: () => queryClient.invalidateQueries(["allValues"]),
     })
 
     const handleCommand = (command, delay = 1500) => {
         invalidationDelay = delay
 
         commandMutation.mutate({ ...command })
+    }
+
+    socket.onmessage = (event) => {
+        const allValues = JSON.parse(event.data).payload
+        queryClient.invalidateQueries(["allValues"])
     }
 
     return (

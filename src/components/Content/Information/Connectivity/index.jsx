@@ -19,9 +19,16 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined"
 
 // Context
 import { AllValuesContext } from "../../../../store/context/allValues-context"
+import dayjs from "dayjs"
 
 function Connectivity() {
     const { data: allValues } = useContext(AllValuesContext)
+    const routerDate = dayjs(
+        allValues.rig_data.router.gps.utc_timestamp * 1000
+    ).format("YYYY-MM-DD HH:mm")
+
+    const routerMacArray = allValues.rig_data.router.router_mac.match(/.{1,2}/g)
+    const routerMac = `${routerMacArray[0]}:${routerMacArray[1]}:${routerMacArray[2]}:${routerMacArray[3]}:${routerMacArray[4]}:${routerMacArray[5]}`
 
     return (
         <Wrapper>
@@ -37,27 +44,27 @@ function Connectivity() {
                         <InformationDataField header={"Name"} data={"RUTX11"} />
                         <InformationDataField
                             header={"Serial No."}
-                            data={allValues.rig_data.router_serial}
+                            data={allValues.rig_data.router.router_serial}
                         />
                         <InformationDataField
                             header={"WAN IP"}
-                            data={allValues.rig_data.wan_ip}
+                            data={allValues.rig_data.router.wanIpAddr}
                         />
                         <InformationDataField
                             header={"Date and time"}
-                            data={"Not Available"}
+                            data={routerDate}
                         />
                         <InformationDataField
                             header={"Firmware"}
-                            data={"Not Available"}
+                            data={allValues.rig_data.router.router_fw}
                         />
                         <InformationDataField
                             header={"MAC Address"}
-                            data={"Not Available"}
+                            data={routerMac}
                         />
                         <InformationDataField
                             header={"IMEI"}
-                            data={"Not Available"}
+                            data={allValues.rig_data.router.gsm_imei}
                         />
                     </CardContent>
                 </Card>
@@ -71,23 +78,23 @@ function Connectivity() {
                     <CardContent>
                         <InformationDataField
                             header={"Operator"}
-                            data={"Telia N"}
+                            data={allValues.rig_data.router.gsm_operator}
                         />
                         <InformationDataField
                             header={"Network type"}
-                            data={"LTE"}
+                            data={allValues.rig_data.router.gsm_connection_type}
                         />
                         <InformationDataField
                             header={"Network registration type"}
-                            data={"Roaming"}
+                            data={allValues.rig_data.router.gsm_netstate}
                         />
                         <InformationDataField
                             header={"Sginal strength"}
-                            data={"-58dBm"}
+                            data={allValues.rig_data.router.gsm_rssi + "dB"}
                         />
                         <InformationDataField
                             header={"IMSI"}
-                            data={"238208702911043"}
+                            data={allValues.rig_data.router.gsm_imsi}
                         />
                     </CardContent>
                 </Card>
@@ -100,16 +107,16 @@ function Connectivity() {
                     </CardDescription>
                     <CardContent>
                         <InformationDataField
-                            header={"SSID"}
-                            data={"Turfnet"}
+                            header={"SSID (2.4Ghz)"}
+                            data={allValues.rig_data.router.wifi_2_4_ghz_ssid}
+                        />
+                        <InformationDataField
+                            header={"SSID (5Ghz)"}
+                            data={allValues.rig_data.router.wifi_5_ghz_ssid}
                         />
                         <InformationDataField
                             header={"LAN IP"}
-                            data={"192.168.1.123"}
-                        />
-                        <InformationDataField
-                            header={"Signal Strength"}
-                            data={"Excellent"}
+                            data={allValues.rig_data.router.lanIpAddr}
                         />
                     </CardContent>
                 </Card>
@@ -124,15 +131,19 @@ function Connectivity() {
                         <InformationDataField header={"Satelites"} data={"9"} />
                         <InformationDataField
                             header={"Latitude"}
-                            data={"58.8976173400878"}
+                            data={allValues.rig_data.router.gps.latitude}
                         />
                         <InformationDataField
                             header={"Longitude"}
-                            data={"5.69833707809448"}
+                            data={allValues.rig_data.router.gps.longitude}
                         />
                         <InformationDataField
                             header={"Accuracy"}
-                            data={"0.1 HDOP"}
+                            data={allValues.rig_data.router.gps.accuracy}
+                        />
+                        <InformationDataField
+                            header={"Altitude"}
+                            data={allValues.rig_data.router.gps.altitude + "m"}
                         />
                     </CardContent>
                 </Card>

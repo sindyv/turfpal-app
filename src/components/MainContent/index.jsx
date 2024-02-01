@@ -31,6 +31,7 @@ import Menu from "../Menu"
 import Timer from "../Content/Schedule/Timer"
 import Help from "../Content/Help"
 import TimeZone from "../Content/Information/TimeZone"
+import Settings from "../Content/Settings"
 
 // Context
 import { MenuContext } from "../../store/context/menu-context"
@@ -47,6 +48,7 @@ const MainContent = () => {
                         <Route path='/' element={<Dashboard />} />
                         <Route path='/log' element={<Log />} />
                         <Route path='lighting' element={<Lighting />} />
+                        <Route path='settings' element={<Settings />} />
                         <Route
                             path='lighting/settings'
                             element={<LightingSettings />}
@@ -83,7 +85,7 @@ const MainContent = () => {
                         <Route path='/*' element={<ErrorPage />} />
                         <Route path='/help' element={<Help />} />
                     </Routes>
-                    <MenuSpacer />
+                    {/* <MenuSpacer /> */}
 
                     <Menu />
                 </>

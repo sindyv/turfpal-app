@@ -6,7 +6,7 @@ import { Container, BoldHeader, SmallHeader, Content } from "./Session.styles"
 
 // Components
 import { Switch } from "@mui/material"
-import SetpointsButtons from "./SetpointsButtons"
+import SetpointsButtons from "../../../UI/SetpointsButtons"
 import ValuesField from "./ValuesField"
 import Btn from "../../../UI/Btn"
 import Electricity from "./Electricity"

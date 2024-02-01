@@ -12,6 +12,7 @@ import {
 import Btn from "../../../../UI/Btn"
 import TempRangeSlider from "./TempRangeSlider"
 import TempDelaySlider from "./TempDelaySlider"
+import MaxTempSlider from "./MaxTempSlider"
 
 // Icons
 import AccessTimeIcon from "@mui/icons-material/AccessTime"
@@ -21,7 +22,7 @@ import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
 import { AllValuesContext } from "../../../../../store/context/allValues-context"
 
 function HeatingSettings() {
-    const { data: allValues } = useContext(AllValuesContext)
+    const { data: allValues, onCommand } = useContext(AllValuesContext)
 
     const onCommitedChange = (newValue, target) => {
         if (target === "range") {
@@ -39,6 +40,15 @@ function HeatingSettings() {
                 {
                     setpoints: {
                         temp_delay: newValue,
+                    },
+                },
+                100
+            )
+        } else if (target === "max") {
+            onCommand(
+                {
+                    setpoints: {
+                        soil_temp_max: newValue,
                     },
                 },
                 100
@@ -94,6 +104,17 @@ function HeatingSettings() {
                     <TempDelaySlider
                         onCommitedChange={onCommitedChange}
                         initialValue={allValues.setpoints.temp_delay}
+                    />
+                </CenteredDiv>
+                <h3>Maximum allowed soil temperature</h3>
+                <p>
+                    Temperature which will turn the heating off to avoid
+                    damaging the turf.
+                </p>
+                <CenteredDiv>
+                    <MaxTempSlider
+                        onCommitedChange={onCommitedChange}
+                        initialValue={allValues.setpoints.soil_temp_max}
                     />
                 </CenteredDiv>
                 {/* <Btn svgSize={28}>

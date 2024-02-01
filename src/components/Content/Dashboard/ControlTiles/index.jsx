@@ -116,7 +116,10 @@ function ControlTiles() {
                     value: allValues.values.temperature,
                     valueUnit: "°C",
                     additionalData: [
-                        allValues.values.energyMeters[1].total_effective_power,
+                        // some rigs only have 1 energy meter. If so, show other state
+                        allValues.values.energyMeters.length > 1
+                            ? allValues.values.energyMeters[1].power
+                            : allValues.values.energyMeters[0].power,
                         allValues.values.heat_rh,
                     ],
                     additionalDataUnits: ["kW", "h"],
