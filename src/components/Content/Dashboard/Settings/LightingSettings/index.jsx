@@ -54,6 +54,15 @@ function LightingSettings() {
                 },
                 100
             )
+        } else if (target === "timeDelay") {
+            onCommand(
+                {
+                    setpoints: {
+                        light_delay: newValue,
+                    },
+                },
+                100
+            )
         }
     }
 
@@ -87,17 +96,36 @@ function LightingSettings() {
             )
         }
     }
-
     return (
         <Wrapper>
             <Content>
-                <h3>Horti</h3>
+                <h3>Time delay</h3>
+                <p>
+                    The time delay for the lighting to change its output based
+                    on the measured PAR-value
+                </p>
                 <CenteredDiv>
                     <CustomSlider
+                        min={0}
+                        max={30}
+                        step={1}
                         onCommitedChange={onCommitedChange}
-                        initialValue={
-                            allValues.setpoints.default_led_light_50_on
-                        }
+                        externalValue={allValues.setpoints.led_zone1_dim}
+                        width={"80%"}
+                        color={"gold"}
+                        controlledItem={"timeDelay"}
+                        marks={CONSTANTS.constants.sliders.tempDelaySliderMarks}
+                    />
+                </CenteredDiv>
+                <h3>Horti</h3>
+
+                <p>The maximum allowed lighting percent in auto-mode.</p>
+                <CenteredDiv>
+                    <CustomSlider
+                        min={0}
+                        max={100}
+                        onCommitedChange={onCommitedChange}
+                        externalValue={allValues.setpoints.led_zone1_dim}
                         width={"80%"}
                         color={"gold"}
                         controlledItem={"horti"}
@@ -137,7 +165,6 @@ function LightingSettings() {
                         step={50}
                     />
                 </CenteredDiv> */}
-
                 <ButtonArea>
                     <Btn
                         svgSize={28}

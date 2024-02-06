@@ -105,11 +105,7 @@ function ControlTiles() {
                     state: { headerText: "Heating" },
                 }}
                 changeState={handleClickedButton}
-                enabled={
-                    allValues.statuses.heat_zone1 ||
-                    allValues.statuses.heat_zone2 ||
-                    allValues.statuses.heat_zone3
-                }
+                enabled={allValues.statuses.heat_zone1}
                 icon={HeatTile}
                 title={"Heating"}
                 data={{

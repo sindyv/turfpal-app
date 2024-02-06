@@ -32,7 +32,7 @@ function Schedule() {
             <TileArea>
                 <TimerTile
                     disabled={allValues.statuses.session}
-                    // enabled={allValues.statuses.calendar}
+                    enabled={allValues.statuses.calendar}
                     title={"Calendar"}
                     icon={EditCalendarOutlinedIcon}
                     linkTo={"entries"}

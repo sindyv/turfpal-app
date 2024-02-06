@@ -58,32 +58,31 @@ function Heating({}) {
             100
         )
     }
-
     return (
         <Wrapper>
-            <ButtonsArea>
-                <Btn
-                    selected={allValues.statuses.mode_heating === "auto"}
-                    onClick={handleSetModeAuto}
-                >
-                    <AutorenewOutlinedIcon /> Auto
-                </Btn>
-                <Btn
-                    svgSize={12}
-                    selected={allValues.statuses.mode_heating === "manual"}
-                    onClick={handleSetModeManual}
-                >
-                    <BackHandOutlinedIcon /> Manual
-                </Btn>
-            </ButtonsArea>
+            {allValues.statuses.session &&
+            allValues.statuses.mode === "auto" ? null : (
+                <ButtonsArea>
+                    <Btn
+                        selected={allValues.statuses.mode_heating === "auto"}
+                        onClick={handleSetModeAuto}
+                    >
+                        <AutorenewOutlinedIcon /> Auto
+                    </Btn>
+                    <Btn
+                        svgSize={12}
+                        selected={allValues.statuses.mode_heating === "manual"}
+                        onClick={handleSetModeManual}
+                    >
+                        <BackHandOutlinedIcon /> Manual
+                    </Btn>
+                </ButtonsArea>
+            )}
             <TileArea>
                 <ControlTile
                     changeState={handleToggleHeat}
-                    enabled={
-                        allValues.statuses.heat_zone1 ||
-                        allValues.statuses.heat_zone2 ||
-                        allValues.statuses.heat_zone3
-                    }
+                    disabled={allValues.statuses.mode_heating === "auto"}
+                    enabled={allValues.statuses.heat_zone1}
                     icon={HeatTile}
                     title={"Heating"}
                     data={{

@@ -14,7 +14,6 @@ import { Switch } from "@mui/material"
 
 function Slider({
     marks,
-    allValues,
     headerTitle,
     sliderValue,
     sliderUnit,
@@ -24,8 +23,12 @@ function Slider({
     sliderMax,
     sliderStep,
     sliderColor,
+    controlledItem,
+    onChange,
 }) {
-    const handleChange = () => {}
+    const handleChange = (value, target) => {
+        onChange(value, target)
+    }
 
     return (
         <CenteredDiv>
@@ -40,7 +43,10 @@ function Slider({
                         color='whiteBackground'
                         checked={switchValue}
                         onChange={(event) =>
-                            handleChange("Par", event.target.value)
+                            handleChange(
+                                event.target.checked,
+                                `${controlledItem}_switch`
+                            )
                         }
                     />
                 </div>
@@ -49,9 +55,10 @@ function Slider({
                 <CustomSlider
                     onCommitedChange={handleChange}
                     initialValue={sliderValue}
+                    externalValue={sliderValue}
                     width={"90%"}
                     color={sliderColor}
-                    controlledItem={"par"}
+                    controlledItem={controlledItem}
                     // marks={marks}
                     min={sliderMin}
                     max={sliderMax}

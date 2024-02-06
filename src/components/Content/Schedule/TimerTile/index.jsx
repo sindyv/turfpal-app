@@ -38,13 +38,15 @@ function TimerTile({
         <Wrapper $enabled={enabled}>
             <Header>
                 <HeaderTextArea>{title}</HeaderTextArea>
-                {/* <Switch
-                    disabled={disabled}
-                    checked={enabled}
-                    size='small'
-                    color='custom'
-                    onChange={handleClick}
-                /> */}
+                {title === "Calendar" ? (
+                    <Switch
+                        disabled={disabled}
+                        checked={enabled}
+                        size='small'
+                        color='custom'
+                        onChange={handleClick}
+                    />
+                ) : null}
             </Header>
             <LinkItem
                 to={linkTo}

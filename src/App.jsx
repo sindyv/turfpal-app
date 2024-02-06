@@ -11,8 +11,9 @@ import "../src/fonts/fonts.css"
 import Header from "./components/Header"
 import MainContent from "./components/MainContent"
 
-// API
+// Context
 import MenuContextProvider from "./store/context/menu-context"
+import SetpointsContextProvider from "./store/context/setpoints-context"
 import { useContext } from "react"
 import { AllValuesContext } from "./store/context/allValues-context"
 
@@ -29,12 +30,14 @@ function App() {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <LoginContextProvider>
                     <MenuContextProvider>
-                        <ThemeProvider theme={theme}>
-                            <Router>
-                                <Header />
-                                <MainContent />
-                            </Router>
-                        </ThemeProvider>
+                        <SetpointsContextProvider>
+                            <ThemeProvider theme={theme}>
+                                <Router>
+                                    <Header />
+                                    <MainContent />
+                                </Router>
+                            </ThemeProvider>
+                        </SetpointsContextProvider>
                     </MenuContextProvider>
                 </LoginContextProvider>
             </LocalizationProvider>

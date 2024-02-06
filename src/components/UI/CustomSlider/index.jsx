@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useState } from "react"
 
 import Slider from "@mui/material/Slider"
@@ -6,6 +6,7 @@ import Slider from "@mui/material/Slider"
 function CustomSlider({
     onCommitedChange,
     initialValue = 30,
+    externalValue,
     color,
     width,
     controlledItem,
@@ -14,7 +15,10 @@ function CustomSlider({
     min = 0,
     step = 5,
 }) {
-    const [value, setValue] = useState(initialValue)
+    const [value, setValue] = useState(externalValue)
+    useEffect(() => {
+        setValue(externalValue)
+    }, [externalValue])
 
     const handleChange = (event, newValue) => {
         setValue(newValue)
@@ -23,6 +27,7 @@ function CustomSlider({
     const handleCommitedValue = (event, newValue, activeThumb) => {
         onCommitedChange(newValue, controlledItem)
     }
+
     return (
         <Slider
             marks={marks}
@@ -30,6 +35,7 @@ function CustomSlider({
             max={max}
             step={step}
             valueLabelDisplay='auto'
+            // defaultValue={initialValue}
             onChange={handleChange}
             onChangeCommitted={handleCommitedValue}
             value={value}

@@ -71,22 +71,25 @@ function Lighting({}) {
 
     return (
         <Wrapper>
-            <ButtonsArea>
-                <Btn
-                    selected={allValues.statuses.mode_lighting === "auto"}
-                    onClick={handleSetModeAuto}
-                    svgSize={20}
-                >
-                    <AutorenewOutlinedIcon /> Auto
-                </Btn>
-                <Btn
-                    selected={allValues.statuses.mode_lighting === "manual"}
-                    onClick={handleSetModeManual}
-                    svgSize={20}
-                >
-                    <BackHandOutlinedIcon /> Manual
-                </Btn>
-            </ButtonsArea>
+            {allValues.statuses.session &&
+            allValues.statuses.mode === "auto" ? null : (
+                <ButtonsArea>
+                    <Btn
+                        selected={allValues.statuses.mode_lighting === "auto"}
+                        onClick={handleSetModeAuto}
+                        svgSize={20}
+                    >
+                        <AutorenewOutlinedIcon /> Auto
+                    </Btn>
+                    <Btn
+                        selected={allValues.statuses.mode_lighting === "manual"}
+                        onClick={handleSetModeManual}
+                        svgSize={20}
+                    >
+                        <BackHandOutlinedIcon /> Manual
+                    </Btn>
+                </ButtonsArea>
+            )}
             {allValues.statuses.mode_lighting === "manual" ? (
                 <ControlButtons
                     handleControlLighting={handleControlLighting}

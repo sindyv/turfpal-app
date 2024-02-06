@@ -19,8 +19,8 @@ function TempDelaySlider({ onCommitedChange, initialValue = 30 }) {
         <Slider
             marks={CONSTANTS.constants.sliders.tempDelaySliderMarks}
             min={0}
-            max={120}
-            step={10}
+            max={30}
+            step={1}
             valueLabelDisplay='auto'
             onChange={handleChangeDelay}
             onChangeCommitted={handleChangeCommited}

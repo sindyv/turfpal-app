@@ -73,7 +73,7 @@ function Information() {
                             <CardDescription>
                                 <AccessTimeOutlinedIcon /> Time Zone
                             </CardDescription>
-                            {selectedTimeZone[0].name}
+                            {selectedTimeZone[0]?.name}
                         </CardContent>
                     </Card>
                 </LinkItem>

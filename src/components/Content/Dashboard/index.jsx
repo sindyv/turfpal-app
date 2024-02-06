@@ -50,6 +50,7 @@ function Dashboard({}) {
                         heat_zone2: false,
                         heat_zone3: false,
                         dim: false,
+                        calendaroff: true,
                     },
                     setpoints: {
                         led_zone1_dim_man: 0,

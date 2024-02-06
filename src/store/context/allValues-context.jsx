@@ -1,4 +1,4 @@
-import { createContext } from "react"
+import { createContext, useEffect, useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import API from "../../API"
 import { useQueryClient, useMutation } from "@tanstack/react-query"
@@ -10,6 +10,7 @@ const socket = new WebSocket(
 )
 
 function AllValuesContextProvider({ children }) {
+    const [allValues, setAllValues] = useState({})
     const queryClient = useQueryClient()
     let invalidationDelay = 1500
 
@@ -17,6 +18,7 @@ function AllValuesContextProvider({ children }) {
         queryKey: ["allValues"],
         queryFn: API.fetchAllValuesWebSocket,
     })
+
     const commandMutation = useMutation({
         mutationFn: API.sendCommandWebSockets,
         onSuccess: () => queryClient.invalidateQueries(["allValues"]),
@@ -28,9 +30,22 @@ function AllValuesContextProvider({ children }) {
         commandMutation.mutate({ ...command })
     }
 
+    const updateSetpointsCache = (setpoints) => {
+        const queryData = {
+            ...valuesQuery.data,
+            setpoints: {
+                ...valuesQuery.data.setpoints,
+                ...setpoints,
+            },
+        }
+        queryClient.setQueryData(["allValues"], queryData)
+    }
+
     socket.onmessage = (event) => {
-        const allValues = JSON.parse(event.data).payload
-        queryClient.invalidateQueries(["allValues"])
+        // queryClient.invalidateQueries(["allValues"])
+        const data = JSON.parse(event.data).payload
+        queryClient.setQueryData(["allValues"], data)
+        setAllValues(data)
     }
 
     return (
@@ -40,6 +55,7 @@ function AllValuesContextProvider({ children }) {
                 isLoading: valuesQuery.isLoading,
                 error: valuesQuery.error,
                 onCommand: handleCommand,
+                updateSetpointsCache,
             }}
         >
             {children}

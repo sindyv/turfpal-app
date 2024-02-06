@@ -36,44 +36,54 @@ const defaultData = [
 
 function LogEntry({ data = defaultData }) {
     // copy array to not modify original array
-    const newData = [...data]
+    if (Array.isArray(data)) {
+        const newData = [...data]
 
-    // sort array
-    newData.sort((a, b) => a.timestamp - b.timestamp)
+        // sort array
+        newData.sort((a, b) => b.timestamp - a.timestamp)
 
-    // find the day of most recent entry
-    let currentDay = dayjs(newData[0].timestamp).day()
-    let currentDayIndex = 0
+        // find the day of most recent entry
+        let currentDay = dayjs(newData[0].timestamp).day()
+        let currentDayIndex = 0
 
-    const organizedData = []
+        const organizedData = []
 
-    // Create a two dimensional array where first index is day, second index is
-    // entry.
-    newData.forEach((entry, index) => {
-        if (index === 0) {
-            organizedData.push([entry])
-        } else if (currentDay !== dayjs(entry.timestamp).day()) {
-            currentDay = dayjs(entry.timestamp).day()
-            currentDayIndex += 1
-            organizedData.push([entry])
-        } else {
-            organizedData[currentDayIndex].push(entry)
-        }
-    })
-    return (
-        <Wrapper>
-            {organizedData.map((day) => {
-                return (
-                    <div key={uuidv4()}>
-                        <LogEntryHeader day={day} />
-                        {day.map((entry) => {
-                            return <LogEntryLine key={uuidv4()} entry={entry} />
-                        })}
-                    </div>
-                )
-            })}
-        </Wrapper>
-    )
+        // Create a two dimensional array where first index is day, second index is
+        // entry.
+        newData.forEach((entry, index) => {
+            if (index === 0) {
+                organizedData.push([entry])
+            } else if (currentDay !== dayjs(entry.timestamp).day()) {
+                currentDay = dayjs(entry.timestamp).day()
+                currentDayIndex += 1
+                organizedData.push([entry])
+            } else {
+                organizedData[currentDayIndex].push(entry)
+            }
+        })
+
+        return (
+            <Wrapper>
+                {organizedData.map((day) => {
+                    return (
+                        <div key={uuidv4()}>
+                            <LogEntryHeader day={day} />
+                            {day.map((entry) => {
+                                return (
+                                    <LogEntryLine
+                                        key={uuidv4()}
+                                        entry={entry}
+                                    />
+                                )
+                            })}
+                        </div>
+                    )
+                })}
+            </Wrapper>
+        )
+    } else {
+        return <h3>No Entries logged... </h3>
+    }
 }
 
 export default LogEntry

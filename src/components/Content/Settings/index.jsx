@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 
 // Styles
 import { Container } from "./Settings.styles"
@@ -10,106 +10,109 @@ import Slider from "./Slider"
 // Data
 import CONSTANTS from "../../../CONSTANTS.json"
 // Context
+import { SetpointsContext } from "../../../store/context/setpoints-context"
 import { AllValuesContext } from "../../../store/context/allValues-context"
 
 function Settings() {
+    const { updateSetpoints, updateSelctedSetpoints, selectedSetpoints } =
+        useContext(SetpointsContext)
     const { data: allValues } = useContext(AllValuesContext)
-
-    const onCommitedChange = (newValue, target) => {
-        if (target === "horti") {
-            onCommand(
-                {
-                    setpoints: {
-                        led_zone1_dim: newValue,
-                    },
-                },
-                100
-            )
-        } else if (target === "blue") {
-            onCommand(
-                {
-                    setpoints: {
-                        led_zone2_dim: newValue,
-                    },
-                },
-                100
-            )
-        } else if (target === "par") {
-            onCommand(
-                {
-                    setpoints: {
-                        default_led_light_50_on: newValue[0],
-                        default_led_dim_50_range2: newValue[1],
-                        default_led_light_50_off: newValue[2],
-                    },
-                },
-                100
-            )
-        }
-    }
-
-    const handleSelectSetpoints = (values) => {
-        console.log(values)
-    }
-
-    const handleEnable = (state, value) => {}
-
     return (
         <Container>
             <SetpointsButtons
-                onSelectSetpoints={handleSelectSetpoints}
-                activeSetpoints={"default"}
+                onSelectSetpoints={(value) => updateSelctedSetpoints(value)}
+                activeSetpoints={selectedSetpoints}
             />
             <Slider
                 marks={CONSTANTS.constants.sliders.parSlider}
-                switchValue={true}
-                sliderValue={[500, 1000, 2000]}
-                allValues={allValues}
+                switchValue={allValues.statuses.zone1_par}
+                sliderValue={[
+                    allValues.setpoints[`${selectedSetpoints}_led_light_50_on`],
+                    allValues.setpoints[
+                        `${selectedSetpoints}_led_dim_50_range2`
+                    ],
+                    allValues.setpoints[
+                        `${selectedSetpoints}_led_light_50_off`
+                    ],
+                ]}
                 headerTitle={"PAR Range"}
-                sliderValueText={"500-2500"}
+                sliderValueText={`${
+                    allValues.setpoints[`${selectedSetpoints}_led_light_50_on`]
+                } - 
+                ${
+                    allValues.setpoints[
+                        `${selectedSetpoints}_led_dim_50_range2`
+                    ]
+                } - 
+                ${
+                    allValues.setpoints[`${selectedSetpoints}_led_light_50_off`]
+                }`}
                 sliderUnit={"µMol"}
                 sliderMax={2500}
                 sliderStep={50}
                 sliderColor={"orange"}
+                onChange={updateSetpoints}
+                controlledItem={"par"}
             />
             <Slider
                 marks={CONSTANTS.constants.sliders.tempRangeSliderMarks}
-                switchValue={true}
-                sliderValue={[10, 20]}
-                allValues={allValues}
+                switchValue={allValues.statuses.zone1_heat}
+                sliderValue={[
+                    allValues.setpoints[`${selectedSetpoints}_hps_temp_50_on`],
+                    allValues.setpoints[`${selectedSetpoints}_hps_temp_50_off`],
+                ]}
                 headerTitle={"Temperature"}
-                sliderValueText={"6-25"}
+                sliderValueText={`${
+                    allValues.setpoints[`${selectedSetpoints}_hps_temp_50_on`]
+                } - 
+                ${allValues.setpoints[`${selectedSetpoints}_hps_temp_50_off`]}`}
                 sliderUnit={"°C"}
                 sliderMin={5}
                 sliderMax={25}
                 sliderStep={1}
                 sliderColor={"red"}
+                onChange={updateSetpoints}
+                controlledItem={"temperature"}
             />
             <Slider
                 marks={CONSTANTS.constants.sliders.waterTargetSlider}
-                switchValue={true}
-                sliderValue={[10]}
-                allValues={allValues}
+                switchValue={allValues.statuses?.irrigation}
+                sliderValue={
+                    allValues.setpoints[
+                        `${selectedSetpoints}_irrigation_target`
+                    ]
+                }
                 headerTitle={"Soil moisture"}
-                sliderValueText={"25"}
+                sliderValueText={`${
+                    allValues.setpoints[
+                        `${selectedSetpoints}_irrigation_target`
+                    ]
+                }`}
                 sliderUnit={"%"}
                 sliderMin={0}
                 sliderMax={100}
                 sliderStep={1}
+                onChange={updateSetpoints}
                 sliderColor={"dodgerblue"}
+                controlledItem={"irrigation"}
             />
             <Slider
                 marks={CONSTANTS.constants.sliders.co2Target}
-                switchValue={true}
-                sliderValue={[1200]}
-                allValues={allValues}
+                switchValue={allValues.statuses.co2}
+                sliderValue={
+                    allValues.setpoints[`${selectedSetpoints}_co2_target`]
+                }
                 headerTitle={"CO2"}
-                sliderValueText={"1200"}
+                sliderValueText={`${
+                    allValues.setpoints[`${selectedSetpoints}_co2_target`]
+                }`}
                 sliderUnit={"ppm"}
                 sliderMin={400}
                 sliderMax={2000}
-                sliderStep={1}
+                sliderStep={50}
+                onChange={updateSetpoints}
                 sliderColor={"grey"}
+                controlledItem={"co2"}
             />
         </Container>
     )

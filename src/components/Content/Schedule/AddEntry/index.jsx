@@ -54,7 +54,7 @@ function ScheduleAddEntry() {
     const commandMutation = useMutation({
         mutationFn: API.sendCommand,
         onSuccess: (data) => {
-            queryClient.setQueryData(["allValues"], data)
+            queryClient.invalidateQueries(["allValues"])
         },
     })
 
