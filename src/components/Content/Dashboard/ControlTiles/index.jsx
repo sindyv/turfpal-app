@@ -123,6 +123,7 @@ function ControlTiles() {
             />
             {allValues?.statuses?.irrigation_solenoid ?? false ? (
                 <ControlTile
+                    disabled={true}
                     linkParams={{
                         to: "irrigation",
                         state: { headerText: "Irrigation" },
@@ -139,8 +140,9 @@ function ControlTiles() {
                     }}
                 />
             ) : null}
-            {allValues?.statuses?.co2_solenoid ?? false ? (
+            {allValues?.values?.co2 ?? false ? (
                 <ControlTile
+                    disabled={true}
                     linkParams={{ to: "co2", state: { headerText: "CO2" } }}
                     changeState={handleClickedButton}
                     controlledItem={"CO2"}

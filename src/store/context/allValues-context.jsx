@@ -42,7 +42,6 @@ function AllValuesContextProvider({ children }) {
     }
 
     socket.onmessage = (event) => {
-        // queryClient.invalidateQueries(["allValues"])
         const data = JSON.parse(event.data).payload
         queryClient.setQueryData(["allValues"], data)
         setAllValues(data)

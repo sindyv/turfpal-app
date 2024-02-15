@@ -51,8 +51,6 @@ function Heating({}) {
             {
                 commands: {
                     heat_zone1: state,
-                    heat_zone2: state,
-                    heat_zone3: state,
                 },
             },
             100

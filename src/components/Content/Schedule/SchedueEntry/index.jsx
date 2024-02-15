@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 
 import {
     Wrapper,
@@ -20,6 +20,9 @@ import SettingsBackupRestoreOutlinedIcon from "@mui/icons-material/SettingsBacku
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined"
 import dayjs from "dayjs"
 
+// Context
+import { AllValuesContext } from "../../../../store/context/allValues-context"
+
 const defaultData = {
     schedule_index: 0,
     schedule_start_time: 1705294800,
@@ -29,6 +32,7 @@ const defaultData = {
 }
 
 function ScheduleEntry({ data = defaultData, toggleModal, onDeleteButton }) {
+    const { data: allValues, onCommand } = useContext(AllValuesContext)
     let setpoints = "Default"
     let Icon = <SettingsBackupRestoreOutlinedIcon />
 

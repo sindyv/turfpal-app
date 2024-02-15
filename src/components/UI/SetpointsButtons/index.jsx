@@ -33,24 +33,24 @@ function SetpointsButtons({ onSelectSetpoints, activeSetpoints }) {
                 Default
             </Btn>
             <Btn
-                selected={activeSetpoints === "user1"}
+                selected={activeSetpoints === "user_defined1"}
                 backgroundColorDeselected={"var(--lightGrey)"}
                 backgroundColorSelected={"var(--turfpalActiveBtn)"}
                 textColorSelected={"black"}
                 textColorDeselected={"black"}
                 customFont={"var(--turfpalFontBold)"}
-                onClick={() => handleSelectSetpoints("user1")}
+                onClick={() => handleSelectSetpoints("user_defined1")}
             >
                 Summer
             </Btn>
             <Btn
                 backgroundColorDeselected={"var(--lightGrey)"}
-                selected={activeSetpoints === "user2"}
+                selected={activeSetpoints === "user_defined2"}
                 backgroundColorSelected={"var(--turfpalActiveBtn)"}
                 textColorSelected={"black"}
                 textColorDeselected={"black"}
                 customFont={"var(--turfpalFontBold)"}
-                onClick={() => handleSelectSetpoints("user2")}
+                onClick={() => handleSelectSetpoints("user_defined2")}
             >
                 Winter
             </Btn>

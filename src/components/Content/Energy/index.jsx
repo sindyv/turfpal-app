@@ -5,7 +5,6 @@ import { Wrapper, TileArea } from "./Energy.styles"
 
 // Components
 import EnergyCard from "./EnergyCard"
-
 // Icons
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined"
 

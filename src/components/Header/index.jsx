@@ -22,11 +22,13 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined"
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined"
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
-import { AllValuesContext } from "../../store/context/allValues-context"
+import TimelineIcon from "@mui/icons-material/Timeline"
+import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined"
 
 // Context
 import { LoginContext } from "../../store/context/login-context"
 import { MenuContext } from "../../store/context/menu-context"
+import { AllValuesContext } from "../../store/context/allValues-context"
 
 const Header = () => {
     const location = useLocation()
@@ -49,6 +51,8 @@ const Header = () => {
         return
     }
 
+    const username = useFetchUsername()
+
     return (
         <Wrapper>
             <HeaderText>{headerText}</HeaderText>
@@ -61,7 +65,7 @@ const Header = () => {
                                 " " +
                                 allValues.rig_data.type}
                         </h3>
-                        <p>{useFetchUsername()}</p>
+                        <p>{username}</p>
                     </MenuHeader>
                     <MenuOptions>
                         {/* <div>
@@ -83,6 +87,21 @@ const Header = () => {
                                 </LinkItem>
                             </span>
                         </div>
+                        {username === "admin" ? (
+                            <div>
+                                <span>
+                                    <LinkItem
+                                        to={"dali"}
+                                        onClick={() => {
+                                            hideMenu()
+                                        }}
+                                        state={{ headerText: "Dali settings" }}
+                                    >
+                                        <LightbulbOutlinedIcon /> DALI Settings
+                                    </LinkItem>
+                                </span>
+                            </div>
+                        ) : null}
                         <div>
                             <span>
                                 <LinkItem
@@ -93,6 +112,19 @@ const Header = () => {
                                     state={{ headerText: "Help" }}
                                 >
                                     <HelpOutlineOutlinedIcon /> Help
+                                </LinkItem>
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                <LinkItem
+                                    to={"sessionlog"}
+                                    onClick={() => {
+                                        hideMenu()
+                                    }}
+                                    state={{ headerText: "Session log" }}
+                                >
+                                    <TimelineIcon /> Session Log
                                 </LinkItem>
                             </span>
                         </div>

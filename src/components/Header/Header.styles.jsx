@@ -70,7 +70,7 @@ export const Menu = styled.div`
         }
         to {
             opacity: 1;
-            height: 220px;
+            height: 315px;
         }
     }
 `

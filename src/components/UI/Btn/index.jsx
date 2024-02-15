@@ -28,7 +28,7 @@ function Btn({
             $backgroundColorSelected={backgroundColorSelected}
             $backgroundColorDeselected={backgroundColorDeselected}
             type={type}
-            onClick={handleClick}
+            onClick={disabled ? null : handleClick}
         >
             <TextArea $svgSize={svgSize} $customFont={customFont}>
                 {children}
