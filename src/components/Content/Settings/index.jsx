@@ -13,15 +13,20 @@ import CONSTANTS from "../../../CONSTANTS.json"
 import { SetpointsContext } from "../../../store/context/setpoints-context"
 import { AllValuesContext } from "../../../store/context/allValues-context"
 
+// Static data
+const setpointsArray = ["default", "user1", "user2"]
+
 function Settings() {
     const { updateSetpoints, updateSelctedSetpoints, selectedSetpoints } =
         useContext(SetpointsContext)
     const { data: allValues } = useContext(AllValuesContext)
+    console.log(selectedSetpoints)
     return (
         <Container>
             <SetpointsButtons
                 onSelectSetpoints={(value) => updateSelctedSetpoints(value)}
                 activeSetpoints={selectedSetpoints}
+                setpointsArray={setpointsArray}
             />
             <Slider
                 marks={CONSTANTS.constants.sliders.parSlider}
@@ -56,7 +61,7 @@ function Settings() {
             />
             <Slider
                 marks={CONSTANTS.constants.sliders.tempRangeSliderMarks}
-                switchValue={allValues.statuses.zone1_heat}
+                switchValue={allValues.statuses.zone1_temp}
                 sliderValue={[
                     allValues.setpoints[`${selectedSetpoints}_hps_temp_50_on`],
                     allValues.setpoints[`${selectedSetpoints}_hps_temp_50_off`],

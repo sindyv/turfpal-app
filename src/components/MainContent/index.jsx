@@ -38,6 +38,7 @@ import { MenuContext } from "../../store/context/menu-context"
 import { LoginContext } from "../../store/context/login-context"
 import SessionLog from "../Content/SessionLog"
 import Dali from "../Content/Dali"
+import Modbus from "../Content/Modbus"
 
 const MainContent = () => {
     const { hideMenu } = useContext(MenuContext)
@@ -49,6 +50,7 @@ const MainContent = () => {
                     <Routes>
                         <Route path='/' element={<Dashboard />} />
                         <Route path='/log' element={<Log />} />
+                        <Route path='/modbus' element={<Modbus />} />
                         <Route path='/sessionlog' element={<SessionLog />} />
                         <Route path='/dali' element={<Dali />} />
 

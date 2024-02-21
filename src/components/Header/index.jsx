@@ -24,6 +24,7 @@ import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined"
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined"
 import TimelineIcon from "@mui/icons-material/Timeline"
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined"
+import DeviceHubIcon from "@mui/icons-material/DeviceHub"
 
 // Context
 import { LoginContext } from "../../store/context/login-context"
@@ -88,19 +89,39 @@ const Header = () => {
                             </span>
                         </div>
                         {username === "admin" ? (
-                            <div>
-                                <span>
-                                    <LinkItem
-                                        to={"dali"}
-                                        onClick={() => {
-                                            hideMenu()
-                                        }}
-                                        state={{ headerText: "Dali settings" }}
-                                    >
-                                        <LightbulbOutlinedIcon /> DALI Settings
-                                    </LinkItem>
-                                </span>
-                            </div>
+                            <>
+                                <div>
+                                    <span>
+                                        <LinkItem
+                                            to={"modbus"}
+                                            onClick={() => {
+                                                hideMenu()
+                                            }}
+                                            state={{
+                                                headerText: "Modbus settings",
+                                            }}
+                                        >
+                                            <DeviceHubIcon /> Modbus Settings
+                                        </LinkItem>
+                                    </span>
+                                </div>
+                                <div>
+                                    <span>
+                                        <LinkItem
+                                            to={"dali"}
+                                            onClick={() => {
+                                                hideMenu()
+                                            }}
+                                            state={{
+                                                headerText: "Dali settings",
+                                            }}
+                                        >
+                                            <LightbulbOutlinedIcon /> DALI
+                                            Settings
+                                        </LinkItem>
+                                    </span>
+                                </div>
+                            </>
                         ) : null}
                         <div>
                             <span>

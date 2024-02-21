@@ -12,7 +12,7 @@ export const Header = styled.div`
 
 export const CardContent = styled.div`
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     /* display: flex;
     align-items: center;

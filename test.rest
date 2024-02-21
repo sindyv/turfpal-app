@@ -21,10 +21,15 @@ post http://192.168.1.3/dali/scan
 Content-Type: application/json
 
 {
-  "newInstallation": true,
+  "newInstallation": false,
   "noAddressing": true,
   "useLines": []
 }
+###
+
+get http://192.168.1.3/dali/scan
+Content-Type: application/json
+
 ###
 
 get http://192.168.1.3/devices
@@ -55,3 +60,19 @@ Authorization: Bearer 5fddeb5546d173017f361193bdb4afea
 GET http://192.168.1.1/api/dhcp/leases/ipv4/status
 Content-Type: application/json
 Authorization: Bearer f0b8e9b8cf31ec3d4bc2eaad6cb97eac
+
+###
+
+get http://192.168.1.2:1880/modbus/1
+Content-Type: application/json
+
+###
+
+put http://192.168.1.2:1880/modbus/15
+Content-Type: application/json
+
+{
+  "isNewSensor" : true,
+  "sensorType" : 2,
+  "newAddress" : 4
+}

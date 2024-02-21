@@ -53,7 +53,7 @@ function Mode({ scheduleObject, onSelect }) {
                     >
                         Winter
                     </Btn>
-                    <Btn
+                    {/* <Btn
                         selected={scheduleObject.cmd_schedule_value === 3}
                         backgroundColorSelected={"var(--turfpalActiveBtn)"}
                         backgroundColorDeselected={"var(--grey)"}
@@ -63,7 +63,7 @@ function Mode({ scheduleObject, onSelect }) {
                         onClick={() => handleClick(3)}
                     >
                         Custom
-                    </Btn>
+                    </Btn> */}
                 </CardContent>
             </Card>
         </Wrapper>

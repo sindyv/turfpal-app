@@ -20,6 +20,9 @@ import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined
 // Context
 import { AllValuesContext } from "../../../../store/context/allValues-context"
 
+// Static data
+const setpointsArray = ["default", "user_defined1", "user_defined2"]
+
 function Session({
     onToggleSchedule,
     onStartStop,
@@ -88,6 +91,7 @@ function Session({
                             <SetpointsButtons
                                 onSelectSetpoints={onSelectSetpoints}
                                 activeSetpoints={tempStates.setpoints}
+                                setpointsArray={setpointsArray}
                             />
                         </div>
                     </>

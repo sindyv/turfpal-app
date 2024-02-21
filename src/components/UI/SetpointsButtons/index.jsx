@@ -3,7 +3,11 @@ import React from "react"
 import { ButtonArea } from "./SetpointButtons.styles"
 
 import Btn from "../Btn"
-function SetpointsButtons({ onSelectSetpoints, activeSetpoints }) {
+function SetpointsButtons({
+    onSelectSetpoints,
+    activeSetpoints,
+    setpointsArray,
+}) {
     const handleSelectSetpoints = (value) => {
         onSelectSetpoints(value)
     }
@@ -22,35 +26,35 @@ function SetpointsButtons({ onSelectSetpoints, activeSetpoints }) {
                 Default
             </Btn> */}
             <Btn
-                selected={activeSetpoints === "default"}
+                selected={activeSetpoints === `${setpointsArray[0]}`}
                 backgroundColorDeselected={"var(--lightGrey)"}
                 backgroundColorSelected={"var(--turfpalActiveBtn)"}
                 textColorSelected={"black"}
                 textColorDeselected={"black"}
                 customFont={"var(--turfpalFontBold)"}
-                onClick={() => handleSelectSetpoints("default")}
+                onClick={() => handleSelectSetpoints(`${setpointsArray[0]}`)}
             >
                 Default
             </Btn>
             <Btn
-                selected={activeSetpoints === "user_defined1"}
+                selected={activeSetpoints === `${setpointsArray[1]}`}
                 backgroundColorDeselected={"var(--lightGrey)"}
                 backgroundColorSelected={"var(--turfpalActiveBtn)"}
                 textColorSelected={"black"}
                 textColorDeselected={"black"}
                 customFont={"var(--turfpalFontBold)"}
-                onClick={() => handleSelectSetpoints("user_defined1")}
+                onClick={() => handleSelectSetpoints(`${setpointsArray[1]}`)}
             >
                 Summer
             </Btn>
             <Btn
                 backgroundColorDeselected={"var(--lightGrey)"}
-                selected={activeSetpoints === "user_defined2"}
+                selected={activeSetpoints === `${setpointsArray[2]}`}
                 backgroundColorSelected={"var(--turfpalActiveBtn)"}
                 textColorSelected={"black"}
                 textColorDeselected={"black"}
                 customFont={"var(--turfpalFontBold)"}
-                onClick={() => handleSelectSetpoints("user_defined2")}
+                onClick={() => handleSelectSetpoints(`${setpointsArray[2]}`)}
             >
                 Winter
             </Btn>
