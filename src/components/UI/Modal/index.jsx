@@ -1,19 +1,17 @@
-import React from "react"
+import React, { forwardRef, useEffect, useRef } from "react"
+import { createPortal } from "react-dom"
 
-import { Background, Wrapper, Content } from "./Modal.styles"
+import { Wrapper } from "./Modal.styles"
 
 import Card from "../Card"
 
-function Modal({ children, onClick }) {
-    return (
-        <Wrapper>
-            <Background onClick={onClick} />
-
-            <Content>
-                <Card>{children}</Card>
-            </Content>
-        </Wrapper>
+const Modal = forwardRef(function Modal({ children, onClick }, ref) {
+    return createPortal(
+        <Wrapper ref={ref}>
+            <div>{children}</div>
+        </Wrapper>,
+        document.getElementById("modal")
     )
-}
+})
 
 export default Modal

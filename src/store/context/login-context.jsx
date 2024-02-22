@@ -9,7 +9,10 @@ function LoginContextProvider({ children }) {
     const [loggedIn, setLoggedIn] = useState(false)
 
     const handleLogin = ({ username, password }) => {
-        if (username === "admin" && password === "1234") {
+        if (
+            (username === "admin" && password === "1234") ||
+            (username === "user" && password === "turfpal")
+        ) {
             localStorage.setItem(
                 "loginInformation",
                 JSON.stringify({

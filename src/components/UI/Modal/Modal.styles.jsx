@@ -1,32 +1,22 @@
 import styled from "styled-components"
 
-export const Background = styled.div`
-    background: rgba(0, 0, 0, 0.33);
-    height: 100%;
-    width: 100%;
-    position: absolute;
-`
+export const Wrapper = styled.dialog`
+    border: 1px solid #fff;
+    border-radius: 8px;
+    padding: 2px;
+    overflow: hidden;
 
-export const Content = styled.div`
-    z-index: 101;
-`
+    &[open] {
+        animation: slide-in-from-top 0.1s ease-out;
+    }
 
-export const Wrapper = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: animateCardz 500ms;
-    @keyframes animateCardz {
-        from {
+    @keyframes slide-in-from-top {
+        0% {
+            transform: translateY(-15%);
             opacity: 0;
         }
-        to {
+        100% {
+            transform: translateY(0);
             opacity: 1;
         }
     }

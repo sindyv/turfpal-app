@@ -49,6 +49,7 @@ export const ModalContent = styled.div`
     button {
         border: 0px;
         color: var(--turfpalColor);
+        background: none;
     }
 
     h3 {

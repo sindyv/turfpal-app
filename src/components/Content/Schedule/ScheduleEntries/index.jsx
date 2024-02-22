@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useRef } from "react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 import {
@@ -22,6 +22,8 @@ function ScheduleEntries() {
 
     const [viewModal, setViewModal] = useState(false)
     const [activeIndex, setActiveIndex] = useState(null)
+
+    const dialog = useRef()
 
     const queryClient = useQueryClient()
 
@@ -49,8 +51,12 @@ function ScheduleEntries() {
             },
         })
 
-        setViewModal(false)
+        dialog.current.close()
     }
+    const openModal = () => {
+        dialog.current.showModal()
+    }
+
     let errorMessage = ""
     let sortedArray = []
     if (Array.isArray(allValues.schedules)) {
@@ -68,18 +74,20 @@ function ScheduleEntries() {
 
     return (
         <Wrapper>
-            {viewModal && (
-                <Modal onClick={toggleModal}>
-                    <ModalContent>
-                        <h3>Do you really want to delete? </h3>
-                        <p>If you delete this, you cannot restore it</p>
-                        <div>
-                            <button onClick={handleDelete}>DELETE</button>{" "}
-                            <button onClick={toggleModal}>CANCEL</button>
-                        </div>
-                    </ModalContent>
-                </Modal>
-            )}
+            <Modal ref={dialog}>
+                <ModalContent>
+                    <h3>Do you really want to delete? </h3>
+                    <p>If you delete this, you cannot restore it</p>
+                    <div>
+                        <button onClick={handleDelete}>DELETE</button>{" "}
+                        <form method='dialog'>
+                            <button>Close</button>
+                            {/* <button onClick={toggleModal}>CANCEL</button> */}
+                        </form>
+                    </div>
+                </ModalContent>
+            </Modal>
+
             <Header>
                 <span>
                     <LinkItem
@@ -97,7 +105,7 @@ function ScheduleEntries() {
                               <ScheduleEntry
                                   data={item}
                                   key={item.schedule_index}
-                                  toggleModal={toggleModal}
+                                  toggleModal={openModal}
                                   onDeleteButton={onDeleteButton}
                               />
                           )
