@@ -10,6 +10,7 @@ import ControlTile from "../../../UI/ControlTile"
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined"
 import WaterDropOutlinedIcon from "@mui/icons-material/WaterDropOutlined"
 import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined"
+import HeatIcon from "../../../../assets/icons/heat.jsx"
 
 // Context
 import { AllValuesContext } from "../../../../store/context/allValues-context"
@@ -92,10 +93,10 @@ function ControlTiles() {
                     value: allValues.values.light,
                     valueUnit: "µMol",
                     additionalData: [
-                        allValues.values.energyMeters[0].power,
+                        allValues.values.led_zone1_dim, //allValues.values.energyMeters[0].power,
                         allValues.values.led_zone1_rh,
                     ],
-                    additionalDataUnits: ["kW", "h"],
+                    additionalDataUnits: ["%", "h"],
                 }}
             />
             <ControlTile
@@ -106,19 +107,22 @@ function ControlTiles() {
                 }}
                 changeState={handleClickedButton}
                 enabled={allValues.statuses.heat_zone1}
-                icon={HeatTile}
+                icon={HeatIcon}
                 title={"Heating"}
                 data={{
-                    value: allValues.values.temperature,
+                    value: parseFloat(
+                        allValues.values?.soil_temperature
+                    ).toFixed(1),
                     valueUnit: "°C",
                     additionalData: [
                         // some rigs only have 1 energy meter. If so, show other state
-                        allValues.values.energyMeters.length > 1
-                            ? allValues.values.energyMeters[1].power
-                            : allValues.values.energyMeters[0].power,
+                        null,
+                        // allValues.values.energyMeters.length > 1
+                        //     ? allValues.values.energyMeters[1].power
+                        //     : allValues.values.energyMeters[0].power,
                         allValues.values.heat_rh,
                     ],
-                    additionalDataUnits: ["kW", "h"],
+                    additionalDataUnits: ["", "h"],
                 }}
             />
             {allValues?.statuses?.irrigation_solenoid ?? false ? (
@@ -140,7 +144,7 @@ function ControlTiles() {
                     }}
                 />
             ) : null}
-            {allValues?.values?.co2 ?? false ? (
+            {/* {allValues?.values?.co2 ?? false ? (
                 <ControlTile
                     disabled={true}
                     linkParams={{ to: "co2", state: { headerText: "CO2" } }}
@@ -153,13 +157,13 @@ function ControlTiles() {
                         value: allValues.values.co2,
                         valueUnit: "ppm",
                         additionalData: [
-                            allValues.values.co2_consumption,
-                            allValues.values.co2_rh,
+                            0, //allValues.values.co2_consumption, <--- Temporary commented out because it is not finished in the back-end
+                            0, //allValues.values.co2_rh,<--- Temporary commented out because it is not finished in the back-end
                         ],
                         additionalDataUnits: ["kg", "h"],
                     }}
                 />
-            ) : null}
+            ) : null} */}
             {allValues?.statuses?.cover ?? false ? (
                 <ControlTile
                     linkParams={{

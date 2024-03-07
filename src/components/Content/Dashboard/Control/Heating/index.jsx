@@ -21,6 +21,7 @@ import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
+import HeatIcon from "../../../../../assets/icons/heat"
 
 // Context
 import { AllValuesContext } from "../../../../../store/context/allValues-context"
@@ -46,7 +47,7 @@ function Heating({}) {
         )
     }
 
-    const handleToggleHeat = (controlledItem, state) => {
+    const handleToggleHeat = (state) => {
         onCommand(
             {
                 commands: {
@@ -76,15 +77,41 @@ function Heating({}) {
                     </Btn>
                 </ButtonsArea>
             )}
+            {allValues.statuses.mode_heating === "manual" && (
+                <ButtonsArea $control={true}>
+                    <Btn
+                        selected={allValues.statuses.heat_zone1}
+                        onClick={() => handleToggleHeat(true)}
+                        backgroundColorDeselected={"var(--lightGrey)"}
+                        backgroundColorSelected={"var(--turfpalActiveBtn)"}
+                        textColorSelected={"black"}
+                        textColorDeselected={"black"}
+                    >
+                        <AutorenewOutlinedIcon /> On
+                    </Btn>
+                    <Btn
+                        svgSize={12}
+                        selected={!allValues.statuses.heat_zone1}
+                        backgroundColorDeselected={"var(--lightGrey)"}
+                        backgroundColorSelected={"var(--turfpalActiveBtn)"}
+                        textColorSelected={"black"}
+                        textColorDeselected={"black"}
+                        onClick={() => handleToggleHeat(false)}
+                    >
+                        <BackHandOutlinedIcon /> Off
+                    </Btn>
+                </ButtonsArea>
+            )}
             <TileArea>
                 <ControlTile
-                    changeState={handleToggleHeat}
-                    disabled={allValues.statuses.mode_heating === "auto"}
+                    disabled={true}
                     enabled={allValues.statuses.heat_zone1}
-                    icon={HeatTile}
+                    icon={HeatIcon}
                     title={"Heating"}
                     data={{
-                        value: allValues.values.temperature,
+                        value: parseFloat(
+                            allValues.values?.soil_temperature
+                        ).toFixed(1),
                         valueUnit: "°C",
                         additionalData: [
                             allValues.values.energyMeters.length > 1

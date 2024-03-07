@@ -110,7 +110,7 @@ function LightingSettings() {
                         max={30}
                         step={1}
                         onCommitedChange={onCommitedChange}
-                        externalValue={allValues.setpoints.led_zone1_dim}
+                        externalValue={allValues.setpoints.light_delay}
                         width={"80%"}
                         color={"gold"}
                         controlledItem={"timeDelay"}
@@ -180,13 +180,13 @@ function LightingSettings() {
                         <AccessTimeIcon />
                         Reset operating hours Blue
                     </Btn>
-                    <Btn
+                    {/* <Btn
                         svgSize={28}
                         onClick={() => handleBtnPress("resetEnergy")}
                     >
                         <AssessmentOutlinedIcon />
                         Reset energy consumption
-                    </Btn>
+                    </Btn> */}
                 </ButtonArea>
             </Content>
         </Wrapper>

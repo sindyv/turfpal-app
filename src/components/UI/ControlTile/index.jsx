@@ -40,7 +40,7 @@ function ControlTile({
     return (
         <Wrapper $enabled={enabled}>
             <Header>
-                <HeaderTextArea>
+                <HeaderTextArea $enabled={enabled}>
                     <Icon />
                     {title}
                 </HeaderTextArea>
@@ -73,11 +73,15 @@ function ControlTile({
             )}
             <DataArea>
                 <span>
-                    {Math.round(data.additionalData[0] * 10) / 10}
+                    {data.additionalData[0] !== null
+                        ? Math.round(data.additionalData[0] * 10) / 10
+                        : null}
                     <Units>{data.additionalDataUnits[0]}</Units>
                 </span>
                 <span>
-                    {Math.round(data.additionalData[1] * 10) / 10}
+                    {data.additionalData[1] !== null
+                        ? Math.round(data.additionalData[1] * 10) / 10
+                        : null}
                     <Units>{data.additionalDataUnits[1]}</Units>
                 </span>
             </DataArea>

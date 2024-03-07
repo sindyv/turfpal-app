@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
         props.$enabled ? "var(--turfpalColor)" : "var(--lightGrey)"};
     color: ${(props) =>
         props.$enabled ? "var(--white)" : "var(--turfpalColor)"};
+
     border-radius: 8px;
 
     transition: background-color 500ms, color 500ms;
@@ -40,6 +41,12 @@ export const HeaderTextArea = styled.div`
     svg {
         height: 18px;
         width: 18px;
+
+        fill: ${(props) =>
+            props.$enabled ? "var(--white)" : "var(--turfpalColor)"};
+
+        color: ${(props) =>
+            props.$enabled ? "var(--white)" : "var(--turfpalColor)"};
     }
 `
 export const ValueArea = styled.div`

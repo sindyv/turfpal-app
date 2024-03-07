@@ -126,10 +126,10 @@ function HeatingSettings() {
                         <AccessTimeIcon />
                         Reset operating hours
                     </Btn>
-                    <Btn svgSize={28} onClick={handleResetEnergyMeter}>
+                    {/* <Btn svgSize={28} onClick={handleResetEnergyMeter}>
                         <AssessmentOutlinedIcon />
                         Reset energy consumption
-                    </Btn>
+                    </Btn> */}
                 </ButtonArea>
             </Content>
         </Wrapper>

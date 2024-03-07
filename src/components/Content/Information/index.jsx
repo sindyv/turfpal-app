@@ -59,14 +59,14 @@ function Information() {
                         {import.meta.env.VITE_APP_VERSION}
                     </CardContent>
                 </Card>
-                <Card>
+                {/* <Card>
                     <CardContent>
                         <CardDescription>
                             <HubOutlinedIcon /> PLC version
                         </CardDescription>
                         {allValues.rig_data.software_version}
                     </CardContent>
-                </Card>
+                </Card> */}
                 <LinkItem to={"/timezone"} state={{ headerText: "Time Zone" }}>
                     <Card>
                         <CardContent>

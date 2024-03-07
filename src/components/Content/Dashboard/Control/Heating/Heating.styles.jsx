@@ -29,9 +29,10 @@ export const ButtonsArea = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: var(--turfpalColor);
+    background-color: ${(props) =>
+        props.$control ? "var(--lightGrey)" : "var(--turfpalColor)"};
     padding: 8px;
-    border: 1px solid var(--turfpalColor);
+    border: none;
     border-radius: 8px;
     gap: 12px;
     margin: 0 0 24px 0;

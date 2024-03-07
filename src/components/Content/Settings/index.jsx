@@ -79,7 +79,7 @@ function Settings() {
                 onChange={updateSetpoints}
                 controlledItem={"temperature"}
             />
-            <Slider
+            {/* <Slider
                 marks={CONSTANTS.constants.sliders.waterTargetSlider}
                 switchValue={allValues.statuses?.irrigation}
                 sliderValue={
@@ -100,25 +100,32 @@ function Settings() {
                 onChange={updateSetpoints}
                 sliderColor={"dodgerblue"}
                 controlledItem={"irrigation"}
-            />
-            <Slider
-                marks={CONSTANTS.constants.sliders.co2Target}
-                switchValue={allValues.statuses.co2}
-                sliderValue={
-                    allValues.setpoints[`${selectedSetpoints}_co2_target`]
-                }
-                headerTitle={"CO2"}
-                sliderValueText={`${
-                    allValues.setpoints[`${selectedSetpoints}_co2_target`]
-                }`}
-                sliderUnit={"ppm"}
-                sliderMin={400}
-                sliderMax={2000}
-                sliderStep={50}
-                onChange={updateSetpoints}
-                sliderColor={"grey"}
-                controlledItem={"co2"}
-            />
+            /> */}
+            {allValues.values?.co2 &&
+                false && ( // removed since the back end is not completed
+                    <Slider
+                        marks={CONSTANTS.constants.sliders.co2Target}
+                        switchValue={allValues.statuses.co2}
+                        sliderValue={
+                            allValues.setpoints[
+                                `${selectedSetpoints}_co2_target`
+                            ]
+                        }
+                        headerTitle={"CO2"}
+                        sliderValueText={`${
+                            allValues.setpoints[
+                                `${selectedSetpoints}_co2_target`
+                            ]
+                        }`}
+                        sliderUnit={"ppm"}
+                        sliderMin={400}
+                        sliderMax={2000}
+                        sliderStep={50}
+                        onChange={updateSetpoints}
+                        sliderColor={"grey"}
+                        controlledItem={"co2"}
+                    />
+                )}
         </Container>
     )
 }

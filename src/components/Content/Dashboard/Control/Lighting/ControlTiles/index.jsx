@@ -49,10 +49,10 @@ function ControlTiles({ allValues }) {
                     value: Math.round(allValues.values.led_zone1_dim),
                     valueUnit: "%",
                     additionalData: [
-                        allValues.values.energyMeters[0].power,
+                        allValues.values.light, //allValues.values.energyMeters[0].power,
                         allValues.values.led_zone1_rh,
                     ],
-                    additionalDataUnits: ["kW", "h"],
+                    additionalDataUnits: ["µMol", "h"],
                 }}
             />
 
@@ -66,10 +66,10 @@ function ControlTiles({ allValues }) {
                     value: Math.round(allValues.values.led_zone2_dim),
                     valueUnit: "%",
                     additionalData: [
-                        allValues.values.energyMeters[0].power,
+                        null, //allValues.values.energyMeters[0].power,
                         allValues.values.led_zone2_rh,
                     ],
-                    additionalDataUnits: ["kW", "h"],
+                    additionalDataUnits: ["", "h"],
                 }}
             />
         </TileArea>
