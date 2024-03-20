@@ -27,7 +27,7 @@ Content-Type: application/json
 }
 ###
 
-get http://192.168.1.3/dali/scan
+get http://192.168.1.3/devices
 Content-Type: application/json
 
 ###
