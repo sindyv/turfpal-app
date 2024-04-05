@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Styles
 import { Container, Row } from './Wireless.styles'
 
 // Components
-
+import Card from '../../../UI/Card'
 import Btn from '../../../UI/Btn'
 import WifiTable from './Components/WifiTable'
 import SelectedWifi from './Components/SelectedWifi'
+import ConnectedWifi from './Components/ConnectedWifi'
 
 // Icons
 
@@ -19,15 +20,40 @@ import RouterAPI from '../../../../RouterAPI'
 // Hooks
 import { useRouterLogin } from '../../../../hooks/useRouterLogin'
 import { useRouterWifiScan } from '../../../../hooks/useRouterWifiScan'
+import { useRouterWifiJoin } from '../../../../hooks/useRouterWifiJoin'
+import { useFetchConnectedWifi } from '../../../../hooks/useRouterGetInterfaces'
 
 function Wireless() {
+	const [state, setState] = useState('login')
 	const [loggingIn, loginError, loginData] = useRouterLogin()
 	const [scanning, wifiScanResult, setScan] = useRouterWifiScan(loginData)
-
+	const [wifiConnected, setFetchInterfaces, wifiChecked] =
+		useFetchConnectedWifi(loginData)
 	const [selectedWifi, setSelectedWifi] = useState(undefined)
+	const [wifiPassword, setWifiPassword] = useState('')
+	const [joining, joinResult, setJoin] = useRouterWifiJoin(
+		loginData,
+		selectedWifi,
+		wifiPassword
+	)
+
+	useEffect(() => {
+		if (loginData?.success && state === 'login') {
+			setState('wifiCheck')
+			setFetchInterfaces(true)
+		}
+	}, [loginData, wifiConnected, state])
 
 	function handleSelectWifi(bssid) {
 		setSelectedWifi(bssid)
+	}
+
+	function handleInputPassword(e) {
+		setWifiPassword(e.target.value)
+	}
+
+	function handleConnectWifi() {
+		setJoin(true)
 	}
 
 	if (loggingIn) {
@@ -38,28 +64,40 @@ function Wireless() {
 		return <p>There was an error logging in to the router!</p>
 	}
 
-	return (
-		<Container>
-			<Row>
-				<Btn onClick={() => setScan(true)}>Scan WiFi</Btn>
-			</Row>
-			{selectedWifi ? (
-				<SelectedWifi bssid={selectedWifi} wifiList={wifiScanResult} />
-			) : null}
-			{scanning ? (
+	if (wifiConnected.length > 0) {
+		return <ConnectedWifi wifi={wifiConnected[0]} loginData={loginData} />
+	}
+
+	if (loginData.success && wifiChecked) {
+		return (
+			<Container>
 				<Row>
-					{' '}
-					<p>Scanning for WiFi...</p>
+					<Btn onClick={() => setScan(true)}>Scan WiFi</Btn>
 				</Row>
-			) : null}
-			{wifiScanResult.length > 0 ? (
-				<WifiTable
-					wifiList={wifiScanResult}
-					onSelectWifi={handleSelectWifi}
-				/>
-			) : null}
-		</Container>
-	)
+				{selectedWifi ? (
+					<SelectedWifi
+						bssid={selectedWifi}
+						wifiList={wifiScanResult}
+						onChangePassword={handleInputPassword}
+						onConnectWifi={handleConnectWifi}
+						wifiPassword={wifiPassword}
+					/>
+				) : null}
+				{scanning ? (
+					<Row>
+						{' '}
+						<p>Scanning for WiFi...</p>
+					</Row>
+				) : null}
+				{wifiScanResult.length > 0 ? (
+					<WifiTable
+						wifiList={wifiScanResult}
+						onSelectWifi={handleSelectWifi}
+					/>
+				) : null}
+			</Container>
+		)
+	}
 }
 
 export default Wireless

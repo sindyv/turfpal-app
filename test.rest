@@ -55,7 +55,7 @@ Content-Type: application/json
 
 post http://192.168.1.1/api/wireless/actions/scan
 Content-Type: application/json
-Authorization: Bearer 5c3a205099943d71a97784ec747ed4fa
+Authorization: Bearer 2f8b70eea74ea3c1f675cd59bd145dfd
 
 {
     "data" : {
@@ -67,7 +67,7 @@ Authorization: Bearer 5c3a205099943d71a97784ec747ed4fa
 
 post http://192.168.1.1/api/wireless/actions/join
 Content-Type: application/json
-Authorization: Bearer 43a4da728110fb17a0e9f7bd287acf9d
+Authorization: Bearer 2f8b70eea74ea3c1f675cd59bd145dfd
 
 {
     "data" : {
@@ -79,9 +79,9 @@ Authorization: Bearer 43a4da728110fb17a0e9f7bd287acf9d
 
 ###
 
-put http://192.168.1.1/api/wireless/interfaces/config/1
+get http://192.168.1.1/api/wireless/interfaces/config
 Content-Type: application/json
-Authorization: Bearer 43a4da728110fb17a0e9f7bd287acf9d
+Authorization: Bearer 2f8b70eea74ea3c1f675cd59bd145dfd
 
 {
     "data" : {

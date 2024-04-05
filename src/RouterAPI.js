@@ -45,7 +45,7 @@ export default {
 
 		return responseData
 	},
-	wifiJoin: async (authToken, wifiSsid, wifiBssid, wifiPassword) => {
+	wifiJoin: async (authToken, wifiBssid, wifiPassword) => {
 		const response = await fetch(`${url}/wireless/actions/join`, {
 			method: 'POST',
 			headers: {
@@ -64,7 +64,7 @@ export default {
 		const responseData = await response.json()
 
 		if (!response.ok) {
-			throw new Error(`There was error an joing the WiFi '${wifiSsid}'`)
+			throw new Error(`There was error an joing the WiFi`)
 		}
 
 		return responseData
@@ -93,7 +93,7 @@ export default {
 		const response = await fetch(
 			`${url}/wireless/interfaces/config/${wifiId}`,
 			{
-				method: 'DELETE',
+				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
 					Authorization: `Bearer ${authToken}`,
@@ -114,6 +114,40 @@ export default {
 					command ? 'enabling' : 'disabling'
 				} the connection`
 			)
+		}
+
+		return responseData
+	},
+	wifiFetchInterfaces: async (authToken) => {
+		const response = await fetch(`${url}/wireless/interfaces/config`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${authToken}`,
+			},
+		})
+
+		const responseData = await response.json()
+
+		if (!response.ok) {
+			throw new Error(`There was an error`)
+		}
+
+		return responseData
+	},
+	wifiFetchFailoverInterfaces: async (authToken) => {
+		const response = await fetch(`${url}/failover/interfaces/config`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${authToken}`,
+			},
+		})
+
+		const responseData = await response.json()
+
+		if (!response.ok) {
+			throw new Error(`There was an error`)
 		}
 
 		return responseData

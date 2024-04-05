@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
       
@@ -23,7 +23,8 @@ export const GlobalStyle = createGlobalStyle`
         --turfpalHover: #355b56;
         --turfpalActiveBtn: #96e6cd;
         --turfpalFont : 'Euclid';
-        --turfpalFontBold : 'EuclidBold'
+        --turfpalFontBold : 'EuclidBold';
+
     }
 
     * {
