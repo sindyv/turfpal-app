@@ -182,6 +182,25 @@ export default {
 		return responseData
 	},
 
+	wifiGeneralRequest: async (authToken, apiUrl, method, data) => {
+		const response = await fetch(`${url}${apiUrl}`, {
+			method: `${method}`,
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${authToken}`,
+			},
+			body: JSON.stringify(data),
+		})
+
+		const responseData = await response.json()
+
+		if (!response.ok) {
+			throw new Error(`There was an error handeling your request m8. `)
+		}
+
+		return responseData
+	},
+
 	fetchValue: async (id) => {
 		try {
 			const response = await (await fetch(`${url}modbus/${id}`)).json()

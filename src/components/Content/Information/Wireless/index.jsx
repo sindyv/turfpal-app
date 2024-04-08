@@ -26,8 +26,9 @@ import { useFetchConnectedWifi } from '../../../../hooks/useRouterGetInterfaces'
 function Wireless() {
 	const [state, setState] = useState('login')
 	const [loggingIn, loginError, loginData] = useRouterLogin()
-	const [scanning, wifiScanResult, setScan] = useRouterWifiScan(loginData)
-	const [wifiConnected, setFetchInterfaces, wifiChecked] =
+	const [scanning, wifiScanResult, setScan, wifiScanError] =
+		useRouterWifiScan(loginData)
+	const [wifiConnected, setFetchInterfaces, wifiChecked, setWifiChecked] =
 		useFetchConnectedWifi(loginData)
 	const [selectedWifi, setSelectedWifi] = useState(undefined)
 	const [wifiPassword, setWifiPassword] = useState('')
@@ -36,13 +37,22 @@ function Wireless() {
 		selectedWifi,
 		wifiPassword
 	)
-
 	useEffect(() => {
 		if (loginData?.success && state === 'login') {
 			setState('wifiCheck')
 			setFetchInterfaces(true)
 		}
-	}, [loginData, wifiConnected, state])
+
+		if (state === 'wifiCheck' && wifiChecked && wifiConnected.length > 0) {
+			setState('showConnectedWifi')
+		} else if (
+			state === 'wifiCheck' &&
+			wifiChecked &&
+			wifiConnected.length === 0
+		) {
+			setState('showScanForWifi')
+		}
+	}, [loginData, wifiConnected, state, wifiChecked])
 
 	function handleSelectWifi(bssid) {
 		setSelectedWifi(bssid)
@@ -54,6 +64,17 @@ function Wireless() {
 
 	function handleConnectWifi() {
 		setJoin(true)
+		setFetchInterfaces(true)
+		setState('wifiCheck')
+		// setWifiPassword('')
+		setWifiChecked(false)
+	}
+
+	const updateWifi = () => {
+		setFetchInterfaces(true)
+		setState('wifiCheck')
+		setWifiChecked(false)
+		setSelectedWifi(undefined)
 	}
 
 	if (loggingIn) {
@@ -64,11 +85,25 @@ function Wireless() {
 		return <p>There was an error logging in to the router!</p>
 	}
 
-	if (wifiConnected.length > 0) {
-		return <ConnectedWifi wifi={wifiConnected[0]} loginData={loginData} />
+	if (state === 'showConnectedWifi') {
+		return (
+			<ConnectedWifi
+				wifi={wifiConnected[0]}
+				loginData={loginData}
+				updateState={updateWifi}
+			/>
+		)
 	}
 
-	if (loginData.success && wifiChecked) {
+	if (joining) {
+		return <p>Connecting to WiFi ...</p>
+	}
+
+	if (wifiScanError !== '') {
+		return <p>{wifiScanError}</p>
+	}
+
+	if (loginData.success && wifiChecked && state === 'showScanForWifi') {
 		return (
 			<Container>
 				<Row>
@@ -85,7 +120,6 @@ function Wireless() {
 				) : null}
 				{scanning ? (
 					<Row>
-						{' '}
 						<p>Scanning for WiFi...</p>
 					</Row>
 				) : null}

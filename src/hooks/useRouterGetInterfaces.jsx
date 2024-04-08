@@ -32,5 +32,5 @@ export function useFetchConnectedWifi(loginData) {
 		}
 	}, [fetchInterfaces, loginData])
 
-	return [wifiConnected, setFetchInterfaces, wifiChecked]
+	return [wifiConnected, setFetchInterfaces, wifiChecked, setWifiChecked]
 }

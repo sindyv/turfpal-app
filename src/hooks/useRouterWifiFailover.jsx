@@ -6,7 +6,6 @@ import RouterAPI from '../RouterAPI'
 export function useRouterWifiFailover(loginData, selectedWifi, command) {
 	const [failover, setFailover] = useState(false)
 	const [failoverError, setFailoverError] = useState('')
-	const [failoverResult, setFailoverResult] = useState(false)
 
 	useEffect(() => {
 		async function putFailover() {
@@ -16,7 +15,6 @@ export function useRouterWifiFailover(loginData, selectedWifi, command) {
 					selectedWifi,
 					command
 				)
-				console.log(result)
 			} catch (error) {
 				setFailoverError(error || 'Error setting failover')
 			}
@@ -26,7 +24,7 @@ export function useRouterWifiFailover(loginData, selectedWifi, command) {
 			putFailover()
 			setFailover(false)
 		}
-	}, [failover])
+	}, [failover, command])
 
-	return [failoverResult, setFailover, failoverError]
+	return [setFailover, failoverError]
 }

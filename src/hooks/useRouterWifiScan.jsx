@@ -7,7 +7,7 @@ export function useRouterWifiScan(loginData) {
 	const [scan, setScan] = useState(false)
 	const [scanning, setScanning] = useState(false)
 	const [wifiScanResult, setWifiScanResult] = useState([])
-
+	const [wifiScanError, setWifiScanError] = useState('')
 	useEffect(() => {
 		async function scanWifi(authToken) {
 			setScanning(true)
@@ -15,7 +15,7 @@ export function useRouterWifiScan(loginData) {
 				const result = await RouterAPI.wifiScan(authToken)
 				setWifiScanResult(result.data)
 			} catch (error) {
-				setError(error || 'Error scanning WiFis')
+				setWifiScanError(error || 'Error scanning WiFis')
 			}
 
 			setScanning(false)
@@ -27,5 +27,5 @@ export function useRouterWifiScan(loginData) {
 		}
 	}, [scan])
 
-	return [scanning, wifiScanResult, setScan]
+	return [scanning, wifiScanResult, setScan, wifiScanError]
 }

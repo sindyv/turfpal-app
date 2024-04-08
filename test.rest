@@ -81,25 +81,37 @@ Authorization: Bearer 2f8b70eea74ea3c1f675cd59bd145dfd
 
 get http://192.168.1.1/api/wireless/interfaces/config
 Content-Type: application/json
-Authorization: Bearer 2f8b70eea74ea3c1f675cd59bd145dfd
+Authorization: Bearer 4cebf0ee5269305a48e08b654f99885a
 
 {
     "data" : {
         "enabled" : "0"
     }
 }
+###
+
+put http://192.168.1.1/api/wireless/interfaces/config/1
+Content-Type: application/json
+Authorization: Bearer 4cebf0ee5269305a48e08b654f99885a
+
+{
+    "data" : {
+        "enabled" : "0",
+        "key" : "Turf#2024"
+    }
+}
 
 ###
 
-GET http://192.168.1.1/api/failover/mode/config
+GET http://192.168.1.1/api/failover/interfaces/config
 Content-Type: application/json
-Authorization: Bearer 8e434122c72c96ec5e0d31026b27ecfa
+Authorization: Bearer 1d851331cf611c0a01c6a0df265b4667
 
 ###
 
 put  http://192.168.1.1/api/failover/interfaces/config/ifWan1
 Content-Type: application/json
-Authorization: Bearer 8e434122c72c96ec5e0d31026b27ecfa
+Authorization: Bearer 1d851331cf611c0a01c6a0df265b4667
 
 {
     "data" : {
