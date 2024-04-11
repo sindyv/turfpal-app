@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 
 // Styles
 import { Container, Row, ErrorMessage } from './Wireless.styles'
@@ -22,6 +22,12 @@ function Wireless() {
 	const [selectedWifi, setSelectedWifi] = useState('')
 	const [wifiPassword, setWifiPassword] = useState('')
 	const routerCtx = useContext(RouterContext)
+
+	useEffect(() => {
+		if (routerCtx.loggedIn) {
+			routerCtx.fetchWifiInterfaces()
+		}
+	}, [routerCtx.loggedIn])
 
 	function handleSelectWifi(bssid) {
 		setSelectedWifi(bssid)
