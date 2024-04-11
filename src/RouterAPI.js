@@ -84,12 +84,12 @@ export default {
 		const responseData = await response.json()
 
 		if (!response.ok) {
-			throw new Error(`There was error an joing the WiFi '${wifiSsid}'`)
+			throw new Error(`An error occured while deleting the network`)
 		}
 
 		return responseData
 	},
-	wifiConnectionEnabled: async (authToken, wifiId, command) => {
+	wifiConnect: async (authToken, wifiId, command) => {
 		const response = await fetch(
 			`${url}/wireless/interfaces/config/${wifiId}`,
 			{
@@ -119,29 +119,24 @@ export default {
 		return responseData
 	},
 	wifiFetchInterfaces: async (authToken) => {
-		const response = await fetch(`${url}/wireless/interfaces/config`, {
-			method: 'GET',
+		const response = await fetch(`${url}/bulk`, {
+			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${authToken}`,
 			},
-		})
-
-		const responseData = await response.json()
-
-		if (!response.ok) {
-			throw new Error(`There was an error`)
-		}
-
-		return responseData
-	},
-	wifiFetchFailoverInterfaces: async (authToken) => {
-		const response = await fetch(`${url}/failover/interfaces/config`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${authToken}`,
-			},
+			body: JSON.stringify({
+				data: [
+					{
+						endpoint: '/api/wireless/interfaces/config',
+						method: 'GET',
+					},
+					{
+						endpoint: '/api/failover/interfaces/config',
+						method: 'GET',
+					},
+				],
+			}),
 		})
 
 		const responseData = await response.json()
@@ -200,13 +195,30 @@ export default {
 
 		return responseData
 	},
-
-	fetchValue: async (id) => {
+	bulkFetch: async (authToken, endpoints = []) => {
 		try {
-			const response = await (await fetch(`${url}modbus/${id}`)).json()
-			return response
+			const result = await fetch(`${url}/bulk`, {
+				method: `POST`,
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${authToken}`,
+				},
+				body: JSON.stringify({
+					data: endpoints,
+				}),
+			})
+
+			if (!result.ok) {
+				throw new Error(
+					`There was an error handeling your request m8. `
+				)
+			}
+
+			const responseData = result.json()
+
+			return responseData
 		} catch (error) {
-			return 'Error fetching data'
+			console.log(error)
 		}
 	},
 }

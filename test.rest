@@ -51,86 +51,35 @@ Content-Type: application/json
     "password": "TurfpalDev1024"
 }
 
-###
-
-post http://192.168.1.1/api/wireless/actions/scan
-Content-Type: application/json
-Authorization: Bearer 2f8b70eea74ea3c1f675cd59bd145dfd
-
-{
-    "data" : {
-        "device" : "radio0"
-    }
-}
 
 ###
 
-post http://192.168.1.1/api/wireless/actions/join
+get http://192.168.1.1/api/interfaces/config/mob1s1a1
 Content-Type: application/json
-Authorization: Bearer 2f8b70eea74ea3c1f675cd59bd145dfd
+Authorization: Bearer 2a6d8c0cd28b7fb52665e2527cb586a6
 
 {
     "data" : {
-        "bssid": "80:2A:A8:D1:3C:F4",
-        "password": "Turf#2024",
-        "device": "radio0"
-    }
-}
-
-###
-
-get http://192.168.1.1/api/wireless/interfaces/config
-Content-Type: application/json
-Authorization: Bearer 4cebf0ee5269305a48e08b654f99885a
-
-{
-    "data" : {
-        "enabled" : "0"
     }
 }
 ###
 
-put http://192.168.1.1/api/wireless/interfaces/config/1
+get http://192.168.1.1/api/modems/apns/status
 Content-Type: application/json
-Authorization: Bearer 4cebf0ee5269305a48e08b654f99885a
+Authorization: Bearer 347673e590d3a026e30ad1c90b063089
 
 {
     "data" : {
-        "enabled" : "0",
-        "key" : "Turf#2024"
     }
 }
-
 ###
 
-GET http://192.168.1.1/api/failover/interfaces/config
+put http://192.168.1.1/api/interfaces/config/mob1s1a1
 Content-Type: application/json
-Authorization: Bearer 1d851331cf611c0a01c6a0df265b4667
-
-###
-
-put  http://192.168.1.1/api/failover/interfaces/config/ifWan1
-Content-Type: application/json
-Authorization: Bearer 1d851331cf611c0a01c6a0df265b4667
+Authorization: Bearer ce75b4598d2e65c0898a6e938d6b7cd7
 
 {
     "data" : {
-        "enabled" : "1"
+        "username" : "Fiskekakemann"
     }
-}
-
-###
-
-get http://192.168.1.2:1880/modbus/1
-Content-Type: application/json
-
-###
-
-put http://192.168.1.2:1880/modbus/15
-Content-Type: application/json
-
-{
-  "isNewSensor" : true,
-  "sensorType" : 2,
-  "newAddress" : 4
 }

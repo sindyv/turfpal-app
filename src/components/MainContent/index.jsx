@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Outlet } from 'react-router-dom'
 
 // Styles
 import { Wrapper } from './MainContent.styles'
@@ -33,6 +33,7 @@ import Help from '../Content/Help'
 import TimeZone from '../Content/Information/TimeZone'
 import Settings from '../Content/Settings'
 import Wireless from '../Content/Information/Wireless'
+import Router from '../Content/Information/Router'
 
 // Context
 import { MenuContext } from '../../store/context/menu-context'
@@ -40,6 +41,15 @@ import { LoginContext } from '../../store/context/login-context'
 import SessionLog from '../Content/SessionLog'
 import Dali from '../Content/Dali'
 import Modbus from '../Content/Modbus'
+import RouterContextProvider from '../../store/context/router-context'
+
+const RouterContextLayout = () => {
+	return (
+		<RouterContextProvider>
+			<Outlet />
+		</RouterContextProvider>
+	)
+}
 
 const MainContent = () => {
 	const { hideMenu } = useContext(MenuContext)
@@ -92,8 +102,12 @@ const MainContent = () => {
 						<Route path='schedule/timer' element={<Timer />} />
 						<Route path='/*' element={<ErrorPage />} />
 						<Route path='/help' element={<Help />} />
-						<Route path='/wireless' element={<Wireless />} />
+						<Route element={<RouterContextLayout />}>
+							<Route path='/router' element={<Router />} />
+							<Route path='/wireless' element={<Wireless />} />
+						</Route>
 					</Routes>
+
 					{/* <MenuSpacer /> */}
 
 					<Menu />

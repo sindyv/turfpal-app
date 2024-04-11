@@ -11,12 +11,16 @@ import SignalWifi3BarOutlinedIcon from '@mui/icons-material/SignalWifi3BarOutlin
 import SignalWifi4BarOutlinedIcon from '@mui/icons-material/SignalWifi4BarOutlined'
 
 function WifiTable({ wifiList, onSelectWifi }) {
+	// Sort by signal strength
 	const sortedWifiList = wifiList.sort((a, b) => b.signal - a.signal)
 
 	return (
 		<Container>
 			{sortedWifiList.map((wifi) => {
 				if (wifi.ssid) {
+					// Mapping of icons based on signal strength.
+					// The signal strength [%] is not based on anything concrete,
+					// just based on the first google searh result
 					const signalStrength =
 						((wifi.signal * -1 - 100) / (30 - 100)) * 100
 					let SignalIcon = SignalWifi0BarOutlinedIcon

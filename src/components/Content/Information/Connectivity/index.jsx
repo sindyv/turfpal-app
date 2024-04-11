@@ -39,12 +39,6 @@ function Connectivity() {
 						<span>
 							<RouterOutlinedIcon /> Router
 						</span>
-						<LinkItem
-							to={'/wireless'}
-							state={{ headerText: 'Connectivity > Wireless' }}
-						>
-							<SettingsOutlinedIcon />
-						</LinkItem>
 					</CardDescription>
 					<CardContent>
 						<InformationDataField header={'Name'} data={'RUTX11'} />
@@ -79,7 +73,12 @@ function Connectivity() {
 						<span>
 							<CellTowerOutlinedIcon /> Mobile
 						</span>
-						<SettingsOutlinedIcon />
+						<LinkItem
+							to={'/router'}
+							state={{ headerText: 'Connectivity > Router' }}
+						>
+							<SettingsOutlinedIcon />
+						</LinkItem>
 					</CardDescription>
 					<CardContent>
 						<InformationDataField
@@ -109,7 +108,12 @@ function Connectivity() {
 						<span>
 							<WifiOutlinedIcon /> Wireless
 						</span>
-						{/* <SettingsOutlinedIcon /> */}
+						<LinkItem
+							to={'/wireless'}
+							state={{ headerText: 'Connectivity > Wireless' }}
+						>
+							<SettingsOutlinedIcon />
+						</LinkItem>
 					</CardDescription>
 					<CardContent>
 						<InformationDataField

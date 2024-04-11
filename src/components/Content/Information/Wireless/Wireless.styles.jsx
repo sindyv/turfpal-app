@@ -14,3 +14,10 @@ export const Row = styled.div`
 	justify-content: space-between;
 	gap: 24px;
 `
+
+export const ErrorMessage = styled.div`
+	color: red;
+	display: flex;
+	justify-content: space-between;
+	gap: 24px;
+`
