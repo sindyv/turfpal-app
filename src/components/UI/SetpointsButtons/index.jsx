@@ -1,20 +1,22 @@
-import React from "react"
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 
-import { ButtonArea } from "./SetpointButtons.styles"
+import { ButtonArea } from './SetpointButtons.styles'
 
-import Btn from "../Btn"
+import Btn from '../Btn'
 function SetpointsButtons({
-    onSelectSetpoints,
-    activeSetpoints,
-    setpointsArray,
+	onSelectSetpoints,
+	activeSetpoints,
+	setpointsArray,
 }) {
-    const handleSelectSetpoints = (value) => {
-        onSelectSetpoints(value)
-    }
+	const { t } = useTranslation()
+	const handleSelectSetpoints = (value) => {
+		onSelectSetpoints(value)
+	}
 
-    return (
-        <ButtonArea>
-            {/* <Btn
+	return (
+		<ButtonArea>
+			{/* <Btn
                 selected={activeSetpoints === "default"}
                 backgroundColorDeselected={"var(--lightGrey)"}
                 backgroundColorSelected={"var(--turfpalActiveBtn)"}
@@ -25,41 +27,41 @@ function SetpointsButtons({
             >
                 Default
             </Btn> */}
-            <Btn
-                selected={activeSetpoints === `${setpointsArray[0]}`}
-                backgroundColorDeselected={"var(--lightGrey)"}
-                backgroundColorSelected={"var(--turfpalActiveBtn)"}
-                textColorSelected={"black"}
-                textColorDeselected={"black"}
-                customFont={"var(--turfpalFontBold)"}
-                onClick={() => handleSelectSetpoints(`${setpointsArray[0]}`)}
-            >
-                Default
-            </Btn>
-            <Btn
-                selected={activeSetpoints === `${setpointsArray[1]}`}
-                backgroundColorDeselected={"var(--lightGrey)"}
-                backgroundColorSelected={"var(--turfpalActiveBtn)"}
-                textColorSelected={"black"}
-                textColorDeselected={"black"}
-                customFont={"var(--turfpalFontBold)"}
-                onClick={() => handleSelectSetpoints(`${setpointsArray[1]}`)}
-            >
-                Summer
-            </Btn>
-            <Btn
-                backgroundColorDeselected={"var(--lightGrey)"}
-                selected={activeSetpoints === `${setpointsArray[2]}`}
-                backgroundColorSelected={"var(--turfpalActiveBtn)"}
-                textColorSelected={"black"}
-                textColorDeselected={"black"}
-                customFont={"var(--turfpalFontBold)"}
-                onClick={() => handleSelectSetpoints(`${setpointsArray[2]}`)}
-            >
-                Winter
-            </Btn>
-        </ButtonArea>
-    )
+			<Btn
+				selected={activeSetpoints === `${setpointsArray[0]}`}
+				backgroundColorDeselected={'var(--lightGrey)'}
+				backgroundColorSelected={'var(--turfpalActiveBtn)'}
+				textColorSelected={'black'}
+				textColorDeselected={'black'}
+				customFont={'var(--turfpalFontBold)'}
+				onClick={() => handleSelectSetpoints(`${setpointsArray[0]}`)}
+			>
+				{t('generic.default')}
+			</Btn>
+			<Btn
+				selected={activeSetpoints === `${setpointsArray[1]}`}
+				backgroundColorDeselected={'var(--lightGrey)'}
+				backgroundColorSelected={'var(--turfpalActiveBtn)'}
+				textColorSelected={'black'}
+				textColorDeselected={'black'}
+				customFont={'var(--turfpalFontBold)'}
+				onClick={() => handleSelectSetpoints(`${setpointsArray[1]}`)}
+			>
+				{t('generic.summer')}
+			</Btn>
+			<Btn
+				backgroundColorDeselected={'var(--lightGrey)'}
+				selected={activeSetpoints === `${setpointsArray[2]}`}
+				backgroundColorSelected={'var(--turfpalActiveBtn)'}
+				textColorSelected={'black'}
+				textColorDeselected={'black'}
+				customFont={'var(--turfpalFontBold)'}
+				onClick={() => handleSelectSetpoints(`${setpointsArray[2]}`)}
+			>
+				{t('generic.winter')}
+			</Btn>
+		</ButtonArea>
+	)
 }
 
 export default SetpointsButtons

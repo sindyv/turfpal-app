@@ -1,0 +1,275 @@
+{
+	"generic": {
+		"dashboard": "Tablero",
+		"information": "Información",
+		"scheduler": "Programador",
+		"schedule": "Programa",
+		"calendar": "Calendario",
+		"session": "Sesión",
+		"timer": "Temporizador",
+		"startTimer": "Iniciar temporizador",
+		"stopTimer": "Detener temporizador",
+		"timerActive": "Temporizador activo",
+		"timerEnding": "Finalizando en",
+		"auto": "Automático",
+		"manual": "Manual",
+		"on": "Encendido",
+		"off": "Apagado",
+		"start": "Iniciar",
+		"stop": "Detener",
+		"keepOn": "Mantener encendido",
+		"keepOff": "Mantener apagado",
+		"mode": "Modo",
+		"default": "Predeterminado",
+		"summer": "Verano",
+		"winter": "Invierno",
+		"action": "Acción",
+		"temperature": "Temperatura",
+		"parRange": "Rango PAR",
+		"log": "Registro",
+		"hours": "Horas",
+		"minutes": "min",
+		"starting": "Inicio",
+		"ending": "Fin",
+		"settings": "Ajustes",
+		"loading": "Cargando...",
+		"none": "Ninguno",
+		"resetOperatingHours": "Restablecer horas de funcionamiento",
+		"updateEntry": "Actualizar entrada",
+		"email": "Correo electrónico",
+		"phone": "Teléfono"
+	},
+	"light": {
+		"lighting": "Iluminación",
+		"blue": "Azul",
+		"horti": "Horticultura",
+		"settings": {
+			"timeDelay": "Retraso de tiempo",
+			"timeDelayText": "El retraso de tiempo para que la iluminación cambie su salida según el valor PAR medido",
+			"horti": "Horticultura",
+			"hortiText": "El porcentaje máximo de iluminación permitido en modo automático",
+			"blue": "Azul"
+		}
+	},
+	"heat": {
+		"heating": "Calefacción",
+		"settings": {
+			"timeDelay": "Retraso de tiempo",
+			"timeDelayText": "El retraso de tiempo para que la temperatura pueda exceder los umbrales de temperatura antes de que se encienda o apague la calefacción",
+			"maxTemp": "Temperatura máxima permitida del suelo",
+			"maxTempText": "Temperatura que apagará la calefacción para evitar dañar el césped"
+		}
+	},
+	"log": {
+		"title": "Datos que muestran los últimos 7 días",
+		"noData": "No se han proporcionado datos de registro",
+		"Monday": "Lunes",
+		"Tuesday": "Martes",
+		"Wednesday": "Miércoles",
+		"Thursday": "Jueves",
+		"Friday": "Viernes",
+		"Saturday": "Sábado",
+		"Sunday": "Domingo",
+		"turnedOn": "Encendido",
+		"turnedOff": "Apagado",
+		"manual": "Manual",
+		"auto": "Automático",
+		"turfpalMobile": "Turfpal móvil",
+		"turfpalWeb": "Turfpal Web"
+	},
+	"calendar": {
+		"errorNoEntries": "No hay entradas almacenadas en el dispositivo de iluminación",
+		"errorGettingData": "¡Vaya! Algo salió mal al obtener datos del dispositivo",
+		"deletePrompt": "¿Realmente desea eliminar?",
+		"deleteText": "Si elimina esto, no podrá restaurarlo",
+		"close": "Cerrar",
+		"delete": "ELIMINAR",
+		"addEntry": "Agregar entrada",
+		"entries": "Entradas",
+		"updateEntry": "Actualizar entrada"
+	},
+
+	"alarm": {
+		"alarms": "Alarmas",
+		"surge": {
+			"title": "Protector de sobretensión",
+			"inactiveText": "La protección contra sobretensiones está operativa",
+			"activeText": "Un protector de sobretensión está defectuoso. Reemplace lo antes posible para evitar daños al equipo"
+		},
+		"fuses": {
+			"title": "Fusibles",
+			"inactiveText": "Todos los fusibles están intactos",
+			"activeText": "¡Un fusible se ha disparado! Por favor, verifique lo antes posible ya que el dispositivo no funcionará correctamente"
+		},
+		"par": {
+			"title": "Sensor PAR",
+			"inactiveText": "Sensor funcionando",
+			"activeText": "El sensor PAR ha fallado. El dispositivo de iluminación funcionará correctamente en modo 'Automático'. Por favor, llame al soporte técnico de Turfpal al +44 7949 429360"
+		},
+		"temperature": {
+			"title": "Sensor de temperatura",
+			"inactiveText": "Sensor funcionando",
+			"activeText": "El sensor de temperatura ha fallado. El dispositivo de iluminación funcionará correctamente en modo 'Automático'. Por favor, llame al soporte técnico de Turfpal al +44 7949 429360"
+		},
+		"soil": {
+			"title": "Sensor de suelo",
+			"inactiveText": "Sensor funcionando",
+			"activeText": "El sensor de suelo ha fallado. El dispositivo de iluminación funcionará correctamente en modo 'Automático'. Por favor, llame al soporte técnico de Turfpal al +44 7949 429360"
+		},
+		"co2": {
+			"title": "Sensor de CO2",
+			"inactiveText": "Sensor funcionando",
+			"activeText": "El sensor de CO2 ha fallado. El dispositivo de iluminación funcionará correctamente en modo 'Automático'. Por favor, llame al soporte técnico de Turfpal al +44 7949 429360"
+		},
+		"soilTemperature": {
+			"title": "Temperatura del suelo",
+			"inactiveText": "Temperatura normal",
+			"activeText": "La temperatura del suelo ha superado el límite. La calefacción se ha apagado"
+		},
+		"wind": {
+			"title": "Sensor de viento",
+			"inactiveText": "Velocidades del viento normales",
+			"activeText": "Las velocidades del viento han superado el límite. Por favor, evalúe las condiciones de despliegue"
+		}
+	},
+	"energy": {
+		"energy": "Energía",
+		"energyMeter": "Medidor de consumo de energía",
+		"power": "Potencia",
+		"frequency": "Frecuencia",
+		"voltage": "Voltaje",
+		"current": "Corriente",
+		"error": "Oops, hubo un error al obtener los datos de energía"
+	},
+	"information": {
+		"settingsAndInfo": "Ajustes e información",
+		"modbusSettings": {
+			"modbusSettings": "Ajustes Modbus",
+			"selectSensor": "Seleccionar sensor",
+			"address": "Dirección",
+			"oldAddress": "Dirección antigua",
+			"newAddress": "Nueva dirección",
+			"parMessage": "El sensor PAR viene con una dirección fija de 1 y no se puede cambiar",
+			"changeAddress": "Cambiar dirección",
+			"readSensorValue": "Leer valor del sensor",
+			"readValue": "Leer valor",
+			"par": "PAR",
+			"temperature": "Temperatura",
+			"co2": "Sensor de CO2",
+			"soil": "Sensor de suelo"
+		},
+		"daliSettings": {
+			"daliSettings": "Ajustes DALI",
+			"scanForNew": "Buscar nuevos dispositivos",
+			"resetAddr": "Restablecer dirección",
+			"stopScan": "Detener escaneo",
+			"allOn": "Todo encendido",
+			"allOff": "Todo apagado",
+			"name": "Nombre",
+			"group": "Grupo",
+			"save": "Guardar",
+			"toggle": "Alternar",
+			"address": "Dirección",
+			"groups": "Grupo(s)",
+			"status": "Estado",
+			"found": "Encontrado",
+			"progress": "Progreso"
+		},
+		"help": {
+			"help": "Ayuda",
+			"helpTitle": "La ayuda está en camino",
+			"helpText": "Pero no hoy. Se lanzará con la próxima versión de esta aplicación web. Mientras tanto, puede contactarnos aquí:",
+			"helpPhone": "+44 7562 994399",
+			"helpEmail": "service@ra-tls.com"
+		},
+		"sessionLog": "Registro de sesión",
+		"signOut": "Cerrar sesión",
+		"information": {
+			"device": {
+				"device": "Dispositivo",
+				"model": "Modelo",
+				"serial": "Número de serie",
+				"firmware": "Firmware"
+			},
+			"connectivity": {
+				"connectivity": "Conectividad",
+				"router": {
+					"router": "Enrutador",
+					"connectivity": "Conectividad",
+					"name": "Nombre",
+					"serial": "Número de serie",
+					"firmware": "Firmware",
+					"imei": "IMEI",
+					"wan": "IP WAN",
+					"dateTime": "Fecha y hora",
+					"mac": "Dirección MAC"
+				},
+				"mobile": {
+					"mobile": "Móvil",
+					"error": "Se produjo un error",
+					"fetching": "Obteniendo interfaces",
+					"fetchingError": "Error al obtener interfaces",
+					"operator": "Operador",
+					"networkType": "Tipo de red",
+					"networkReg": "Tipo de registro de red",
+					"signalStrength": "Fuerza de señal",
+					"imsi": "IMSI",
+					"loggingInToRouter": "Iniciando sesión en el enrutador",
+					"loginError": "¡Hubo un error al iniciar sesión en el enrutador!",
+					"settings": {
+						"mobileDetails": "Detalles móviles",
+						"id": "ID",
+						"simSlot": "Ranura SIM",
+						"outgoingTraffic": "Tráfico saliente",
+						"incomingTraffic": "Tráfico entrante",
+						"apn": "APN",
+						"auto": "Automático",
+						"customApn": "APN personalizado",
+						"authType": "Tipo de autenticación",
+						"custom": "Personalizado",
+						"username": "Nombre de usuario",
+						"password": "Contraseña"
+					}
+				},
+
+				"wireless": {
+					"wireless": "Inalámbrico",
+					"ssid": "SSID",
+					"lanIp": "IP LAN",
+					"settings": {
+						"scanWifi": "Escaneo WiFi",
+						"scanning": "Escaneando WiFi...",
+						"errorScanning": "Se produjo un error al escanear WiFi",
+						"ssid": "SSID",
+						"signal": "Señal",
+						"channel": "Canal",
+						"encryption": "Cifrado",
+						"passphrase": "Frase de contraseña",
+						"connect": "Conectar",
+						"connecting": "Conectando a WiFi",
+						"disconnecting": "Desconectando...",
+						"errorJoining": "Hubo un error al unirse al WiFi",
+						"connected": "Conectado",
+						"disconnected": "Desconectado",
+						"disconnect": "Desconectar",
+						"forget": "Olvidar",
+						"failover": "Conmutación por error"
+					}
+				},
+				"gps": {
+					"gps": "GPS",
+					"satelites": "Satélites",
+					"latitude": "Latitud",
+					"longitude": "Longitud",
+					"accuracy": "Precisión",
+					"altitude": "Altitud"
+				}
+			},
+			"appVersion": "Versión de la aplicación",
+			"timeZone": {
+				"timeZone": "Zona horaria",
+				"select": "Seleccionar zona horaria"
+			}
+		}
+	}
+}

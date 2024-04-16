@@ -15,6 +15,7 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import Session from './Session'
 import { useContext } from 'react'
 import { AllValuesContext } from '../../../store/context/allValues-context'
+import { useTranslation } from 'react-i18next'
 
 function Dashboard({}) {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
@@ -99,14 +100,17 @@ function Dashboard({}) {
 		state = states.auto
 	}
 
+	const { t } = useTranslation()
+
 	return (
 		<Wrapper>
 			<ButtonsArea>
 				<Btn svgSize={24} selected={state} onClick={handleAuto}>
-					<AutorenewOutlinedIcon /> Auto
+					{/* <AutorenewOutlinedIcon /> Auto */}
+					<AutorenewOutlinedIcon /> {t('generic.auto')}
 				</Btn>
 				<Btn svgSize={24} selected={!state} onClick={handleManual}>
-					<BackHandOutlinedIcon /> Manual
+					<BackHandOutlinedIcon /> {t('generic.manual')}
 				</Btn>
 			</ButtonsArea>
 			{allValues.statuses.session || states.auto ? (
@@ -120,7 +124,11 @@ function Dashboard({}) {
 					/>
 					<LinkItem
 						to={'settings'}
-						state={{ headerText: 'Auto Mode > Settings' }}
+						state={{
+							headerText: `${t('generic.auto')} ${t(
+								'generic.mode'
+							)} > ${t('generic.settings')}`,
+						}}
 					>
 						<Btn
 							backgroundColorDeselected={'var(--lightGrey)'}
@@ -128,7 +136,7 @@ function Dashboard({}) {
 							customFont={'var(--turfpalFontBold)'}
 							onClick={() => {}}
 						>
-							<SettingsOutlinedIcon /> Settings
+							<SettingsOutlinedIcon /> {t('generic.settings')}
 						</Btn>
 					</LinkItem>
 				</>

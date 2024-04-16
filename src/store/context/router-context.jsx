@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import RouterAPI from '../../RouterAPI'
 
@@ -27,10 +28,11 @@ export const RouterContext = createContext({
 })
 
 function RouterContextProvider({ children }) {
+	const { t } = useTranslation()
 	const [loggedIn, setLoggedIn] = useState(false)
 	const [loading, setLoading] = useState({
 		loading: true,
-		loadText: 'Loading ..',
+		loadText: t('generic.loading'),
 	})
 
 	//################################################################################
@@ -44,7 +46,12 @@ function RouterContextProvider({ children }) {
 
 	// Function for logging in
 	async function login() {
-		setLoading({ loading: true, loadText: 'Logging in to router' })
+		setLoading({
+			loading: true,
+			loadText: t(
+				'information.information.connectivity.mobile.loggingInToRouter'
+			),
+		})
 
 		try {
 			const result = await RouterAPI.login()
@@ -53,7 +60,10 @@ function RouterContextProvider({ children }) {
 				setAuthToken(result.data.token)
 			}
 		} catch (error) {
-			setError(error || ' There was an error logging in to the Router!')
+			setError(
+				error ||
+					t('information.information.connectivity.mobile.loginError')
+			)
 		}
 		setLoading({ loading: false, loadText: '' })
 	}
@@ -68,7 +78,10 @@ function RouterContextProvider({ children }) {
 	// Function for fetching interfaces from router
 	async function fetchWifiInterfaces() {
 		setError('')
-		setLoading({ loading: true, loadText: 'Fetching interfacess' })
+		setLoading({
+			loading: true,
+			loadText: t('information.information.connectivity.mobile.fetching'),
+		})
 		try {
 			const result = await RouterAPI.wifiFetchInterfaces(authToken)
 
@@ -87,7 +100,12 @@ function RouterContextProvider({ children }) {
 				setFailoverInterface(failoverInterface)
 			}
 		} catch (error) {
-			setError(error || 'There was an error fetching the interfaces')
+			setError(
+				error ||
+					t(
+						'information.information.connectivity.mobile.fetchingError'
+					)
+			)
 		}
 		setLoading({ loading: false, loadText: '' })
 	}
@@ -113,14 +131,21 @@ function RouterContextProvider({ children }) {
 				setWifiInterface(result.data)
 			}
 		} catch (error) {
-			setError(error || 'An error occured')
+			setError(
+				error || t('information.information.connectivity.mobile.error')
+			)
 		}
 	}
 
 	//function for deleting wifi (forget)
 	async function wifiDelete() {
 		setError('')
-		setLoading({ loading: true, loadText: 'Disconnecting...' })
+		setLoading({
+			loading: true,
+			loadText: t(
+				'information.information.connectivity.wireless.settings.disconnecting'
+			),
+		})
 		try {
 			const result = await RouterAPI.wifiDelete(
 				authToken,
@@ -132,7 +157,9 @@ function RouterContextProvider({ children }) {
 				fetchWifiInterfaces()
 			}
 		} catch (error) {
-			setError(error || 'An error occured')
+			setError(
+				error || t('information.information.connectivity.mobile.error')
+			)
 		}
 
 		setLoading({ loading: false, loadText: '' })
@@ -141,7 +168,12 @@ function RouterContextProvider({ children }) {
 	//function for scanning for wifi's
 	async function wifiScan() {
 		setError('')
-		setLoading({ loading: true, loadText: 'Scanning for Wifi ...' })
+		setLoading({
+			loading: true,
+			loadText: t(
+				'information.information.connectivity.wireless.settings.scanning'
+			),
+		})
 		setScanResult([])
 		try {
 			const result = await RouterAPI.wifiScan(authToken)
@@ -150,7 +182,12 @@ function RouterContextProvider({ children }) {
 				setScanResult(result.data)
 			}
 		} catch (error) {
-			setError(error || 'An error occured while scanning for wifi')
+			setError(
+				error ||
+					t(
+						'information.information.connectivity.wireless.settings.errorSScanning'
+					)
+			)
 		}
 		setLoading({ loading: false, loadText: '' })
 	}
@@ -158,7 +195,12 @@ function RouterContextProvider({ children }) {
 	// function for joinging (adding) a wifi
 	async function wifiJoin(bssid, password) {
 		setError('')
-		setLoading({ loading: true, loadText: 'Connecting to WiFi...' })
+		setLoading({
+			loading: true,
+			loadText: t(
+				'information.information.connectivity.wireless.settings.connecting'
+			),
+		})
 		try {
 			const result = await RouterAPI.wifiJoin(authToken, bssid, password)
 			if (result.success) {
@@ -167,7 +209,12 @@ function RouterContextProvider({ children }) {
 			}
 		} catch (error) {
 			console.log(error)
-			setError(error || 'Error connecting to Wifi')
+			setError(
+				error ||
+					t(
+						'information.information.connectivity.wireless.settings.errorJoining'
+					)
+			)
 		}
 		setLoading({ loading: false, loadText: '' })
 	}
@@ -201,7 +248,10 @@ function RouterContextProvider({ children }) {
 
 	// function for fetching APN data
 	async function apnGetInfo() {
-		setLoading({ loading: true, loadText: 'Fetching mobile information' })
+		setLoading({
+			loading: true,
+			loadText: t('information.information.connectivity.mobile.fetching'),
+		})
 		setError('')
 
 		try {

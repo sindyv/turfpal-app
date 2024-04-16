@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Container, Title } from './ApnInputs.styles'
 import Btn from '../../../../../UI/Btn'
 function ApnInputs({ apnList, onUpdateApn, apnData }) {
@@ -9,6 +10,7 @@ function ApnInputs({ apnList, onUpdateApn, apnData }) {
 	const [customApn, setCustomApn] = useState(apnData.apn)
 	const [username, setUsername] = useState(apnData.username)
 	const [password, setPassword] = useState(apnData.password)
+	const { t } = useTranslation()
 
 	function handleInputs(value, setFn) {
 		setFn(value)
@@ -25,13 +27,23 @@ function ApnInputs({ apnList, onUpdateApn, apnData }) {
 	return (
 		<Container>
 			<div className='input-field'>
-				<Title>APN</Title>
+				<Title>
+					{t(
+						'information.information.connectivity.mobile.settings.apn'
+					)}
+				</Title>
 				<select
 					value={selectedApn}
 					onChange={(e) => setSelectedApn(e.target.value)}
 				>
 					{customApn !== '' ? (
-						<option value={'custom'}>-- Custom --</option>
+						<option value={'custom'}>
+							--{' '}
+							{t(
+								'information.information.connectivity.mobile.settings.custom'
+							)}{' '}
+							--
+						</option>
 					) : null}
 					{apnList.map((listItem) => {
 						return (
@@ -41,7 +53,13 @@ function ApnInputs({ apnList, onUpdateApn, apnData }) {
 						)
 					})}
 					{customApn === '' ? (
-						<option value={'custom'}>-- Custom --</option>
+						<option value={'custom'}>
+							--{' '}
+							{t(
+								'information.information.connectivity.mobile.settings.custom'
+							)}{' '}
+							--
+						</option>
 					) : null}
 				</select>
 			</div>
@@ -49,7 +67,11 @@ function ApnInputs({ apnList, onUpdateApn, apnData }) {
 				<>
 					<div className='custom-apn-field'>
 						<div className='input-field'>
-							<Title>Custom APN</Title>
+							<Title>
+								{t(
+									'information.information.connectivity.mobile.settings.customApn'
+								)}
+							</Title>
 							<input
 								type='text'
 								name='apn'
@@ -60,7 +82,11 @@ function ApnInputs({ apnList, onUpdateApn, apnData }) {
 							/>
 						</div>
 						<div className='input-field'>
-							<Title>Authetication type</Title>
+							<Title>
+								{t(
+									'information.information.connectivity.mobile.settings.authType'
+								)}
+							</Title>
 
 							<select
 								onChange={(e) =>
@@ -68,7 +94,9 @@ function ApnInputs({ apnList, onUpdateApn, apnData }) {
 								}
 								value={selectedAuth}
 							>
-								<option value={'none'}>None</option>
+								<option value={'none'}>
+									{t('generic.none')}
+								</option>
 								<option value={'pap'}>PAP</option>
 								<option value={'chap'}>CHAP</option>
 							</select>
@@ -77,7 +105,11 @@ function ApnInputs({ apnList, onUpdateApn, apnData }) {
 					{selectedAuth !== 'none' ? (
 						<div className='custom-apn-field'>
 							<div className='input-field'>
-								<Title>Username</Title>
+								<Title>
+									{t(
+										'information.information.connectivity.mobile.settings.username'
+									)}
+								</Title>
 								<input
 									value={username}
 									onChange={(e) =>
@@ -92,7 +124,11 @@ function ApnInputs({ apnList, onUpdateApn, apnData }) {
 								/>
 							</div>
 							<div className='input-field'>
-								<Title>Password</Title>
+								<Title>
+									{t(
+										'information.information.connectivity.mobile.settings.password'
+									)}
+								</Title>
 								<input
 									value={password}
 									onChange={(e) =>

@@ -1,4 +1,5 @@
 import { Container, Row, Content } from './ConnectedWifi.styles'
+import { useTranslation } from 'react-i18next'
 
 import Card from '../../../../../UI/Card'
 import Btn from '../../../../../UI/Btn'
@@ -13,6 +14,7 @@ import { useContext } from 'react'
 import { RouterContext } from '../../../../../../store/context/router-context'
 
 function ConnectedWifi({ wifi, updateSelectedWifi }) {
+	const { t } = useTranslation()
 	const routerCtx = useContext(RouterContext)
 
 	function handleForget() {
@@ -40,12 +42,20 @@ function ConnectedWifi({ wifi, updateSelectedWifi }) {
 							<div>{wifi.ssid}</div>
 							<div>
 								{wifi.enabled === '1'
-									? 'Connected'
-									: 'Disconnected'}
+									? t(
+											'information.information.connectivity.wireless.settings.connected'
+									  )
+									: t(
+											'information.information.connectivity.wireless.settings.disconnected'
+									  )}
 							</div>
 						</span>
 						<span className='failover'>
-							<div>Failover</div>
+							<div>
+								{t(
+									'information.information.connectivity.wireless.settings.failover'
+								)}
+							</div>
 							<Switch
 								checked={
 									routerCtx.failoverInterface.enabled === '1'
@@ -67,7 +77,13 @@ function ConnectedWifi({ wifi, updateSelectedWifi }) {
 								wifi.enabled === '1' ? 'black' : 'white'
 							}
 						>
-							{wifi.enabled === '1' ? 'Disconnect' : 'Connect'}
+							{wifi.enabled === '1'
+								? t(
+										'information.information.connectivity.wireless.settings.connected'
+								  )
+								: t(
+										'information.information.connectivity.wireless.settings.disconnected'
+								  )}
 							{wifi.enabled === '1' ? (
 								<LinkOffOutlinedIcon />
 							) : (
@@ -83,7 +99,10 @@ function ConnectedWifi({ wifi, updateSelectedWifi }) {
 							textColorSelected={'black'}
 							textColorDeselected={'black'}
 						>
-							Forget <DeleteForeverOutlinedIcon />
+							{t(
+								'information.information.connectivity.wireless.settings.forget'
+							)}{' '}
+							<DeleteForeverOutlinedIcon />
 						</Btn>
 					</Row>
 				</Content>

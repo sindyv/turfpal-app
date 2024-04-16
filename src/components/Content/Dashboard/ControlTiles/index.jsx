@@ -14,6 +14,7 @@ import HeatIcon from '../../../../assets/icons/heat.jsx'
 
 // Context
 import { AllValuesContext } from '../../../../store/context/allValues-context'
+import { useTranslation } from 'react-i18next'
 
 function ControlTiles() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
@@ -74,13 +75,14 @@ function ControlTiles() {
 				break
 		}
 	}
+	const { t } = useTranslation()
 	return (
 		<TileArea>
 			<ControlTile
 				disabled={true}
 				linkParams={{
 					to: 'lighting',
-					state: { headerText: 'Lighting' },
+					state: { headerText: t('light.lighting') },
 				}}
 				changeState={handleClickedButton}
 				enabled={
@@ -88,7 +90,7 @@ function ControlTiles() {
 					allValues.values.led_zone2_dim > 0
 				}
 				icon={LightbulbOutlinedIcon}
-				title={'Lighting'}
+				title={t('light.lighting')}
 				data={{
 					value: allValues.values.light,
 					valueUnit: 'µMol',
@@ -103,12 +105,12 @@ function ControlTiles() {
 				disabled={true}
 				linkParams={{
 					to: 'heating',
-					state: { headerText: 'Heating' },
+					state: { headerText: t('heat.heating') },
 				}}
 				changeState={handleClickedButton}
 				enabled={allValues.statuses.heat_zone1}
 				icon={HeatIcon}
-				title={'Heating'}
+				title={t('heat.heating')}
 				data={{
 					value: parseFloat(allValues.values?.temperature).toFixed(1),
 					valueUnit: '°C',

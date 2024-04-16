@@ -1,0 +1,275 @@
+{
+	"generic": {
+		"dashboard": "Dashboard",
+		"information": "Informatie",
+		"scheduler": "Planner",
+		"schedule": "Schema",
+		"calendar": "Kalender",
+		"session": "Sessie",
+		"timer": "Timer",
+		"startTimer": "Start timer",
+		"stopTimer": "Stop timer",
+		"timerActive": "Timer actief",
+		"timerEnding": "Eindigt om",
+		"auto": "Automatisch",
+		"manual": "Handmatig",
+		"on": "Aan",
+		"off": "Uit",
+		"start": "Start",
+		"stop": "Stop",
+		"keepOn": "Aanhouden",
+		"keepOff": "Uitschakelen",
+		"mode": "Modus",
+		"default": "Standaard",
+		"summer": "Zomer",
+		"winter": "Winter",
+		"action": "Actie",
+		"temperature": "Temperatuur",
+		"parRange": "PAR-bereik",
+		"log": "Log",
+		"hours": "Uren",
+		"minutes": "min",
+		"starting": "Starten",
+		"ending": "Eindigen",
+		"settings": "Instellingen",
+		"loading": "Laden ...",
+		"none": "Geen",
+		"resetOperatingHours": "Bedrijfsuren resetten",
+		"updateEntry": "Invoer bijwerken",
+		"email": "E-mail",
+		"phone": "Telefoon"
+	},
+	"light": {
+		"lighting": "Verlichting",
+		"blue": "Blauw",
+		"horti": "Horti",
+		"settings": {
+			"timeDelay": "Vertragingstijd",
+			"timeDelayText": "De vertragingstijd voor de verlichting om de output te veranderen op basis van de gemeten PAR-waarde",
+			"horti": "Horti",
+			"hortiText": "Het maximaal toegestane verlichtingspercentage in de automatische modus",
+			"blue": "Blauw"
+		}
+	},
+	"heat": {
+		"heating": "Verwarming",
+		"settings": {
+			"timeDelay": "Vertragingstijd",
+			"timeDelayText": "De vertragingstijd voor de temperatuur voordat de temperatuurdrempels worden overschreden voordat de verwarming wordt ingeschakeld of uitgeschakeld",
+			"maxTemp": "Maximale toegestane bodemtemperatuur",
+			"maxTempText": "Temperatuur waarbij de verwarming wordt uitgeschakeld om beschadiging van het gazon te voorkomen"
+		}
+	},
+	"log": {
+		"title": "Gegevens weergegeven voor de afgelopen 7 dagen",
+		"noData": "Geen loggegevens verstrekt",
+		"Monday": "Maandag",
+		"Tuesday": "Dinsdag",
+		"Wednesday": "Woensdag",
+		"Thursday": "Donderdag",
+		"Friday": "Vrijdag",
+		"Saturday": "Zaterdag",
+		"Sunday": "Zondag",
+		"turnedOn": "Ingeschakeld",
+		"turnedOff": "Uitgeschakeld",
+		"manual": "Handmatig",
+		"auto": "Automatisch",
+		"turfpalMobile": "Turfpal mobiel",
+		"turfpalWeb": "Turfpal Web"
+	},
+	"calendar": {
+		"errorNoEntries": "Er zijn geen invoergegevens opgeslagen in de verlichtingsinstallatie",
+		"errorGettingData": "Oeps! Er is iets misgegaan bij het ophalen van gegevens uit de installatie!",
+		"deletePrompt": "Wil je dit echt verwijderen?",
+		"deleteText": "Als je dit verwijdert, kun je het niet herstellen",
+		"close": "Sluiten",
+		"delete": "VERWIJDEREN",
+		"addEntry": "Invoer toevoegen",
+		"entries": "Invoeren",
+		"updateEntry": "Invoer bijwerken"
+	},
+
+	"alarm": {
+		"alarms": "Alarmen",
+		"surge": {
+			"title": "Overspanningsbeveiliging",
+			"inactiveText": "Overspanningsbeveiliging is operationeel",
+			"activeText": "Een overspanningsbeveiliging is defect. Vervang deze zo snel mogelijk om schade aan de apparatuur te voorkomen"
+		},
+		"fuses": {
+			"title": "Zekeringen",
+			"inactiveText": "Alle zekeringen intact",
+			"activeText": "Een zekering is doorgeslagen! Controleer dit zo snel mogelijk, aangezien de installatie anders niet correct zal functioneren"
+		},
+		"par": {
+			"title": "PAR-sensor",
+			"inactiveText": "Sensor werkt",
+			"activeText": "De PAR-sensor is defect. De verlichtingsinstallatie werkt goed in 'Automatische'-modus. Neem contact op met de ondersteuning van Turfpal op +44 7949 429360"
+		},
+		"temperature": {
+			"title": "Temperatuursensor",
+			"inactiveText": "Sensor werkt",
+			"activeText": "De temperatuursensor is defect. De verlichtingsinstallatie werkt goed in 'Automatische'-modus. Neem contact op met de ondersteuning van Turfpal op +44 7949 429360"
+		},
+		"soil": {
+			"title": "Bodemvochtsensor",
+			"inactiveText": "Sensor werkt",
+			"activeText": "De bodemvochtsensor is defect. De verlichtingsinstallatie werkt goed in 'Automatische'-modus. Neem contact op met de ondersteuning van Turfpal op +44 7949 429360"
+		},
+		"co2": {
+			"title": "CO2-sensor",
+			"inactiveText": "Sensor werkt",
+			"activeText": "De CO2-sensor is defect. De verlichtingsinstallatie werkt goed in 'Automatische'-modus. Neem contact op met de ondersteuning van Turfpal op +44 7949 429360"
+		},
+		"soilTemperature": {
+			"title": "Bodemtemperatuur",
+			"inactiveText": "Temperatuur normaal",
+			"activeText": "De bodemtemperatuur heeft de limiet overschreden. De verwarming is uitgeschakeld"
+		},
+		"wind": {
+			"title": "Windsensor",
+			"inactiveText": "Windsnelheden normaal",
+			"activeText": "De windsnelheden hebben de limiet overschreden. Beoordeel de installatiecondities"
+		}
+	},
+	"energy": {
+		"energy": "Energie",
+		"energyMeter": "Energieverbruikmeter",
+		"power": "Vermogen",
+		"frequency": "Frequentie",
+		"voltage": "Spanning",
+		"current": "Huidige",
+		"error": "Oeps, er is een fout opgetreden bij het ophalen van de energiegegevens"
+	},
+	"information": {
+		"settingsAndInfo": "Instellingen en informatie",
+		"modbusSettings": {
+			"modbusSettings": "Modbus-instellingen",
+			"selectSensor": "Selecteer sensor",
+			"address": "Adres",
+			"oldAddress": "Oud adres",
+			"newAddress": "Nieuw adres",
+			"parMessage": "De PAR-sensor wordt geleverd met een vast adres van 1 en kan niet worden gewijzigd",
+			"changeAddress": "Adres wijzigen",
+			"readSensorValue": "Lees sensorwaarde",
+			"readValue": "Lees waarde",
+			"par": "PAR",
+			"temperature": "Temperatuur",
+			"co2": "CO2-sensor",
+			"soil": "Bodemvochtsensor"
+		},
+		"daliSettings": {
+			"daliSettings": "DALI-instellingen",
+			"scanForNew": "Scannen op nieuwe apparaten",
+			"resetAddr": "Adres resetten",
+			"stopScan": "Stoppen met scannen",
+			"allOn": "Alles aan",
+			"allOff": "Alles uit",
+			"name": "Naam",
+			"group": "Groep",
+			"save": "Opslaan",
+			"toggle": "Schakelen",
+			"address": "Adres",
+			"groups": "Groep(en)",
+			"status": "Status",
+			"found": "Gevonden",
+			"progress": "Voortgang"
+		},
+		"help": {
+			"help": "Help",
+			"helpTitle": "Hulp is onderweg",
+			"helpText": "Maar niet vandaag. Het zal worden uitgebracht met de volgende versie van deze web-applicatie. In de tussentijd ben je van harte welkom om contact met ons op te nemen via:",
+			"helpPhone": "+44 7562 994399",
+			"helpEmail": "service@ra-tls.com"
+		},
+		"sessionLog": "Sessie Log",
+		"signOut": "Uitloggen",
+		"information": {
+			"device": {
+				"device": "Apparaat",
+				"model": "Model",
+				"serial": "Serienummer",
+				"firmware": "Firmware"
+			},
+			"connectivity": {
+				"connectivity": "Connectiviteit",
+				"router": {
+					"router": "Router",
+					"connectivity": "Connectiviteit",
+					"name": "Naam",
+					"serial": "Serienummer",
+					"firmware": "Firmware",
+					"imei": "IMEI",
+					"wan": "WAN IP",
+					"dateTime": "Datum en tijd",
+					"mac": "MAC-adres"
+				},
+				"mobile": {
+					"mobile": "Mobiel",
+					"error": "Er is een fout opgetreden",
+					"fetching": "Interfaces ophalen",
+					"fetchingError": "Fout bij het ophalen van interfaces",
+					"operator": "Operator",
+					"networkType": "Netwerktype",
+					"networkReg": "Type netwerkregistratie",
+					"signalStrength": "Signaalsterkte",
+					"imsi": "IMSI",
+					"loggingInToRouter": "Aanmelden bij router",
+					"loginError": "Er is een fout opgetreden bij het aanmelden bij de router!",
+					"settings": {
+						"mobileDetails": "Mobiele details",
+						"id": "ID",
+						"simSlot": "SIM-slot",
+						"outgoingTraffic": "Uitgaand verkeer",
+						"incomingTraffic": "Inkomend verkeer",
+						"apn": "APN",
+						"auto": "Auto",
+						"customApn": "Aangepaste APN",
+						"authType": "Authenticatietype",
+						"custom": "Aangepast",
+						"username": "Gebruikersnaam",
+						"password": "Wachtwoord"
+					}
+				},
+
+				"wireless": {
+					"wireless": "Draadloos",
+					"ssid": "SSID",
+					"lanIp": "LAN IP",
+					"settings": {
+						"scanWifi": "WiFi scannen",
+						"scanning": "Scannen naar WiFi ...",
+						"errorScanning": "Er is een fout opgetreden bij het scannen naar WiFi",
+						"ssid": "SSID",
+						"signal": "Signaal",
+						"channel": "Kanaal",
+						"encryption": "Encryptie",
+						"passphrase": "Wachtwoordzin",
+						"connect": "Verbinden",
+						"connecting": "Verbinding maken met WiFi",
+						"disconnecting": "Ontkoppelen...",
+						"errorJoining": "Er is een fout opgetreden bij het verbinden met de WiFi",
+						"connected": "Verbonden",
+						"disconnected": "Losgekoppeld",
+						"disconnect": "Ontkoppelen",
+						"forget": "Vergeten",
+						"failover": "Failover"
+					}
+				},
+				"gps": {
+					"gps": "GPS",
+					"satelites": "Satellieten",
+					"latitude": "Breedtegraad",
+					"longitude": "Lengtegraad",
+					"accuracy": "Nauwkeurigheid",
+					"altitude": "Hoogte"
+				}
+			},
+			"appVersion": "App-versie",
+			"timeZone": {
+				"timeZone": "Tijdzone",
+				"select": "Selecteer tijdzone"
+			}
+		}
+	}
+}
