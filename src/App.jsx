@@ -14,7 +14,7 @@ import MainContent from './components/MainContent'
 // Context
 import MenuContextProvider from './store/context/menu-context'
 import SetpointsContextProvider from './store/context/setpoints-context'
-import { useContext } from 'react'
+import { Suspense, useContext } from 'react'
 import { AllValuesContext } from './store/context/allValues-context'
 
 // Custom Themes for MUI
@@ -26,21 +26,23 @@ function App() {
 	if (error) return <h1>Error fetching data!</h1>
 	return (
 		<div className='App'>
-			<GlobalStyle />
-			<LocalizationProvider dateAdapter={AdapterDayjs}>
-				<LoginContextProvider>
-					<MenuContextProvider>
-						<SetpointsContextProvider>
-							<ThemeProvider theme={theme}>
-								<Router>
-									<Header />
-									<MainContent />
-								</Router>
-							</ThemeProvider>
-						</SetpointsContextProvider>
-					</MenuContextProvider>
-				</LoginContextProvider>
-			</LocalizationProvider>
+			<Suspense fallback='Loading...'>
+				<GlobalStyle />
+				<LocalizationProvider dateAdapter={AdapterDayjs}>
+					<LoginContextProvider>
+						<MenuContextProvider>
+							<SetpointsContextProvider>
+								<ThemeProvider theme={theme}>
+									<Router>
+										<Header />
+										<MainContent />
+									</Router>
+								</ThemeProvider>
+							</SetpointsContextProvider>
+						</MenuContextProvider>
+					</LoginContextProvider>
+				</LocalizationProvider>
+			</Suspense>
 		</div>
 	)
 }

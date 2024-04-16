@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { Container, Content, Row, Header } from './Apn.styles'
 
@@ -16,6 +17,7 @@ function Apn({
 	handleUpdateApn,
 	apnData,
 }) {
+	const { t } = useTranslation()
 	const autoApn = apnData.auto_apn === '1'
 
 	return (
@@ -25,11 +27,14 @@ function Apn({
 					<span>
 						<Header>
 							<SettingsOutlinedIcon />
-							APN
+
+							{t(
+								'information.information.connectivity.mobile.settings.apn'
+							)}
 						</Header>
 					</span>
 					<span className='failover'>
-						<div>Auto</div>
+						<div>{t('generic.auto')}</div>
 						<Switch
 							checked={autoApn}
 							size='small'
@@ -40,9 +45,15 @@ function Apn({
 				{autoApn ? (
 					<Row>
 						<DataField
-							header={'APN'}
+							header={t(
+								'information.information.connectivity.mobile.settings.apn'
+							)}
 							data={
-								autoApn ? apnList[0].apn : mobileInterface.apn
+								autoApn
+									? Array.isArray(apnList)
+										? apnList[0]?.apn
+										: 'No APN detected'
+									: mobileInterface.apn
 							}
 							unit=''
 						/>

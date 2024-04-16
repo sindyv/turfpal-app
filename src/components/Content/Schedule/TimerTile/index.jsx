@@ -1,64 +1,64 @@
-import React from "react"
+import React from 'react'
 
 import {
-    Wrapper,
-    Header,
-    HeaderTextArea,
-    ValueArea,
-    LinkItem,
-} from "./TimeTile.styles"
+	Wrapper,
+	Header,
+	HeaderTextArea,
+	ValueArea,
+	LinkItem,
+} from './TimeTile.styles'
 
-import { Switch } from "@mui/material"
+import { Switch } from '@mui/material'
 
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined"
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined'
 
 const defaultValueObject = {
-    value: "",
-    valueUnit: "",
-    additionalData: ["", ""],
-    additionalDataUnits: ["", ""],
+	value: '',
+	valueUnit: '',
+	additionalData: ['', ''],
+	additionalDataUnits: ['', ''],
 }
 
 function TimerTile({
-    enabled,
-    icon = HelpOutlineOutlinedIcon,
-    title,
-    linkTo,
-    linkHeaderText,
-    onClick,
-    disabled,
+	enabled,
+	icon = HelpOutlineOutlinedIcon,
+	title,
+	linkTo,
+	linkHeaderText,
+	onClick,
+	disabled,
 }) {
-    const Icon = icon
+	const Icon = icon
 
-    const handleClick = (event) => {
-        onClick(event.target.checked)
-    }
+	const handleClick = (event) => {
+		onClick(event.target.checked)
+	}
 
-    return (
-        <Wrapper $enabled={enabled}>
-            <Header>
-                <HeaderTextArea>{title}</HeaderTextArea>
-                {title === "Calendar" ? (
-                    <Switch
-                        disabled={disabled}
-                        checked={enabled}
-                        size='small'
-                        color='custom'
-                        onChange={handleClick}
-                    />
-                ) : null}
-            </Header>
-            <LinkItem
-                to={linkTo}
-                $enabled={enabled}
-                state={{ headerText: linkHeaderText }}
-            >
-                <ValueArea>
-                    <Icon />
-                </ValueArea>
-            </LinkItem>
-        </Wrapper>
-    )
+	return (
+		<Wrapper $enabled={enabled}>
+			<Header>
+				<HeaderTextArea>{title}</HeaderTextArea>
+				{title === 'Calendar' ? (
+					<Switch
+						disabled={disabled}
+						checked={enabled}
+						size='small'
+						color='custom'
+						onChange={handleClick}
+					/>
+				) : null}
+			</Header>
+			<LinkItem
+				to={linkTo}
+				$enabled={enabled}
+				state={{ headerText: linkHeaderText }}
+			>
+				<ValueArea>
+					<Icon />
+				</ValueArea>
+			</LinkItem>
+		</Wrapper>
+	)
 }
 
 export default TimerTile

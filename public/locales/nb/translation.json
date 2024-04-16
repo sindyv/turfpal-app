@@ -1,0 +1,276 @@
+{
+	"generic": {
+		"dashboard": "Dashbord",
+		"information": "Informasjon",
+		"scheduler": "Planlegger",
+		"schedule": "Timeplan",
+		"calendar": "Kalender",
+		"session": "Økt",
+		"timer": "Timer",
+		"startTimer": "Start timer",
+		"stopTimer": "Stopp timer",
+		"timerActive": "Timer aktiv",
+		"timerEnding": "Slutter kl",
+		"auto": "Auto",
+		"manual": "Manuell",
+		"on": "På",
+		"off": "Av",
+		"start": "Start",
+		"stop": "Stopp",
+		"keepOn": "Hold på",
+		"keepOff": "Hold av",
+		"mode": "Modus",
+		"default": "Standard",
+		"summer": "Sommer",
+		"winter": "Vinter",
+		"action": "Handling",
+		"temperature": "Temperatur",
+		"parRange": "PAR-område",
+		"log": "Logg",
+		"hours": "timer",
+		"minutes": "min",
+		"starting": "Start",
+		"ending": "Slutt",
+		"settings": "Innstillinger",
+		"none": "Ingen",
+		"loading": "Laster ...",
+		"resetOperatingHours": "Tilbakestill driftstimer",
+		"updateEntry": "Oppdater oppføring",
+		"email": "E-post",
+		"phone": "Telefon"
+	},
+
+	"light": {
+		"lighting": "Lys",
+		"blue": "Blå",
+		"horti": "Horti",
+		"settings": {
+			"timeDelay": "Tidsforsinkelse",
+			"timeDelayText": "Tidsforsinkelse for endring i lysstyrke basert på PAR-verdi",
+			"horti": "Horti",
+			"hortiText": "Den maksimalt tillatte belysningsprosenten i auto-modus",
+			"blue": "Blå"
+		}
+	},
+	"heat": {
+		"heating": "Varme",
+		"settings": {
+			"timeDelay": "Tidsforsinkelse",
+			"timeDelayText": "Tidsforsinkelsen for å slå varme av/på basert på temperatursettpunkt",
+			"maxTemp": "Maksimum tillatt jordtemperatur",
+			"maxTempText": "Temperatur som vil slå av oppvarmingen for å unngå skade på plenen"
+		}
+	},
+	"log": {
+		"title": "Data vises for de siste 7 dagene",
+		"noData": "Ingen loggdata gitt",
+		"Monday": "Mandag",
+		"Tuesday": "Tirsdag",
+		"Wednesday": "Onsdag",
+		"Thursday": "Torsdag",
+		"Friday": "Fredag",
+		"Saturday": "Lørdag",
+		"Sunday": "Søndag",
+		"turnedOn": "Slått på",
+		"turnedOff": "Slått av",
+		"manual": "Manuell",
+		"auto": "Auto",
+		"turfpalMobile": "Turfpal mobil",
+		"turfpalWeb": "Turfpal Web"
+	},
+	"calendar": {
+		"errorNoEntries": "Det er ingen oppføringer lagret i belysningsriggen",
+		"errorGettingData": "Oops! Noe gikk galt ved henting av data fra riggen!",
+		"deletePrompt": "Vil du virkelig slette?",
+		"deleteText": "Hvis du sletter dette, kan du ikke gjenopprette det",
+		"close": "Lukk",
+		"delete": "SLETT",
+		"addEntry": "Legg til oppføring",
+		"entries": "Oppføringer",
+		"updateEntry": "Oppdater oppføring"
+	},
+
+	"alarm": {
+		"alarms": "Alarmer",
+		"surge": {
+			"title": "Overbelastningsvern",
+			"inactiveText": "Overbelastningsbeskyttelse er operativ",
+			"activeText": "En overspenningsbeskytter er feil. Bytt så snart som mulig for å unngå skade på utstyret"
+		},
+		"fuses": {
+			"title": "Sikringer",
+			"inactiveText": "Alle sikringer intakte",
+			"activeText": "En sikring har gått! Vennligst sjekk så snart som mulig, da riggen ikke vil fungere riktig"
+		},
+		"par": {
+			"title": "PAR-sensor",
+			"inactiveText": "Sensor fungerer",
+			"activeText": "PAR-sensoren har feilet. Belysningsriggen vil fungere ordentlig i 'Auto'-modus. Vennligst ring Turfpal support på +44 7949 429360"
+		},
+		"temperature": {
+			"title": "Temperatursensor",
+			"inactiveText": "Sensor fungerer",
+			"activeText": "Temperatursensoren har feilet. Belysningsriggen vil fungere ordentlig i 'Auto'-modus. Vennligst ring Turfpal support på +44 7949 429360"
+		},
+		"soil": {
+			"title": "Jordsensor",
+			"inactiveText": "Sensor fungerer",
+			"activeText": "Jordsensoren har feilet. Belysningsriggen vil fungere ordentlig i 'Auto'-modus. Vennligst ring Turfpal support på +44 7949 429360"
+		},
+		"co2": {
+			"title": "CO2-sensor",
+			"inactiveText": "Sensor fungerer",
+			"activeText": "CO2-sensoren har feilet. Belysningsriggen vil fungere ordentlig i 'Auto'-modus. Vennligst ring Turfpal support på +44 7949 429360"
+		},
+		"soilTemperature": {
+			"title": "Jordtemperatur",
+			"inactiveText": "Temperatur normal",
+			"activeText": "Jordtemperaturen har overskredet grensen. Oppvarmingen er slått av"
+		},
+		"wind": {
+			"title": "Vind sensor",
+			"inactiveText": "Vindhastigheter normale",
+			"activeText": "Vindhastighetene har overskredet grensen. Vennligst evaluer utsettingsforholdene"
+		}
+	},
+	"energy": {
+		"energy": "Energi",
+		"energyMeter": "Energimåler",
+		"power": "Effekt",
+		"frequency": "Frekvens",
+		"voltage": "Spenning",
+		"current": "Strøm",
+		"error": "Oops, det oppstod en feil ved henting av energidata"
+	},
+	"information": {
+		"settingsAndInfo": "Innstillinger og informasjon",
+		"modbusSettings": {
+			"modbusSettings": "Modbus Innstillinger",
+			"selectSensor": "Velg sensor",
+			"address": "Adresse",
+			"oldAddress": "Gammel adresse",
+			"newAddress": "Ny adresse",
+			"parMessage": "PAR-sensoren har en fast adresse på 1 og kan ikke endres",
+			"changeAddress": "Endre adresse",
+			"readSensorValue": "Les sensorverdi",
+			"readValue": "Les verdi",
+			"par": "PAR",
+			"temperature": "Temperatur",
+			"co2": "CO2-sensor",
+			"soil": "Jordsensor"
+		},
+		"daliSettings": {
+			"daliSettings": "DALI Innstillinger",
+			"scanForNew": "Søk etter nye enheter",
+			"resetAddr": "Tilbakestill adressering",
+			"stopScan": "Stopp skanning",
+			"allOn": "Alle på",
+			"allOff": "Alle av",
+			"name": "Navn",
+			"group": "Gruppe",
+			"save": "Lagre",
+			"toggle": "Veksle",
+			"address": "Adresse",
+			"groups": "Gruppe(r)",
+			"status": "Status",
+			"found": "Funnet",
+			"progress": "Fremgang"
+		},
+		"help": {
+			"help": "Hjelp",
+			"helpTitle": "Hjelpen er på vei",
+			"helpText": "Men ikke i dag. Det vil bli utgitt med neste versjon av denne web-appen. I mellomtiden er du velkommen til å kontakte oss her:",
+			"helpPhone": "+44 7562 994399",
+			"helpEmail": "service@ra-tls.com"
+		},
+		"sessionLog": "Øktlogg",
+		"signOut": "Logg ut",
+		"information": {
+			"device": {
+				"device": "Enhet",
+				"model": "Modell",
+				"serial": "Serienr",
+				"firmware": "Fastvare"
+			},
+			"connectivity": {
+				"connectivity": "Tilkobling",
+				"router": {
+					"router": "Router",
+					"connectivity": "Tilkobling",
+					"name": "Navn",
+					"serial": "Serienr",
+					"firmware": "Fastvare",
+					"imei": "IMEI",
+					"wan": "WAN IP",
+					"dateTime": "Dato og tid",
+					"mac": "MAC-adresse"
+				},
+				"mobile": {
+					"mobile": "Mobil",
+					"error": "En feil oppstod",
+					"fetching": "Henter tilkoblinger",
+					"fetchingError": "Feil ved henting av tilkoblinger",
+					"operator": "Operatør",
+					"networkType": "Nettverkstype",
+					"networkReg": "Nettverksregistreringstype",
+					"signalStrength": "Signalstyrke",
+					"imsi": "IMSI",
+					"loggingInToRouter": "Logger inn på router",
+					"loginError": "Det oppstod en feil ved innlogging på ruter!",
+					"settings": {
+						"mobileDetails": "Detaljer",
+						"id": "ID",
+						"simSlot": "SIM-spor",
+						"outgoingTraffic": "Utgående trafikk",
+						"incomingTraffic": "Innkommende trafikk",
+						"apn": "APN",
+						"auto": "Auto",
+						"customApn": "Egendefinert APN",
+						"authType": "Autentiseringstype",
+						"custom": "Egendefinert",
+						"username": "Brukernavn",
+						"password": "Passord"
+					}
+				},
+
+				"wireless": {
+					"wireless": "Trådløs",
+					"ssid": "SSID",
+					"lanIp": "LAN IP",
+					"settings": {
+						"scanWifi": "Søk etter WiFi",
+						"scanning": "Søker etter WiFi ...",
+						"errorScanning": "Det oppstod en feil søk etter WiFi",
+						"ssid": "SSID",
+						"signal": "Signal",
+						"channel": "Kanal",
+						"encryption": "Kryptering",
+						"passphrase": "Passphrase",
+						"connect": "Koble til",
+						"connecting": "Kobler til WiFi",
+						"disconnecting": "Kobler fra...",
+						"connected": "Tilkoblet",
+						"disconnected": "Frakoblet",
+						"errorJoining": "Det oppstod en feil ved tilkobling til WiFi",
+						"disconnect": "Koble fra",
+						"forget": "Glem",
+						"failover": "Tilbakefallskobling"
+					}
+				},
+				"gps": {
+					"gps": "GPS",
+					"satelites": "Satelitter",
+					"latitude": "Breddegrad",
+					"longitude": "Lengdegrad",
+					"accuracy": "Nøyaktighet",
+					"altitude": "Høyde"
+				}
+			},
+			"appVersion": "App versjon",
+			"timeZone": {
+				"timeZone": "Tidssone",
+				"select": "Velg tidssone"
+			}
+		}
+	}
+}

@@ -1,0 +1,276 @@
+{
+	"generic": {
+		"dashboard": "Dashboard",
+		"information": "Informationen",
+		"scheduler": "Zeitplaner",
+		"schedule": "Zeitplan",
+		"calendar": "Kalender",
+		"session": "Sitzung",
+		"timer": "Timer",
+		"startTimer": "Timer starten",
+		"stopTimer": "Timer stoppen",
+		"timerActive": "Timer aktiv",
+		"timerEnding": "Endet um",
+		"auto": "Automatisch",
+		"manual": "Manuell",
+		"on": "Ein",
+		"off": "Aus",
+		"start": "Start",
+		"stop": "Stop",
+		"keepOn": "Fortsetzen",
+		"keepOff": "Ausgeschaltet lassen",
+		"mode": "Modus",
+		"default": "Standard",
+		"summer": "Sommer",
+		"winter": "Winter",
+		"action": "Aktion",
+		"temperature": "Temperatur",
+		"parRange": "PAR-Bereich",
+		"log": "Protokoll",
+		"hours": "Stunden",
+		"minutes": "Min",
+		"starting": "Starten",
+		"ending": "Ende",
+		"settings": "Einstellungen",
+		"loading": "Wird geladen ...",
+		"none": "Keine",
+		"resetOperatingHours": "Betriebsstunden zurücksetzen",
+		"updateEntry": "Eintrag aktualisieren",
+		"email": "E-Mail",
+		"phone": "Telefon"
+	},
+
+	"light": {
+		"lighting": "Beleuchtung",
+		"blue": "Blau",
+		"horti": "Horti",
+		"settings": {
+			"timeDelay": "Zeitverzögerung",
+			"timeDelayText": "Die Zeitverzögerung für die Beleuchtung, um ihre Ausgabe basierend auf dem gemessenen PAR-Wert zu ändern",
+			"horti": "Horti",
+			"hortiText": "Der maximal erlaubte Beleuchtungsprozentsatz im Automatikmodus",
+			"blue": "Blau"
+		}
+	},
+	"heat": {
+		"heating": "Heizung",
+		"settings": {
+			"timeDelay": "Zeitverzögerung",
+			"timeDelayText": "Die Zeitverzögerung, bevor die Temperatur die Temperaturschwellenwerte überschreiten kann, bevor die Heizung ein- oder ausgeschaltet wird",
+			"maxTemp": "Maximal zulässige Bodentemperatur",
+			"maxTempText": "Temperatur, bei der die Heizung ausgeschaltet wird, um Schäden am Rasen zu vermeiden"
+		}
+	},
+	"log": {
+		"title": "Daten der letzten 7 Tage",
+		"noData": "Keine Protokolldaten vorhanden",
+		"Monday": "Montag",
+		"Tuesday": "Dienstag",
+		"Wednesday": "Mittwoch",
+		"Thursday": "Donnerstag",
+		"Friday": "Freitag",
+		"Saturday": "Samstag",
+		"Sunday": "Sonntag",
+		"turnedOn": "Eingeschaltet",
+		"turnedOff": "Ausgeschaltet",
+		"manual": "Manuell",
+		"auto": "Automatisch",
+		"turfpalMobile": "Turfpal Mobil",
+		"turfpalWeb": "Turfpal Web"
+	},
+	"calendar": {
+		"errorNoEntries": "Es sind keine Einträge im Beleuchtungsraster gespeichert",
+		"errorGettingData": "Ups! Beim Abrufen von Daten aus dem Gitter ist etwas schief gelaufen!",
+		"deletePrompt": "Möchten Sie wirklich löschen?",
+		"deleteText": "Wenn Sie dies löschen, können Sie es nicht wiederherstellen",
+		"close": "Schließen",
+		"delete": "LÖSCHEN",
+		"addEntry": "Eintrag hinzufügen",
+		"entries": "Einträge",
+		"updateEntry": "Eintrag aktualisieren"
+	},
+
+	"alarm": {
+		"alarms": "Alarme",
+		"surge": {
+			"title": "Überspannungsschutz",
+			"inactiveText": "Überspannungsschutz ist betriebsbereit",
+			"activeText": "Ein Überspannungsschutz ist defekt. Ersetzen Sie ihn so schnell wie möglich, um Beschädigungen am Gerät zu vermeiden"
+		},
+		"fuses": {
+			"title": "Sicherungen",
+			"inactiveText": "Alle Sicherungen intakt",
+			"activeText": "Eine Sicherung ist durchgebrannt! Bitte überprüfen Sie so schnell wie möglich, da das Gitter nicht ordnungsgemäß funktionieren wird"
+		},
+		"par": {
+			"title": "PAR-Sensor",
+			"inactiveText": "Sensor funktioniert",
+			"activeText": "Der PAR-Sensor funktioniert nicht. Das Beleuchtungsgitter wird im 'Auto'-Modus ordnungsgemäß funktionieren. Bitte rufen Sie Turfpal-Support unter +44 7949 429360 an"
+		},
+		"temperature": {
+			"title": "Temperatursensor",
+			"inactiveText": "Sensor funktioniert",
+			"activeText": "Der Temperatursensor funktioniert nicht. Das Beleuchtungsgitter wird im 'Auto'-Modus ordnungsgemäß funktionieren. Bitte rufen Sie Turfpal-Support unter +44 7949 429360 an"
+		},
+		"soil": {
+			"title": "Bodensensor",
+			"inactiveText": "Sensor funktioniert",
+			"activeText": "Der Bodensensor funktioniert nicht. Das Beleuchtungsgitter wird im 'Auto'-Modus ordnungsgemäß funktionieren. Bitte rufen Sie Turfpal-Support unter +44 7949 429360 an"
+		},
+		"co2": {
+			"title": "CO2-Sensor",
+			"inactiveText": "Sensor funktioniert",
+			"activeText": "Der CO2-Sensor funktioniert nicht. Das Beleuchtungsgitter wird im 'Auto'-Modus ordnungsgemäß funktionieren. Bitte rufen Sie Turfpal-Support unter +44 7949 429360 an"
+		},
+		"soilTemperature": {
+			"title": "Bodentemperatur",
+			"inactiveText": "Temperatur normal",
+			"activeText": "Die Bodentemperatur hat das Limit überschritten. Die Heizung wurde abgeschaltet"
+		},
+		"wind": {
+			"title": "Windsensor",
+			"inactiveText": "Windgeschwindigkeiten normal",
+			"activeText": "Die Windgeschwindigkeiten haben das Limit überschritten. Bitte überprüfen Sie die Einsatzbedingungen"
+		}
+	},
+	"energy": {
+		"energy": "Energie",
+		"energyMeter": "Energieverbrauchsmesser",
+		"power": "Leistung",
+		"frequency": "Frequenz",
+		"voltage": "Spannung",
+		"current": "Strom",
+		"error": "Hoppla, beim Abrufen der Energiedaten ist ein Fehler aufgetreten"
+	},
+	"information": {
+		"settingsAndInfo": "Einstellungen und Informationen",
+		"modbusSettings": {
+			"modbusSettings": "Modbus-Einstellungen",
+			"selectSensor": "Sensor auswählen",
+			"address": "Adresse",
+			"oldAddress": "Alte Adresse",
+			"newAddress": "Neue Adresse",
+			"parMessage": "Der PAR-Sensor hat eine feste Adresse von 1 und kann nicht geändert werden",
+			"changeAddress": "Adresse ändern",
+			"readSensorValue": "Sensorwert lesen",
+			"readValue": "Wert lesen",
+			"par": "PAR",
+			"temperature": "Temperatur",
+			"co2": "CO2-Sensor",
+			"soil": "Bodensensor"
+		},
+		"daliSettings": {
+			"daliSettings": "DALI-Einstellungen",
+			"scanForNew": "Neue Geräte suchen",
+			"resetAddr": "Adressierung zurücksetzen",
+			"stopScan": "Suche beenden",
+			"allOn": "Alle ein",
+			"allOff": "Alle aus",
+			"name": "Name",
+			"group": "Gruppe",
+			"save": "Speichern",
+			"toggle": "Umschalten",
+			"address": "Adresse",
+			"groups": "Gruppe(n)",
+			"status": "Status",
+			"found": "Gefunden",
+			"progress": "Fortschritt"
+		},
+		"help": {
+			"help": "Hilfe",
+			"helpTitle": "Hilfe ist unterwegs",
+			"helpText": "Aber nicht heute. Es wird mit der nächsten Version dieser Web-App veröffentlicht. In der Zwischenzeit können Sie uns hier kontaktieren:",
+			"helpPhone": "+44 7562 994399",
+			"helpEmail": "service@ra-tls.com"
+		},
+		"sessionLog": "Sitzungsprotokoll",
+		"signOut": "Abmelden",
+		"information": {
+			"device": {
+				"device": "Gerät",
+				"model": "Modell",
+				"serial": "Seriennummer",
+				"firmware": "Firmware"
+			},
+			"connectivity": {
+				"connectivity": "Konnektivität",
+				"router": {
+					"router": "Router",
+					"connectivity": "Konnektivität",
+					"name": "Name",
+					"serial": "Seriennummer",
+					"firmware": "Firmware",
+					"imei": "IMEI",
+					"wan": "WAN-IP",
+					"dateTime": "Datum und Uhrzeit",
+					"mac": "MAC-Adresse"
+				},
+				"mobile": {
+					"mobile": "Mobiltelefon",
+					"error": "Ein Fehler ist aufgetreten",
+					"fetching": "Schnittstellen abrufen",
+					"fetchingError": "Fehler beim Abrufen von Schnittstellen",
+					"operator": "Anbieter",
+					"networkType": "Netzwerktyp",
+					"networkReg": "Netzwerkanmeldetyp",
+					"signalStrength": "Signalstärke",
+					"imsi": "IMSI",
+					"loggingInToRouter": "Anmeldung am Router",
+					"loginError": "Beim Anmelden am Router ist ein Fehler aufgetreten!",
+					"settings": {
+						"mobileDetails": "Mobilfunkdetails",
+						"id": "ID",
+						"simSlot": "SIM-Steckplatz",
+						"outgoingTraffic": "Ausgehender Datenverkehr",
+						"incomingTraffic": "Eingehender Datenverkehr",
+						"apn": "APN",
+						"auto": "Automatisch",
+						"customApn": "Benutzerdefinierter APN",
+						"authType": "Authentifizierungstyp",
+						"custom": "Benutzerdefiniert",
+						"username": "Benutzername",
+						"password": "Passwort"
+					}
+				},
+
+				"wireless": {
+					"wireless": "Kabellos",
+					"ssid": "SSID",
+					"lanIp": "LAN-IP",
+					"settings": {
+						"scanWifi": "WiFi scannen",
+						"scanning": "Scannen nach WiFi ...",
+						"errorScanning": "Beim Scannen nach WiFi ist ein Fehler aufgetreten",
+						"ssid": "SSID",
+						"signal": "Signal",
+						"channel": "Kanal",
+						"encryption": "Verschlüsselung",
+						"passphrase": "Passphrase",
+						"connect": "Verbinden",
+						"connecting": "Verbindung zum WiFi herstellen",
+						"disconnecting": "Trennen ...",
+						"errorJoining": "Beim Beitritt zum WiFi ist ein Fehler aufgetreten",
+						"connected": "Verbunden",
+						"disconnected": "Getrennt",
+						"disconnect": "Trennen",
+						"forget": "Vergessen",
+						"failover": "Ausfallsicherung"
+					}
+				},
+				"gps": {
+					"gps": "GPS",
+					"satelites": "Satelliten",
+					"latitude": "Breitengrad",
+					"longitude": "Längengrad",
+					"accuracy": "Genauigkeit",
+					"altitude": "Höhe"
+				}
+			},
+			"appVersion": "App-Version",
+			"timeZone": {
+				"timeZone": "Zeitzone",
+				"select": "Zeitzone auswählen"
+			}
+		}
+	}
+}

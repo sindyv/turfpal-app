@@ -7,9 +7,10 @@ import MenuSpacer from '../../UI/MenuSpacer'
 
 import { useContext } from 'react'
 import { AllValuesContext } from '../../../store/context/allValues-context'
+import { useTranslation } from 'react-i18next'
 function Alarms({}) {
 	const { data: allValues } = useContext(AllValuesContext)
-
+	const { t } = useTranslation()
 	return (
 		<Wrapper>
 			{(typeof allValues?.alarms?.surge_protection !== 'undefined' ||
@@ -17,11 +18,9 @@ function Alarms({}) {
 					'undefined') && (
 				<StatusCard
 					state={'warning'}
-					title={'Surge protector'}
-					activeText={
-						'A surge protector is faulty. Replace as soon as possible to avoid damage to equipment'
-					}
-					inactiveText={'Surge protection is operational'}
+					title={t('alarm.surge.title')}
+					activeText={t('alarm.surge.activeText')}
+					inactiveText={t('alarm.surge.inactiveText')}
 					active={
 						allValues.alarms.surge_protection ||
 						allValues?.alarms?.surge_protection2
@@ -31,33 +30,18 @@ function Alarms({}) {
 			{typeof allValues.alarms.fuse !== 'undefined' && (
 				<StatusCard
 					state={'warning'}
-					title={'Fuses'}
-					activeText={
-						'A fuse has tripped! Please check as soon as possible as the rig will not function correctly'
-					}
-					inactiveText={'All fuses intact'}
+					title={t('alarm.fuses.title')}
+					activeText={t('alarm.fuses.activeText')}
+					inactiveText={t('alarm.fuses.inactiveText')}
 					active={allValues.alarms.fuse || allValues.alarms.fuse2}
-				/>
-			)}
-			{typeof allValues.alarms.tilt !== 'undefined' && (
-				<StatusCard
-					state={'warning'}
-					title={'Tilt sensor'}
-					activeText={
-						'The tilt sensor has tripped! Please verify that the rig is in an upright position'
-					}
-					inactiveText={'Tilt sensor OK'}
-					active={allValues.alarms.tilt}
 				/>
 			)}
 			{typeof allValues.alarms.sensor_par !== 'undefined' && (
 				<StatusCard
 					state={'warning'}
-					title={'PAR sensor'}
-					activeText={
-						"The PAR sensor has malfunctioned. The lighting rig will work properly in 'Auto'-mode. Please call Turfpal support at +44 7949 429360 "
-					}
-					inactiveText={'Sensor working'}
+					title={t('alarm.par.title')}
+					activeText={t('alarm.par.activeText')}
+					inactiveText={t('alarm.par.inactiveText')}
 					active={allValues.alarms.sensor_par}
 					activePrimaryColor='#ffedb5'
 					activeSecondaryColor='#665e48'
@@ -66,11 +50,9 @@ function Alarms({}) {
 			{typeof allValues.alarms.sensor_temp !== 'undefined' && (
 				<StatusCard
 					state={'warning'}
-					title={'Temperature sensor'}
-					activeText={
-						"The temperature sensor has malfunctioned. The lighting rig will work properly in 'Auto'-mode.  Please call Turfpal support at +44 7949 429360 "
-					}
-					inactiveText={'Sensor working'}
+					title={t('alarm.temperature.title')}
+					activeText={t('alarm.temperature.activeText')}
+					inactiveText={t('alarm.temperature.inactiveText')}
 					active={allValues.alarms.sensor_temp}
 					activePrimaryColor='#ffedb5'
 					activeSecondaryColor='#665e48'
@@ -79,11 +61,9 @@ function Alarms({}) {
 			{typeof allValues.alarms.sensor_soil !== 'undefined' && (
 				<StatusCard
 					state={'warning'}
-					title={'Soil sensor'}
-					activeText={
-						"The soil sensor has malfunctioned. The lighting rig will work properly in 'Auto'-mode. Please call Turfpal support at +44 7949 429360 "
-					}
-					inactiveText={'Sensor working'}
+					title={t('alarm.soil.title')}
+					activeText={t('alarm.soil.activeText')}
+					inactiveText={t('alarm.soil.inactiveText')}
 					active={allValues.alarms.sensor_soil}
 					activePrimaryColor='#ffedb5'
 					activeSecondaryColor='#665e48'
@@ -92,11 +72,9 @@ function Alarms({}) {
 			{typeof allValues.alarms.sensor_co2 !== 'undefined' && (
 				<StatusCard
 					state={'warning'}
-					title={'CO2 sensor'}
-					activeText={
-						"The CO2 sensor has malfunctioned. The lighting rig will work properly in 'Auto'-mode. Please call Turfpal support at +44 7949 429360 "
-					}
-					inactiveText={'Sensor working'}
+					title={t('alarm.co2.title')}
+					activeText={t('alarm.co2.activeText')}
+					inactiveText={t('alarm.co2.inactiveText')}
 					active={allValues.alarms.sensor_co2}
 					activePrimaryColor='#ffedb5'
 					activeSecondaryColor='#665e48'
@@ -105,11 +83,9 @@ function Alarms({}) {
 			{typeof allValues.alarms.sensor_wind !== 'undefined' && (
 				<StatusCard
 					state={'warning'}
-					title={'Wind sensor'}
-					activeText={
-						"The Wind sensor has malfunctioned. The lighting rig will work properly in 'Auto'-mode. Please call Turfpal support at +44 7949 429360 "
-					}
-					inactiveText={'Sensor working'}
+					title={t('alarm.wind.title')}
+					activeText={t('alarm.wind.activeText')}
+					inactiveText={t('alarm.wind.inactiveText')}
 					active={allValues.alarms.sensor_wind}
 					activePrimaryColor='#ffedb5'
 					activeSecondaryColor='#665e48'
@@ -118,11 +94,9 @@ function Alarms({}) {
 			{typeof allValues.alarms.high_soil_temp !== 'undefined' && (
 				<StatusCard
 					state={'warning'}
-					title={'Soil temperature'}
-					activeText={
-						'The soil temperature has exeeded the limit. The heating has been shut off'
-					}
-					inactiveText={'Temperature normal'}
+					title={t('alarm.soilTemperature.title')}
+					activeText={t('alarm.soilTemperature.activeText')}
+					inactiveText={t('alarm.soilTemperature.inactiveText')}
 					active={allValues.alarms.high_soil_temp}
 					activePrimaryColor='#ffedb5'
 					activeSecondaryColor='#665e48'

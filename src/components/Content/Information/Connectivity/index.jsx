@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 // Styles
 import {
 	Wrapper,
@@ -24,6 +25,7 @@ import dayjs from 'dayjs'
 
 function Connectivity() {
 	const { data: allValues } = useContext(AllValuesContext)
+	const { t } = useTranslation()
 	const routerDate = dayjs(
 		allValues.rig_data.router.gps.utc_timestamp * 1000
 	).format('YYYY-MM-DD HH:mm')
@@ -37,33 +39,48 @@ function Connectivity() {
 				<Card>
 					<CardDescription>
 						<span>
-							<RouterOutlinedIcon /> Router
+							<RouterOutlinedIcon />{' '}
+							{t(
+								'information.information.connectivity.router.router'
+							)}
 						</span>
 					</CardDescription>
 					<CardContent>
 						<InformationDataField header={'Name'} data={'RUTX11'} />
 						<InformationDataField
-							header={'Serial No.'}
+							header={t(
+								'information.information.connectivity.router.serial'
+							)}
 							data={allValues.rig_data.router.router_serial}
 						/>
 						<InformationDataField
-							header={'WAN IP'}
+							header={t(
+								'information.information.connectivity.router.wan'
+							)}
 							data={allValues.rig_data.router.wanIpAddr}
 						/>
 						<InformationDataField
-							header={'Date and time'}
+							header={t(
+								'information.information.connectivity.router.dateTime'
+							)}
 							data={routerDate}
 						/>
 						<InformationDataField
-							header={'Firmware'}
+							header={t(
+								'information.information.connectivity.router.firmware'
+							)}
 							data={allValues.rig_data.router.router_fw}
 						/>
 						<InformationDataField
-							header={'MAC Address'}
+							header={t(
+								'information.information.connectivity.router.mac'
+							)}
 							data={routerMac}
 						/>
 						<InformationDataField
-							header={'IMEI'}
+							header={t(
+								'information.information.connectivity.router.imei'
+							)}
 							data={allValues.rig_data.router.gsm_imei}
 						/>
 					</CardContent>
@@ -71,34 +88,53 @@ function Connectivity() {
 				<Card>
 					<CardDescription>
 						<span>
-							<CellTowerOutlinedIcon /> Mobile
+							<CellTowerOutlinedIcon />{' '}
+							{t(
+								'information.information.connectivity.mobile.mobile'
+							)}
 						</span>
 						<LinkItem
 							to={'/router'}
-							state={{ headerText: 'Connectivity > Router' }}
+							state={{
+								headerText: `${t(
+									'information.information.connectivity.connectivity'
+								)} > ${t(
+									'information.information.connectivity.router.router'
+								)}`,
+							}}
 						>
 							<SettingsOutlinedIcon />
 						</LinkItem>
 					</CardDescription>
 					<CardContent>
 						<InformationDataField
-							header={'Operator'}
+							header={t(
+								'information.information.connectivity.mobile.operator'
+							)}
 							data={allValues.rig_data.router.gsm_operator}
 						/>
 						<InformationDataField
-							header={'Network type'}
+							header={t(
+								'information.information.connectivity.mobile.networkType'
+							)}
 							data={allValues.rig_data.router.gsm_connection_type}
 						/>
 						<InformationDataField
-							header={'Network registration type'}
+							header={t(
+								'information.information.connectivity.mobile.networkReg'
+							)}
 							data={allValues.rig_data.router.gsm_netstate}
 						/>
 						<InformationDataField
-							header={'Sginal strength'}
+							header={t(
+								'information.information.connectivity.mobile.signalStrength'
+							)}
 							data={allValues.rig_data.router.gsm_rssi + 'dB'}
 						/>
 						<InformationDataField
-							header={'IMSI'}
+							header={t(
+								'information.information.connectivity.mobile.imsi'
+							)}
 							data={allValues.rig_data.router.gsm_imsi}
 						/>
 					</CardContent>
@@ -106,26 +142,45 @@ function Connectivity() {
 				<Card>
 					<CardDescription>
 						<span>
-							<WifiOutlinedIcon /> Wireless
+							<WifiOutlinedIcon />{' '}
+							{t(
+								'information.information.connectivity.wireless.wireless'
+							)}
 						</span>
 						<LinkItem
 							to={'/wireless'}
-							state={{ headerText: 'Connectivity > Wireless' }}
+							state={{
+								headerText: `${t(
+									'information.information.connectivity.connectivity'
+								)} > ${t(
+									'information.information.connectivity.wireless.wireless'
+								)}`,
+							}}
 						>
 							<SettingsOutlinedIcon />
 						</LinkItem>
 					</CardDescription>
 					<CardContent>
 						<InformationDataField
-							header={'SSID (2.4Ghz)'}
+							header={
+								t(
+									'information.information.connectivity.wireless.ssid'
+								) + ' (2.4Ghz)'
+							}
 							data={allValues.rig_data.router.wifi_2_4_ghz_ssid}
 						/>
 						<InformationDataField
-							header={'SSID (5Ghz)'}
+							header={
+								t(
+									'information.information.connectivity.wireless.ssid'
+								) + ' (5Ghz)'
+							}
 							data={allValues.rig_data.router.wifi_5_ghz_ssid}
 						/>
 						<InformationDataField
-							header={'LAN IP'}
+							header={t(
+								'information.information.connectivity.wireless.lanIp'
+							)}
 							data={allValues.rig_data.router.lanIpAddr}
 						/>
 					</CardContent>
@@ -133,26 +188,40 @@ function Connectivity() {
 				<Card>
 					<CardDescription>
 						<span>
-							<LocationOnOutlinedIcon /> GPS
+							<LocationOnOutlinedIcon />{' '}
+							{t('information.information.connectivity.gps.gps')}
 						</span>
 						{/* <SettingsOutlinedIcon /> */}
 					</CardDescription>
 					<CardContent>
-						<InformationDataField header={'Satelites'} data={'9'} />
 						<InformationDataField
-							header={'Latitude'}
+							header={t(
+								'information.information.connectivity.gps.satelites'
+							)}
+							data={'9'}
+						/>
+						<InformationDataField
+							header={t(
+								'information.information.connectivity.gps.latitude'
+							)}
 							data={allValues.rig_data.router.gps.latitude}
 						/>
 						<InformationDataField
-							header={'Longitude'}
+							header={t(
+								'information.information.connectivity.gps.longitude'
+							)}
 							data={allValues.rig_data.router.gps.longitude}
 						/>
 						<InformationDataField
-							header={'Accuracy'}
+							header={t(
+								'information.information.connectivity.gps.accuracy'
+							)}
 							data={allValues.rig_data.router.gps.accuracy}
 						/>
 						<InformationDataField
-							header={'Altitude'}
+							header={t(
+								'information.information.connectivity.gps.altitude'
+							)}
 							data={allValues.rig_data.router.gps.altitude + 'm'}
 						/>
 					</CardContent>

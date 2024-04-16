@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Container, Header, Content } from './RouterDetails.styles'
 import Card from '../../../../../UI/Card'
 import DataField from '../../../../../UI/DataField'
@@ -6,6 +7,7 @@ import DataField from '../../../../../UI/DataField'
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
 
 function RouterDetails({ mobileInterface }) {
+	const { t } = useTranslation()
 	// const { data: allValues } = useContext(AllValuesContext)
 	const outgoingTraffic = parseFloat(
 		mobileInterface.tx_bytes / (1024 * 1024)
@@ -18,27 +20,37 @@ function RouterDetails({ mobileInterface }) {
 			<Container>
 				<Header>
 					<InfoOutlinedIcon />
-					Mobile Details
+					{t(
+						'information.information.connectivity.mobile.settings.mobileDetails'
+					)}
 				</Header>
 				<Content>
 					<DataField
-						header={'ID'}
+						header={t(
+							'information.information.connectivity.mobile.settings.id'
+						)}
 						data={mobileInterface.id}
 						unit=''
 					/>
 					<DataField
-						header={'SIM Slot'}
+						header={t(
+							'information.information.connectivity.mobile.settings.simSlot'
+						)}
 						data={mobileInterface.sim}
 						unit=''
 					/>
 
 					<DataField
-						header={'Outgoing traffic'}
+						header={t(
+							'information.information.connectivity.mobile.settings.outgoingTraffic'
+						)}
 						data={outgoingTraffic}
 						unit='Mb'
 					/>
 					<DataField
-						header={'Incoming trafic'}
+						header={t(
+							'information.information.connectivity.mobile.settings.incomingTraffic'
+						)}
 						data={incomingTraffic}
 						unit='Mb'
 					/>

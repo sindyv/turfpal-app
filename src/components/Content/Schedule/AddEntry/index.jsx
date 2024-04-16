@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import dayjs from 'dayjs'
+import { useTranslation } from 'react-i18next'
 
 // Styles
 import { Wrapper, Content, LinkItem } from './ScheduleAddEntry.styles'
@@ -30,6 +31,7 @@ const defaultData = {
 
 function ScheduleAddEntry() {
 	const { onCommand, data: allValues } = useContext(AllValuesContext)
+	const { t } = useTranslation()
 
 	let location = useLocation()
 	let object = {}
@@ -49,7 +51,7 @@ function ScheduleAddEntry() {
 		}
 		location.state
 		command = 'update'
-		addBtnText = 'Update entry'
+		addBtnText = t('calendar.updateEntry')
 	} else {
 		object = defaultData
 	}
@@ -84,7 +86,11 @@ function ScheduleAddEntry() {
 				<Mode onSelect={onSelect} scheduleObject={scheduleObject} />
 				<LinkItem
 					to={'/schedule/entries'}
-					state={{ headerText: 'Schedule > Entries' }}
+					state={{
+						headerText: `${t('generic.schedule')} > ${t(
+							'calendar.entries'
+						)}`,
+					}}
 				>
 					<Btn onClick={handleAddBtn}>
 						<SaveOutlinedIcon /> {addBtnText}

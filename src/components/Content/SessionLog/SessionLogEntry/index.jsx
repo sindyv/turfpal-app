@@ -1,5 +1,6 @@
 import React from 'react'
 import dayjs from 'dayjs'
+import { useTranslation } from 'react-i18next'
 // Styles
 import {
 	CardHeaderContainer,
@@ -15,23 +16,25 @@ import Card from '../../../UI/Card'
 import TimelineIcon from '@mui/icons-material/Timeline'
 // Context
 function SessionLogEntry({ entry }) {
+	const { t } = useTranslation()
 	return (
 		<Card>
 			<CardHeaderContainer>
 				<CardHeader>
-					<TimelineIcon /> {dayjs(entry.startTime).format('dddd')}
+					<TimelineIcon />{' '}
+					{t(`log.${dayjs(entry.startTime).format('dddd')}`)}
 				</CardHeader>
 				<div>{+entry.calculatedCostOfEnergy.toFixed(2)}€</div>
 			</CardHeaderContainer>
 			<CardContentContainer>
 				<CardDataField>
-					<div>Start</div>
+					<div>{t('generic.start')}</div>
 					<div>
 						{dayjs(entry.startTime).format('YYYY-DD-MM HH:mm ')}
 					</div>
 				</CardDataField>
 				<CardDataField>
-					<div>Stop</div>
+					<div>{t('generic.stop')}</div>
 					<div>
 						{entry.endTime
 							? dayjs(entry.endTime).format('YYYY-DD-MM HH:mm ')
@@ -39,7 +42,7 @@ function SessionLogEntry({ entry }) {
 					</div>
 				</CardDataField>
 				<CardDataField>
-					<div>Energy</div>
+					<div>{t('energy.energy')}</div>
 					<div>{+entry.calculatedEnergy.toFixed(2)}kWh</div>
 				</CardDataField>
 			</CardContentContainer>

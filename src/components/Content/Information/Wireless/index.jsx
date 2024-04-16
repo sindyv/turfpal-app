@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 // Styles
 import { Container, Row, ErrorMessage } from './Wireless.styles'
@@ -22,6 +23,7 @@ function Wireless() {
 	const [selectedWifi, setSelectedWifi] = useState('')
 	const [wifiPassword, setWifiPassword] = useState('')
 	const routerCtx = useContext(RouterContext)
+	const { t } = useTranslation()
 
 	useEffect(() => {
 		if (routerCtx.loggedIn) {
@@ -79,7 +81,11 @@ function Wireless() {
 				<Row>{routerCtx.loading.loadText}</Row>
 			) : (
 				<Row>
-					<Btn onClick={handleScanWifi}>Scan WiFi</Btn>
+					<Btn onClick={handleScanWifi}>
+						{t(
+							'information.information.connectivity.wireless.settings.scanWifi'
+						)}
+					</Btn>
 				</Row>
 			)}
 

@@ -25,9 +25,11 @@ import HeatIcon from '../../../../../assets/icons/heat'
 
 // Context
 import { AllValuesContext } from '../../../../../store/context/allValues-context'
+import { useTranslation } from 'react-i18next'
 
 function Heating({}) {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
+	const { t } = useTranslation()
 
 	const handleSetModeAuto = () => {
 		onCommand(
@@ -66,14 +68,14 @@ function Heating({}) {
 						selected={allValues.statuses.mode_heating === 'auto'}
 						onClick={handleSetModeAuto}
 					>
-						<AutorenewOutlinedIcon /> Auto
+						<AutorenewOutlinedIcon /> {t('generic.auto')}
 					</Btn>
 					<Btn
 						svgSize={12}
 						selected={allValues.statuses.mode_heating === 'manual'}
 						onClick={handleSetModeManual}
 					>
-						<BackHandOutlinedIcon /> Manual
+						<BackHandOutlinedIcon /> {t('generic.manual')}
 					</Btn>
 				</ButtonsArea>
 			)}
@@ -87,7 +89,7 @@ function Heating({}) {
 						textColorSelected={'black'}
 						textColorDeselected={'black'}
 					>
-						<AutorenewOutlinedIcon /> On
+						<AutorenewOutlinedIcon /> {t('generic.on')}
 					</Btn>
 					<Btn
 						svgSize={12}
@@ -98,7 +100,7 @@ function Heating({}) {
 						textColorDeselected={'black'}
 						onClick={() => handleToggleHeat(false)}
 					>
-						<BackHandOutlinedIcon /> Off
+						<BackHandOutlinedIcon /> {t('generic.off')}
 					</Btn>
 				</ButtonsArea>
 			)}
@@ -107,7 +109,7 @@ function Heating({}) {
 					disabled={true}
 					enabled={allValues.statuses.heat_zone1}
 					icon={HeatIcon}
-					title={'Heating'}
+					title={t('heat.heating')}
 					data={{
 						value: parseFloat(
 							allValues.values?.temperature
@@ -128,26 +130,32 @@ function Heating({}) {
 						to={'/log'}
 						state={{
 							log: 'Heating',
-							headerText: 'Heating > Log',
+							headerText: `${t('heat.heating')} > ${t(
+								'generic.log'
+							)}`,
 							logData: allValues?.logData?.heating ?? null,
 						}}
 					>
 						<Card>
 							<CardDescription>
 								<InfoOutlinedIcon />
-								Log
+								{t('generic.log')}
 							</CardDescription>
 						</Card>
 					</LinkItem>
 
 					<LinkItem
 						to={'settings'}
-						state={{ headerText: 'Heating > Settings' }}
+						state={{
+							headerText: `${t('heat.heating')} > ${t(
+								'generic.settings'
+							)}`,
+						}}
 					>
 						<Card>
 							<CardDescription>
 								<SettingsOutlinedIcon />
-								Settings
+								{t('generic.settings')}
 							</CardDescription>
 						</Card>
 					</LinkItem>

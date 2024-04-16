@@ -1,25 +1,25 @@
-import React from "react"
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 // Styles
-import { Wrapper } from "./Help.styles"
+import { Wrapper } from './Help.styles'
 
 function Help() {
-    return (
-        <Wrapper>
-            <h3>Help is on its way!</h3>
-            <p>
-                But not today. It will be released with the next version of this
-                web-app. In the mean time you are more then welcome to contact
-                us here:
-            </p>
-            <p>
-                Phone: +44 7562 994399
-                <br />
-                E-mail:{" "}
-                <a href='mailto:service@ra-tls.com'>service@ra-tls.com</a>
-            </p>
-        </Wrapper>
-    )
+	const { t } = useTranslation()
+	return (
+		<Wrapper>
+			<h3>{t('information.help.helpTitle')}</h3>
+			<p>{t('information.help.helpText')}</p>
+			<p>
+				{t('generic.phone')} : {t('information.help.helpPhone')}
+				<br />
+				{t('generic.email')} :{' '}
+				<a href='mailto:service@ra-tls.com'>
+					{t('information.help.helpEmail')}
+				</a>
+			</p>
+		</Wrapper>
+	)
 }
 
 export default Help
