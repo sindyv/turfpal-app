@@ -2,13 +2,13 @@ import React, { useContext } from "react"
 
 // Styles
 import {
-    Wrapper,
-    Header,
-    ButtonsArea,
-    TileArea,
-    LinkItem,
-    CardDescription,
-    LinkWrappers,
+	Wrapper,
+	Header,
+	ButtonsArea,
+	TileArea,
+	LinkItem,
+	CardDescription,
+	LinkWrappers,
 } from "./Cover.styles"
 
 //Components
@@ -20,78 +20,112 @@ import Card from "../../../../UI/Card"
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined"
-
+import NorthIcon from "@mui/icons-material/North"
+import SouthIcon from "@mui/icons-material/South"
 // Context
 import { AllValuesContext } from "../../../../../store/context/allValues-context"
+import { useTranslation } from "react-i18next"
 
 function Cover({}) {
-    const { data: allValues, onCommand } = useContext(AllValuesContext)
+	const { data: allValues, onCommand } = useContext(AllValuesContext)
+	const { t } = useTranslation()
 
-    const handleToggle = (controlledItem, state) => {
-        if (controlledItem === "Cover") {
-            onCommand({
-                commands: {
-                    cover: state,
-                },
-            })
-        }
-    }
+	const handleOpen = () => {
+		onCommand(
+			{
+				commands: { cover_open: true },
+			},
+			100
+		)
+	}
 
-    return (
-        <Wrapper>
-            <ButtonsArea>
-                <Btn selected={allValues.statuses.mode_cover === "auto"}>
-                    <AutorenewOutlinedIcon /> Auto
-                </Btn>
-                <Btn
-                    svgSize={12}
-                    selected={allValues.statuses.mode_cover === "manual"}
-                >
-                    <BackHandOutlinedIcon /> Manual
-                </Btn>
-            </ButtonsArea>
-            <TileArea>
-                <ControlTile
-                    changeState={handleToggle}
-                    enabled={allValues.statuses.cover}
-                    icon={CloudOutlinedIcon}
-                    title={"Cover"}
-                    data={{
-                        value: allValues.values["cover"],
-                        valueUnit: "",
-                        additionalData: [
-                            allValues.values["cover"] ? "Open" : "Closed",
-                            "",
-                        ],
-                        additionalDataUnits: ["", ""],
-                    }}
-                />
-            </TileArea>
-            <LinkWrappers>
-                <LinkItem
-                    to={"/log"}
-                    state={{ log: "Cover", headerText: "Log > Cover" }}
-                >
-                    <Card>
-                        <CardDescription>
-                            <InfoOutlinedIcon />
-                            Log
-                        </CardDescription>
-                    </Card>
-                </LinkItem>
+	const handleClose = () => {
+		onCommand(
+			{
+				commands: { cover_close: true },
+			},
+			100
+		)
+	}
 
-                <LinkItem to={"settings"}>
-                    {/* <Card>
-                        <CardDescription>
-                            <SettingsOutlinedIcon />
-                            Settings
-                        </CardDescription>
-                    </Card> */}
-                </LinkItem>
-            </LinkWrappers>
-        </Wrapper>
-    )
+	const handleResetWindAlarm = () => {
+		onCommand(
+			{
+				commands: { reset_hight_wind_alarm: true },
+			},
+			100
+		)
+	}
+
+	return (
+		<Wrapper>
+			{allValues.statuses.session &&
+			allValues.statuses.mode === "auto" ? null : (
+				<ButtonsArea>
+					<Btn selected={allValues.statuses.cover_opening} onClick={handleOpen}>
+						<NorthIcon /> Open
+					</Btn>
+					<Btn
+						selected={allValues.statuses.cover_closing}
+						onClick={handleClose}
+					>
+						<SouthIcon /> Close
+					</Btn>
+				</ButtonsArea>
+			)}
+
+			<TileArea>
+				<ControlTile
+					disabled={true}
+					icon={CloudOutlinedIcon}
+					title={"Cover"}
+					data={{
+						value: allValues.statuses.cover ? "Open" : "Closed",
+						valueUnit: null,
+						additionalData: [null, null],
+						additionalDataUnits: [null, null],
+					}}
+				/>
+			</TileArea>
+			<LinkWrappers>
+				<LinkItem
+					to={"/log"}
+					state={{
+						log: "Cover",
+						headerText: `${t("cover.cover")} > ${t("generic.log")}`,
+						logData: allValues?.logData?.heating ?? null,
+					}}
+				>
+					{/* <Card>
+						<CardDescription>
+							<InfoOutlinedIcon />
+							Log
+						</CardDescription>
+					</Card> */}
+				</LinkItem>
+
+				<LinkItem
+					to={"settings"}
+					state={{
+						headerText: `${t("cover.cover")} > ${t("generic.settings")}`,
+					}}
+				>
+					<Card>
+						<CardDescription>
+							<SettingsOutlinedIcon />
+							{t("generic.settings")}
+						</CardDescription>
+					</Card>
+				</LinkItem>
+
+				{allValues.alarms?.high_wind_speed_alert && (
+					<Btn onClick={handleResetWindAlarm}>Reset wind alarm</Btn>
+				)}
+			</LinkWrappers>
+		</Wrapper>
+	)
 }
 
 export default Cover

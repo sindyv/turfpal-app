@@ -1,28 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react"
 
 // Styles
-import { TileArea, HeatTile } from './ControlTiles.styles'
+import { TileArea, HeatTile } from "./ControlTiles.styles"
 
 // Components
-import ControlTile from '../../../UI/ControlTile'
+import ControlTile from "../../../UI/ControlTile"
 
 // Icons
-import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined'
-import WaterDropOutlinedIcon from '@mui/icons-material/WaterDropOutlined'
-import CloudOutlinedIcon from '@mui/icons-material/CloudOutlined'
-import HeatIcon from '../../../../assets/icons/heat.jsx'
+import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined"
+import WaterDropOutlinedIcon from "@mui/icons-material/WaterDropOutlined"
+import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined"
+import HeatIcon from "../../../../assets/icons/heat.jsx"
 
 // Context
-import { AllValuesContext } from '../../../../store/context/allValues-context'
-import { useTranslation } from 'react-i18next'
+import { AllValuesContext } from "../../../../store/context/allValues-context"
+import { useTranslation } from "react-i18next"
 
 function ControlTiles() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
-
 	const camera = false
 	const handleClickedButton = (controlledItem, state) => {
 		switch (controlledItem) {
-			case 'Lighting':
+			case "Lighting":
 				onCommand({
 					commands: {
 						led_zone1_on: state,
@@ -32,7 +31,7 @@ function ControlTiles() {
 					},
 				})
 				break
-			case 'Heating':
+			case "Heating":
 				onCommand(
 					{
 						commands: {
@@ -45,7 +44,7 @@ function ControlTiles() {
 				)
 
 				break
-			case 'Irrigation':
+			case "Irrigation":
 				onCommand(
 					{
 						commands: { irrigation_solenoid: state },
@@ -53,7 +52,7 @@ function ControlTiles() {
 					100
 				)
 				break
-			case 'CO2':
+			case "CO2":
 				onCommand(
 					{
 						commands: { co2_solenoid: state },
@@ -61,7 +60,7 @@ function ControlTiles() {
 					100
 				)
 				break
-			case 'Cover':
+			case "Cover":
 				onCommand(
 					{
 						commands: { cover: state },
@@ -71,7 +70,7 @@ function ControlTiles() {
 				break
 
 			default:
-				console.log('Invalid')
+				console.log("Invalid")
 				break
 		}
 	}
@@ -81,8 +80,8 @@ function ControlTiles() {
 			<ControlTile
 				disabled={true}
 				linkParams={{
-					to: 'lighting',
-					state: { headerText: t('light.lighting') },
+					to: "lighting",
+					state: { headerText: t("light.lighting") },
 				}}
 				changeState={handleClickedButton}
 				enabled={
@@ -90,30 +89,30 @@ function ControlTiles() {
 					allValues.values.led_zone2_dim > 0
 				}
 				icon={LightbulbOutlinedIcon}
-				title={t('light.lighting')}
+				title={t("light.lighting")}
 				data={{
 					value: allValues.values.light,
-					valueUnit: 'µMol',
+					valueUnit: "µMol",
 					additionalData: [
 						allValues.values.led_zone1_dim, //allValues.values.energyMeters[0].power,
 						allValues.values.led_zone1_rh,
 					],
-					additionalDataUnits: ['%', 'h'],
+					additionalDataUnits: ["%", "h"],
 				}}
 			/>
 			<ControlTile
 				disabled={true}
 				linkParams={{
-					to: 'heating',
-					state: { headerText: t('heat.heating') },
+					to: "heating",
+					state: { headerText: t("heat.heating") },
 				}}
 				changeState={handleClickedButton}
 				enabled={allValues.statuses.heat_zone1}
 				icon={HeatIcon}
-				title={t('heat.heating')}
+				title={t("heat.heating")}
 				data={{
 					value: parseFloat(allValues.values?.temperature).toFixed(1),
-					valueUnit: '°C',
+					valueUnit: "°C",
 					additionalData: [
 						// some rigs only have 1 energy meter. If so, show other state
 						null,
@@ -122,72 +121,73 @@ function ControlTiles() {
 						//     : allValues.values.energyMeters[0].power,
 						allValues.values.heat_rh,
 					],
-					additionalDataUnits: ['', 'h'],
+					additionalDataUnits: ["", "h"],
 				}}
 			/>
-			{allValues?.statuses?.irrigation_solenoid ?? false ? (
+			{allValues?.statuses?.mode_irrigation ?? false ? (
 				<ControlTile
 					disabled={true}
 					linkParams={{
-						to: 'irrigation',
-						state: { headerText: 'Irrigation' },
+						to: "irrigation",
+						state: { headerText: "Irrigation" },
 					}}
 					changeState={handleClickedButton}
-					enabled={allValues.statuses.irrigation_solenoid}
+					enabled={allValues.statuses.irrigation_valve}
 					icon={WaterDropOutlinedIcon}
-					title={'Irrigation'}
+					title={"Irrigation"}
 					data={{
 						value: 20,
-						valueUnit: '%',
-						additionalData: [12, 400],
-						additionalDataUnits: ['°C', 'ltr'],
+						valueUnit: "%",
+						additionalData: [0, allValues.values["soil_temperature"]],
+						additionalDataUnits: ["h", "°C"],
 					}}
 				/>
 			) : null}
-			{/* {allValues?.values?.co2 ?? false ? (
-                <ControlTile
-                    disabled={true}
-                    linkParams={{ to: "co2", state: { headerText: "CO2" } }}
-                    changeState={handleClickedButton}
-                    controlledItem={"CO2"}
-                    enabled={allValues.statuses.co2_solenoid}
-                    icon={CloudOutlinedIcon}
-                    title={"CO2"}
-                    data={{
-                        value: allValues.values.co2,
-                        valueUnit: "ppm",
-                        additionalData: [
-                            0, //allValues.values.co2_consumption, <--- Temporary commented out because it is not finished in the back-end
-                            0, //allValues.values.co2_rh,<--- Temporary commented out because it is not finished in the back-end
-                        ],
-                        additionalDataUnits: ["kg", "h"],
-                    }}
-                />
-            ) : null} */}
-			{allValues?.statuses?.cover ?? false ? (
+			{allValues?.values?.co2 ?? false ? (
 				<ControlTile
+					disabled={true}
+					linkParams={{ to: "co2", state: { headerText: "CO2" } }}
+					changeState={handleClickedButton}
+					controlledItem={"CO2"}
+					enabled={allValues.statuses.co2_solenoid}
+					icon={CloudOutlinedIcon}
+					title={"CO2"}
+					data={{
+						value: allValues.values.co2,
+						valueUnit: "ppm",
+						additionalData: [
+							null, //allValues.values.co2_consumption, <--- Temporary commented out because it is not finished in the back-end
+							0, //allValues.values.co2_rh,<--- Temporary commented out because it is not finished in the back-end
+						],
+						additionalDataUnits: [null, "h"], //["kg", "h"],
+					}}
+				/>
+			) : null}
+			{allValues.statuses.hasOwnProperty("cover") && (
+				<ControlTile
+					disabled={true}
 					linkParams={{
-						to: 'cover',
-						state: { headerText: 'Cover' },
+						to: "cover",
+						state: { headerText: "Cover" },
 					}}
 					changeState={handleClickedButton}
-					enabled={allValues.statuses.cover}
+					// enabled={allValues.statuses.cover}
 					icon={CloudOutlinedIcon}
-					title={'Cover'}
+					title={"Cover"}
 					data={{
-						value: allValues.statuses.cover ? 'Open' : 'Closed',
-						valueUnit: '',
-						additionalData: ['', ''],
-						additionalDataUnits: ['', ''],
+						value: allValues.statuses.cover ? "Open" : "Closed",
+						valueUnit: "",
+						additionalData: [null, null],
+						additionalDataUnits: [null, null],
 					}}
 				/>
-			) : null}
+			)}
 			{camera ? (
 				<ControlTile
 					enabled={false}
 					icon={LightbulbOutlinedIcon}
-					title={'Camera'}
-					data={{ value: 'No camera', valueUnit: '' }}
+					title={"Camera"}
+					data={{ value: "No camera", valueUnit: "" }}
 				/>
 			) : null}
 		</TileArea>

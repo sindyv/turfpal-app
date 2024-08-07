@@ -2,12 +2,12 @@ import React, { useContext } from "react"
 
 // Styles
 import {
-    Wrapper,
-    ButtonsArea,
-    TileArea,
-    LinkItem,
-    CardDescription,
-    LinkWrappers,
+	Wrapper,
+	ButtonsArea,
+	TileArea,
+	LinkItem,
+	CardDescription,
+	LinkWrappers,
 } from "./CO2.styles"
 
 //Components
@@ -24,93 +24,124 @@ import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined"
 
 // Context
 import { AllValuesContext } from "../../../../../store/context/allValues-context"
+import { useTranslation } from "react-i18next"
 
 function CO2() {
-    const { data: allValues, onCommand } = useContext(AllValuesContext)
+	const { data: allValues, onCommand } = useContext(AllValuesContext)
+	const { t } = useTranslation()
 
-    const handleSetModeAuto = () => {
-        onCommand({
-            commands: { co2_auto: true, co2_manual: false },
-        })
-    }
+	const handleSetModeAuto = () => {
+		onCommand({
+			commands: { co2_auto: true, co2_manual: false },
+		})
+	}
 
-    const handleSetModeManual = () => {
-        onCommand({
-            commands: { co2_auto: false, co2_manual: true },
-        })
-    }
+	const handleSetModeManual = () => {
+		onCommand({
+			commands: { co2_auto: false, co2_manual: true },
+		})
+	}
 
-    const handleToggle = (controlledItem, state) => {
-        if (controlledItem === "CO2") {
-            onCommand({
-                commands: {
-                    co2_solenoid: state,
-                },
-            })
-        }
-    }
+	const handleToggle = (state) => {
+		onCommand({
+			commands: {
+				co2: state,
+			},
+		})
+	}
 
-    return (
-        <Wrapper>
-            <ButtonsArea>
-                <Btn
-                    selected={allValues.statuses.mode_co2 === "auto"}
-                    onClick={handleSetModeAuto}
-                >
-                    <AutorenewOutlinedIcon /> Auto
-                </Btn>
-                <Btn
-                    svgSize={12}
-                    selected={allValues.statuses.mode_co2 === "manual"}
-                    onClick={handleSetModeManual}
-                >
-                    <BackHandOutlinedIcon /> Manual
-                </Btn>
-            </ButtonsArea>
-            <TileArea>
-                <ControlTile
-                    changeState={handleToggle}
-                    enabled={allValues.statuses.co2_solenoid}
-                    icon={CloudOutlinedIcon}
-                    title={"CO2"}
-                    data={{
-                        value: allValues.values["co2"],
-                        valueUnit: "ppm",
-                        additionalData: [
-                            allValues.values["co2_consumption"],
-                            allValues.values.co2_rh,
-                        ],
-                        additionalDataUnits: ["kg", "h"],
-                    }}
-                />
-            </TileArea>
-            <LinkWrappers>
-                <LinkItem
-                    to={"/log"}
-                    state={{ log: "CO2", headerText: "CO2 > Log" }}
-                >
-                    <Card>
-                        <CardDescription>
-                            <InfoOutlinedIcon />
-                            Log
-                        </CardDescription>
-                    </Card>
-                </LinkItem>
+	return (
+		<Wrapper>
+			{allValues.statuses.session &&
+			allValues.statuses.mode === "auto" ? null : (
+				<ButtonsArea>
+					<Btn
+						selected={allValues.statuses?.mode_co2 === "auto"}
+						onClick={handleSetModeAuto}
+					>
+						<AutorenewOutlinedIcon /> {t("generic.auto")}
+					</Btn>
+					<Btn
+						svgSize={12}
+						selected={allValues.statuses?.mode_co2 === "manual"}
+						onClick={handleSetModeManual}
+					>
+						<BackHandOutlinedIcon /> {t("generic.manual")}
+					</Btn>
+				</ButtonsArea>
+			)}
+			{allValues.statuses.mode_heating === "manual" && (
+				<ButtonsArea $control={true}>
+					<Btn
+						selected={allValues.statuses.co2}
+						onClick={() => handleToggle(true)}
+						backgroundColorDeselected={"var(--lightGrey)"}
+						backgroundColorSelected={"var(--turfpalActiveBtn)"}
+						textColorSelected={"black"}
+						textColorDeselected={"black"}
+					>
+						<AutorenewOutlinedIcon /> {t("generic.on")}
+					</Btn>
+					<Btn
+						svgSize={12}
+						selected={!allValues.statuses.co2}
+						backgroundColorDeselected={"var(--lightGrey)"}
+						backgroundColorSelected={"var(--turfpalActiveBtn)"}
+						textColorSelected={"black"}
+						textColorDeselected={"black"}
+						onClick={() => handleToggle(false)}
+					>
+						<BackHandOutlinedIcon /> {t("generic.off")}
+					</Btn>
+				</ButtonsArea>
+			)}
+			<TileArea>
+				<ControlTile
+					disabled={true}
+					changeState={handleToggle}
+					enabled={allValues.statuses.co2_valve}
+					icon={CloudOutlinedIcon}
+					title={"CO2"}
+					data={{
+						value: allValues.values["co2"],
+						valueUnit: "ppm",
+						additionalData: [
+							null,
+							allValues.values?.co2_valve_rh ?? 0, // allValues.values["co2_consumption"],
+							// allValues.values.co2_rh,
+						],
+						additionalDataUnits: [null, "h"],
+					}}
+				/>
+			</TileArea>
+			<LinkWrappers>
+				<LinkItem
+					to={"/log"}
+					state={{
+						log: "CO2",
+						headerText: `${t("co2.co2")} > ${t("generic.log")}`,
+						logData: allValues?.logData?.co2 ?? null,
+					}}
+				>
+					<Card>
+						<CardDescription>
+							<InfoOutlinedIcon />
+							Log
+						</CardDescription>
+					</Card>
+				</LinkItem>
 
-                <LinkItem
-                    to={"settings"}
-                    state={{ headerText: "CO2 > Settings" }}
-                >
-                    <Card>
-                        <CardDescription>
-                            <SettingsOutlinedIcon />
-                            Settings
-                        </CardDescription>
-                    </Card>
-                </LinkItem>
-            </LinkWrappers>
-        </Wrapper>
-    )
+				<LinkItem to={"settings"} state={{ headerText: "CO2 > Settings" }}>
+					<Card>
+						<CardDescription>
+							<SettingsOutlinedIcon />
+							Settings
+						</CardDescription>
+					</Card>
+				</LinkItem>
+			</LinkWrappers>
+		</Wrapper>
+	)
 }
 
 export default CO2

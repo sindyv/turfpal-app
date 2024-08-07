@@ -1,244 +1,266 @@
 {
-    "constants": {
-        "sliders": {
-            "tempDelaySliderMarks": [
-                {
-                    "value": 0,
-                    "label": "0 min"
-                },
-                {
-                    "value": 10,
-                    "label": "10 min"
-                },
-                {
-                    "value": 20,
-                    "label": "20 min"
-                },
-                {
-                    "value": 30,
-                    "label": "30 min"
-                }
-            ],
-            "tempRangeSliderMarks": [
-                {
-                    "value": 5,
-                    "label": "5°C"
-                },
-                {
-                    "value": 10,
-                    "label": "10°C"
-                },
-                {
-                    "value": 15,
-                    "label": "15°C"
-                },
-                {
-                    "value": 20,
-                    "label": "20°C"
-                },
-                {
-                    "value": 25,
-                    "label": "25°C"
-                }
-            ],
-            "hortiSlider": [
-                {
-                    "value": 0,
-                    "label": "0%"
-                },
-                {
-                    "value": 25,
-                    "label": "25%"
-                },
-                {
-                    "value": 50,
-                    "label": "50%"
-                },
-                {
-                    "value": 75,
-                    "label": "75%"
-                },
-                {
-                    "value": 100,
-                    "label": "100%"
-                }
-            ],
-            "parSlider": [
-                {
-                    "value": 0,
-                    "label": "0"
-                },
-                {
-                    "value": 400,
-                    "label": "400"
-                },
-                {
-                    "value": 1100,
-                    "label": "1100"
-                },
-                {
-                    "value": 1800,
-                    "label": "1800"
-                },
-                {
-                    "value": 2500,
-                    "label": "2500"
-                }
-            ],
-            "waterTargetSlider": [
-                {
-                    "value": 0,
-                    "label": "0%"
-                },
-                {
-                    "value": 25,
-                    "label": "25%"
-                },
-                {
-                    "value": 50,
-                    "label": "50%"
-                },
-                {
-                    "value": 75,
-                    "label": "75%"
-                },
-                {
-                    "value": 100,
-                    "label": "100%"
-                }
-            ],
-            "waterDurationSlider": [
-                {
-                    "value": 1,
-                    "label": "1m"
-                },
-                {
-                    "value": 2,
-                    "label": "2m"
-                },
-                {
-                    "value": 3,
-                    "label": "3m"
-                },
-                {
-                    "value": 4,
-                    "label": "4m"
-                },
-                {
-                    "value": 5,
-                    "label": "5m"
-                }
-            ],
-            "waterRepetitionSlider": [
-                {
-                    "value": 0,
-                    "label": "0m"
-                },
-                {
-                    "value": 5,
-                    "label": "5m"
-                },
-                {
-                    "value": 10,
-                    "label": "10m"
-                },
-                {
-                    "value": 15,
-                    "label": "15m"
-                },
-                {
-                    "value": 20,
-                    "label": "20m"
-                }
-            ],
-            "waterDelaySlider": [
-                {
-                    "value": 0,
-                    "label": "0m"
-                },
-                {
-                    "value": 5,
-                    "label": "5m"
-                },
-                {
-                    "value": 10,
-                    "label": "10m"
-                },
-                {
-                    "value": 15,
-                    "label": "15m"
-                },
-                {
-                    "value": 20,
-                    "label": "20m"
-                }
-            ],
-            "co2Target": [
-                {
-                    "value": 400,
-                    "label": "400ppm"
-                },
-                {
-                    "value": 800,
-                    "label": "800ppm"
-                },
-                {
-                    "value": 1200,
-                    "label": "1200ppm"
-                },
-                {
-                    "value": 1600,
-                    "label": "1600ppm"
-                },
-                {
-                    "value": 2000,
-                    "label": "2000ppm"
-                }
-            ],
-            "co2Duration": [
-                {
-                    "value": 1,
-                    "label": "1m"
-                },
-                {
-                    "value": 2,
-                    "label": "2m"
-                },
-                {
-                    "value": 3,
-                    "label": "3m"
-                },
-                {
-                    "value": 4,
-                    "label": "4m"
-                },
-                {
-                    "value": 5,
-                    "label": "5m"
-                }
-            ],
-            "co2Interval": [
-                {
-                    "value": 2,
-                    "label": "2s"
-                },
-                {
-                    "value": 4,
-                    "label": "4s"
-                },
-                {
-                    "value": 6,
-                    "label": "6s"
-                },
-                {
-                    "value": 8,
-                    "label": "8s"
-                },
-                {
-                    "value": 10,
-                    "label": "10s"
-                }
-            ]
-        }
-    }
+	"constants": {
+		"sliders": {
+			"tempDelaySliderMarks": [
+				{
+					"value": 0,
+					"label": "0 min"
+				},
+				{
+					"value": 10,
+					"label": "10 min"
+				},
+				{
+					"value": 20,
+					"label": "20 min"
+				},
+				{
+					"value": 30,
+					"label": "30 min"
+				}
+			],
+			"tempRangeSliderMarks": [
+				{
+					"value": 5,
+					"label": "5°C"
+				},
+				{
+					"value": 10,
+					"label": "10°C"
+				},
+				{
+					"value": 15,
+					"label": "15°C"
+				},
+				{
+					"value": 20,
+					"label": "20°C"
+				},
+				{
+					"value": 25,
+					"label": "25°C"
+				}
+			],
+			"hortiSlider": [
+				{
+					"value": 0,
+					"label": "0%"
+				},
+				{
+					"value": 25,
+					"label": "25%"
+				},
+				{
+					"value": 50,
+					"label": "50%"
+				},
+				{
+					"value": 75,
+					"label": "75%"
+				},
+				{
+					"value": 100,
+					"label": "100%"
+				}
+			],
+			"parSlider": [
+				{
+					"value": 0,
+					"label": "0"
+				},
+				{
+					"value": 400,
+					"label": "400"
+				},
+				{
+					"value": 1100,
+					"label": "1100"
+				},
+				{
+					"value": 1800,
+					"label": "1800"
+				},
+				{
+					"value": 2500,
+					"label": "2500"
+				}
+			],
+			"waterTargetSlider": [
+				{
+					"value": 1,
+					"label": "1%"
+				},
+				{
+					"value": 25,
+					"label": "25%"
+				},
+				{
+					"value": 50,
+					"label": "50%"
+				},
+				{
+					"value": 75,
+					"label": "75%"
+				},
+				{
+					"value": 100,
+					"label": "100%"
+				}
+			],
+			"waterDurationSlider": [
+				{
+					"value": 1,
+					"label": "1m"
+				},
+				{
+					"value": 2,
+					"label": "2m"
+				},
+				{
+					"value": 3,
+					"label": "3m"
+				},
+				{
+					"value": 4,
+					"label": "4m"
+				},
+				{
+					"value": 5,
+					"label": "5m"
+				}
+			],
+			"waterRepetitionSlider": [
+				{
+					"value": 1,
+					"label": "1m"
+				},
+				{
+					"value": 5,
+					"label": "5m"
+				},
+				{
+					"value": 10,
+					"label": "10m"
+				},
+				{
+					"value": 15,
+					"label": "15m"
+				},
+				{
+					"value": 20,
+					"label": "20m"
+				}
+			],
+			"waterDelaySlider": [
+				{
+					"value": 0,
+					"label": "0m"
+				},
+				{
+					"value": 5,
+					"label": "5m"
+				},
+				{
+					"value": 10,
+					"label": "10m"
+				},
+				{
+					"value": 15,
+					"label": "15m"
+				},
+				{
+					"value": 20,
+					"label": "20m"
+				}
+			],
+			"co2Target": [
+				{
+					"value": 400,
+					"label": "400ppm"
+				},
+				{
+					"value": 800,
+					"label": "800ppm"
+				},
+				{
+					"value": 1200,
+					"label": "1200ppm"
+				},
+				{
+					"value": 1600,
+					"label": "1600ppm"
+				},
+				{
+					"value": 2000,
+					"label": "2000ppm"
+				}
+			],
+			"co2Duration": [
+				{
+					"value": 2,
+					"label": "2s"
+				},
+				{
+					"value": 4,
+					"label": "4s"
+				},
+				{
+					"value": 6,
+					"label": "6s"
+				},
+				{
+					"value": 8,
+					"label": "8s"
+				},
+				{
+					"value": 10,
+					"label": "10s"
+				}
+			],
+			"co2Interval": [
+				{
+					"value": 1,
+					"label": "1m"
+				},
+				{
+					"value": 2,
+					"label": "2m"
+				},
+				{
+					"value": 3,
+					"label": "3m"
+				},
+				{
+					"value": 4,
+					"label": "4m"
+				},
+				{
+					"value": 5,
+					"label": "5m"
+				}
+			],
+			"windAlarm": [
+				{
+					"value": 1,
+					"label": "1m/s"
+				},
+				{
+					"value": 5,
+					"label": "5m/s"
+				},
+				{
+					"value": 10,
+					"label": "10m/s"
+				},
+				{
+					"value": 15,
+					"label": "15m/s"
+				},
+				{
+					"value": 20,
+					"label": "20m/s"
+				}
+			]
+		}
+	}
 }

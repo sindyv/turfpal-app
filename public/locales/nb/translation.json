@@ -61,6 +61,15 @@
 			"maxTempText": "Temperatur som vil slå av oppvarmingen for å unngå skade på plenen"
 		}
 	},
+	"irrigation": {
+		"irrigation": "Vanning"
+	},
+	"co2": {
+		"co2": "CO2"
+	},
+	"cover": {
+		"cover": "Telt"
+	},
 	"log": {
 		"title": "Data vises for de siste 7 dagene",
 		"noData": "Ingen loggdata gitt",

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react"
 
 // Styles
 import {
@@ -6,27 +6,27 @@ import {
 	Content,
 	ButtonArea,
 	CenteredDiv,
-} from './HeatingSettings.styles'
+} from "./HeatingSettings.styles"
 
 // Components
-import Btn from '../../../../UI/Btn'
-import TempRangeSlider from './TempRangeSlider'
-import TempDelaySlider from './TempDelaySlider'
-import MaxTempSlider from './MaxTempSlider'
+import Btn from "../../../../UI/Btn"
+import TempRangeSlider from "./TempRangeSlider"
+import TempDelaySlider from "./TempDelaySlider"
+import MaxTempSlider from "./MaxTempSlider"
 
 // Icons
-import AccessTimeIcon from '@mui/icons-material/AccessTime'
-import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined'
+import AccessTimeIcon from "@mui/icons-material/AccessTime"
+import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
 
 // Context
-import { AllValuesContext } from '../../../../../store/context/allValues-context'
-import { useTranslation } from 'react-i18next'
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
+import { useTranslation } from "react-i18next"
 
 function HeatingSettings() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
 	const { t } = useTranslation()
 	const onCommitedChange = (newValue, target) => {
-		if (target === 'range') {
+		if (target === "range") {
 			onCommand(
 				{
 					setpoints: {
@@ -36,7 +36,7 @@ function HeatingSettings() {
 				},
 				100
 			)
-		} else if (target === 'delay') {
+		} else if (target === "delay") {
 			onCommand(
 				{
 					setpoints: {
@@ -45,7 +45,7 @@ function HeatingSettings() {
 				},
 				100
 			)
-		} else if (target === 'max') {
+		} else if (target === "max") {
 			onCommand(
 				{
 					setpoints: {
@@ -96,16 +96,16 @@ function HeatingSettings() {
                         ]}
                     />
                 </CenteredDiv> */}
-				<h3>{t('heat.settings.timeDelay')}</h3>
-				<p>{t('heat.settings.timeDelayText')}</p>
+				<h3>{t("heat.settings.timeDelay")}</h3>
+				<p>{t("heat.settings.timeDelayText")}</p>
 				<CenteredDiv>
 					<TempDelaySlider
 						onCommitedChange={onCommitedChange}
 						initialValue={allValues.setpoints.temp_delay}
 					/>
 				</CenteredDiv>
-				<h3>{t('heat.settings.maxTemp')}</h3>
-				<p>{t('heat.settings.maxTempText')}</p>
+				<h3>{t("heat.settings.maxTemp")}</h3>
+				<p>{t("heat.settings.maxTempText")}</p>
 				<CenteredDiv>
 					<MaxTempSlider
 						onCommitedChange={onCommitedChange}
@@ -119,7 +119,7 @@ function HeatingSettings() {
 				<ButtonArea>
 					<Btn svgSize={28} onClick={handleResetOperatingHours}>
 						<AccessTimeIcon />
-						{t('generic.resetOperatingHours')}
+						{t("generic.resetOperatingHours")}
 					</Btn>
 					{/* <Btn svgSize={28} onClick={handleResetEnergyMeter}>
                         <AssessmentOutlinedIcon />
