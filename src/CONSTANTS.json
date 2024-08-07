@@ -260,6 +260,28 @@
 					"value": 20,
 					"label": "20m/s"
 				}
+			],
+			"windAlarmDelay": [
+				{
+					"value": 1,
+					"label": "1m"
+				},
+				{
+					"value": 2,
+					"label": "2m"
+				},
+				{
+					"value": 3,
+					"label": "3m"
+				},
+				{
+					"value": 4,
+					"label": "4m"
+				},
+				{
+					"value": 5,
+					"label": "5m"
+				}
 			]
 		}
 	}

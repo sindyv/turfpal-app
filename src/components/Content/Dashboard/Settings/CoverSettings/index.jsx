@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext } from 'react'
 
 // Styles
 import {
@@ -6,23 +6,34 @@ import {
 	Content,
 	ButtonArea,
 	CenteredDiv,
-} from "./CoverSettings.styles"
+} from './CoverSettings.styles'
 
 // Components
-import DurationSlider from "./DurationSlider"
+import DurationSlider from './DurationSlider'
 
 // Context
-import { AllValuesContext } from "../../../../../store/context/allValues-context"
+import { AllValuesContext } from '../../../../../store/context/allValues-context'
+import DelaySlider from './DelaySlider'
 
 function CoverSettings() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
 
 	const onCommitedChange = (newValue, target) => {
-		if (target === "windspeed") {
+		if (target === 'windspeed') {
 			onCommand(
 				{
 					setpoints: {
 						close_cover_at_windspeed: newValue,
+					},
+				},
+				100
+			)
+		}
+		if (target === 'windspeedDelay') {
+			onCommand(
+				{
+					setpoints: {
+						close_cover_at_windspeed_delay: newValue,
 					},
 				},
 				100
@@ -33,12 +44,24 @@ function CoverSettings() {
 	return (
 		<Wrapper>
 			<Content>
-				<h3>Duration</h3>
+				<h3>Maximum Wind speed</h3>
 
 				<CenteredDiv>
 					<DurationSlider
 						onCommitedChange={onCommitedChange}
-						initialValue={allValues.setpoints.close_cover_at_windspeed}
+						initialValue={
+							allValues.setpoints.close_cover_at_windspeed
+						}
+					/>
+				</CenteredDiv>
+				<h3>Delay</h3>
+
+				<CenteredDiv>
+					<DelaySlider
+						onCommitedChange={onCommitedChange}
+						initialValue={
+							allValues.setpoints.close_cover_at_windspeed
+						}
 					/>
 				</CenteredDiv>
 			</Content>

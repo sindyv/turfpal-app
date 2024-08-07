@@ -6,25 +6,25 @@ import Slider from '@mui/material/Slider'
 import CONSTANTS from '../../../../../../CONSTANTS.json'
 
 function DelaySlider({ onCommitedChange, initialValue = 30 }) {
-	const [windspeed, setWindspeed] = useState(initialValue)
+	const [windspeedDelay, setWindspeedDelay] = useState(initialValue)
 
 	const handleChangeTarget = (event, newValue) => {
-		setWindspeed(newValue)
+		setWindspeedDelay(newValue)
 	}
 
 	const handleChangeCommited = (event, newValue, activeThumb) => {
-		onCommitedChange(newValue, 'windspeed')
+		onCommitedChange(newValue, 'windspeedDelay')
 	}
 	return (
 		<Slider
-			marks={CONSTANTS.constants.sliders.windAlarm}
-			min={0}
-			max={20}
+			marks={CONSTANTS.constants.sliders.windAlarmDelay}
+			min={1}
+			max={5}
 			step={1}
 			valueLabelDisplay='auto'
 			onChange={handleChangeTarget}
 			onChangeCommitted={handleChangeCommited}
-			value={windspeed}
+			value={windspeedDelay}
 			sx={{
 				width: '80%',
 				color: 'dodgerblue',
