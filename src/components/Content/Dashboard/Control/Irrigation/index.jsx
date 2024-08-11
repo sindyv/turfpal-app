@@ -90,7 +90,8 @@ function Irrigation({}) {
 						textColorSelected={"black"}
 						textColorDeselected={"black"}
 					>
-						<AutorenewOutlinedIcon /> {t("generic.on")}
+						{/* <AutorenewOutlinedIcon />  */}
+						{t("generic.on")}
 					</Btn>
 					<Btn
 						svgSize={12}
@@ -101,7 +102,8 @@ function Irrigation({}) {
 						textColorDeselected={"black"}
 						onClick={() => handleToggle(false)}
 					>
-						<BackHandOutlinedIcon /> {t("generic.off")}
+						{/* <BackHandOutlinedIcon /> */}
+						{t("generic.off")}
 					</Btn>
 				</ButtonsArea>
 			)}
