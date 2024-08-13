@@ -7,6 +7,15 @@ import { useTranslation } from 'react-i18next'
 function LogEntryLine({ entry }) {
 	const dayjsObject = dayjs(entry.timestamp)
 	const { t } = useTranslation()
+	let source = ''
+
+	if (entry.source === 'Turfpal mobile') {
+		source = t(`log.turfpalMobile`)
+	} else if (entry.source === 'alarm') {
+		source = 'Alarm'
+	} else {
+		source = t(`log.turfpalWeb`)
+	}
 
 	return (
 		<Line>
@@ -17,14 +26,8 @@ function LogEntryLine({ entry }) {
 			/>
 			<span>{entry.value ? t('log.turnedOn') : t('log.turnedOff')}</span>
 			<span>{dayjsObject.format('HH:mm:ss')}</span>
-			<span>{t(`log.${entry.state}`)}</span>
-			<span>
-				{entry.source
-					? entry.source === 'Turfpal mobile'
-						? t(`log.turfpalMobile`)
-						: t(`log.turfpalWeb`)
-					: null}
-			</span>
+			<span>{entry.state ? t(`log.${entry.state}`) : null}</span>
+			<span>{source}</span>
 		</Line>
 	)
 }

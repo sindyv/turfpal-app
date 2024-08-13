@@ -1,9 +1,9 @@
-import React from "react"
-import { useState } from "react"
+import React from 'react'
+import { useState } from 'react'
 
-import Slider from "@mui/material/Slider"
+import Slider from '@mui/material/Slider'
 
-import CONSTANTS from "../../../../../../CONSTANTS.json"
+import CONSTANTS from '../../../../../../CONSTANTS.json'
 
 function DurationSlider({ onCommitedChange, initialValue = 30 }) {
 	const [duration, setDuration] = useState(initialValue)
@@ -13,21 +13,21 @@ function DurationSlider({ onCommitedChange, initialValue = 30 }) {
 	}
 
 	const handleChangeCommited = (event, newValue, activeThumb) => {
-		onCommitedChange(newValue, "duration")
+		onCommitedChange(newValue, 'duration')
 	}
 	return (
 		<Slider
 			marks={CONSTANTS.constants.sliders.waterDurationSlider}
 			min={1}
-			max={5}
+			max={10}
 			step={1}
-			valueLabelDisplay="auto"
+			valueLabelDisplay='auto'
 			onChange={handleChangeTarget}
 			onChangeCommitted={handleChangeCommited}
 			value={duration}
 			sx={{
-				width: "80%",
-				color: "dodgerblue",
+				width: '80%',
+				color: 'dodgerblue',
 			}}
 		/>
 	)

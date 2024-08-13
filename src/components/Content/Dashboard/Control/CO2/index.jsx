@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext } from 'react'
 
 // Styles
 import {
@@ -8,26 +8,28 @@ import {
 	LinkItem,
 	CardDescription,
 	LinkWrappers,
-} from "./CO2.styles"
+} from './CO2.styles'
 
 //Components
-import Btn from "../../../../UI/Btn"
-import ControlTile from "../../../../UI/ControlTile"
-import Card from "../../../../UI/Card"
+import Btn from '../../../../UI/Btn'
+import ControlTile from '../../../../UI/ControlTile'
+import Card from '../../../../UI/Card'
 
 // Icons
-import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
-import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
-import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined"
+import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
+import BackHandOutlinedIcon from '@mui/icons-material/BackHandOutlined'
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
+import CloudOutlinedIcon from '@mui/icons-material/CloudOutlined'
 
 // Context
-import { AllValuesContext } from "../../../../../store/context/allValues-context"
-import { useTranslation } from "react-i18next"
+import { AllValuesContext } from '../../../../../store/context/allValues-context'
+import useLoginContext from '../../../../../hooks/useLoginContext'
+import { useTranslation } from 'react-i18next'
 
 function CO2() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
+	const { user } = useLoginContext()
 	const { t } = useTranslation()
 
 	const handleSetModeAuto = () => {
@@ -53,47 +55,47 @@ function CO2() {
 	return (
 		<Wrapper>
 			{allValues.statuses.session &&
-			allValues.statuses.mode === "auto" ? null : (
+			allValues.statuses.mode === 'auto' ? null : (
 				<ButtonsArea>
 					<Btn
-						selected={allValues.statuses?.mode_co2 === "auto"}
+						selected={allValues.statuses?.mode_co2 === 'auto'}
 						onClick={handleSetModeAuto}
 					>
-						<AutorenewOutlinedIcon /> {t("generic.auto")}
+						<AutorenewOutlinedIcon /> {t('generic.auto')}
 					</Btn>
 					<Btn
 						svgSize={12}
-						selected={allValues.statuses?.mode_co2 === "manual"}
+						selected={allValues.statuses?.mode_co2 === 'manual'}
 						onClick={handleSetModeManual}
 					>
-						<BackHandOutlinedIcon /> {t("generic.manual")}
+						<BackHandOutlinedIcon /> {t('generic.manual')}
 					</Btn>
 				</ButtonsArea>
 			)}
-			{allValues.statuses.mode_heating === "manual" && (
+			{allValues.statuses.mode_heating === 'manual' && (
 				<ButtonsArea $control={true}>
 					<Btn
 						selected={allValues.statuses.co2}
 						onClick={() => handleToggle(true)}
-						backgroundColorDeselected={"var(--lightGrey)"}
-						backgroundColorSelected={"var(--turfpalActiveBtn)"}
-						textColorSelected={"black"}
-						textColorDeselected={"black"}
+						backgroundColorDeselected={'var(--lightGrey)'}
+						backgroundColorSelected={'var(--turfpalActiveBtn)'}
+						textColorSelected={'black'}
+						textColorDeselected={'black'}
 					>
 						{/* <AutorenewOutlinedIcon /> */}
-						{t("generic.on")}
+						{t('generic.on')}
 					</Btn>
 					<Btn
 						svgSize={12}
 						selected={!allValues.statuses.co2}
-						backgroundColorDeselected={"var(--lightGrey)"}
-						backgroundColorSelected={"var(--turfpalActiveBtn)"}
-						textColorSelected={"black"}
-						textColorDeselected={"black"}
+						backgroundColorDeselected={'var(--lightGrey)'}
+						backgroundColorSelected={'var(--turfpalActiveBtn)'}
+						textColorSelected={'black'}
+						textColorDeselected={'black'}
 						onClick={() => handleToggle(false)}
 					>
 						{/* <BackHandOutlinedIcon /> */}
-						{t("generic.off")}
+						{t('generic.off')}
 					</Btn>
 				</ButtonsArea>
 			)}
@@ -103,25 +105,25 @@ function CO2() {
 					changeState={handleToggle}
 					enabled={allValues.statuses.co2_valve}
 					icon={CloudOutlinedIcon}
-					title={"CO2"}
+					title={'CO2'}
 					data={{
-						value: allValues.values["co2"],
-						valueUnit: "ppm",
+						value: allValues.values['co2'],
+						valueUnit: 'ppm',
 						additionalData: [
 							null,
 							allValues.values?.co2_valve_rh ?? 0, // allValues.values["co2_consumption"],
 							// allValues.values.co2_rh,
 						],
-						additionalDataUnits: [null, "h"],
+						additionalDataUnits: [null, 'h'],
 					}}
 				/>
 			</TileArea>
 			<LinkWrappers>
 				<LinkItem
-					to={"/log"}
+					to={'/log'}
 					state={{
-						log: "CO2",
-						headerText: `${t("co2.co2")} > ${t("generic.log")}`,
+						log: 'CO2',
+						headerText: `${t('co2.co2')} > ${t('generic.log')}`,
 						logData: allValues?.logData?.co2 ?? null,
 					}}
 				>
@@ -132,15 +134,19 @@ function CO2() {
 						</CardDescription>
 					</Card>
 				</LinkItem>
-
-				<LinkItem to={"settings"} state={{ headerText: "CO2 > Settings" }}>
-					<Card>
-						<CardDescription>
-							<SettingsOutlinedIcon />
-							Settings
-						</CardDescription>
-					</Card>
-				</LinkItem>
+				{user === 'admin' ? (
+					<LinkItem
+						to={'settings'}
+						state={{ headerText: 'CO2 > Settings' }}
+					>
+						<Card>
+							<CardDescription>
+								<SettingsOutlinedIcon />
+								Settings
+							</CardDescription>
+						</Card>
+					</LinkItem>
+				) : null}
 			</LinkWrappers>
 		</Wrapper>
 	)

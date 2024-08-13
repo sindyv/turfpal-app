@@ -44,6 +44,7 @@
 		"lighting": "Lys",
 		"blue": "Blå",
 		"horti": "Horti",
+		"dimCover": "Lysintensitet ved utslåtte markiser",
 		"settings": {
 			"timeDelay": "Tidsforsinkelse",
 			"timeDelayText": "Tidsforsinkelse for endring i lysstyrke basert på PAR-verdi",

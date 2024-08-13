@@ -43,6 +43,7 @@
 	"light": {
 		"lighting": "Lighting",
 		"blue": "Blue",
+		"dimCover": "Light deployed",
 		"horti": "Horti",
 		"settings": {
 			"timeDelay": "Time delay",
@@ -51,6 +52,10 @@
 			"hortiText": "The maximum allowed lighting percent in auto-mode",
 			"blue": "Blue"
 		}
+	},
+	"irrigation": {
+		"irrigation": "Irrigation",
+		"soilMoisture": "Soil moisture"
 	},
 	"heat": {
 		"heating": "Heating",

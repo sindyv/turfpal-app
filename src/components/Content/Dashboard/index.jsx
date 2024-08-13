@@ -1,27 +1,29 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 // Styles
-import { Wrapper, ButtonsArea, LinkItem } from "./Dashboard.styles"
+import { Wrapper, ButtonsArea, LinkItem } from './Dashboard.styles'
 
 //Components
-import Btn from "../../UI/Btn"
-import ControlTiles from "./ControlTiles"
+import Btn from '../../UI/Btn'
+import ControlTiles from './ControlTiles'
+import MenuSpacer from '../../UI/MenuSpacer'
 
 // Images
-import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
-import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
+import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
+import BackHandOutlinedIcon from '@mui/icons-material/BackHandOutlined'
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 
 // API
-import Session from "./Session"
-import { useContext } from "react"
-import { AllValuesContext } from "../../../store/context/allValues-context"
-import { useTranslation } from "react-i18next"
+import Session from './Session'
+import { useContext } from 'react'
+import { AllValuesContext } from '../../../store/context/allValues-context'
+import useLoginContext from '../../../hooks/useLoginContext'
+import { useTranslation } from 'react-i18next'
 
 function Dashboard({}) {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
 	const [states, setStates] = useState({
 		newCommand: false,
-		setpoints: "default",
+		setpoints: 'default',
 		calendar: allValues.statuses.calendar,
 	})
 
@@ -67,10 +69,10 @@ function Dashboard({}) {
 		let command = {
 			auto: states.auto,
 			manual: states.manual,
-			default: states.setpoints === "default",
-			user_defined1: states.setpoints === "user_defined1",
-			user_defined2: states.setpoints === "user_defined2",
-			user_defined3: states.setpoints === "user_defined3",
+			default: states.setpoints === 'default',
+			user_defined1: states.setpoints === 'user_defined1',
+			user_defined2: states.setpoints === 'user_defined2',
+			user_defined3: states.setpoints === 'user_defined3',
 			calendaron: states.calendar,
 			calendaroff: !states.calendar,
 		}
@@ -95,7 +97,7 @@ function Dashboard({}) {
 		})
 	}
 
-	let state = allValues.statuses.mode === "auto"
+	let state = allValues.statuses.mode === 'auto'
 
 	if (states.newCommand) {
 		state = states.auto
@@ -103,15 +105,17 @@ function Dashboard({}) {
 
 	const { t } = useTranslation()
 
+	const { user } = useLoginContext()
+
 	return (
 		<Wrapper>
 			<ButtonsArea>
 				<Btn svgSize={24} selected={state} onClick={handleAuto}>
 					{/* <AutorenewOutlinedIcon /> Auto */}
-					<AutorenewOutlinedIcon /> {t("generic.auto")}
+					<AutorenewOutlinedIcon /> {t('generic.auto')}
 				</Btn>
 				<Btn svgSize={24} selected={!state} onClick={handleManual}>
-					<BackHandOutlinedIcon /> {t("generic.manual")}
+					<BackHandOutlinedIcon /> {t('generic.manual')}
 				</Btn>
 			</ButtonsArea>
 			{allValues.statuses.session || states.auto ? (
@@ -124,25 +128,28 @@ function Dashboard({}) {
 						tempStates={states}
 					/>
 					<LinkItem
-						to={"settings"}
+						to={'settings'}
 						state={{
-							headerText: `${t("generic.auto")} ${t("generic.mode")} > ${t(
-								"generic.settings"
-							)}`,
+							headerText: `${t('generic.auto')} ${t(
+								'generic.mode'
+							)} > ${t('generic.settings')}`,
 						}}
 					>
-						<Btn
-							backgroundColorDeselected={"var(--lightGrey)"}
-							textColorDeselected={"var(--turfpalColor)"}
-							customFont={"var(--turfpalFontBold)"}
-							onClick={() => {}}
-						>
-							<SettingsOutlinedIcon /> {t("generic.settings")}
-						</Btn>
+						{user === 'admin' ? (
+							<Btn
+								backgroundColorDeselected={'var(--lightGrey)'}
+								textColorDeselected={'var(--turfpalColor)'}
+								customFont={'var(--turfpalFontBold)'}
+								onClick={() => {}}
+							>
+								<SettingsOutlinedIcon /> {t('generic.settings')}
+							</Btn>
+						) : null}
 					</LinkItem>
 				</>
 			) : null}
 			<ControlTiles />
+			<MenuSpacer />
 		</Wrapper>
 	)
 }

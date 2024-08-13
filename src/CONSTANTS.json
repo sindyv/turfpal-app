@@ -113,20 +113,20 @@
 					"label": "1m"
 				},
 				{
-					"value": 2,
-					"label": "2m"
-				},
-				{
 					"value": 3,
 					"label": "3m"
 				},
 				{
-					"value": 4,
-					"label": "4m"
-				},
-				{
 					"value": 5,
 					"label": "5m"
+				},
+				{
+					"value": 7,
+					"label": "7m"
+				},
+				{
+					"value": 10,
+					"label": "10m"
 				}
 			],
 			"waterRepetitionSlider": [

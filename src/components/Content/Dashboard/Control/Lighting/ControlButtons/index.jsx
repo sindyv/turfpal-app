@@ -33,15 +33,15 @@ function ControlButtons({ handleControlLighting, allValues }) {
 				33%
 			</Btn>
 			<Btn
-				selected={allValues.setpoints.led_zone1_dim_man === 66}
+				selected={allValues.setpoints.led_zone1_dim_man === 50}
 				backgroundColorDeselected={'var(--lightGrey)'}
 				backgroundColorSelected={'var(--turfpalActiveBtn)'}
 				textColorSelected={'black'}
 				textColorDeselected={'black'}
 				customFont={'var(--turfpalFontBold)'}
-				onClick={() => handleControlLighting(66)}
+				onClick={() => handleControlLighting(50)}
 			>
-				66%
+				50%
 			</Btn>
 			<Btn
 				selected={allValues.setpoints.led_zone1_dim_man === 100}

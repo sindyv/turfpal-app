@@ -19,7 +19,7 @@ import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined'
 import { AllValuesContext } from '../../../../store/context/allValues-context'
 
 const startTime = dayjs().valueOf()
-const stopTime = dayjs().add(1, 'day').valueOf()
+const stopTime = dayjs().add(1, 'hour').valueOf()
 
 const defaultData = {
 	cmd_schedule_start_time: startTime,

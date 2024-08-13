@@ -23,6 +23,7 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 
 // Context
 import { AllValuesContext } from '../../../../../store/context/allValues-context'
+import useLoginContext from '../../../../../hooks/useLoginContext'
 import { useTranslation } from 'react-i18next'
 
 function Lighting({}) {
@@ -71,6 +72,8 @@ function Lighting({}) {
 	}
 	const { t } = useTranslation()
 
+	const { user } = useLoginContext()
+
 	return (
 		<Wrapper>
 			{allValues.statuses.session &&
@@ -117,22 +120,23 @@ function Lighting({}) {
 						</CardDescription>
 					</Card>
 				</LinkItem>
-
-				<LinkItem
-					to={'settings'}
-					state={{
-						headerText: `${t('light.lighting')} > ${t(
-							'generic.settings'
-						)}`,
-					}}
-				>
-					<Card>
-						<CardDescription>
-							<SettingsOutlinedIcon />
-							{t('generic.settings')}
-						</CardDescription>
-					</Card>
-				</LinkItem>
+				{user === 'admin' ? (
+					<LinkItem
+						to={'settings'}
+						state={{
+							headerText: `${t('light.lighting')} > ${t(
+								'generic.settings'
+							)}`,
+						}}
+					>
+						<Card>
+							<CardDescription>
+								<SettingsOutlinedIcon />
+								{t('generic.settings')}
+							</CardDescription>
+						</Card>
+					</LinkItem>
+				) : null}
 			</LinkWrappers>
 		</Wrapper>
 	)
