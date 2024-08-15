@@ -37,7 +37,10 @@
 		"resetOperatingHours": "Reset operating hours",
 		"updateEntry": "Update entry",
 		"email": "E-mail",
-		"phone": "Phone"
+		"phone": "Phone",
+		"resetAllSetpoints": "Tilbakestill alle settpunkt",
+		"open": "Open",
+		"closed": "Closed"
 	},
 
 	"light": {
@@ -56,6 +59,12 @@
 	"irrigation": {
 		"irrigation": "Irrigation",
 		"soilMoisture": "Soil moisture"
+	},
+	"co2": {
+		"co2": "CO2"
+	},
+	"cover": {
+		"cover": "Telt"
 	},
 	"heat": {
 		"heating": "Heating",

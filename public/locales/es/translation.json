@@ -37,7 +37,10 @@
 		"resetOperatingHours": "Restablecer horas de funcionamiento",
 		"updateEntry": "Actualizar entrada",
 		"email": "Correo electrónico",
-		"phone": "Teléfono"
+		"phone": "Teléfono",
+		"resetAllSetpoints": "Restablecer todos los puntos de ajuste",
+		"open": "Abierto",
+		"closed": "Cerrado"
 	},
 	"light": {
 		"lighting": "Iluminación",
@@ -59,6 +62,16 @@
 			"maxTemp": "Temperatura máxima permitida del suelo",
 			"maxTempText": "Temperatura que apagará la calefacción para evitar dañar el césped"
 		}
+	},
+	"irrigation": {
+		"irrigation": "Riego",
+		"soilMoisture": "Humedad del suelo"
+	},
+	"co2": {
+		"co2": "CO2"
+	},
+	"cover": {
+		"cover": "Cobertura"
 	},
 	"log": {
 		"title": "Datos que muestran los últimos 7 días",

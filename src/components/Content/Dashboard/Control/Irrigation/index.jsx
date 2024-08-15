@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react"
 
 // Styles
 import {
@@ -8,23 +8,23 @@ import {
 	LinkItem,
 	CardDescription,
 	LinkWrappers,
-} from './Irrigation.styles'
+} from "./Irrigation.styles"
 
 //Components
-import Btn from '../../../../UI/Btn'
-import ControlTile from '../../../../UI/ControlTile'
-import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
-import BackHandOutlinedIcon from '@mui/icons-material/BackHandOutlined'
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
-import WaterDropOutlinedIcon from '@mui/icons-material/WaterDropOutlined'
+import Btn from "../../../../UI/Btn"
+import ControlTile from "../../../../UI/ControlTile"
+import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
+import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
+import WaterDropOutlinedIcon from "@mui/icons-material/WaterDropOutlined"
 
-import Card from '../../../../UI/Card'
+import Card from "../../../../UI/Card"
 
 // Context
-import { AllValuesContext } from '../../../../../store/context/allValues-context'
-import useLoginContext from '../../../../../hooks/useLoginContext'
-import { useTranslation } from 'react-i18next'
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
+import useLoginContext from "../../../../../hooks/useLoginContext"
+import { useTranslation } from "react-i18next"
 
 function Irrigation({}) {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
@@ -65,49 +65,47 @@ function Irrigation({}) {
 	return (
 		<Wrapper>
 			{allValues.statuses.session &&
-			allValues.statuses.mode_irrigation === 'auto' ? null : (
+			allValues.statuses.mode_irrigation === "auto" ? null : (
 				<ButtonsArea>
 					<Btn
-						selected={allValues.statuses.mode_irrigation === 'auto'}
+						selected={allValues.statuses.mode_irrigation === "auto"}
 						onClick={handleSetModeAuto}
 					>
-						<AutorenewOutlinedIcon /> Auto
+						<AutorenewOutlinedIcon /> {t("generic.auto")}
 					</Btn>
 					<Btn
 						svgSize={12}
-						selected={
-							allValues.statuses.mode_irrigation === 'manual'
-						}
+						selected={allValues.statuses.mode_irrigation === "manual"}
 						onClick={handleSetModeManual}
 					>
-						<BackHandOutlinedIcon /> Manual
+						<BackHandOutlinedIcon /> {t("generic.manual")}
 					</Btn>
 				</ButtonsArea>
 			)}
-			{allValues.statuses.mode_irrigation === 'manual' && (
+			{allValues.statuses.mode_irrigation === "manual" && (
 				<ButtonsArea $control={true}>
 					<Btn
 						selected={allValues.statuses?.irrigation}
 						onClick={() => handleToggle(true)}
-						backgroundColorDeselected={'var(--lightGrey)'}
-						backgroundColorSelected={'var(--turfpalActiveBtn)'}
-						textColorSelected={'black'}
-						textColorDeselected={'black'}
+						backgroundColorDeselected={"var(--lightGrey)"}
+						backgroundColorSelected={"var(--turfpalActiveBtn)"}
+						textColorSelected={"black"}
+						textColorDeselected={"black"}
 					>
 						{/* <AutorenewOutlinedIcon />  */}
-						{t('generic.on')}
+						{t("generic.on")}
 					</Btn>
 					<Btn
 						svgSize={12}
 						selected={!allValues.statuses.irrigation}
-						backgroundColorDeselected={'var(--lightGrey)'}
-						backgroundColorSelected={'var(--turfpalActiveBtn)'}
-						textColorSelected={'black'}
-						textColorDeselected={'black'}
+						backgroundColorDeselected={"var(--lightGrey)"}
+						backgroundColorSelected={"var(--turfpalActiveBtn)"}
+						textColorSelected={"black"}
+						textColorDeselected={"black"}
 						onClick={() => handleToggle(false)}
 					>
 						{/* <BackHandOutlinedIcon /> */}
-						{t('generic.off')}
+						{t("generic.off")}
 					</Btn>
 				</ButtonsArea>
 			)}
@@ -117,46 +115,48 @@ function Irrigation({}) {
 					changeState={handleToggle}
 					enabled={allValues.statuses?.irrigation_valve}
 					icon={WaterDropOutlinedIcon}
-					title={'Irrigation'}
+					title={t("irrigation.irrigation")}
 					data={{
-						value: allValues.values['soil_moisture'],
-						valueUnit: '%',
+						value: allValues.values["soil_moisture"],
+						valueUnit: "%",
 						additionalData: [
 							allValues.values?.irrigation_valve_rh ?? 0, // allValues.values["co2_consumption"],
-							allValues.values['soil_temperature'],
+							allValues.values["soil_temperature"],
 							// allValues.values.co2_rh,
 						],
-						additionalDataUnits: ['h', '°C'],
+						additionalDataUnits: ["h", "°C"],
 					}}
 				/>
 			</TileArea>
 			<LinkWrappers>
 				<LinkItem
-					to={'/log'}
+					to={"/log"}
 					state={{
-						log: 'Irrigation',
-						headerText: `${t('irrigation.irrigation')} > ${t(
-							'generic.log'
-						)}`,
+						log: "Irrigation",
+						headerText: `${t("irrigation.irrigation")} > ${t("generic.log")}`,
 						logData: allValues?.logData?.irrigation ?? null,
 					}}
 				>
 					<Card>
 						<CardDescription>
 							<InfoOutlinedIcon />
-							Log
+							{t("generic.log")}
 						</CardDescription>
 					</Card>
 				</LinkItem>
-				{user === 'admin' ? (
+				{user === "admin" ? (
 					<LinkItem
-						to={'settings'}
-						state={{ headerText: 'Irrigation > Settings' }}
+						to={"settings"}
+						state={{
+							headerText: `${t("irrigation.irrigation")} > ${t(
+								"generic.settings"
+							)}`,
+						}}
 					>
 						<Card>
 							<CardDescription>
 								<SettingsOutlinedIcon />
-								Settings
+								{t("generic.settings")}
 							</CardDescription>
 						</Card>
 					</LinkItem>

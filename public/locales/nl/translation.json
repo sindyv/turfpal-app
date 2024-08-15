@@ -37,7 +37,10 @@
 		"resetOperatingHours": "Bedrijfsuren resetten",
 		"updateEntry": "Invoer bijwerken",
 		"email": "E-mail",
-		"phone": "Telefoon"
+		"phone": "Telefoon",
+		"resetAllSetpoints": "Alle instelpuntwaarden resetten",
+		"open": "Open",
+		"closed": "Gesloten"
 	},
 	"light": {
 		"lighting": "Verlichting",
@@ -59,6 +62,16 @@
 			"maxTemp": "Maximale toegestane bodemtemperatuur",
 			"maxTempText": "Temperatuur waarbij de verwarming wordt uitgeschakeld om beschadiging van het gazon te voorkomen"
 		}
+	},
+	"irrigation": {
+		"irrigation": "Irrigatie",
+		"soilMoisture": "Bodemvochtigheid"
+	},
+	"co2": {
+		"co2": "CO2"
+	},
+	"cover": {
+		"cover": "Deksel"
 	},
 	"log": {
 		"title": "Gegevens weergegeven voor de afgelopen 7 dagen",

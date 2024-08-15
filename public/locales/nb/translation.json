@@ -37,7 +37,10 @@
 		"resetOperatingHours": "Tilbakestill driftstimer",
 		"updateEntry": "Oppdater oppføring",
 		"email": "E-post",
-		"phone": "Telefon"
+		"phone": "Telefon",
+		"resetAllSetpoints": "Tilbakestill alle settpunkt",
+		"open": "Åpen",
+		"closed": "Lukket"
 	},
 
 	"light": {
@@ -63,7 +66,10 @@
 		}
 	},
 	"irrigation": {
-		"irrigation": "Vanning"
+		"irrigation": "Vanning",
+		"soilMoisture": "Jordfuktighet",
+		"duration": "Varighet",
+		"repeat": "Gjentas hvert"
 	},
 	"co2": {
 		"co2": "CO2"

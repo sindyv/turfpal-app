@@ -18,10 +18,12 @@ import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
 
 // Context
 import { AllValuesContext } from "../../../../../store/context/allValues-context"
+import { useTranslation } from "react-i18next"
 
 function CO2Settings() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
 
+	const { t } = useTranslation()
 	const onCommitedChange = (newValue, target) => {
 		if (target === "target") {
 			onCommand(
@@ -85,14 +87,14 @@ function CO2Settings() {
 						initialValue={allValues.setpoints.co2_target}
 					/>
 				</CenteredDiv> */}
-				<h3>Duration</h3>
+				<h3>{t("irrigation.duration")} </h3>
 				<CenteredDiv>
 					<DurationSlider
 						onCommitedChange={onCommitedChange}
 						initialValue={allValues.setpoints.co2_duration}
 					/>
 				</CenteredDiv>
-				<h3>Repeat every</h3>
+				<h3>{t("irrigation.repeat")}</h3>
 				<CenteredDiv>
 					<RepeatSlider
 						onCommitedChange={onCommitedChange}

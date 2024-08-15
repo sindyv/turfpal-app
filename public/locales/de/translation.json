@@ -37,7 +37,10 @@
 		"resetOperatingHours": "Betriebsstunden zurücksetzen",
 		"updateEntry": "Eintrag aktualisieren",
 		"email": "E-Mail",
-		"phone": "Telefon"
+		"phone": "Telefon",
+		"resetAllSetpoints": "Alle Sollwerte zurücksetzen",
+		"open": "Öffnen",
+		"closed": "Geschlossen"
 	},
 
 	"light": {
@@ -60,6 +63,16 @@
 			"maxTemp": "Maximal zulässige Bodentemperatur",
 			"maxTempText": "Temperatur, bei der die Heizung ausgeschaltet wird, um Schäden am Rasen zu vermeiden"
 		}
+	},
+	"irrigation": {
+		"irrigation": "Bewässerung",
+		"soilMoisture": "Bodenfeuchtigkeit"
+	},
+	"co2": {
+		"co2": "CO2"
+	},
+	"cover": {
+		"cover": "Abdeckung"
 	},
 	"log": {
 		"title": "Daten der letzten 7 Tage",
