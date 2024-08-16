@@ -1,4 +1,5 @@
-import React, { useContext } from "react"
+import React, { useContext } from 'react'
+import Btn from '../../../../UI/Btn'
 
 // Styles
 import {
@@ -6,24 +7,25 @@ import {
 	Content,
 	ButtonArea,
 	CenteredDiv,
-} from "./IrrigationSettings.styles"
+} from './IrrigationSettings.styles'
 
 // Components
-import TargetSlider from "./TargetSlider"
-import DurationSlider from "./DurationSlider"
-import RepeatSlider from "./RepeatSlider"
+import CustomSlider from '../../../../UI/CustomSlider'
+import CONSTANTS from '../../../../../CONSTANTS.json'
 
 // Context
-import { AllValuesContext } from "../../../../../store/context/allValues-context"
-import { useTranslation } from "react-i18next"
+import { AllValuesContext } from '../../../../../store/context/allValues-context'
+import { useTranslation } from 'react-i18next'
+import { SetpointsContext } from '../../../../../store/context/setpoints-context'
 
 function IrrigationSettings() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
+	const { updateSetpoints } = useContext(SetpointsContext)
 
 	const { t } = useTranslation()
 
 	const onCommitedChange = (newValue, target) => {
-		if (target === "target") {
+		if (target === 'target') {
 			onCommand(
 				{
 					setpoints: {
@@ -32,7 +34,7 @@ function IrrigationSettings() {
 				},
 				100
 			)
-		} else if (target === "duration") {
+		} else if (target === 'duration') {
 			onCommand(
 				{
 					setpoints: {
@@ -41,7 +43,7 @@ function IrrigationSettings() {
 				},
 				100
 			)
-		} else if (target === "interval") {
+		} else if (target === 'interval') {
 			onCommand(
 				{
 					setpoints: {
@@ -50,7 +52,7 @@ function IrrigationSettings() {
 				},
 				100
 			)
-		} else if (target === "delay") {
+		} else if (target === 'delay') {
 			onCommand(
 				{
 					setpoints: {
@@ -65,52 +67,55 @@ function IrrigationSettings() {
 	return (
 		<Wrapper>
 			<Content>
-				{/* <h3>Target</h3>
-				<CenteredDiv>
-					<TargetSlider
-						onCommitedChange={onCommitedChange}
-						initialValue={allValues.setpoints.irrigation_target}
-					/>
-				</CenteredDiv> */}
-				<h3>{t("irrigation.duration")} </h3>
+				<h3>{t('irrigation.duration')} </h3>
 
 				<CenteredDiv>
-					<DurationSlider
+					<CustomSlider
+						min={1}
+						max={10}
+						step={1}
 						onCommitedChange={onCommitedChange}
-						initialValue={allValues.setpoints.irrigation_duration}
+						externalValue={allValues.setpoints.irrigation_duration}
+						width={'80%'}
+						color={'dodgerblue'}
+						controlledItem={'duration'}
+						marks={CONSTANTS.constants.sliders.waterDurationSlider}
 					/>
 				</CenteredDiv>
-				<h3>{t("irrigation.repeat")}</h3>
+				<h3>{t('irrigation.repeat')}</h3>
 				<CenteredDiv>
-					<RepeatSlider
+					<CustomSlider
+						min={1}
+						max={20}
+						step={1}
 						onCommitedChange={onCommitedChange}
-						initialValue={allValues.setpoints.irrigation_interval}
+						externalValue={allValues.setpoints.irrigation_interval}
+						width={'80%'}
+						color={'dodgerblue'}
+						controlledItem={'interval'}
+						marks={
+							CONSTANTS.constants.sliders.waterRepetitionSlider
+						}
 					/>
 				</CenteredDiv>
-				{/* <h3>Delay</h3>
-                <CenteredDiv>
-                    <CustomSlider
-                        onCommitedChange={onCommitedChange}
-                        initialValue={
-                            allValues.setpoints.default_led_light_50_on
-                        }
-                        width={"80%"}
-                        max={20}
-                        color={"dodgerblue"}
-                        controlledItem={"delay"}
-                        marks={CONSTANTS.constants.sliders.waterDelaySlider}
-                    />
-                </CenteredDiv> */}
 
-				{/* <ButtonArea>
+				<ButtonArea>
+					<Btn
+						onClick={() => {
+							updateSetpoints(true, 'resetIrrigationSetpoints')
+						}}
+					>
+						{t('generic.resetSetpoints')}
+					</Btn>
+					{/*
 					<Btn
 						svgSize={28}
 						onClick={() => handleBtnPress("resetWaterConsumption")}
 					>
 						<AssessmentOutlinedIcon />
 						Reset water consumption
-					</Btn>
-				</ButtonArea> */}
+					</Btn>*/}
+				</ButtonArea>
 			</Content>
 		</Wrapper>
 	)

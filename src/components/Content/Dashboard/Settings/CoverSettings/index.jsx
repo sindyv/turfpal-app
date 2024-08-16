@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import Btn from '../../../../UI/Btn'
 
 // Styles
 import {
@@ -9,14 +10,18 @@ import {
 } from './CoverSettings.styles'
 
 // Components
-import DurationSlider from './DurationSlider'
+import CustomSlider from '../../../../UI/CustomSlider'
+import CONSTANTS from '../../../../../CONSTANTS.json'
 
 // Context
 import { AllValuesContext } from '../../../../../store/context/allValues-context'
-import DelaySlider from './DelaySlider'
+import { SetpointsContext } from '../../../../../store/context/setpoints-context'
+import { useTranslation } from 'react-i18next'
 
 function CoverSettings() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
+	const { updateSetpoints } = useContext(SetpointsContext)
+	const { t } = useTranslation()
 
 	const onCommitedChange = (newValue, target) => {
 		if (target === 'windspeed') {
@@ -47,23 +52,46 @@ function CoverSettings() {
 				<h3>Maximum Wind speed</h3>
 
 				<CenteredDiv>
-					<DurationSlider
+					<CustomSlider
+						min={0}
+						max={20}
+						step={1}
 						onCommitedChange={onCommitedChange}
-						initialValue={
+						externalValue={
 							allValues.setpoints.close_cover_at_windspeed
 						}
+						width={'80%'}
+						color={'gray'}
+						controlledItem={'windspeed'}
+						marks={CONSTANTS.constants.sliders.windAlarm}
 					/>
 				</CenteredDiv>
 				<h3>Delay</h3>
 
 				<CenteredDiv>
-					<DelaySlider
+					<CustomSlider
+						min={1}
+						max={5}
+						step={1}
 						onCommitedChange={onCommitedChange}
-						initialValue={
-							allValues.setpoints.close_cover_at_windspeed
+						externalValue={
+							allValues.setpoints.close_cover_at_windspeed_delay
 						}
+						width={'80%'}
+						color={'gray'}
+						controlledItem={'windspeedDelay'}
+						marks={CONSTANTS.constants.sliders.windAlarmDelay}
 					/>
 				</CenteredDiv>
+				<ButtonArea>
+					<Btn
+						onClick={() => {
+							updateSetpoints(true, 'resetWindSetpoints')
+						}}
+					>
+						{t('generic.resetSetpoints')}
+					</Btn>
+				</ButtonArea>
 			</Content>
 		</Wrapper>
 	)

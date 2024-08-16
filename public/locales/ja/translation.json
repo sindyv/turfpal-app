@@ -1,0 +1,281 @@
+{
+	"generic": {
+		"dashboard": "ダッシュボード",
+		"information": "情報",
+		"scheduler": "スケジューラー",
+		"schedule": "スケジュール",
+		"calendar": "カレンダー",
+		"session": "セッション",
+		"timer": "タイマー",
+		"startTimer": "タイマー開始",
+		"stopTimer": "タイマー停止",
+		"timerActive": "タイマー作動中",
+		"timerEnding": "終了予定時刻",
+		"auto": "自動",
+		"manual": "手動",
+		"on": "オン",
+		"off": "オフ",
+		"start": "開始",
+		"stop": "停止",
+		"keepOn": "オンのまま",
+		"keepOff": "オフのまま",
+		"mode": "モード",
+		"default": "デフォルト",
+		"summer": "夏",
+		"winter": "冬",
+		"action": "アクション",
+		"temperature": "温度",
+		"parRange": "PAR範囲",
+		"log": "ログ",
+		"hours": "時間",
+		"minutes": "分",
+		"starting": "開始中",
+		"ending": "終了中",
+		"settings": "設定",
+		"loading": "読み込み中 ...",
+		"none": "なし",
+		"resetOperatingHours": "稼働時間をリセット",
+		"updateEntry": "エントリーを更新",
+		"email": "Eメール",
+		"phone": "電話"
+	},
+
+	"light": {
+		"lighting": "照明",
+		"blue": "ブルー",
+		"dimCover": "展開時は軽い",
+		"horti": "ホルティ",
+		"settings": {
+			"timeDelay": "遅延時間",
+			"timeDelayText": "測定されたPAR値に基づいて照明が出力を変更する遅延時間",
+			"horti": "ホルティ",
+			"hortiText": "自動モードで許可される最大照明率",
+			"blue": "ブルー"
+		}
+	},
+	"irrigation": {
+		"irrigation": "灌漑",
+		"soilMoisture": "土壌水分"
+	},
+	"heat": {
+		"heating": "暖房",
+		"settings": {
+			"timeDelay": "遅延時間",
+			"timeDelayText": "温度がしきい値を超えてから暖房がオンまたはオフになるまでの遅延時間",
+			"maxTemp": "許可される最大土壌温度",
+			"maxTempText": "芝生を損傷しないように暖房をオフにする温度"
+		}
+	},
+	"log": {
+		"title": "過去7日間のデータ表示",
+		"noData": "ログデータがありません",
+		"Monday": "月曜日",
+		"Tuesday": "火曜日",
+		"Wednesday": "水曜日",
+		"Thursday": "木曜日",
+		"Friday": "金曜日",
+		"Saturday": "土曜日",
+		"Sunday": "日曜日",
+		"turnedOn": "オンになった",
+		"turnedOff": "オフになった",
+		"manual": "手動",
+		"auto": "自動",
+		"turfpalMobile": "Turfpalモバイル",
+		"turfpalWeb": "Turfpalウェブ"
+	},
+	"calendar": {
+		"errorNoEntries": "照明リグにエントリーが保存されていません",
+		"errorGettingData": "データを取得中にエラーが発生しました！",
+		"deletePrompt": "本当に削除しますか？",
+		"deleteText": "削除すると復元できません",
+		"close": "閉じる",
+		"delete": "削除",
+		"addEntry": "エントリーを追加",
+		"entries": "エントリー",
+		"updateEntry": "エントリーを更新"
+	},
+
+	"alarm": {
+		"alarms": "アラーム",
+		"surge": {
+			"title": "サージプロテクター",
+			"inactiveText": "サージプロテクション作動中",
+			"activeText": "サージプロテクターが故障しています。機器の損傷を避けるため、早急に交換してください"
+		},
+		"fuses": {
+			"title": "ヒューズ",
+			"inactiveText": "すべてのヒューズが正常です",
+			"activeText": "ヒューズが切れました！早急に確認してください。リグが正しく動作しません"
+		},
+		"par": {
+			"title": "PARセンサー",
+			"inactiveText": "センサー作動中",
+			"activeText": "PARセンサーが故障しました。照明リグは「自動」モードでは正しく動作しません。サポートにお問い合わせください"
+		},
+		"temperature": {
+			"title": "温度センサー",
+			"inactiveText": "センサー作動中",
+			"activeText": "温度センサーが故障しました。照明リグは「自動」モードでは正しく動作しません。  サポートにお問い合わせください"
+		},
+		"soil": {
+			"title": "土壌センサー",
+			"inactiveText": "センサー作動中",
+			"activeText": "土壌センサーが故障しました。照明リグは「自動」モードでは正しく動作しません。サポートにお問い合わせください"
+		},
+		"co2": {
+			"title": "CO2センサー",
+			"inactiveText": "センサー作動中",
+			"activeText": "CO2センサーが故障しました。照明リグは「自動」モードでは正しく動作しません。サポートにお問い合わせください"
+		},
+		"soilTemperature": {
+			"title": "土壌温度",
+			"inactiveText": "温度が正常です",
+			"activeText": "土壌温度が限界を超えました。暖房がオフになりました"
+		},
+		"wind": {
+			"title": "風速センサー",
+			"inactiveText": "風速が正常です",
+			"activeText": "風速が限界を超えました。展開条件を評価してください"
+		}
+	},
+	"energy": {
+		"energy": "エネルギー",
+		"energyMeter": "エネルギー消費メーター",
+		"power": "電力",
+		"frequency": "周波数",
+		"voltage": "電圧",
+		"current": "電流",
+		"error": "エネルギーデータの取得中にエラーが発生しました"
+	},
+	"information": {
+		"settingsAndInfo": "設定と情報",
+		"modbusSettings": {
+			"modbusSettings": "Modbus設定",
+			"selectSensor": "センサーを選択",
+			"address": "アドレス",
+			"oldAddress": "旧アドレス",
+			"newAddress": "新アドレス",
+			"parMessage": "PARセンサーは固定アドレス1で提供され、変更できません",
+			"changeAddress": "アドレスを変更",
+			"readSensorValue": "センサー値を読み取る",
+			"readValue": "値を読み取る",
+			"par": "PAR",
+			"temperature": "温度",
+			"co2": "CO2センサー",
+			"soil": "土壌センサー"
+		},
+		"daliSettings": {
+			"daliSettings": "DALI設定",
+			"scanForNew": "新しいデバイスをスキャン",
+			"resetAddr": "アドレスをリセット",
+			"stopScan": "スキャンを停止",
+			"allOn": "全てオン",
+			"allOff": "全てオフ",
+			"name": "名前",
+			"group": "グループ",
+			"save": "保存",
+			"toggle": "トグル",
+			"address": "アドレス",
+			"groups": "グループ(s)",
+			"status": "ステータス",
+			"found": "見つかりました",
+			"progress": "進行状況"
+		},
+		"help": {
+			"help": "ヘルプ",
+			"helpTitle": "ヘルプが近づいています",
+			"helpText": "ただし、今日はリリースされません。次のバージョンでリリースされます。それまでの間、以下の連絡先でお問い合わせいただけます。",
+			"helpPhone": "+44 7562 994399",
+			"helpEmail": "service@ra-tls.com"
+		},
+		"sessionLog": "セッションログ",
+		"signOut": "サインアウト",
+		"information": {
+			"device": {
+				"device": "デバイス",
+				"model": "モデル",
+				"serial": "シリアル番号",
+				"firmware": "ファームウェア"
+			},
+			"connectivity": {
+				"connectivity": "接続性",
+				"router": {
+					"router": "ルーター",
+					"connectivity": "接続性",
+					"name": "名前",
+					"serial": "シリアル番号",
+					"firmware": "ファームウェア",
+					"imei": "IMEI",
+					"wan": "WAN IP",
+					"dateTime": "日付と時間",
+					"mac": "MACアドレス"
+				},
+				"mobile": {
+					"mobile": "モバイル",
+					"error": "エラーが発生しました",
+					"fetching": "インターフェースを取得中",
+					"fetchingError": "インターフェースの取得中にエラーが発生しました",
+					"operator": "オペレーター",
+					"networkType": "ネットワークタイプ",
+					"networkReg": "ネットワーク登録タイプ",
+					"signalStrength": "信号強度",
+					"imsi": "IMSI",
+					"loggingInToRouter": "ルーターにログイン中",
+					"loginError": "ルーターへのログイン中にエラーが発生しました！",
+					"settings": {
+						"mobileDetails": "モバイルの詳細",
+						"id": "ID",
+						"simSlot": "SIMスロット",
+						"outgoingTraffic": "送信トラフィック",
+						"incomingTraffic": "受信トラフィック",
+						"apn": "APN",
+						"auto": "自動",
+						"customApn": "カスタムAPN",
+						"authType": "認証タイプ",
+						"custom": "カスタム",
+						"username": "ユーザー名",
+						"password": "パスワード"
+					}
+				},
+
+				"wireless": {
+					"wireless": "無線",
+					"ssid": "SSID",
+					"lanIp": "LAN IP",
+					"settings": {
+						"scanWifi": "WiFiをスキャン",
+						"scanning": "WiFiをスキャン中 ...",
+						"errorScanning": "WiFiのスキャン中にエラーが発生しました",
+						"ssid": "SSID",
+						"signal": "信号",
+						"channel": "チャネル",
+						"encryption": "暗号化",
+						"passphrase": "パスフレーズ",
+						"connect": "接続",
+						"connecting": "WiFiに接続中",
+						"disconnecting": "切断中...",
+						"errorJoining": "WiFiへの接続中にエラーが発生しました",
+						"connected": "接続済み",
+						"disconnected": "切断されました",
+						"disconnect": "切断",
+						"forget": "忘れる",
+						"failover": "フェイルオーバー"
+					}
+				},
+				"gps": {
+					"gps": "GPS",
+					"satelites": "衛星",
+					"latitude": "緯度",
+					"longitude": "経度",
+					"accuracy": "精度",
+					"altitude": "高度"
+				}
+			},
+			"appVersion": "アプリバージョン",
+			"timeZone": {
+				"timeZone": "タイムゾーン",
+				"select": "タイムゾーンを選択"
+			}
+		}
+	}
+}

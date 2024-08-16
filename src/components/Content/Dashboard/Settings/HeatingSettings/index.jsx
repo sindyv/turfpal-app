@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext } from 'react'
 
 // Styles
 import {
@@ -6,37 +6,29 @@ import {
 	Content,
 	ButtonArea,
 	CenteredDiv,
-} from "./HeatingSettings.styles"
+} from './HeatingSettings.styles'
 
 // Components
-import Btn from "../../../../UI/Btn"
-import TempRangeSlider from "./TempRangeSlider"
-import TempDelaySlider from "./TempDelaySlider"
-import MaxTempSlider from "./MaxTempSlider"
+import Btn from '../../../../UI/Btn'
+import CONSTANTS from '../../../../../CONSTANTS.json'
+import CustomSlider from '../../../../UI/CustomSlider'
 
 // Icons
-import AccessTimeIcon from "@mui/icons-material/AccessTime"
-import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined'
 
 // Context
-import { AllValuesContext } from "../../../../../store/context/allValues-context"
-import { useTranslation } from "react-i18next"
+import { AllValuesContext } from '../../../../../store/context/allValues-context'
+import { useTranslation } from 'react-i18next'
+import { SetpointsContext } from '../../../../../store/context/setpoints-context'
 
 function HeatingSettings() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
+	const { updateSetpoints } = useContext(SetpointsContext)
+
 	const { t } = useTranslation()
 	const onCommitedChange = (newValue, target) => {
-		if (target === "range") {
-			onCommand(
-				{
-					setpoints: {
-						default_hps_temp_50_on: newValue[0],
-						default_hps_temp_50_off: newValue[1],
-					},
-				},
-				100
-			)
-		} else if (target === "delay") {
+		if (target === 'delay') {
 			onCommand(
 				{
 					setpoints: {
@@ -45,7 +37,7 @@ function HeatingSettings() {
 				},
 				100
 			)
-		} else if (target === "max") {
+		} else if (target === 'max') {
 			onCommand(
 				{
 					setpoints: {
@@ -68,16 +60,6 @@ function HeatingSettings() {
 		)
 	}
 
-	const handleResetEnergyMeter = () => {
-		onCommand(
-			{
-				commands: {
-					heat_resetEnergy: true,
-				},
-			},
-			100
-		)
-	}
 	return (
 		<Wrapper>
 			<Content>
@@ -96,35 +78,49 @@ function HeatingSettings() {
                         ]}
                     />
                 </CenteredDiv> */}
-				<h3>{t("heat.settings.timeDelay")}</h3>
-				<p>{t("heat.settings.timeDelayText")}</p>
+				<h3>{t('heat.settings.timeDelay')}</h3>
+				<p>{t('heat.settings.timeDelayText')}</p>
 				<CenteredDiv>
-					<TempDelaySlider
+					<CustomSlider
+						min={0}
+						max={30}
+						step={1}
 						onCommitedChange={onCommitedChange}
-						initialValue={allValues.setpoints.temp_delay}
+						externalValue={allValues.setpoints.temp_delay}
+						width={'80%'}
+						color={'red'}
+						controlledItem={'delay'}
+						marks={CONSTANTS.constants.sliders.tempDelaySliderMarks}
 					/>
 				</CenteredDiv>
-				<h3>{t("heat.settings.maxTemp")}</h3>
-				<p>{t("heat.settings.maxTempText")}</p>
+				<h3>{t('heat.settings.maxTemp')}</h3>
+				<p>{t('heat.settings.maxTempText')}</p>
 				<CenteredDiv>
-					<MaxTempSlider
+					<CustomSlider
+						min={5}
+						max={25}
+						step={1}
 						onCommitedChange={onCommitedChange}
-						initialValue={allValues.setpoints.soil_temp_max}
+						externalValue={allValues.setpoints.soil_temp_max}
+						width={'80%'}
+						color={'red'}
+						controlledItem={'max'}
+						marks={CONSTANTS.constants.sliders.tempRangeSliderMarks}
 					/>
 				</CenteredDiv>
-				{/* <Btn svgSize={28}>
-                    <SaveOutlinedIcon />
-                    Save
-                </Btn> */}
+
 				<ButtonArea>
+					<Btn
+						onClick={() => {
+							updateSetpoints(true, 'resetHeatingSetpoints')
+						}}
+					>
+						{t('generic.resetSetpoints')}
+					</Btn>
 					<Btn svgSize={28} onClick={handleResetOperatingHours}>
 						<AccessTimeIcon />
-						{t("generic.resetOperatingHours")}
+						{t('generic.resetOperatingHours')}
 					</Btn>
-					{/* <Btn svgSize={28} onClick={handleResetEnergyMeter}>
-                        <AssessmentOutlinedIcon />
-                        Reset energy consumption
-                    </Btn> */}
 				</ButtonArea>
 			</Content>
 		</Wrapper>

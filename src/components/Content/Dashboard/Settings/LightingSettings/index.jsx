@@ -15,15 +15,17 @@ import CustomSlider from '../../../../UI/CustomSlider'
 
 // Icons
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
-import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined'
 
 // Context
 import { AllValuesContext } from '../../../../../store/context/allValues-context'
 import { useTranslation } from 'react-i18next'
+import { SetpointsContext } from '../../../../../store/context/setpoints-context'
 
 function LightingSettings() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
 	const { t } = useTranslation()
+	const { updateSetpoints } = useContext(SetpointsContext)
+
 	const onCommitedChange = (newValue, target) => {
 		if (target === 'horti') {
 			onCommand(
@@ -164,6 +166,13 @@ function LightingSettings() {
                     />
                 </CenteredDiv> */}
 				<ButtonArea>
+					<Btn
+						onClick={() => {
+							updateSetpoints(true, 'resetLightSetpoints')
+						}}
+					>
+						{t('generic.resetSetpoints')}
+					</Btn>
 					<Btn
 						svgSize={28}
 						onClick={() => handleBtnPress('resetRhZ1')}

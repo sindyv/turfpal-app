@@ -38,7 +38,7 @@
 		"updateEntry": "Oppdater oppføring",
 		"email": "E-post",
 		"phone": "Telefon",
-		"resetAllSetpoints": "Tilbakestill alle settpunkt",
+		"resetSetpoints": "Tilbakestill settpunkt",
 		"open": "Åpen",
 		"closed": "Lukket"
 	},

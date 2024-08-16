@@ -1,31 +1,27 @@
-import React, { useContext } from "react"
+import React, { useContext } from 'react'
 
 // Styles
-import { Wrapper, Content, ButtonArea, CenteredDiv } from "./CO2Settings.styles"
+import { Wrapper, Content, ButtonArea, CenteredDiv } from './CO2Settings.styles'
 
 // Components
 
-import TargetSlider from "./TargetSlider"
-import DurationSlider from "./DurationSlider"
-import RepeatSlider from "./RepeatSlider"
+import CONSTANTS from '../../../../../CONSTANTS.json'
 
-import Btn from "../../../../UI/Btn"
-import CONSTANTS from "../../../../../CONSTANTS.json"
-import CustomSlider from "../../../../UI/CustomSlider"
-// Icons
-import AccessTimeIcon from "@mui/icons-material/AccessTime"
-import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
+import Btn from '../../../../UI/Btn'
+import CustomSlider from '../../../../UI/CustomSlider'
 
 // Context
-import { AllValuesContext } from "../../../../../store/context/allValues-context"
-import { useTranslation } from "react-i18next"
+import { AllValuesContext } from '../../../../../store/context/allValues-context'
+import { useTranslation } from 'react-i18next'
+import { SetpointsContext } from '../../../../../store/context/setpoints-context'
 
 function CO2Settings() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
+	const { updateSetpoints } = useContext(SetpointsContext)
 
 	const { t } = useTranslation()
 	const onCommitedChange = (newValue, target) => {
-		if (target === "target") {
+		if (target === 'target') {
 			onCommand(
 				{
 					setpoints: {
@@ -34,7 +30,7 @@ function CO2Settings() {
 				},
 				100
 			)
-		} else if (target === "duration") {
+		} else if (target === 'duration') {
 			onCommand(
 				{
 					setpoints: {
@@ -43,7 +39,7 @@ function CO2Settings() {
 				},
 				100
 			)
-		} else if (target === "interval") {
+		} else if (target === 'interval') {
 			onCommand(
 				{
 					setpoints: {
@@ -56,7 +52,7 @@ function CO2Settings() {
 	}
 
 	const handleBtnPress = (action) => {
-		if (action === "resetOperatingHours") {
+		if (action === 'resetOperatingHours') {
 			onCommand(
 				{
 					command: {
@@ -65,7 +61,7 @@ function CO2Settings() {
 				},
 				100
 			)
-		} else if (action === "resetConsumption") {
+		} else if (action === 'resetConsumption') {
 			onCommand(
 				{
 					command: {
@@ -87,23 +83,52 @@ function CO2Settings() {
 						initialValue={allValues.setpoints.co2_target}
 					/>
 				</CenteredDiv> */}
-				<h3>{t("irrigation.duration")} </h3>
+				<h3>{t('irrigation.duration')} </h3>
 				<CenteredDiv>
-					<DurationSlider
+					<CustomSlider
+						min={2}
+						max={10}
+						step={1}
+						onCommitedChange={onCommitedChange}
+						externalValue={allValues.setpoints.co2_duration}
+						width={'80%'}
+						color={'gray'}
+						controlledItem={'duration'}
+						marks={CONSTANTS.constants.sliders.co2Duration}
+					/>
+					{/* <DurationSlider
 						onCommitedChange={onCommitedChange}
 						initialValue={allValues.setpoints.co2_duration}
-					/>
+					/> */}
 				</CenteredDiv>
-				<h3>{t("irrigation.repeat")}</h3>
+				<h3>{t('irrigation.repeat')}</h3>
 				<CenteredDiv>
-					<RepeatSlider
+					<CustomSlider
+						min={1}
+						max={5}
+						step={1}
+						onCommitedChange={onCommitedChange}
+						externalValue={allValues.setpoints.co2_interval}
+						width={'80%'}
+						color={'gray'}
+						controlledItem={'interval'}
+						marks={CONSTANTS.constants.sliders.co2Interval}
+					/>
+					{/* <RepeatSlider
 						onCommitedChange={onCommitedChange}
 						initialValue={allValues.setpoints.co2_interval}
-					/>
+					/> */}
 				</CenteredDiv>
 
-				{/* <ButtonArea>
+				<ButtonArea>
 					<Btn
+						onClick={() => {
+							updateSetpoints(true, 'resetCO2Setpoints')
+						}}
+					>
+						{t('generic.resetSetpoints')}
+					</Btn>
+					{/* <Btn
 						svgSize={28}
 						onClick={() => handleBtnPress("resetOperatingHours")}
 					>
@@ -113,8 +138,8 @@ function CO2Settings() {
 					<Btn svgSize={28} onClick={() => handleBtnPress("resetConsumption")}>
 						<AssessmentOutlinedIcon />
 						Reset energy consumption
-					</Btn>
-				</ButtonArea> */}
+					</Btn>*/}
+				</ButtonArea>
 			</Content>
 		</Wrapper>
 	)
