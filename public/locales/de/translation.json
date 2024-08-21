@@ -38,8 +38,9 @@
 		"updateEntry": "Eintrag aktualisieren",
 		"email": "E-Mail",
 		"phone": "Telefon",
-		"resetAllSetpoints": "Alle Sollwerte zurücksetzen",
+		"resetSetpoints": "Alle Sollwerte zurücksetzen",
 		"open": "Öffnen",
+		"close": "Schließen",
 		"closed": "Geschlossen"
 	},
 
@@ -66,13 +67,18 @@
 	},
 	"irrigation": {
 		"irrigation": "Bewässerung",
-		"soilMoisture": "Bodenfeuchtigkeit"
+		"soilMoisture": "Bodenfeuchtigkeit",
+		"duration": "Dauer",
+		"repeat": "Wiederhole alle"
 	},
 	"co2": {
 		"co2": "CO2"
 	},
 	"cover": {
-		"cover": "Abdeckung"
+		"cover": "Abdeckung",
+		"resetWindAlarm": "Windalarm zurücksetzen",
+		"delay": "Verzögerung",
+		"maxWindSpeed": "Maximale Windgeschwindigkeit"
 	},
 	"log": {
 		"title": "Daten der letzten 7 Tage",

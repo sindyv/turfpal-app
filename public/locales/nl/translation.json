@@ -3,6 +3,7 @@
 		"dashboard": "Dashboard",
 		"information": "Informatie",
 		"scheduler": "Planner",
+		"addNewEntry": "Voeg nieuwe invoer toe",
 		"schedule": "Schema",
 		"calendar": "Kalender",
 		"session": "Sessie",
@@ -38,8 +39,9 @@
 		"updateEntry": "Invoer bijwerken",
 		"email": "E-mail",
 		"phone": "Telefoon",
-		"resetAllSetpoints": "Alle instelpuntwaarden resetten",
+		"resetSetpoints": "Stel instelpuntwaarden opnieuw in",
 		"open": "Open",
+		"close": "Sluiten",
 		"closed": "Gesloten"
 	},
 	"light": {
@@ -65,13 +67,19 @@
 	},
 	"irrigation": {
 		"irrigation": "Irrigatie",
-		"soilMoisture": "Bodemvochtigheid"
+		"soilMoisture": "Bodemvochtigheid",
+		"duration": "Duur",
+		"repeat": "Herhaal elke"
 	},
 	"co2": {
 		"co2": "CO2"
 	},
 	"cover": {
-		"cover": "Deksel"
+		"cover": "Deksel",
+
+		"resetWindAlarm": "Reset windalarm",
+		"delay": "Vertraging",
+		"maxWindSpeed": "Maximale windsnelheid"
 	},
 	"log": {
 		"title": "Gegevens weergegeven voor de afgelopen 7 dagen",

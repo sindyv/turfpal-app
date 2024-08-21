@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react"
 
 // Styles
 import {
@@ -6,20 +6,20 @@ import {
 	Content,
 	ButtonArea,
 	CenteredDiv,
-} from './LightingSettings.styles'
+} from "./LightingSettings.styles"
 
 // Components
-import Btn from '../../../../UI/Btn'
-import CONSTANTS from '../../../../../CONSTANTS.json'
-import CustomSlider from '../../../../UI/CustomSlider'
+import Btn from "../../../../UI/Btn"
+import CONSTANTS from "../../../../../CONSTANTS.json"
+import CustomSlider from "../../../../UI/CustomSlider"
 
 // Icons
-import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import AccessTimeIcon from "@mui/icons-material/AccessTime"
 
 // Context
-import { AllValuesContext } from '../../../../../store/context/allValues-context'
-import { useTranslation } from 'react-i18next'
-import { SetpointsContext } from '../../../../../store/context/setpoints-context'
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
+import { useTranslation } from "react-i18next"
+import { SetpointsContext } from "../../../../../store/context/setpoints-context"
 
 function LightingSettings() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
@@ -27,7 +27,7 @@ function LightingSettings() {
 	const { updateSetpoints } = useContext(SetpointsContext)
 
 	const onCommitedChange = (newValue, target) => {
-		if (target === 'horti') {
+		if (target === "horti") {
 			onCommand(
 				{
 					setpoints: {
@@ -36,7 +36,7 @@ function LightingSettings() {
 				},
 				100
 			)
-		} else if (target === 'blue') {
+		} else if (target === "blue") {
 			onCommand(
 				{
 					setpoints: {
@@ -45,7 +45,7 @@ function LightingSettings() {
 				},
 				100
 			)
-		} else if (target === 'par') {
+		} else if (target === "par") {
 			onCommand(
 				{
 					setpoints: {
@@ -57,7 +57,7 @@ function LightingSettings() {
 				},
 				100
 			)
-		} else if (target === 'timeDelay') {
+		} else if (target === "timeDelay") {
 			onCommand(
 				{
 					setpoints: {
@@ -70,7 +70,7 @@ function LightingSettings() {
 	}
 
 	const handleBtnPress = (action) => {
-		if (action === 'resetRhZ1') {
+		if (action === "resetRhZ1") {
 			onCommand(
 				{
 					commands: {
@@ -79,7 +79,7 @@ function LightingSettings() {
 				},
 				100
 			)
-		} else if (action === 'resetRhZ2') {
+		} else if (action === "resetRhZ2") {
 			onCommand(
 				{
 					commands: {
@@ -88,7 +88,7 @@ function LightingSettings() {
 				},
 				100
 			)
-		} else if (action === 'resetEnergy') {
+		} else if (action === "resetEnergy") {
 			onCommand(
 				{
 					commands: {
@@ -102,33 +102,33 @@ function LightingSettings() {
 	return (
 		<Wrapper>
 			<Content>
-				<h3>{t('light.settings.timeDelay')}</h3>
-				<p>{t('light.settings.timeDelayText')}</p>
+				<h3>{t("light.settings.timeDelay")}</h3>
+				<p>{t("light.settings.timeDelayText")}</p>
 				<CenteredDiv>
 					<CustomSlider
 						min={0}
 						max={30}
-						step={1}
+						step={0.5}
 						onCommitedChange={onCommitedChange}
 						externalValue={allValues.setpoints.light_delay}
-						width={'80%'}
-						color={'gold'}
-						controlledItem={'timeDelay'}
+						width={"80%"}
+						color={"gold"}
+						controlledItem={"timeDelay"}
 						marks={CONSTANTS.constants.sliders.tempDelaySliderMarks}
 					/>
 				</CenteredDiv>
-				<h3>{t('light.settings.horti')}</h3>
+				<h3>{t("light.settings.horti")}</h3>
 
-				<p>{t('light.settings.hortiText')}</p>
+				<p>{t("light.settings.hortiText")}</p>
 				<CenteredDiv>
 					<CustomSlider
 						min={0}
 						max={100}
 						onCommitedChange={onCommitedChange}
 						externalValue={allValues.setpoints.led_zone1_dim}
-						width={'80%'}
-						color={'gold'}
-						controlledItem={'horti'}
+						width={"80%"}
+						color={"gold"}
+						controlledItem={"horti"}
 						marks={CONSTANTS.constants.sliders.hortiSlider}
 					/>
 				</CenteredDiv>
@@ -168,26 +168,18 @@ function LightingSettings() {
 				<ButtonArea>
 					<Btn
 						onClick={() => {
-							updateSetpoints(true, 'resetLightSetpoints')
+							updateSetpoints(true, "resetLightSetpoints")
 						}}
 					>
-						{t('generic.resetSetpoints')}
+						{t("generic.resetSetpoints")}
 					</Btn>
-					<Btn
-						svgSize={28}
-						onClick={() => handleBtnPress('resetRhZ1')}
-					>
+					<Btn svgSize={28} onClick={() => handleBtnPress("resetRhZ1")}>
 						<AccessTimeIcon />
-						{t('generic.resetOperatingHours')}{' '}
-						{t('light.settings.horti')}
+						{t("generic.resetOperatingHours")} {t("light.settings.horti")}
 					</Btn>
-					<Btn
-						svgSize={28}
-						onClick={() => handleBtnPress('resetRhZ2')}
-					>
+					<Btn svgSize={28} onClick={() => handleBtnPress("resetRhZ2")}>
 						<AccessTimeIcon />
-						{t('generic.resetOperatingHours')}{' '}
-						{t('light.settings.blue')}
+						{t("generic.resetOperatingHours")} {t("light.settings.blue")}
 					</Btn>
 					{/* <Btn
                         svgSize={28}

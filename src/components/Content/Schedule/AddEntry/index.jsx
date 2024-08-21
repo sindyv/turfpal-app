@@ -1,25 +1,25 @@
-import React, { useState, useContext } from 'react'
-import { useLocation } from 'react-router-dom'
-import dayjs from 'dayjs'
-import { useTranslation } from 'react-i18next'
+import React, { useState, useContext } from "react"
+import { useLocation } from "react-router-dom"
+import dayjs from "dayjs"
+import { useTranslation } from "react-i18next"
 
 // Styles
-import { Wrapper, Content, LinkItem } from './ScheduleAddEntry.styles'
+import { Wrapper, Content, LinkItem } from "./ScheduleAddEntry.styles"
 
 // Components
-import StartStop from './StartStop'
-import Repeat from './Repeat'
-import Mode from './Mode'
-import Btn from '../../../UI/Btn'
+import StartStop from "./StartStop"
+import Repeat from "./Repeat"
+import Mode from "./Mode"
+import Btn from "../../../UI/Btn"
 
 // Icons
-import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined'
+import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined"
 
 // Context
-import { AllValuesContext } from '../../../../store/context/allValues-context'
+import { AllValuesContext } from "../../../../store/context/allValues-context"
 
 const startTime = dayjs().valueOf()
-const stopTime = dayjs().add(1, 'hour').valueOf()
+const stopTime = dayjs().add(1, "hour").valueOf()
 
 const defaultData = {
 	cmd_schedule_start_time: startTime,
@@ -35,8 +35,8 @@ function ScheduleAddEntry() {
 
 	let location = useLocation()
 	let object = {}
-	let command = 'add'
-	let addBtnText = 'Add new entry'
+	let command = "add"
+	let addBtnText = t("generic.addNewEntry")
 
 	if (
 		location?.state?.schedule_index === 0 ||
@@ -50,8 +50,8 @@ function ScheduleAddEntry() {
 			cmd_schedule_index: location.state.schedule_index,
 		}
 		location.state
-		command = 'update'
-		addBtnText = t('calendar.updateEntry')
+		command = "update"
+		addBtnText = t("calendar.updateEntry")
 	} else {
 		object = defaultData
 	}
@@ -66,8 +66,7 @@ function ScheduleAddEntry() {
 	const handleAddBtn = () => {
 		scheduleObject.cmd_schedule_start_time =
 			scheduleObject.cmd_schedule_start_time
-		scheduleObject.cmd_schedule_end_time =
-			scheduleObject.cmd_schedule_end_time
+		scheduleObject.cmd_schedule_end_time = scheduleObject.cmd_schedule_end_time
 
 		onCommand({
 			commands: {
@@ -78,18 +77,13 @@ function ScheduleAddEntry() {
 	return (
 		<Wrapper>
 			<Content>
-				<StartStop
-					scheduleObject={scheduleObject}
-					onSelect={onSelect}
-				/>
+				<StartStop scheduleObject={scheduleObject} onSelect={onSelect} />
 				{/* <Repeat onSelect={onSelect} scheduleObject={scheduleObject} /> */}
 				<Mode onSelect={onSelect} scheduleObject={scheduleObject} />
 				<LinkItem
-					to={'/schedule/entries'}
+					to={"/schedule/entries"}
 					state={{
-						headerText: `${t('generic.schedule')} > ${t(
-							'calendar.entries'
-						)}`,
+						headerText: `${t("generic.schedule")} > ${t("calendar.entries")}`,
 					}}
 				>
 					<Btn onClick={handleAddBtn}>

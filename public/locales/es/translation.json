@@ -38,8 +38,9 @@
 		"updateEntry": "Actualizar entrada",
 		"email": "Correo electrónico",
 		"phone": "Teléfono",
-		"resetAllSetpoints": "Restablecer todos los puntos de ajuste",
+		"resetSetpoints": "Restablecer puntos de ajuste",
 		"open": "Abierto",
+		"close": "Cerrar",
 		"closed": "Cerrado"
 	},
 	"light": {
@@ -65,13 +66,18 @@
 	},
 	"irrigation": {
 		"irrigation": "Riego",
-		"soilMoisture": "Humedad del suelo"
+		"soilMoisture": "Humedad del suelo",
+		"duration": "Duración",
+		"repeat": "Repetir cada"
 	},
 	"co2": {
 		"co2": "CO2"
 	},
 	"cover": {
-		"cover": "Cobertura"
+		"cover": "Cobertura",
+		"resetWindAlarm": "Restablecer alarma de viento",
+		"delay": "Retraso",
+		"maxWindSpeed": "Velocidad máxima del viento"
 	},
 	"log": {
 		"title": "Datos que muestran los últimos 7 días",

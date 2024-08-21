@@ -3,6 +3,7 @@
 		"dashboard": "Tableau de bord",
 		"information": "Information",
 		"scheduler": "Planificateur",
+		"addNewEntry": "Ajouter une nouvelle entrée",
 		"schedule": "Horaire",
 		"calendar": "Calendrier",
 		"session": "Session",
@@ -38,8 +39,9 @@
 		"updateEntry": "Mettre à jour l'entrée",
 		"email": "E-mail",
 		"phone": "Téléphone",
-		"resetAllSetpoints": "Réinitialiser tous les points de consigne",
+		"resetSetpoints": "Réinitialiser les points de consigne",
 		"open": "Ouvert",
+		"close": "Fermer",
 		"closed": "Fermé"
 	},
 	"light": {
@@ -65,13 +67,18 @@
 	},
 	"irrigation": {
 		"irrigation": "Irrigation",
-		"soilMoisture": "Humidité du sol"
+		"soilMoisture": "Humidité du sol",
+		"duration": "Durée",
+		"repeat": "Répéter toutes les"
 	},
 	"co2": {
 		"co2": "CO2"
 	},
 	"cover": {
-		"cover": "Couverture"
+		"cover": "Couverture",
+		"resetWindAlarm": "Réinitialiser l'alarme du vent",
+		"delay": "Délai",
+		"maxWindSpeed": "Vitesse maximale du vent"
 	},
 	"log": {
 		"title": "Données affichées pour les 7 derniers jours",

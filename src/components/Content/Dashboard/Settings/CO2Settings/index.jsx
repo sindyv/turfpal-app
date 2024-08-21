@@ -1,19 +1,19 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react"
 
 // Styles
-import { Wrapper, Content, ButtonArea, CenteredDiv } from './CO2Settings.styles'
+import { Wrapper, Content, ButtonArea, CenteredDiv } from "./CO2Settings.styles"
 
 // Components
 
-import CONSTANTS from '../../../../../CONSTANTS.json'
+import CONSTANTS from "../../../../../CONSTANTS.json"
 
-import Btn from '../../../../UI/Btn'
-import CustomSlider from '../../../../UI/CustomSlider'
+import Btn from "../../../../UI/Btn"
+import CustomSlider from "../../../../UI/CustomSlider"
 
 // Context
-import { AllValuesContext } from '../../../../../store/context/allValues-context'
-import { useTranslation } from 'react-i18next'
-import { SetpointsContext } from '../../../../../store/context/setpoints-context'
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
+import { useTranslation } from "react-i18next"
+import { SetpointsContext } from "../../../../../store/context/setpoints-context"
 
 function CO2Settings() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
@@ -21,7 +21,7 @@ function CO2Settings() {
 
 	const { t } = useTranslation()
 	const onCommitedChange = (newValue, target) => {
-		if (target === 'target') {
+		if (target === "target") {
 			onCommand(
 				{
 					setpoints: {
@@ -30,7 +30,7 @@ function CO2Settings() {
 				},
 				100
 			)
-		} else if (target === 'duration') {
+		} else if (target === "duration") {
 			onCommand(
 				{
 					setpoints: {
@@ -39,7 +39,7 @@ function CO2Settings() {
 				},
 				100
 			)
-		} else if (target === 'interval') {
+		} else if (target === "interval") {
 			onCommand(
 				{
 					setpoints: {
@@ -52,7 +52,7 @@ function CO2Settings() {
 	}
 
 	const handleBtnPress = (action) => {
-		if (action === 'resetOperatingHours') {
+		if (action === "resetOperatingHours") {
 			onCommand(
 				{
 					command: {
@@ -61,7 +61,7 @@ function CO2Settings() {
 				},
 				100
 			)
-		} else if (action === 'resetConsumption') {
+		} else if (action === "resetConsumption") {
 			onCommand(
 				{
 					command: {
@@ -83,17 +83,17 @@ function CO2Settings() {
 						initialValue={allValues.setpoints.co2_target}
 					/>
 				</CenteredDiv> */}
-				<h3>{t('irrigation.duration')} </h3>
+				<h3>{t("irrigation.duration")} </h3>
 				<CenteredDiv>
 					<CustomSlider
 						min={2}
 						max={10}
-						step={1}
+						step={0.5}
 						onCommitedChange={onCommitedChange}
 						externalValue={allValues.setpoints.co2_duration}
-						width={'80%'}
-						color={'gray'}
-						controlledItem={'duration'}
+						width={"80%"}
+						color={"gray"}
+						controlledItem={"duration"}
 						marks={CONSTANTS.constants.sliders.co2Duration}
 					/>
 					{/* <DurationSlider
@@ -101,17 +101,17 @@ function CO2Settings() {
 						initialValue={allValues.setpoints.co2_duration}
 					/> */}
 				</CenteredDiv>
-				<h3>{t('irrigation.repeat')}</h3>
+				<h3>{t("irrigation.repeat")}</h3>
 				<CenteredDiv>
 					<CustomSlider
 						min={1}
 						max={5}
-						step={1}
+						step={0.5}
 						onCommitedChange={onCommitedChange}
 						externalValue={allValues.setpoints.co2_interval}
-						width={'80%'}
-						color={'gray'}
-						controlledItem={'interval'}
+						width={"80%"}
+						color={"gray"}
+						controlledItem={"interval"}
 						marks={CONSTANTS.constants.sliders.co2Interval}
 					/>
 					{/* <RepeatSlider
@@ -123,10 +123,10 @@ function CO2Settings() {
 				<ButtonArea>
 					<Btn
 						onClick={() => {
-							updateSetpoints(true, 'resetCO2Setpoints')
+							updateSetpoints(true, "resetCO2Setpoints")
 						}}
 					>
-						{t('generic.resetSetpoints')}
+						{t("generic.resetSetpoints")}
 					</Btn>
 					{/* <Btn
 						svgSize={28}

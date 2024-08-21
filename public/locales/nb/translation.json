@@ -1,291 +1,296 @@
 {
 	"generic": {
-		"dashboard": "Dashbord",
-		"information": "Informasjon",
-		"scheduler": "Planlegger",
-		"schedule": "Timeplan",
-		"calendar": "Kalender",
-		"session": "Økt",
+		"dashboard": "Dashboard",
+		"information": "Information",
+		"addNewEntry": "Legg til",
+		"scheduler": "Scheduler",
+		"schedule": "Schedule",
+		"calendar": "Calendar",
+		"session": "Session",
 		"timer": "Timer",
 		"startTimer": "Start timer",
-		"stopTimer": "Stopp timer",
-		"timerActive": "Timer aktiv",
-		"timerEnding": "Slutter kl",
+		"stopTimer": "Stop timer",
+		"timerActive": "Timer active",
+		"timerEnding": "Ending at",
 		"auto": "Auto",
-		"manual": "Manuell",
-		"on": "På",
-		"off": "Av",
+		"manual": "Manual",
+		"on": "On",
+		"off": "Off",
 		"start": "Start",
-		"stop": "Stopp",
-		"keepOn": "Hold på",
-		"keepOff": "Hold av",
-		"mode": "Modus",
-		"default": "Standard",
-		"summer": "Sommer",
-		"winter": "Vinter",
-		"action": "Handling",
-		"temperature": "Temperatur",
-		"parRange": "PAR-område",
-		"log": "Logg",
-		"hours": "timer",
+		"stop": "Stop",
+		"keepOn": "Keep on",
+		"keepOff": "Keep off",
+		"mode": "Mode",
+		"default": "Default",
+		"summer": "Summer",
+		"winter": "Winter",
+		"action": "Action",
+		"temperature": "Temperature",
+		"parRange": "PAR Range",
+		"log": "Log",
+		"hours": "Hours",
 		"minutes": "min",
-		"starting": "Start",
-		"ending": "Slutt",
-		"settings": "Innstillinger",
-		"none": "Ingen",
-		"loading": "Laster ...",
-		"resetOperatingHours": "Tilbakestill driftstimer",
-		"updateEntry": "Oppdater oppføring",
-		"email": "E-post",
-		"phone": "Telefon",
-		"resetSetpoints": "Tilbakestill settpunkt",
-		"open": "Åpen",
-		"closed": "Lukket"
+		"starting": "Starting",
+		"ending": "Ending",
+		"settings": "Settings",
+		"loading": "Loading ...",
+		"none": "None",
+		"resetOperatingHours": "Reset operating hours",
+		"updateEntry": "Update entry",
+		"email": "E-mail",
+		"phone": "Phone",
+		"resetSetpoints": "Reset setpoints",
+		"open": "Open",
+		"close": "Close",
+		"closed": "Closed"
 	},
 
 	"light": {
-		"lighting": "Lys",
-		"blue": "Blå",
+		"lighting": "Lighting",
+		"blue": "Blue",
+		"dimCover": "Light deployed",
 		"horti": "Horti",
-		"dimCover": "Lysintensitet ved utslåtte markiser",
 		"settings": {
-			"timeDelay": "Tidsforsinkelse",
-			"timeDelayText": "Tidsforsinkelse for endring i lysstyrke basert på PAR-verdi",
+			"timeDelay": "Time delay",
+			"timeDelayText": "The time delay for the lighting to change its output based on the measured PAR-value",
 			"horti": "Horti",
-			"hortiText": "Den maksimalt tillatte belysningsprosenten i auto-modus",
-			"blue": "Blå"
-		}
-	},
-	"heat": {
-		"heating": "Varme",
-		"settings": {
-			"timeDelay": "Tidsforsinkelse",
-			"timeDelayText": "Tidsforsinkelsen for å slå varme av/på basert på temperatursettpunkt",
-			"maxTemp": "Maksimum tillatt jordtemperatur",
-			"maxTempText": "Temperatur som vil slå av oppvarmingen for å unngå skade på plenen"
+			"hortiText": "The maximum allowed lighting percent in auto-mode",
+			"blue": "Blue"
 		}
 	},
 	"irrigation": {
-		"irrigation": "Vanning",
-		"soilMoisture": "Jordfuktighet",
-		"duration": "Varighet",
-		"repeat": "Gjentas hvert"
+		"irrigation": "Irrigation",
+		"soilMoisture": "Soil moisture",
+		"duration": "Duration",
+		"repeat": "Repeat every"
 	},
 	"co2": {
 		"co2": "CO2"
 	},
 	"cover": {
-		"cover": "Telt"
+		"cover": "Cover",
+		"resetWindAlarm": "Reset Wind Alarm",
+		"delay": "Delay",
+		"maxWindSpeed": "Maximum Wind Speed"
+	},
+	"heat": {
+		"heating": "Heating",
+		"settings": {
+			"timeDelay": "Time delay",
+			"timeDelayText": "The time delay for the temperature can exceed the temperature thresholds before the heating is turned on or off",
+			"maxTemp": "Maximum allowed soil temperature",
+			"maxTempText": "Temperature which will turn the heating off to avoid damaging the turf"
+		}
 	},
 	"log": {
-		"title": "Data vises for de siste 7 dagene",
-		"noData": "Ingen loggdata gitt",
-		"Monday": "Mandag",
-		"Tuesday": "Tirsdag",
-		"Wednesday": "Onsdag",
-		"Thursday": "Torsdag",
-		"Friday": "Fredag",
-		"Saturday": "Lørdag",
-		"Sunday": "Søndag",
-		"turnedOn": "Slått på",
-		"turnedOff": "Slått av",
-		"manual": "Manuell",
+		"title": "Data showing for the past 7 days",
+		"noData": "No logdata provided",
+		"Monday": "Monday",
+		"Tuesday": "Tuesday",
+		"Wednesday": "Wednesday",
+		"Thursday": "Thursday",
+		"Friday": "Friday",
+		"Saturday": "Saturday",
+		"Sunday": "Sunday",
+		"turnedOn": "Turned on",
+		"turnedOff": "Turned off",
+		"manual": "Manual",
 		"auto": "Auto",
-		"turfpalMobile": "Turfpal mobil",
+		"turfpalMobile": "Turfpal mobile",
 		"turfpalWeb": "Turfpal Web"
 	},
 	"calendar": {
-		"errorNoEntries": "Det er ingen oppføringer lagret i belysningsriggen",
-		"errorGettingData": "Oops! Noe gikk galt ved henting av data fra riggen!",
-		"deletePrompt": "Vil du virkelig slette?",
-		"deleteText": "Hvis du sletter dette, kan du ikke gjenopprette det",
-		"close": "Lukk",
-		"delete": "SLETT",
-		"addEntry": "Legg til oppføring",
-		"entries": "Oppføringer",
-		"updateEntry": "Oppdater oppføring"
+		"errorNoEntries": "There are no entries stored in the lighting rig",
+		"errorGettingData": "Ooops! Something went wrong when getting data from the rig!",
+		"deletePrompt": "Do you really want to delete?",
+		"deleteText": "If you delete this, you cannot restore it",
+		"close": "Close",
+		"delete": "DELETE",
+		"addEntry": "Add entry",
+		"entries": "Entries",
+		"updateEntry": "Update entry"
 	},
 
 	"alarm": {
-		"alarms": "Alarmer",
+		"alarms": "Alarms",
 		"surge": {
-			"title": "Overbelastningsvern",
-			"inactiveText": "Overbelastningsbeskyttelse er operativ",
-			"activeText": "En overspenningsbeskytter er feil. Bytt så snart som mulig for å unngå skade på utstyret"
+			"title": "Surge Protector",
+			"inactiveText": "Surge Protection is operational",
+			"activeText": "A surge protector is faulty. Replace as soon as possible to avoid damage to equipment"
 		},
 		"fuses": {
-			"title": "Sikringer",
-			"inactiveText": "Alle sikringer intakte",
-			"activeText": "En sikring har gått! Vennligst sjekk så snart som mulig, da riggen ikke vil fungere riktig"
+			"title": "Fuses",
+			"inactiveText": "All fuses intact",
+			"activeText": "A fuse has tripped! Please check as soon as possible as the rig will not function correctly"
 		},
 		"par": {
-			"title": "PAR-sensor",
-			"inactiveText": "Sensor fungerer",
-			"activeText": "PAR-sensoren har feilet. Belysningsriggen vil fungere ordentlig i 'Auto'-modus. Vennligst ring Turfpal support på +44 7949 429360"
+			"title": "PAR Sensor",
+			"inactiveText": "Sensor working",
+			"activeText": "The PAR sensor has malfunctioned. The lighting rig will work properly in 'Auto'-mode. Please call Turfpal support at +44 7949 429360"
 		},
 		"temperature": {
-			"title": "Temperatursensor",
-			"inactiveText": "Sensor fungerer",
-			"activeText": "Temperatursensoren har feilet. Belysningsriggen vil fungere ordentlig i 'Auto'-modus. Vennligst ring Turfpal support på +44 7949 429360"
+			"title": "Temperature sensor",
+			"inactiveText": "Sensor working",
+			"activeText": "The temperature sensor has malfunctioned. The lighting rig will work properly in 'Auto'-mode.  Please call Turfpal support at +44 7949 429360"
 		},
 		"soil": {
-			"title": "Jordsensor",
-			"inactiveText": "Sensor fungerer",
-			"activeText": "Jordsensoren har feilet. Belysningsriggen vil fungere ordentlig i 'Auto'-modus. Vennligst ring Turfpal support på +44 7949 429360"
+			"title": "Soil Sensor",
+			"inactiveText": "Sensor working",
+			"activeText": "The soil sensor has malfunctioned. The lighting rig will work properly in 'Auto'-mode. Please call Turfpal support at +44 7949 429360"
 		},
 		"co2": {
-			"title": "CO2-sensor",
-			"inactiveText": "Sensor fungerer",
-			"activeText": "CO2-sensoren har feilet. Belysningsriggen vil fungere ordentlig i 'Auto'-modus. Vennligst ring Turfpal support på +44 7949 429360"
+			"title": "CO2 Sensor",
+			"inactiveText": "Sensor working",
+			"activeText": "The CO2 sensor has malfunctioned. The lighting rig will work properly in 'Auto'-mode. Please call Turfpal support at +44 7949 429360"
 		},
 		"soilTemperature": {
-			"title": "Jordtemperatur",
-			"inactiveText": "Temperatur normal",
-			"activeText": "Jordtemperaturen har overskredet grensen. Oppvarmingen er slått av"
+			"title": "Soil Temperature",
+			"inactiveText": "Temperature normal",
+			"activeText": "The soil temperature has exeeded the limit. The heating has been shut off"
 		},
 		"wind": {
-			"title": "Vind sensor",
-			"inactiveText": "Vindhastigheter normale",
-			"activeText": "Vindhastighetene har overskredet grensen. Vennligst evaluer utsettingsforholdene"
+			"title": "Wind sensor",
+			"inactiveText": "Wind speeds normal",
+			"activeText": "The wind speeds have exceeded the limit. Please evaluate the deployment conditions"
 		}
 	},
 	"energy": {
-		"energy": "Energi",
-		"energyMeter": "Energimåler",
-		"power": "Effekt",
-		"frequency": "Frekvens",
-		"voltage": "Spenning",
-		"current": "Strøm",
-		"error": "Oops, det oppstod en feil ved henting av energidata"
+		"energy": "Energy",
+		"energyMeter": "Energy consumption meter",
+		"power": "Power",
+		"frequency": "Frequency",
+		"voltage": "Voltage",
+		"current": "Current",
+		"error": "Oops, there was an error getting the energy data"
 	},
 	"information": {
-		"settingsAndInfo": "Innstillinger og informasjon",
+		"settingsAndInfo": "Settings and information",
 		"modbusSettings": {
-			"modbusSettings": "Modbus Innstillinger",
-			"selectSensor": "Velg sensor",
-			"address": "Adresse",
-			"oldAddress": "Gammel adresse",
-			"newAddress": "Ny adresse",
-			"parMessage": "PAR-sensoren har en fast adresse på 1 og kan ikke endres",
-			"changeAddress": "Endre adresse",
-			"readSensorValue": "Les sensorverdi",
-			"readValue": "Les verdi",
+			"modbusSettings": "Modbus Settings",
+			"selectSensor": "Select sensor",
+			"address": "Address",
+			"oldAddress": "Old address",
+			"newAddress": "New address",
+			"parMessage": "The PAR-sensor comes with a fixed address of 1, and cannot be changed",
+			"changeAddress": "Change addresss",
+			"readSensorValue": "Read sensor value",
+			"readValue": "Read value",
 			"par": "PAR",
-			"temperature": "Temperatur",
-			"co2": "CO2-sensor",
-			"soil": "Jordsensor"
+			"temperature": "Temperature",
+			"co2": "CO2 sensor",
+			"soil": "Soil sensor"
 		},
 		"daliSettings": {
-			"daliSettings": "DALI Innstillinger",
-			"scanForNew": "Søk etter nye enheter",
-			"resetAddr": "Tilbakestill adressering",
-			"stopScan": "Stopp skanning",
-			"allOn": "Alle på",
-			"allOff": "Alle av",
-			"name": "Navn",
-			"group": "Gruppe",
-			"save": "Lagre",
-			"toggle": "Veksle",
-			"address": "Adresse",
-			"groups": "Gruppe(r)",
+			"daliSettings": "DALI Settings",
+			"scanForNew": "Scan for new devices",
+			"resetAddr": "Reset addressing",
+			"stopScan": "Stop scan",
+			"allOn": "All on",
+			"allOff": "All off",
+			"name": "Name",
+			"group": "Group",
+			"save": "Save",
+			"toggle": "Toggle",
+			"address": "Address",
+			"groups": "Group(s)",
 			"status": "Status",
-			"found": "Funnet",
-			"progress": "Fremgang"
+			"found": "Found",
+			"progress": "Progress"
 		},
 		"help": {
-			"help": "Hjelp",
-			"helpTitle": "Hjelpen er på vei",
-			"helpText": "Men ikke i dag. Det vil bli utgitt med neste versjon av denne web-appen. I mellomtiden er du velkommen til å kontakte oss her:",
+			"help": "Help",
+			"helpTitle": "Help is on its way",
+			"helpText": "But not today. It will be released with the next version of this web-app. In the mean time you are more then welcome to contact us here:",
 			"helpPhone": "+44 7562 994399",
 			"helpEmail": "service@ra-tls.com"
 		},
-		"sessionLog": "Øktlogg",
-		"signOut": "Logg ut",
+		"sessionLog": "Session Log",
+		"signOut": "Sign Out",
 		"information": {
 			"device": {
-				"device": "Enhet",
-				"model": "Modell",
-				"serial": "Serienr",
-				"firmware": "Fastvare"
+				"device": "Device",
+				"model": "Model",
+				"serial": "Serial No",
+				"firmware": "Firmware"
 			},
 			"connectivity": {
-				"connectivity": "Tilkobling",
+				"connectivity": "Connnectivity",
 				"router": {
 					"router": "Router",
-					"connectivity": "Tilkobling",
-					"name": "Navn",
-					"serial": "Serienr",
-					"firmware": "Fastvare",
+					"connectivity": "Connectivity",
+					"name": "Name",
+					"serial": "Serial No",
+					"firmware": "Firmware",
 					"imei": "IMEI",
 					"wan": "WAN IP",
-					"dateTime": "Dato og tid",
-					"mac": "MAC-adresse"
+					"dateTime": "Date and time",
+					"mac": "MAC Address"
 				},
 				"mobile": {
-					"mobile": "Mobil",
-					"error": "En feil oppstod",
-					"fetching": "Henter tilkoblinger",
-					"fetchingError": "Feil ved henting av tilkoblinger",
-					"operator": "Operatør",
-					"networkType": "Nettverkstype",
-					"networkReg": "Nettverksregistreringstype",
-					"signalStrength": "Signalstyrke",
+					"mobile": "Mobile",
+					"error": "An error occured",
+					"fetching": "Fetching interfaces",
+					"fetchingError": "Error fetching interfaces",
+					"operator": "Operator",
+					"networkType": "Network Type",
+					"networkReg": "Network registration type",
+					"signalStrength": "Signal Strength",
 					"imsi": "IMSI",
-					"loggingInToRouter": "Logger inn på router",
-					"loginError": "Det oppstod en feil ved innlogging på ruter!",
+					"loggingInToRouter": "Logging in to router",
+					"loginError": "There was an error logging in to the Router!",
 					"settings": {
-						"mobileDetails": "Detaljer",
+						"mobileDetails": "Mobile Details",
 						"id": "ID",
-						"simSlot": "SIM-spor",
-						"outgoingTraffic": "Utgående trafikk",
-						"incomingTraffic": "Innkommende trafikk",
+						"simSlot": "SIM Slot",
+						"outgoingTraffic": "Outgoing traffic",
+						"incomingTraffic": "Incoming traffic",
 						"apn": "APN",
 						"auto": "Auto",
-						"customApn": "Egendefinert APN",
-						"authType": "Autentiseringstype",
-						"custom": "Egendefinert",
-						"username": "Brukernavn",
-						"password": "Passord"
+						"customApn": "Custom APN",
+						"authType": "Authentication type",
+						"custom": "Custom",
+						"username": "Username",
+						"password": "Password"
 					}
 				},
 
 				"wireless": {
-					"wireless": "Trådløs",
+					"wireless": "Wireless",
 					"ssid": "SSID",
 					"lanIp": "LAN IP",
 					"settings": {
-						"scanWifi": "Søk etter WiFi",
-						"scanning": "Søker etter WiFi ...",
-						"errorScanning": "Det oppstod en feil søk etter WiFi",
+						"scanWifi": "Scan WiFi",
+						"scanning": "Scanning for WiFi ...",
+						"errorScanning": "An error occured while scanning for WiFi",
 						"ssid": "SSID",
 						"signal": "Signal",
-						"channel": "Kanal",
-						"encryption": "Kryptering",
+						"channel": "Channel",
+						"encryption": "Encryption",
 						"passphrase": "Passphrase",
-						"connect": "Koble til",
-						"connecting": "Kobler til WiFi",
-						"disconnecting": "Kobler fra...",
-						"connected": "Tilkoblet",
-						"disconnected": "Frakoblet",
-						"errorJoining": "Det oppstod en feil ved tilkobling til WiFi",
-						"disconnect": "Koble fra",
-						"forget": "Glem",
-						"failover": "Tilbakefallskobling"
+						"connect": "Connect",
+						"connecting": "Connecting to WiFi",
+						"disconnecting": "Disconnecting...",
+						"errorJoining": "There was an error joing the WiFi",
+						"connected": "Connected",
+						"disconnected": "Disconnected",
+						"disconnect": "Disconnect",
+						"forget": "Forget",
+						"failover": "Failover"
 					}
 				},
 				"gps": {
 					"gps": "GPS",
-					"satelites": "Satelitter",
-					"latitude": "Breddegrad",
-					"longitude": "Lengdegrad",
-					"accuracy": "Nøyaktighet",
-					"altitude": "Høyde"
+					"satelites": "Satelites",
+					"latitude": "Latitude",
+					"longitude": "Longitude",
+					"accuracy": "Accuracy",
+					"altitude": "Altitude"
 				}
 			},
-			"appVersion": "App versjon",
+			"appVersion": "App Version",
 			"timeZone": {
-				"timeZone": "Tidssone",
-				"select": "Velg tidssone"
+				"timeZone": "Time Zone",
+				"select": "Select time zone"
 			}
 		}
 	}

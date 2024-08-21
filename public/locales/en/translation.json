@@ -4,6 +4,7 @@
 		"information": "Information",
 		"scheduler": "Scheduler",
 		"schedule": "Schedule",
+		"addNewEntry": "Add new entry",
 		"calendar": "Calendar",
 		"session": "Session",
 		"timer": "Timer",
@@ -38,8 +39,9 @@
 		"updateEntry": "Update entry",
 		"email": "E-mail",
 		"phone": "Phone",
-		"resetAllSetpoints": "Tilbakestill alle settpunkt",
+		"resetSetpoints": "Reset setpoints",
 		"open": "Open",
+		"close": "Close",
 		"closed": "Closed"
 	},
 
@@ -58,13 +60,18 @@
 	},
 	"irrigation": {
 		"irrigation": "Irrigation",
-		"soilMoisture": "Soil moisture"
+		"soilMoisture": "Soil moisture",
+		"duration": "Duration",
+		"repeat": "Repeat every"
 	},
 	"co2": {
 		"co2": "CO2"
 	},
 	"cover": {
-		"cover": "Telt"
+		"cover": "Cover",
+		"resetWindAlarm": "Reset Wind Alarm",
+		"delay": "Delay",
+		"maxWindSpeed": "Maximum Wind Speed"
 	},
 	"heat": {
 		"heating": "Heating",

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react"
 
 // Styles
 import {
@@ -6,21 +6,21 @@ import {
 	Content,
 	ButtonArea,
 	CenteredDiv,
-} from './HeatingSettings.styles'
+} from "./HeatingSettings.styles"
 
 // Components
-import Btn from '../../../../UI/Btn'
-import CONSTANTS from '../../../../../CONSTANTS.json'
-import CustomSlider from '../../../../UI/CustomSlider'
+import Btn from "../../../../UI/Btn"
+import CONSTANTS from "../../../../../CONSTANTS.json"
+import CustomSlider from "../../../../UI/CustomSlider"
 
 // Icons
-import AccessTimeIcon from '@mui/icons-material/AccessTime'
-import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined'
+import AccessTimeIcon from "@mui/icons-material/AccessTime"
+import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined"
 
 // Context
-import { AllValuesContext } from '../../../../../store/context/allValues-context'
-import { useTranslation } from 'react-i18next'
-import { SetpointsContext } from '../../../../../store/context/setpoints-context'
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
+import { useTranslation } from "react-i18next"
+import { SetpointsContext } from "../../../../../store/context/setpoints-context"
 
 function HeatingSettings() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
@@ -28,7 +28,7 @@ function HeatingSettings() {
 
 	const { t } = useTranslation()
 	const onCommitedChange = (newValue, target) => {
-		if (target === 'delay') {
+		if (target === "delay") {
 			onCommand(
 				{
 					setpoints: {
@@ -37,7 +37,7 @@ function HeatingSettings() {
 				},
 				100
 			)
-		} else if (target === 'max') {
+		} else if (target === "max") {
 			onCommand(
 				{
 					setpoints: {
@@ -78,23 +78,23 @@ function HeatingSettings() {
                         ]}
                     />
                 </CenteredDiv> */}
-				<h3>{t('heat.settings.timeDelay')}</h3>
-				<p>{t('heat.settings.timeDelayText')}</p>
+				<h3>{t("heat.settings.timeDelay")}</h3>
+				<p>{t("heat.settings.timeDelayText")}</p>
 				<CenteredDiv>
 					<CustomSlider
 						min={0}
 						max={30}
-						step={1}
+						step={0.5}
 						onCommitedChange={onCommitedChange}
 						externalValue={allValues.setpoints.temp_delay}
-						width={'80%'}
-						color={'red'}
-						controlledItem={'delay'}
+						width={"80%"}
+						color={"red"}
+						controlledItem={"delay"}
 						marks={CONSTANTS.constants.sliders.tempDelaySliderMarks}
 					/>
 				</CenteredDiv>
-				<h3>{t('heat.settings.maxTemp')}</h3>
-				<p>{t('heat.settings.maxTempText')}</p>
+				<h3>{t("heat.settings.maxTemp")}</h3>
+				<p>{t("heat.settings.maxTempText")}</p>
 				<CenteredDiv>
 					<CustomSlider
 						min={5}
@@ -102,9 +102,9 @@ function HeatingSettings() {
 						step={1}
 						onCommitedChange={onCommitedChange}
 						externalValue={allValues.setpoints.soil_temp_max}
-						width={'80%'}
-						color={'red'}
-						controlledItem={'max'}
+						width={"80%"}
+						color={"red"}
+						controlledItem={"max"}
 						marks={CONSTANTS.constants.sliders.tempRangeSliderMarks}
 					/>
 				</CenteredDiv>
@@ -112,14 +112,14 @@ function HeatingSettings() {
 				<ButtonArea>
 					<Btn
 						onClick={() => {
-							updateSetpoints(true, 'resetHeatingSetpoints')
+							updateSetpoints(true, "resetHeatingSetpoints")
 						}}
 					>
-						{t('generic.resetSetpoints')}
+						{t("generic.resetSetpoints")}
 					</Btn>
 					<Btn svgSize={28} onClick={handleResetOperatingHours}>
 						<AccessTimeIcon />
-						{t('generic.resetOperatingHours')}
+						{t("generic.resetOperatingHours")}
 					</Btn>
 				</ButtonArea>
 			</Content>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react"
 
 // Styles
 import {
@@ -9,25 +9,25 @@ import {
 	LinkItem,
 	CardDescription,
 	LinkWrappers,
-} from './Cover.styles'
+} from "./Cover.styles"
 
 //Components
-import Btn from '../../../../UI/Btn'
-import ControlTile from '../../../../UI/ControlTile'
-import Card from '../../../../UI/Card'
+import Btn from "../../../../UI/Btn"
+import ControlTile from "../../../../UI/ControlTile"
+import Card from "../../../../UI/Card"
 
 // Icons
-import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
-import BackHandOutlinedIcon from '@mui/icons-material/BackHandOutlined'
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
-import CloudOutlinedIcon from '@mui/icons-material/CloudOutlined'
-import NorthIcon from '@mui/icons-material/North'
-import SouthIcon from '@mui/icons-material/South'
+import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
+import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
+import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined"
+import NorthIcon from "@mui/icons-material/North"
+import SouthIcon from "@mui/icons-material/South"
 // Context
-import { AllValuesContext } from '../../../../../store/context/allValues-context'
-import useLoginContext from '../../../../../hooks/useLoginContext'
-import { useTranslation } from 'react-i18next'
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
+import useLoginContext from "../../../../../hooks/useLoginContext"
+import { useTranslation } from "react-i18next"
 
 function Cover({}) {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
@@ -64,19 +64,16 @@ function Cover({}) {
 	return (
 		<Wrapper>
 			{allValues.statuses.session &&
-			allValues.statuses.mode === 'auto' ? null : (
+			allValues.statuses.mode === "auto" ? null : (
 				<ButtonsArea>
-					<Btn
-						selected={allValues.statuses.cover_opening}
-						onClick={handleOpen}
-					>
-						<NorthIcon /> Open
+					<Btn selected={allValues.statuses.cover_opening} onClick={handleOpen}>
+						<NorthIcon /> {t("generic.open")}
 					</Btn>
 					<Btn
 						selected={allValues.statuses.cover_closing}
 						onClick={handleClose}
 					>
-						<SouthIcon /> Close
+						<SouthIcon /> {t("generic.close")}
 					</Btn>
 				</ButtonsArea>
 			)}
@@ -85,9 +82,11 @@ function Cover({}) {
 				<ControlTile
 					disabled={true}
 					icon={CloudOutlinedIcon}
-					title={'Cover'}
+					title={"Cover"}
 					data={{
-						value: allValues.statuses.cover ? 'Open' : 'Closed',
+						value: allValues.statuses.cover
+							? t("generic.open")
+							: t("generic.closed"),
 						valueUnit: null,
 						additionalData: [null, null],
 						additionalDataUnits: [null, null],
@@ -96,10 +95,10 @@ function Cover({}) {
 			</TileArea>
 			<LinkWrappers>
 				<LinkItem
-					to={'/log'}
+					to={"/log"}
 					state={{
-						log: 'Cover',
-						headerText: `${t('cover.cover')} > ${t('generic.log')}`,
+						log: "Cover",
+						headerText: `${t("cover.cover")} > ${t("generic.log")}`,
 						logData: allValues?.logData?.heating ?? null,
 					}}
 				>
@@ -110,26 +109,24 @@ function Cover({}) {
 						</CardDescription>
 					</Card> */}
 				</LinkItem>
-				{user === 'admin' ? (
+				{user === "admin" ? (
 					<LinkItem
-						to={'settings'}
+						to={"settings"}
 						state={{
-							headerText: `${t('cover.cover')} > ${t(
-								'generic.settings'
-							)}`,
+							headerText: `${t("cover.cover")} > ${t("generic.settings")}`,
 						}}
 					>
 						<Card>
 							<CardDescription>
 								<SettingsOutlinedIcon />
-								{t('generic.settings')}
+								{t("generic.settings")}
 							</CardDescription>
 						</Card>
 					</LinkItem>
 				) : null}
 
 				{allValues.alarms?.high_wind_speed_alert && (
-					<Btn onClick={handleResetWindAlarm}>Reset wind alarm</Btn>
+					<Btn onClick={handleResetWindAlarm}>{t("cover.resetWindAlarm")}</Btn>
 				)}
 			</LinkWrappers>
 		</Wrapper>

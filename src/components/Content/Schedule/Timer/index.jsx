@@ -1,27 +1,27 @@
-import { useContext, useState } from 'react'
-import dayjs from 'dayjs'
-import { useTranslation } from 'react-i18next'
+import { useContext, useState } from "react"
+import dayjs from "dayjs"
+import { useTranslation } from "react-i18next"
 
 // Styles
-import { Container, CardContainer, CardContent } from './Timer.styles'
+import { Container, CardContainer, CardContent } from "./Timer.styles"
 
 // Components
-import Switches from './Switches'
-import TimeSelectors from './TimeSelectors'
-import Buttons from './Buttons'
-import Btn from '../../../UI/Btn'
-import Card from '../../../UI/Card'
+import Switches from "./Switches"
+import TimeSelectors from "./TimeSelectors"
+import Buttons from "./Buttons"
+import Btn from "../../../UI/Btn"
+import Card from "../../../UI/Card"
 
 // Icons
-import QueryBuilderOutlinedIcon from '@mui/icons-material/QueryBuilderOutlined'
+import QueryBuilderOutlinedIcon from "@mui/icons-material/QueryBuilderOutlined"
 
 // Context
-import { AllValuesContext } from '../../../../store/context/allValues-context'
+import { AllValuesContext } from "../../../../store/context/allValues-context"
 
 function Timer() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
 
-	const [state, setState] = useState('on')
+	const [state, setState] = useState("on")
 	const [hour, setHour] = useState(0)
 	const [minute, setMinute] = useState(5)
 	const [lighting, setLighting] = useState(false)
@@ -44,18 +44,18 @@ function Timer() {
 
 	const handleSetState = (action, state) => {
 		switch (action) {
-			case 'lighting':
+			case "lighting":
 				setLighting(state)
 				break
 
-			case 'heating':
+			case "heating":
 				setHeating(state)
 				break
-			case 'irrigation':
+			case "irrigation":
 				setIrrigation(state)
 				break
 
-			case 'co2':
+			case "co2":
 				setCo2(state)
 				break
 		}
@@ -72,13 +72,15 @@ function Timer() {
 			setpoints: {},
 		}
 
-		if (command === 'Start') {
-			if (state === 'on') {
+		if (command === "Start") {
+			if (state === "on") {
 				object.commands.time_toggle_keepon = true
 				object.setpoints.time_toggle_sph = hour
 				object.setpoints.time_toggle_spm = minute
 			} else {
 				object.commands.time_toggle_keepoff = true
+				object.setpoints.time_toggle_sph = hour
+				object.setpoints.time_toggle_spm = minute
 			}
 		} else {
 			object.commands.time_toggle_keepon = false
@@ -105,20 +107,20 @@ function Timer() {
 					<CardContainer>
 						<div>
 							<QueryBuilderOutlinedIcon />
-							{t('generic.timerActive')}
+							{t("generic.timerActive")}
 						</div>
 						<div>
 							<CardContent>
-								{`${t('generic.timerEnding')}
+								{`${t("generic.timerEnding")}
                                 ${dayjs(allValues?.values?.togtime_end).format(
-									'HH:mm'
-								)}`}
+																	"HH:mm"
+																)}`}
 							</CardContent>
 						</div>
 					</CardContainer>
 				</Card>
 			)}
-			{state === 'on' && !allValues.statuses.timer_active ? (
+			{!allValues.statuses.timer_active ? (
 				<Switches
 					onSetState={handleSetState}
 					states={{ lighting, heating, irrigation, co2 }}
@@ -127,12 +129,12 @@ function Timer() {
 			) : null}
 
 			{allValues.statuses.timer_active ? (
-				<Btn onClick={() => handleStartStop('Stop')}>
-					{t('generic.stopTimer')}
+				<Btn onClick={() => handleStartStop("Stop")}>
+					{t("generic.stopTimer")}
 				</Btn>
 			) : (
-				<Btn onClick={() => handleStartStop('Start')}>
-					{t('generic.startTimer')}
+				<Btn onClick={() => handleStartStop("Start")}>
+					{t("generic.startTimer")}
 				</Btn>
 			)}
 		</Container>

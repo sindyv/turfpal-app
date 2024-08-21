@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import Btn from '../../../../UI/Btn'
+import React, { useContext } from "react"
+import Btn from "../../../../UI/Btn"
 
 // Styles
 import {
@@ -7,16 +7,16 @@ import {
 	Content,
 	ButtonArea,
 	CenteredDiv,
-} from './CoverSettings.styles'
+} from "./CoverSettings.styles"
 
 // Components
-import CustomSlider from '../../../../UI/CustomSlider'
-import CONSTANTS from '../../../../../CONSTANTS.json'
+import CustomSlider from "../../../../UI/CustomSlider"
+import CONSTANTS from "../../../../../CONSTANTS.json"
 
 // Context
-import { AllValuesContext } from '../../../../../store/context/allValues-context'
-import { SetpointsContext } from '../../../../../store/context/setpoints-context'
-import { useTranslation } from 'react-i18next'
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
+import { SetpointsContext } from "../../../../../store/context/setpoints-context"
+import { useTranslation } from "react-i18next"
 
 function CoverSettings() {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
@@ -24,7 +24,7 @@ function CoverSettings() {
 	const { t } = useTranslation()
 
 	const onCommitedChange = (newValue, target) => {
-		if (target === 'windspeed') {
+		if (target === "windspeed") {
 			onCommand(
 				{
 					setpoints: {
@@ -34,7 +34,7 @@ function CoverSettings() {
 				100
 			)
 		}
-		if (target === 'windspeedDelay') {
+		if (target === "windspeedDelay") {
 			onCommand(
 				{
 					setpoints: {
@@ -49,7 +49,7 @@ function CoverSettings() {
 	return (
 		<Wrapper>
 			<Content>
-				<h3>Maximum Wind speed</h3>
+				<h3>{t("cover.maxWindSpeed")}</h3>
 
 				<CenteredDiv>
 					<CustomSlider
@@ -57,39 +57,35 @@ function CoverSettings() {
 						max={20}
 						step={1}
 						onCommitedChange={onCommitedChange}
-						externalValue={
-							allValues.setpoints.close_cover_at_windspeed
-						}
-						width={'80%'}
-						color={'gray'}
-						controlledItem={'windspeed'}
+						externalValue={allValues.setpoints.close_cover_at_windspeed}
+						width={"80%"}
+						color={"gray"}
+						controlledItem={"windspeed"}
 						marks={CONSTANTS.constants.sliders.windAlarm}
 					/>
 				</CenteredDiv>
-				<h3>Delay</h3>
+				<h3>{t("cover.delay")}</h3>
 
 				<CenteredDiv>
 					<CustomSlider
 						min={1}
 						max={5}
-						step={1}
+						step={0.5}
 						onCommitedChange={onCommitedChange}
-						externalValue={
-							allValues.setpoints.close_cover_at_windspeed_delay
-						}
-						width={'80%'}
-						color={'gray'}
-						controlledItem={'windspeedDelay'}
+						externalValue={allValues.setpoints.close_cover_at_windspeed_delay}
+						width={"80%"}
+						color={"gray"}
+						controlledItem={"windspeedDelay"}
 						marks={CONSTANTS.constants.sliders.windAlarmDelay}
 					/>
 				</CenteredDiv>
 				<ButtonArea>
 					<Btn
 						onClick={() => {
-							updateSetpoints(true, 'resetWindSetpoints')
+							updateSetpoints(true, "resetWindSetpoints")
 						}}
 					>
-						{t('generic.resetSetpoints')}
+						{t("generic.resetSetpoints")}
 					</Btn>
 				</ButtonArea>
 			</Content>
