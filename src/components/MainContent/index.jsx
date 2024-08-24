@@ -35,6 +35,7 @@ import Settings from "../Content/Settings"
 import Wireless from "../Content/Information/Wireless"
 import Router from "../Content/Information/Router"
 import CoverSettings from "../Content/Dashboard/Settings/CoverSettings"
+import LineChart from "../UI/LineChart"
 
 // Context
 import { MenuContext } from "../../store/context/menu-context"
@@ -62,6 +63,7 @@ const MainContent = () => {
 					<Routes>
 						<Route path="/" element={<Dashboard />} />
 						<Route path="/log" element={<Log />} />
+						<Route path="/chart" element={<LineChart />} />
 						<Route path="/modbus" element={<Modbus />} />
 						<Route path="/sessionlog" element={<SessionLog />} />
 						<Route path="/dali" element={<Dali />} />

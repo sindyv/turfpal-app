@@ -41,7 +41,8 @@
 		"resetSetpoints": "Alle Sollwerte zurücksetzen",
 		"open": "Öffnen",
 		"close": "Schließen",
-		"closed": "Geschlossen"
+		"closed": "Geschlossen",
+		"trend": "Trend"
 	},
 
 	"light": {
@@ -78,7 +79,8 @@
 		"cover": "Abdeckung",
 		"resetWindAlarm": "Windalarm zurücksetzen",
 		"delay": "Verzögerung",
-		"maxWindSpeed": "Maximale Windgeschwindigkeit"
+		"maxWindSpeed": "Maximale Windgeschwindigkeit",
+		"windSpeed": "Windgeschwindigkeit"
 	},
 	"log": {
 		"title": "Daten der letzten 7 Tage",

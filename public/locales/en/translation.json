@@ -42,7 +42,8 @@
 		"resetSetpoints": "Reset setpoints",
 		"open": "Open",
 		"close": "Close",
-		"closed": "Closed"
+		"closed": "Closed",
+		"trend": "Trend"
 	},
 
 	"light": {
@@ -71,7 +72,8 @@
 		"cover": "Cover",
 		"resetWindAlarm": "Reset Wind Alarm",
 		"delay": "Delay",
-		"maxWindSpeed": "Maximum Wind Speed"
+		"maxWindSpeed": "Maximum Wind Speed",
+		"windSpeed": "Wind Speed"
 	},
 	"heat": {
 		"heating": "Heating",

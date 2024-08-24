@@ -42,7 +42,8 @@
 		"resetSetpoints": "Réinitialiser les points de consigne",
 		"open": "Ouvert",
 		"close": "Fermer",
-		"closed": "Fermé"
+		"closed": "Fermé",
+		"trend": "Tendance"
 	},
 	"light": {
 		"lighting": "Éclairage",
@@ -78,7 +79,8 @@
 		"cover": "Couverture",
 		"resetWindAlarm": "Réinitialiser l'alarme du vent",
 		"delay": "Délai",
-		"maxWindSpeed": "Vitesse maximale du vent"
+		"maxWindSpeed": "Vitesse maximale du vent",
+		"windSpeed": "Vitesse du vent"
 	},
 	"log": {
 		"title": "Données affichées pour les 7 derniers jours",

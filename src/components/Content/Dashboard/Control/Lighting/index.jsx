@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react"
 
 // Styles
 import {
@@ -7,24 +7,25 @@ import {
 	LinkItem,
 	CardDescription,
 	LinkWrappers,
-} from './Lighting.styles'
+} from "./Lighting.styles"
 
 //Components
-import Btn from '../../../../UI/Btn'
-import ControlButtons from './ControlButtons'
-import Card from '../../../../UI/Card'
+import Btn from "../../../../UI/Btn"
+import ControlButtons from "./ControlButtons"
+import Card from "../../../../UI/Card"
 
 // Icons
-import ControlTiles from './ControlTiles'
-import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
-import BackHandOutlinedIcon from '@mui/icons-material/BackHandOutlined'
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
+import ControlTiles from "./ControlTiles"
+import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
+import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
+import ShowChartIcon from "@mui/icons-material/ShowChart"
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 
 // Context
-import { AllValuesContext } from '../../../../../store/context/allValues-context'
-import useLoginContext from '../../../../../hooks/useLoginContext'
-import { useTranslation } from 'react-i18next'
+import { AllValuesContext } from "../../../../../store/context/allValues-context"
+import useLoginContext from "../../../../../hooks/useLoginContext"
+import { useTranslation } from "react-i18next"
 
 function Lighting({}) {
 	const { data: allValues, onCommand } = useContext(AllValuesContext)
@@ -77,25 +78,25 @@ function Lighting({}) {
 	return (
 		<Wrapper>
 			{allValues.statuses.session &&
-			allValues.statuses.mode === 'auto' ? null : (
+			allValues.statuses.mode === "auto" ? null : (
 				<ButtonsArea>
 					<Btn
-						selected={allValues.statuses.mode_lighting === 'auto'}
+						selected={allValues.statuses.mode_lighting === "auto"}
 						onClick={handleSetModeAuto}
 						svgSize={20}
 					>
-						<AutorenewOutlinedIcon /> {t('generic.auto')}
+						<AutorenewOutlinedIcon /> {t("generic.auto")}
 					</Btn>
 					<Btn
-						selected={allValues.statuses.mode_lighting === 'manual'}
+						selected={allValues.statuses.mode_lighting === "manual"}
 						onClick={handleSetModeManual}
 						svgSize={20}
 					>
-						<BackHandOutlinedIcon /> {t('generic.manual')}
+						<BackHandOutlinedIcon /> {t("generic.manual")}
 					</Btn>
 				</ButtonsArea>
 			)}
-			{allValues.statuses.mode_lighting === 'manual' ? (
+			{allValues.statuses.mode_lighting === "manual" ? (
 				<ControlButtons
 					handleControlLighting={handleControlLighting}
 					allValues={allValues}
@@ -104,35 +105,46 @@ function Lighting({}) {
 			<ControlTiles allValues={allValues} />
 			<LinkWrappers>
 				<LinkItem
-					to={'/log'}
+					to={"/log"}
 					state={{
-						log: 'Lighting',
-						headerText: `${t('light.lighting')} > ${t(
-							'generic.log'
-						)}`,
+						log: "Lighting",
+						headerText: `${t("light.lighting")} > ${t("generic.log")}`,
 						logData: allValues?.logData?.lighting ?? null,
 					}}
 				>
 					<Card>
 						<CardDescription>
 							<InfoOutlinedIcon />
-							{t('generic.log')}
+							{t("generic.log")}
 						</CardDescription>
 					</Card>
 				</LinkItem>
-				{user === 'admin' ? (
+				<LinkItem
+					to={"/chart"}
+					state={{
+						log: "Trend",
+						headerText: `${t("light.lighting")} > ${t("generic.trend")}`,
+						logObject: "lightLog",
+					}}
+				>
+					<Card>
+						<CardDescription>
+							<ShowChartIcon />
+							{t("generic.trend")}
+						</CardDescription>
+					</Card>
+				</LinkItem>
+				{user === "admin" ? (
 					<LinkItem
-						to={'settings'}
+						to={"settings"}
 						state={{
-							headerText: `${t('light.lighting')} > ${t(
-								'generic.settings'
-							)}`,
+							headerText: `${t("light.lighting")} > ${t("generic.settings")}`,
 						}}
 					>
 						<Card>
 							<CardDescription>
 								<SettingsOutlinedIcon />
-								{t('generic.settings')}
+								{t("generic.settings")}
 							</CardDescription>
 						</Card>
 					</LinkItem>

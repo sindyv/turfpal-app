@@ -78,15 +78,11 @@ function Settings() {
 			<Slider
 				marks={CONSTANTS.constants.sliders.tempRangeSliderMarks}
 				switchValue={allValues.statuses.zone1_temp}
-				sliderValue={[
-					allValues.setpoints[`${selectedSetpoints}_hps_temp_50_on`],
-					allValues.setpoints[`${selectedSetpoints}_hps_temp_50_off`],
-				]}
+				sliderValue={allValues.setpoints[`${selectedSetpoints}_heating_target`]}
 				headerTitle={t("generic.temperature")}
 				sliderValueText={`${
-					allValues.setpoints[`${selectedSetpoints}_hps_temp_50_on`]
-				} - 
-                ${allValues.setpoints[`${selectedSetpoints}_hps_temp_50_off`]}`}
+					allValues.setpoints[`${selectedSetpoints}_heating_target`]
+				}`}
 				sliderUnit={"°C"}
 				sliderMin={5}
 				sliderMax={35}

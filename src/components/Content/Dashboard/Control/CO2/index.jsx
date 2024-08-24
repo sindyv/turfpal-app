@@ -20,6 +20,7 @@ import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
+import ShowChartIcon from "@mui/icons-material/ShowChart"
 import CloudOutlinedIcon from "@mui/icons-material/CloudOutlined"
 
 // Context
@@ -131,6 +132,21 @@ function CO2() {
 						<CardDescription>
 							<InfoOutlinedIcon />
 							{t("generic.log")}
+						</CardDescription>
+					</Card>
+				</LinkItem>
+				<LinkItem
+					to={"/chart"}
+					state={{
+						log: "Trend",
+						headerText: `${t("co2.co2")} > ${t("generic.trend")}`,
+						logObject: "co2Log",
+					}}
+				>
+					<Card>
+						<CardDescription>
+							<ShowChartIcon />
+							{t("generic.trend")}
 						</CardDescription>
 					</Card>
 				</LinkItem>

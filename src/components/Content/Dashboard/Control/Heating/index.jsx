@@ -20,6 +20,7 @@ import Card from "../../../../UI/Card"
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined"
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
+import ShowChartIcon from "@mui/icons-material/ShowChart"
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 import HeatIcon from "../../../../../assets/icons/heat"
 
@@ -141,6 +142,21 @@ function Heating({}) {
 						<CardDescription>
 							<InfoOutlinedIcon />
 							{t("generic.log")}
+						</CardDescription>
+					</Card>
+				</LinkItem>
+				<LinkItem
+					to={"/chart"}
+					state={{
+						log: "Trend",
+						headerText: `${t("heat.heating")} > ${t("generic.trend")}`,
+						logObject: "temperatureLog",
+					}}
+				>
+					<Card>
+						<CardDescription>
+							<ShowChartIcon />
+							{t("generic.trend")}
 						</CardDescription>
 					</Card>
 				</LinkItem>

@@ -42,7 +42,8 @@
 		"resetSetpoints": "Stel instelpuntwaarden opnieuw in",
 		"open": "Open",
 		"close": "Sluiten",
-		"closed": "Gesloten"
+		"closed": "Gesloten",
+		"trend": "Trend"
 	},
 	"light": {
 		"lighting": "Verlichting",
@@ -79,7 +80,8 @@
 
 		"resetWindAlarm": "Reset windalarm",
 		"delay": "Vertraging",
-		"maxWindSpeed": "Maximale windsnelheid"
+		"maxWindSpeed": "Maximale windsnelheid",
+		"windSpeed": "Windsnelheid"
 	},
 	"log": {
 		"title": "Gegevens weergegeven voor de afgelopen 7 dagen",

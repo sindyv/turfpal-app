@@ -18,6 +18,7 @@ import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 import WaterDropOutlinedIcon from "@mui/icons-material/WaterDropOutlined"
+import ShowChartIcon from "@mui/icons-material/ShowChart"
 
 import Card from "../../../../UI/Card"
 
@@ -141,6 +142,22 @@ function Irrigation({}) {
 						<CardDescription>
 							<InfoOutlinedIcon />
 							{t("generic.log")}
+						</CardDescription>
+					</Card>
+				</LinkItem>
+
+				<LinkItem
+					to={"/chart"}
+					state={{
+						log: "Trend",
+						headerText: `${t("irrigation.irrigation")} > ${t("generic.trend")}`,
+						logObject: "soilMoistureLog",
+					}}
+				>
+					<Card>
+						<CardDescription>
+							<ShowChartIcon />
+							{t("generic.trend")}
 						</CardDescription>
 					</Card>
 				</LinkItem>
